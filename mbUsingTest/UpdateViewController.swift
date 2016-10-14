@@ -21,7 +21,6 @@ class UpdateViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func Update(_ sender: UIButton) {
         
-        
         // ログイン中のユーザーを取得
         let user = NCMBUser.current()
         let targetNewName = self.userNewName.text!

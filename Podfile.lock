@@ -1,0 +1,35 @@
+PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.16.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.16.1):
+    - FBSDKCoreKit
+  - NCMB (2.3.3):
+    - FBSDKLoginKit
+
+DEPENDENCIES:
+  - NCMB (from `https://github.com/ehuecorporation/ncmb_ios.git`)
+
+EXTERNAL SOURCES:
+  NCMB:
+    :git: https://github.com/ehuecorporation/ncmb_ios.git
+
+CHECKOUT OPTIONS:
+  NCMB:
+    :commit: ea2f37a6a20fa72331a05cc1f515f6804029c8c0
+    :git: https://github.com/ehuecorporation/ncmb_ios.git
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  NCMB: 98e2fe41fc810f9bfb2ff13694a363a516ad7dfa
+
+PODFILE CHECKSUM: d6e40e422ebce41a978337fa198cf3cfcbef9914
+
+COCOAPODS: 1.0.1
