@@ -123,7 +123,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.memoTableView.register(nib, forCellReuseIdentifier: "MemoCell")
         
         //自動計算の場合は必要
-        self.memoTableView.estimatedRowHeight = 420.0
+        
+        self.memoTableView.estimatedRowHeight = 450.0
         self.memoTableView.rowHeight = UITableViewAutomaticDimension
         
 //        titleLabel.text = "\(userInfo.userName!)さんのページです"
