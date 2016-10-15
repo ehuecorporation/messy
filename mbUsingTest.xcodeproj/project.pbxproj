@@ -41,6 +41,8 @@
 		2FE5CD3C1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
 		2FE5CD3D1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
 		2FE5CD3E1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
+		595A5A971DB2112D007DDBFA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A5A961DB2112D007DDBFA /* InfoViewController.swift */; };
+		595A5A991DB214BB007DDBFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A5A981DB214BB007DDBFA /* MapKit.framework */; };
 		B2C4A0057F206E88B94FFAEE /* Pods_mbUsingTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 439DB80766BB5BFA50F812FC /* Pods_mbUsingTestTests.framework */; };
 		D18354702EAC7A78FE22315A /* Pods_mbUsingTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3DE0F6DC463CBAF3705348 /* Pods_mbUsingTest.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +93,8 @@
 		439DB80766BB5BFA50F812FC /* Pods_mbUsingTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mbUsingTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F8956D34F8F924A700AA08 /* Pods-mbUsingTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mbUsingTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mbUsingTest/Pods-mbUsingTest.debug.xcconfig"; sourceTree = "<group>"; };
 		4F3DE0F6DC463CBAF3705348 /* Pods_mbUsingTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mbUsingTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A5A961DB2112D007DDBFA /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		595A5A981DB214BB007DDBFA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		855CD7EF6AA6D6D3ABC06F3A /* Pods-mbUsingTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mbUsingTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-mbUsingTest/Pods-mbUsingTest.release.xcconfig"; sourceTree = "<group>"; };
 		ADB931B3E7BA21B682C6518C /* Pods_mbUsingTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mbUsingTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5C4720D476897FB6CB29D0 /* Pods-mbUsingTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mbUsingTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mbUsingTestTests/Pods-mbUsingTestTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595A5A991DB214BB007DDBFA /* MapKit.framework in Frameworks */,
 				D18354702EAC7A78FE22315A /* Pods_mbUsingTest.framework in Frameworks */,
 				2F3431701D9D4425001E6C68 /* TwitterCore.framework in Frameworks */,
 				2F3431671D9D4425001E6C68 /* Fabric.framework in Frameworks */,
@@ -137,6 +142,7 @@
 		2655802DDD0F9022C93D3BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				595A5A981DB214BB007DDBFA /* MapKit.framework */,
 				4F3DE0F6DC463CBAF3705348 /* Pods_mbUsingTest.framework */,
 				439DB80766BB5BFA50F812FC /* Pods_mbUsingTestTests.framework */,
 				ADB931B3E7BA21B682C6518C /* Pods_mbUsingTestUITests.framework */,
@@ -192,6 +198,7 @@
 				2F644B641D851A22009CF261 /* ViewController.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */,
+				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
 				2F644B691D851A22009CF261 /* Assets.xcassets */,
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
@@ -518,6 +525,7 @@
 				2F644B651D851A22009CF261 /* ViewController.swift in Sources */,
 				2FA17CAF1D9917BD00CF30E1 /* AddController.swift in Sources */,
 				2F644B631D851A22009CF261 /* AppDelegate.swift in Sources */,
+				595A5A971DB2112D007DDBFA /* InfoViewController.swift in Sources */,
 				2FE5CD3C1DA1FB93002613BA /* UpdateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

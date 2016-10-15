@@ -2,7 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>I have learned more on stack overflow than anything else</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>The spirit of stack overflow is coders helping coders</string>	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Messy</string>
