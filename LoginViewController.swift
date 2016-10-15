@@ -15,6 +15,9 @@ class LoginViewController: UIViewController{
     
     let userData = UserDefaults.standard
     
+    // テスト
+    
+    
     
     @IBAction func twitterLogin(_ sender: UIButton) {
         NCMBTwitterUtils.logIn({
