@@ -32,7 +32,7 @@ class LoginViewController: UIViewController{
                     NSLog("Twitterで登録成功！");
                     self.performSegue(withIdentifier: "PushUpdate", sender: nil)
                 } else {
-                    self.performSegue(withIdentifier: "PushMemos", sender: nil)
+                    self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
 
             }
@@ -50,7 +50,7 @@ class LoginViewController: UIViewController{
             }else {
                 // 会員登録後の処理
                 NSLog("facebookで認証完了")
-                self.performSegue(withIdentifier: "PushMemos", sender: nil)
+                self.performSegue(withIdentifier: "pushMemos", sender: nil)
             }
         }
         

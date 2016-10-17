@@ -19,7 +19,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     //前の画面に戻る
     @IBAction func backButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-//        performSegue(withIdentifier: "BackMemos", sender: nil)
+        
     }
     @IBAction func hidekeyboardAction(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)

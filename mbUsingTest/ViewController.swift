@@ -16,13 +16,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var titleLabel: UILabel!
     
     //新規追加時
-    @IBAction func addMemo(_ sender: UIBarButtonItem) {
-        
+    
+    @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
         performSegue(withIdentifier: "goAddMemo", sender: nil)
-        
     }
-    
+
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     //NotificcationのObserver
@@ -44,6 +43,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //参照している配列の場所
     var targetNum: Int = Int()
     
+    //対象メモ
+    var targetMemo: memo = memo()
+    
     //会員情報管理
     let userInfo = NCMBUser.current()!
     
@@ -56,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setname()
+//        setname()
         
         //読込完了通知を受信した後の処理
         loadDataObserver = NotificationCenter.default.addObserver(
@@ -190,6 +192,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
+        targetMemo = targetMemoData
+        
         cell!.shopName.text = targetMemoData.memoTitle
         cell!.menuCost.text = targetMemoData.memoMoney
         cell!.menuName.text = targetMemoData.memoComment
@@ -231,7 +235,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         targetNum = (indexPath as NSIndexPath).row
         
         self.editFlag = true
-        performSegue(withIdentifier: "goAddMemo", sender: targetMemoData)
+        performSegue(withIdentifier: "pushDetail", sender: targetMemoData)
     }
     
     //テーブルのセクションを設定する
@@ -239,31 +243,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return self.sectionCount
     }
     
+/*
     func setname() {
         if let userName = userData.object(forKey: "Name") {
-            titleLabel.text = "\(userName)さんのページ"
+            
         } else {
             userData.set("\(userInfo.userName!)", forKey: "Name")
-            titleLabel.text = "\(userData.object(forKey: "Name")!)さんのページ"
+            
             
         }
     }
-    
-    
+*/
+
     //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //コメント表示画面へ行く前に詳細データを渡す
-        if segue.identifier == "goAddMemo" {
+        if segue.identifier == "pushDetail" {
             
-            let addController = segue.destination as! AddController
+            let InfoController = segue.destination as! InfoViewController
+            InfoController.targetMemo = self.targetMemo
             
             //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
-            if self.editFlag == true {
-                addController.editFlag = self.editFlag
-                addController.targetData = sender as! memo
-                addController.targetNum = self.targetNum
-            }
+            
         }
     }
     
