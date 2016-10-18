@@ -358,11 +358,11 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             //更新対象のobjetIdを入力
             self.targetMemoObjectId = targetData.objectID
             //UITextFieldに値を入れた状態にしておく
-            self.titleField.text = targetData.memoTitle
-            self.moneyField.text = targetData.memoMoney
-            self.commentField.text = targetData.memoComment
+            self.titleField.text = targetData.shopName
+            self.moneyField.text = targetData.menuMoney
+            self.commentField.text = targetData.menuName
             //登録されている画像イメージをセットする
-            self.displayImage.image = targetData.memoImage
+            self.displayImage.image = targetData.menuImage
         }
         
     } // View Did Load end

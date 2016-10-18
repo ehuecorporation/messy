@@ -9,20 +9,29 @@
 import Foundation
 import  NCMB
 
+public struct shop {
+    
+    public var shopName: String = ""
+    public var shopLat: Double = 0
+    public var shopLon: Double = 0
+    public var hasPost: Bool = false
+    
+}
+
 public struct memo {
     
     public var objectID: String = ""
     public var filename: String = ""
-    public var memoTitle: String = ""
-    public var memoMoney: String = ""
-    public var memoComment: String = ""
-    public var memoImage: UIImage? = nil
+    public var shopName: String = ""
+    public var menuMoney: String = ""
+    public var menuName: String = ""
+    public var menuImage: UIImage? = nil
     
     public var description: String {
         get {
-            var string = "\nmemoTitle:\(memoTitle)"
-            string += "\nmemoMoney:\(memoMoney)"
-            string += "\nmemoComment:\(memoComment)"
+            var string = "\nshopTitle:\(shopName)"
+            string += "\nmenuMoney:\(menuMoney)"
+            string += "\nmenuName:\(menuName)"
             return string
         }
     }
@@ -84,9 +93,9 @@ public class NCMBSearch {
                             let targetMemoData: AnyObject = response[i] as AnyObject
                             var tmp : memo = memo()
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
-                            tmp.memoTitle = (targetMemoData.object(forKey: "title") as? String)!
-                            tmp.memoComment = (targetMemoData.object(forKey: "comment") as? String)!
-                            tmp.memoMoney = (targetMemoData.object(forKey: "money") as? String)!
+                            tmp.shopName = (targetMemoData.object(forKey: "title") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "comment") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "money") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
                             self.memos.append(tmp)
                         }
@@ -127,7 +136,7 @@ public class NCMBSearch {
             if error != nil {
                 print("写真の取得失敗: \(error)")
             } else {
-                self.memos[targetNum].memoImage = UIImage(data: imageData!)
+                self.memos[targetNum].menuImage = UIImage(data: imageData!)
             }
         }
 
@@ -163,9 +172,9 @@ public class NCMBSearch {
                             let targetMemoData: AnyObject = response[i] as AnyObject
                             var tmp : memo = memo()
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
-                            tmp.memoTitle = (targetMemoData.object(forKey: "title") as? String)!
-                            tmp.memoComment = (targetMemoData.object(forKey: "comment") as? String)!
-                            tmp.memoMoney = (targetMemoData.object(forKey: "money") as? String)!
+                            tmp.shopName = (targetMemoData.object(forKey: "title") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "comment") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "money") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
                             loadingMemos.append(tmp)
                         }

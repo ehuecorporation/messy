@@ -194,13 +194,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         targetMemo = targetMemoData
         
-        cell!.shopName.text = targetMemoData.memoTitle
-        cell!.menuCost.text = targetMemoData.memoMoney
-        cell!.menuName.text = targetMemoData.memoComment
+        cell!.shopName.text = targetMemoData.shopName
+        cell!.menuCost.text = targetMemoData.menuMoney
+        cell!.menuName.text = targetMemoData.menuName
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
         
-        if let image = targetMemoData.memoImage {
+        if let image = targetMemoData.menuImage {
             cell!.menuImage.image = image
         } else {
             
@@ -214,7 +214,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("写真の取得失敗: \(error)")
                 } else {
                     cell!.menuImage.image = UIImage(data: imageData!)
-                    self.mbs.memos[(indexPath as NSIndexPath).row].memoImage = UIImage(data: imageData!)
+                    self.mbs.memos[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                 }
             }
         }

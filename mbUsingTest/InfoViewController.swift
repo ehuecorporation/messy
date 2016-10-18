@@ -23,7 +23,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.shopName.text = targetMemo.memoTitle
+        self.shopName.text = targetMemo.shopName
 
         // Do any additional setup after loading the view.
         locationManager.delegate = self
