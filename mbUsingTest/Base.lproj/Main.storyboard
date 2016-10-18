@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hgm-yw-r7P">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T5I-Uk-uwf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -538,27 +538,27 @@
                                 <exclude reference="U15-rX-eRH"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="C8Y-K7-pjE"/>
-                                <exclude reference="LaS-zd-dLo"/>
-                                <exclude reference="xzQ-gb-Yal"/>
-                                <exclude reference="tez-oM-EvI"/>
-                                <exclude reference="tkV-O7-LXz"/>
-                                <exclude reference="1og-NQ-qKM"/>
-                                <exclude reference="Bjc-JA-kSL"/>
-                                <exclude reference="iVx-bd-FDe"/>
-                                <exclude reference="61e-04-zOi"/>
-                                <exclude reference="M4d-zd-Ym6"/>
-                                <exclude reference="06e-H2-bdy"/>
-                                <exclude reference="HKg-iz-8rh"/>
-                                <exclude reference="MnG-xt-eG4"/>
+                                <exclude reference="IfR-sP-JRi"/>
                                 <exclude reference="CxW-Z4-blo"/>
                                 <exclude reference="Hhz-xf-L1D"/>
+                                <exclude reference="LaS-zd-dLo"/>
+                                <exclude reference="xzQ-gb-Yal"/>
+                                <exclude reference="C8Y-K7-pjE"/>
+                                <exclude reference="tez-oM-EvI"/>
+                                <exclude reference="tkV-O7-LXz"/>
                                 <exclude reference="3Uv-8G-up5"/>
                                 <exclude reference="i3Y-GT-wmE"/>
                                 <exclude reference="ywg-T4-tQs"/>
+                                <exclude reference="61e-04-zOi"/>
+                                <exclude reference="M4d-zd-Ym6"/>
                                 <exclude reference="KGt-79-VVd"/>
                                 <exclude reference="nNe-8x-r1K"/>
-                                <exclude reference="IfR-sP-JRi"/>
+                                <exclude reference="06e-H2-bdy"/>
+                                <exclude reference="HKg-iz-8rh"/>
+                                <exclude reference="MnG-xt-eG4"/>
+                                <exclude reference="1og-NQ-qKM"/>
+                                <exclude reference="Bjc-JA-kSL"/>
+                                <exclude reference="iVx-bd-FDe"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -574,27 +574,27 @@
                                 <include reference="U15-rX-eRH"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="C8Y-K7-pjE"/>
-                                <include reference="LaS-zd-dLo"/>
-                                <include reference="xzQ-gb-Yal"/>
-                                <include reference="tez-oM-EvI"/>
-                                <include reference="tkV-O7-LXz"/>
-                                <include reference="1og-NQ-qKM"/>
-                                <include reference="Bjc-JA-kSL"/>
-                                <include reference="iVx-bd-FDe"/>
-                                <include reference="61e-04-zOi"/>
-                                <include reference="M4d-zd-Ym6"/>
-                                <include reference="06e-H2-bdy"/>
-                                <include reference="HKg-iz-8rh"/>
-                                <include reference="MnG-xt-eG4"/>
+                                <include reference="IfR-sP-JRi"/>
                                 <include reference="CxW-Z4-blo"/>
                                 <include reference="Hhz-xf-L1D"/>
+                                <include reference="LaS-zd-dLo"/>
+                                <include reference="xzQ-gb-Yal"/>
+                                <include reference="C8Y-K7-pjE"/>
+                                <include reference="tez-oM-EvI"/>
+                                <include reference="tkV-O7-LXz"/>
                                 <include reference="3Uv-8G-up5"/>
                                 <include reference="i3Y-GT-wmE"/>
                                 <include reference="ywg-T4-tQs"/>
+                                <include reference="61e-04-zOi"/>
+                                <include reference="M4d-zd-Ym6"/>
                                 <include reference="KGt-79-VVd"/>
                                 <include reference="nNe-8x-r1K"/>
-                                <include reference="IfR-sP-JRi"/>
+                                <include reference="06e-H2-bdy"/>
+                                <include reference="HKg-iz-8rh"/>
+                                <include reference="MnG-xt-eG4"/>
+                                <include reference="1og-NQ-qKM"/>
+                                <include reference="Bjc-JA-kSL"/>
+                                <include reference="iVx-bd-FDe"/>
                             </mask>
                         </variation>
                         <connections>
@@ -624,7 +624,7 @@
         <scene sceneID="pIx-rd-VrJ">
             <objects>
                 <navigationController id="T5I-Uk-uwf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3zb-hP-VCT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3zb-hP-VCT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
