@@ -70,7 +70,6 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                 targetShop =  self.mbs.shopData
                 self.targetShopData = targetShop
 
-                
                 self.shopName.text = targetShop.shopName
                 self.openHours.text = targetShop.openHours
                 
