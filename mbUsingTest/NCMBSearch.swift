@@ -14,7 +14,8 @@ public struct shop {
     public var shopName: String = ""
     public var shopLat: Double = 0
     public var shopLon: Double = 0
-    public var hasPost: Bool = false
+    public var openHours: String = ""
+    public var restDay: String = ""
     
 }
 
@@ -23,6 +24,7 @@ public struct memo {
     public var objectID: String = ""
     public var filename: String = ""
     public var shopName: String = ""
+    public var shopNumber: Int = 0
     public var menuMoney: String = ""
     public var menuName: String = ""
     public var menuImage: UIImage? = nil
@@ -39,8 +41,11 @@ public struct memo {
 }
 
 public class NCMBSearch {
-    //メモの保管
+    //ポストの保管
     public var memos = [memo]()
+    
+    //店舗データ
+    public var shopData = shop()
     
     // 全何件か
     public var total = 0
@@ -52,6 +57,10 @@ public class NCMBSearch {
     open let NCMBImageLoadStartNotification = "NCMBImageLoadStartNotification"
     //画像読込完了のNotification
     open let NCMBImageLoadCompleteNotification = "NCMBImageLoadCompleteNotification"
+    //店舗読込開始のNotification
+    open let NCMBShopLoadStartNotification = "NCMBShopLoadStartNotification"
+    //店舗読込完了のNotification
+    open let NCMBShopLoadCompleteNotification = "NCMBShopLoadCompleteNotification"
     
     
     //trueなら読込中
@@ -93,10 +102,11 @@ public class NCMBSearch {
                             let targetMemoData: AnyObject = response[i] as AnyObject
                             var tmp : memo = memo()
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
-                            tmp.shopName = (targetMemoData.object(forKey: "title") as? String)!
-                            tmp.menuName = (targetMemoData.object(forKey: "comment") as? String)!
+                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "title") as? String)!
                             tmp.menuMoney = (targetMemoData.object(forKey: "money") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             self.memos.append(tmp)
                         }
                         
@@ -140,7 +150,7 @@ public class NCMBSearch {
             }
         }
 
-    }
+    } // getImage end
     
     func reLoadData() {
         
@@ -172,10 +182,11 @@ public class NCMBSearch {
                             let targetMemoData: AnyObject = response[i] as AnyObject
                             var tmp : memo = memo()
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
-                            tmp.shopName = (targetMemoData.object(forKey: "title") as? String)!
-                            tmp.menuName = (targetMemoData.object(forKey: "comment") as? String)!
+                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "title") as? String)!
                             tmp.menuMoney = (targetMemoData.object(forKey: "money") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             loadingMemos.append(tmp)
                         }
                         
@@ -207,6 +218,43 @@ public class NCMBSearch {
             
         }) // findObjects end
         
+    } // reloadData end
+    
+    func getShopData (_ shopNumber: Int) {
+        var shopData: shop = shop()
+        
+        self.shopData = shop()
+        
+        //API実行
+        let query: NCMBQuery = NCMBQuery(className: "test")
+        // 与えられた店番号のデータを取ってくる
+        query.whereKey("numbaer", equalTo: shopNumber)
+        
+        //店舗検索を通知
+        NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBShopLoadStartNotification), object: nil)
+        
+        query.findObjectsInBackground({
+            (objects, error) in
+            
+            if error == nil {
+                if let response = objects {
+                    let targetMemoData: AnyObject = response[0] as AnyObject
+                    shopData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                    shopData.shopLon = (targetMemoData.object(forKey: "longtitude") as? Double)!
+                    shopData.shopLat = (targetMemoData.object(forKey: "latitude") as? Double)!
+                    shopData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!
+                    shopData.restDay = (targetMemoData.object(forKey: "restDay") as? String)!
+                    print("店舗データの取得に成功しました")
+                    self.shopData = shopData
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil)
+                }
+            } else {
+                print("店舗データの取得に失敗しました")
+            }
+            
+            return
+        
+        })
         
     }
     

@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
+    
     //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
@@ -258,11 +259,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //コメント表示画面へ行く前に詳細データを渡す
+        //詳細画面へ行く前に詳細データを渡す
         if segue.identifier == "pushDetail" {
             
             let InfoController = segue.destination as! InfoViewController
             InfoController.targetMemo = self.targetMemo
+            
             
             //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
             
