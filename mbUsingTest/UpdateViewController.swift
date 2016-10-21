@@ -10,14 +10,16 @@ import UIKit
 import  NCMB
 
 
-class UpdateViewController: UIViewController,UITextFieldDelegate {
+class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate {
     
     var userName : String = ""
     
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
-    @IBOutlet weak var passWord: UITextField!
     
+    @IBAction func hydeKeybord(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func Update(_ sender: UIButton) {
         
@@ -25,9 +27,8 @@ class UpdateViewController: UIViewController,UITextFieldDelegate {
         let user = NCMBUser.current()
         let targetNewName = self.userNewName.text!
         let targetNewMailAdress = self.mailAdress.text!
-        let targetNewpassWord = self.passWord.text!
         
-        if (targetNewName.isEmpty || targetNewMailAdress.isEmpty || targetNewpassWord.isEmpty) {
+        if (targetNewName.isEmpty || targetNewMailAdress.isEmpty) {
             
             //エラーアラートを表示してOKで戻る
             let errorAlert = UIAlertController(title: "エラー", message:"入力に不備があります", preferredStyle: UIAlertControllerStyle.alert)
@@ -49,11 +50,12 @@ class UpdateViewController: UIViewController,UITextFieldDelegate {
             
             user?.saveInBackground({
                 (error) -> Void in
-                if error != nil {
+                if let updateerror = error {
                     // 更新失敗時の処理
+                    
                     let errorAlert = UIAlertController(
                         title: "エラー",
-                        message: "更新処理を中止します\(error)",
+                        message: "\(updateerror.localizedDescription)",
                         preferredStyle: UIAlertControllerStyle.alert
                     )
                     errorAlert.addAction(
@@ -70,7 +72,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate {
                     // 更新成功時の処理
                     let errorAlert = UIAlertController(
                         title: "完了",
-                        message: "会員情報を更新しました",
+                        message: "会員情報を登録しました",
                         preferredStyle: UIAlertControllerStyle.alert
                     )
                     errorAlert.addAction(

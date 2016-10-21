@@ -11,26 +11,83 @@ import NCMB
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class LoginViewController: UIViewController{
+class LoginViewController: UIViewController, UINavigationControllerDelegate{
     
     let userData = UserDefaults.standard
     
-    // テスト
+    @IBOutlet weak var userMail: UITextField!
+    @IBOutlet weak var userPass: UITextField!
+    
+    @IBAction func hideKeybord(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
     
     
-    
+    @IBAction func loginButton(_ sender: UIButton) {
+        let targetMail = self.userMail.text!
+        let targetPass = self.userPass.text!
+        
+        if (targetMail.isEmpty || targetPass.isEmpty) {
+            
+            //エラーアラートを表示してOKで戻る
+            let errorAlert = UIAlertController(title: "エラー", message:"入力に不備があります", preferredStyle: UIAlertControllerStyle.alert)
+            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            self.present(errorAlert, animated: true, completion: nil)
+            return
+        } else {
+            NCMBUser.logInWithMailAddress(inBackground: targetMail, password: targetPass, block: {
+                (user, error) in
+                
+                if error != nil {
+                    //エラーアラートを表示してOKで戻る
+                    let errorAlert = UIAlertController(title: "認証エラー", message:"入力内容を確認の上、もう一度お試しください", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: nil
+                        )
+                    )
+                    self.present(errorAlert, animated: true, completion: nil)
+                    return
+                } else if (user != nil){
+                    self.performSegue(withIdentifier: "pushMemos", sender: nil)
+                }
+            })
+        }
+        
+    }
     @IBAction func twitterLogin(_ sender: UIButton) {
         NCMBTwitterUtils.logIn({
             (user, error) in
             
             if(error != nil){
                 NSLog("Twitterでログインがキャンセルされました。:\(error)")
-                return;
-            } else {
+                //エラーアラートを表示してOKで戻る
+                let errorAlert = UIAlertController(title: "認証エラー", message:"もう一度お試し下さい", preferredStyle: UIAlertControllerStyle.alert)
+                
+                errorAlert.addAction(
+                    UIAlertAction(
+                        title: "OK",
+                        style: UIAlertActionStyle.default,
+                        handler: nil
+                    )
+                )
+                self.present(errorAlert, animated: true, completion: nil)
+                return
+            } else if (user != nil){
                 
                 if !self.userData.bool(forKey: "useCount"){
                     NSLog("Twitterで登録成功！");
-                    self.performSegue(withIdentifier: "PushUpdate", sender: nil)
+                    self.performSegue(withIdentifier: "pushUpdate", sender: nil)
                 } else {
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
@@ -40,21 +97,6 @@ class LoginViewController: UIViewController{
         
     }
     
-    
-    @IBAction func facebookLogin(_ sender: UIButton) {
-    
-        NCMBFacebookUtils.logIn(withReadPermission: ["public_profile","email"]){
-            (user, error) -> Void in
-            if (error != nil){
-                print("エラーが発生しました。:\(error)")
-            }else {
-                // 会員登録後の処理
-                NSLog("facebookで認証完了")
-                self.performSegue(withIdentifier: "pushMemos", sender: nil)
-            }
-        }
-        
-    }
     
 /*
     //ログインボタンが押された時の処理。Facebookの認証とその結果を取得する
