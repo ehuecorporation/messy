@@ -65,10 +65,11 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     in
                     
                     if (error == nil) {
+
                         obj.setObject(self.targetTitle, forKey: "title")
                         obj.setObject(self.targetMoney, forKey: "money")
                         obj.setObject(targetFile.name, forKey: "filename")
-                        obj.setObject(self.targetCommnet, forKey: "comment")
+                        obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
                         obj.save(&saveError)
                     } else {
                         print("データ処理時にエラーが発生しました:\(error)")
@@ -308,6 +309,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.displayImage.image = resizedImage
     }
     
+    //ユーザーデータ
+    var userData = UserDefaults.standard
     
     //更新・追加・削除用のメンバ変数
     var targetTitle: String = ""

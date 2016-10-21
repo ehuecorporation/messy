@@ -85,6 +85,9 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
                 return
             } else if (user != nil){
                 
+                if !self.userData.bool(forKey: "userID") {
+                    self.userData.set(user?.objectId, forKey: "userID")
+                }
                 if !self.userData.bool(forKey: "useCount"){
                     NSLog("Twitterで登録成功！");
                     self.performSegue(withIdentifier: "pushUpdate", sender: nil)

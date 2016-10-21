@@ -13,21 +13,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // 一覧表示テーブルビュー
     @IBOutlet weak var memoTableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
     
     //新規追加時
-    
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
         performSegue(withIdentifier: "goAddMemo", sender: nil)
     }
-
+    
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     
     //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
+
     
     //コメント編集フラグ
     var editFlag: Bool = false
@@ -116,6 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("ユーザーIDは\(userData.object(forKey: "userID"))")
         
         //テーブルビューのデリゲート
         self.memoTableView.delegate = self
@@ -193,8 +193,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
-        targetMemo = targetMemoData
-        
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuCost.text = targetMemoData.menuMoney
         cell!.menuName.text = targetMemoData.menuName
@@ -232,11 +230,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //セグエの実行時に値を渡す
-        let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
-        targetNum = (indexPath as NSIndexPath).row
+        let targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        self.targetMemo = targetMemo
+        print("インデックスは\((indexPath as NSIndexPath).row)")
+        print("現時点では\(targetMemo)")
         
         self.editFlag = true
-        performSegue(withIdentifier: "pushDetail", sender: targetMemoData)
+        performSegue(withIdentifier: "pushDetail", sender: targetMemo)
     }
     
     //テーブルのセクションを設定する
@@ -264,6 +264,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let InfoController = segue.destination as! InfoViewController
             InfoController.targetMemo = self.targetMemo
+            print("この値が引き渡されます\(targetMemo)")
             
             
             //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する

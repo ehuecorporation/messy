@@ -86,6 +86,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     let login: LoginViewController = LoginViewController()
                     
                     login.userData.set(true, forKey: "useCount")
+                    login.userData.set(user?.objectId, forKey: "userID")
                     
                     self.present(errorAlert, animated: true, completion: nil)
                     
