@@ -148,6 +148,8 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         print("didUpdateLocations")
         
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.mapView.removeOverlays(self.mapView.overlays)
         
         // 配列から現在座標を取得.
         let myLocations: NSArray = locations as NSArray
