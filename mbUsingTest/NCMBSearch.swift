@@ -94,6 +94,7 @@ public class NCMBSearch {
         
         query.findObjectsInBackground({(objects,  error) in
             
+            
             if error == nil {
                 if let response = objects {
                     if (response.count) > 0 {

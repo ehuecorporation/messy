@@ -53,12 +53,12 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // section数は１つ
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 要素数を入れる、要素以上の数字を入れると表示でエラーとなる
-        return 10;
+        return photos.count;
     }
     
     
