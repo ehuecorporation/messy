@@ -21,10 +21,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     @IBOutlet weak var displayImage: UIImageView!
     
 
-    //前の画面に戻る
-    @IBAction func bacButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-        
+    @IBAction func backButton(_ sender: UIBarButtonItem) {
+                dismiss(animated: true, completion: nil)
     }
 
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
@@ -165,7 +163,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         }
         
     }
-    
+/*
     @IBAction func deleteMemo(_ sender: UIBarButtonItem) {
         
         let obj:NCMBObject = NCMBObject(className: "MemoClass")
@@ -208,7 +206,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         present(errorAlert, animated: true, completion: nil)
 
     }
-
+*/
     @IBAction func displayCamera(_ sender: UIBarButtonItem) {
         
         //UIActionSheetを起動して選択後、カメラ・フォントライブラリを起動
