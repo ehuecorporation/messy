@@ -148,6 +148,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         print("didUpdateLocations")
         
+        
         // 配列から現在座標を取得.
         let myLocations: NSArray = locations as NSArray
         let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
@@ -156,8 +157,8 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         print("現在地は\(myLocation.latitude), \(myLocation.longitude)")
         
         // 縮尺.
-        let myLatDist : CLLocationDistance = 500
-        let myLonDist : CLLocationDistance = 500
+        let myLatDist : CLLocationDistance = 600
+        let myLonDist : CLLocationDistance = 600
         
         let shopLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(targetShopData.shopLat, targetShopData.shopLon) as CLLocationCoordinate2D
         

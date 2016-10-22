@@ -11,29 +11,32 @@ import NCMB
 
 class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var moneyField: UITextField!
-    @IBOutlet weak var commentField: UITextField!
+    @IBAction func hideKeybord(_ sender: UITapGestureRecognizer) {
+            self.view.endEditing(true)
+    }
+    
+    @IBOutlet weak var shopName: UITextField!
+    @IBOutlet weak var menuName: UITextField!
+    @IBOutlet weak var menuPrice: UITextField!
     @IBOutlet weak var displayImage: UIImageView!
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+
     //前の画面に戻る
-    @IBAction func backButton(_ sender: UIBarButtonItem) {
+    @IBAction func bacButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         
     }
-    @IBAction func hidekeyboardAction(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
+
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         
         //バリデーションを通す前の準備
-        self.targetTitle = self.titleField.text!
-        self.targetMoney = self.moneyField.text!
-        self.targetCommnet = self.commentField.text!
+        self.targetShopName = self.shopName.text!
+        self.targetMenuName = self.menuName.text!
+        self.targetMenuPrice = self.menuPrice.text!
         self.targetDisplayImage = self.displayImage.image
         
         //情報が不十分の時エラーアラートを表示
-        if (self.targetTitle.isEmpty || self.targetMoney.isEmpty || self.targetCommnet.isEmpty || self.targetDisplayImage == nil) {
+        if (self.targetShopName.isEmpty || self.targetMenuName.isEmpty || self.targetMenuPrice.isEmpty || self.targetDisplayImage == nil) {
             
             //エラーアラートを表示してOKで戻る
             let errorAlert = UIAlertController(title: "エラー", message:"入力に不備があります", preferredStyle: UIAlertControllerStyle.alert)
@@ -65,9 +68,10 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     in
                     
                     if (error == nil) {
-
-                        obj.setObject(self.targetTitle, forKey: "title")
-                        obj.setObject(self.targetMoney, forKey: "money")
+                        
+                        obj.setObject(self.targetShopName, forKey: "shopName")
+                        obj.setObject(self.targetMenuPrice, forKey: "menuPrice")
+                        obj.setObject(self.targetMenuName, forKey: "menuName")
                         obj.setObject(targetFile.name, forKey: "filename")
                         obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
                         obj.save(&saveError)
@@ -105,10 +109,11 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 //新規データを一件登録する
                 var saveError: NSError? = nil
                 let obj: NCMBObject = NCMBObject(className: "MemoClass")
-                obj.setObject(self.targetTitle, forKey: "title")
-                obj.setObject(self.targetMoney, forKey: "money")
+                obj.setObject(self.targetShopName, forKey: "shopName")
+                obj.setObject(self.targetMenuPrice, forKey: "menuPrice")
+                obj.setObject(self.targetMenuName, forKey: "menuName")
                 obj.setObject(targetFile.name, forKey: "filename")
-                obj.setObject(self.targetCommnet, forKey: "comment")
+                obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
                 obj.save(&saveError)
                 
                 //ファイルをバックグランドで実行
@@ -120,14 +125,14 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     } else {
                         print("アップロード中にエラーが発生しました: \(error)")
                     }
-                }, progressBlock: {
-                    (percentDone: Int32) -> Void
-                    in
-                    
-                    //進捗状況を終わるまで取得
-                    print("進捗状況: \(percentDone)%アップロード済み")
-                
-                
+                    }, progressBlock: {
+                        (percentDone: Int32) -> Void
+                        in
+                        
+                        //進捗状況を終わるまで取得
+                        print("進捗状況: \(percentDone)%アップロード済み")
+                        
+                        
                 })
                 
                 if saveError == nil {
@@ -137,9 +142,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 }
                 
                 //UItextFieldを空にする
-                self.titleField.text = ""
-                self.moneyField.text = ""
-                self.commentField.text = ""
+                self.shopName.text = ""
+                self.menuName.text = ""
                 
                 //登録されたアラートを表示してOKを押すと戻る
                 let errorAlert = UIAlertController(
@@ -184,9 +188,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         })
         
         //UITextFieldをからにする
-        self.titleField.text = ""
-        self.moneyField.text = ""
-        self.commentField.text = ""
+        self.shopName.text = ""
+        self.menuName.text = ""
         self.updateFlag = true
         
         //削除完了を表示
@@ -203,10 +206,10 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             )
         )
         present(errorAlert, animated: true, completion: nil)
+
     }
-    
-    
-    @IBAction func diplayCamera(_ sender: UIBarButtonItem) {
+
+    @IBAction func displayCamera(_ sender: UIBarButtonItem) {
         
         //UIActionSheetを起動して選択後、カメラ・フォントライブラリを起動
         let alertActionSheet = UIAlertController(
@@ -235,7 +238,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             )
             
         }
-
+        
         alertActionSheet.addAction(
             UIAlertAction(
                 title: "キャンセル",
@@ -249,7 +252,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         
         
     }
-    
     
     //登録が完了した際のアクション
     func saveComplete(_ ac: UIAlertAction) -> Void {
@@ -313,9 +315,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     var userData = UserDefaults.standard
     
     //更新・追加・削除用のメンバ変数
-    var targetTitle: String = ""
-    var targetMoney: String = ""
-    var targetCommnet: String = ""
+    var targetShopName: String = ""
+    var targetMenuName: String = ""
+    var targetMenuPrice: String = ""
     var targetDisplayImage: UIImage? = nil
     
     //編集フラグ
@@ -343,17 +345,16 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         super.viewDidLoad()
         
         //UITextFieldのプレースホルダー
-        self.titleField.placeholder = "(例) ラーメン二郎"
-        self.moneyField.placeholder = "(例) 900"
-        self.commentField.placeholder = "(例) 激しく食べ過ぎました...反省"
+        self.shopName.placeholder = "(例) ラーメン二郎"
+        self.menuName.placeholder = "(例) ラーメン小"
+        self.menuPrice.placeholder = "(例) 800"
         
         //金額の部分は数字のキーボードを使用
-        self.moneyField.keyboardType = UIKeyboardType.numberPad
+        self.menuPrice.keyboardType = UIKeyboardType.numberPad
         
         //UITextFieldのデリゲードの設定
-        self.titleField.delegate = self
-        self.moneyField.delegate = self
-        self.commentField.delegate = self
+        self.shopName.delegate = self
+        self.menuName.delegate = self
         
         //追加・編集での入力状態の制御
         if self.editFlag == true {
@@ -361,9 +362,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             //更新対象のobjetIdを入力
             self.targetMemoObjectId = targetData.objectID
             //UITextFieldに値を入れた状態にしておく
-            self.titleField.text = targetData.shopName
-            self.moneyField.text = targetData.menuMoney
-            self.commentField.text = targetData.menuName
+            self.shopName.text = targetData.shopName
+            self.menuName.text = targetData.menuMoney
             //登録されている画像イメージをセットする
             self.displayImage.image = targetData.menuImage
         }

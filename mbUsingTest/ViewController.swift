@@ -11,7 +11,7 @@ import  NCMB
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    // 一覧表示テーブルビュー
+
     @IBOutlet weak var memoTableView: UITableView!
     
     //新規追加時
@@ -232,8 +232,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //セグエの実行時に値を渡す
         let targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
         self.targetMemo = targetMemo
-        print("インデックスは\((indexPath as NSIndexPath).row)")
-        print("現時点では\(targetMemo)")
         
         self.editFlag = true
         performSegue(withIdentifier: "pushDetail", sender: targetMemo)
@@ -264,8 +262,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let InfoController = segue.destination as! InfoViewController
             InfoController.targetMemo = self.targetMemo
-            print("この値が引き渡されます\(targetMemo)")
-            
             
             //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
             

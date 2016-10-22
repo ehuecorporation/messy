@@ -103,9 +103,13 @@ public class NCMBSearch {
                             let targetMemoData: AnyObject = response[i] as AnyObject
                             var tmp : memo = memo()
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+                            // shopNameがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopName") == nil {
+                                continue
+                            }
                             tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
-                            tmp.menuName = (targetMemoData.object(forKey: "title") as? String)!
-                            tmp.menuMoney = (targetMemoData.object(forKey: "money") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             self.memos.append(tmp)
@@ -183,9 +187,13 @@ public class NCMBSearch {
                             let targetMemoData: AnyObject = response[i] as AnyObject
                             var tmp : memo = memo()
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+                            // shopNameがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopName") == nil {
+                                continue
+                            }
                             tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
-                            tmp.menuName = (targetMemoData.object(forKey: "title") as? String)!
-                            tmp.menuMoney = (targetMemoData.object(forKey: "money") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             loadingMemos.append(tmp)
