@@ -49,6 +49,7 @@ public class NCMBSearch {
     
     // 全何件か
     public var total = 0
+    
     //読込開始のNotification
     open let NCMBLoadStartNotification = "NCMBLoadStartNotification"
     //読込完了のNotification
