@@ -8,8 +8,6 @@
 
 import UIKit
 import NCMB
-import FBSDKLoginKit
-import FBSDKCoreKit
 
 class LoginViewController: UIViewController, UINavigationControllerDelegate{
     
