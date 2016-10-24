@@ -21,6 +21,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         performSegue(withIdentifier: "goAddMemo", sender: nil)
     }
     
+    @IBAction func goFavo(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "goFavoList", sender: nil)
+        
+    }
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     

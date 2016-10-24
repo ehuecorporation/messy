@@ -15,6 +15,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     
     @IBOutlet weak var userMail: UITextField!
     @IBOutlet weak var userPass: UITextField!
+    @IBOutlet weak var loginLabel: UIButton!
+    
     
     @IBAction func hideKeybord(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -24,6 +26,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     @IBAction func loginButton(_ sender: UIButton) {
         let targetMail = self.userMail.text!
         let targetPass = self.userPass.text!
+        
+        
         
         if (targetMail.isEmpty || targetPass.isEmpty) {
             
@@ -39,6 +43,33 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
             )
             self.present(errorAlert, animated: true, completion: nil)
             return
+        // 新規会員登録
+        } else if (!userData.bool(forKey: "useCount")) {
+            let newUser = NCMBUser()
+            newUser.userName = targetMail
+            newUser.password = targetPass
+            newUser.signUpInBackground({
+                (error) in
+            
+                if error != nil {
+                    let errorAlert = UIAlertController(title: "登録エラー", message:"\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: nil
+                        )
+                    )
+                    print(error)
+                    self.present(errorAlert, animated: true, completion: nil)
+                    return
+                } else {
+                    print("新規登録成功")
+                    self.performSegue(withIdentifier: "pushUpdate", sender: nil)
+                }
+            })
+
         } else {
             NCMBUser.logInWithMailAddress(inBackground: targetMail, password: targetPass, block: {
                 (user, error) in
@@ -63,6 +94,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         }
         
     }
+    
+    //Twitter認証
     @IBAction func twitterLogin(_ sender: UIButton) {
         NCMBTwitterUtils.logIn({
             (user, error) in
@@ -147,6 +180,18 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         // Do any additional setup after loading the view.
     }
 */
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //初めての利用であればボタンのラベルを変える
+        self.userData.register(defaults: ["useCount" : Bool()])
+        
+        if !userData.bool(forKey: "useCount") {
+            loginLabel.setTitle("会員登録", for: .normal)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
