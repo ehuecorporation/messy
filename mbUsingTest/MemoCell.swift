@@ -10,11 +10,19 @@ import UIKit
 
 class MemoCell: UITableViewCell {
     
+    var favList = UserDefaults.standard
+    var fav : Favorite = Favorite()
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var menuImage: UIImageView!
     @IBOutlet weak var menuName: UILabel!
     @IBOutlet weak var menuCost: UILabel!
+    
+    @IBAction func likeButton(_ sender: UIButton) {
+        Favorite.add(shopName.text!)
+        print("Likeボタンの確認\(Favorite.favorites)")
+    }
     
 
     override func awakeFromNib() {

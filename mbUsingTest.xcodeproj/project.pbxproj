@@ -22,6 +22,7 @@
 		2F3431701D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431711D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431721D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
+		2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5831BB1DBDF43300BAAA15 /* Favorite.swift */; };
 		2F644B631D851A22009CF261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B621D851A22009CF261 /* AppDelegate.swift */; };
 		2F644B651D851A22009CF261 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B641D851A22009CF261 /* ViewController.swift */; };
 		2F644B681D851A22009CF261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F644B661D851A22009CF261 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		2F3431641D9D4425001E6C68 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		2F3431651D9D4425001E6C68 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		2F3431661D9D4425001E6C68 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		2F5831BB1DBDF43300BAAA15 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		2F644B5F1D851A22009CF261 /* mbUsingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mbUsingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F644B621D851A22009CF261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F644B641D851A22009CF261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2F5831BD1DBE35C900BAAA15 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2F5831BB1DBDF43300BAAA15 /* Favorite.swift */,
+				2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		2F644B561D851A22009CF261 = {
 			isa = PBXGroup;
 			children = (
@@ -199,13 +210,13 @@
 				2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */,
 				2F644B641D851A22009CF261 /* ViewController.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
-				2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
 				599344D51DBA37B300D2572C /* MymenuCollectionViewCell.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
 				2F644B691D851A22009CF261 /* Assets.xcassets */,
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
 				2F644B6E1D851A22009CF261 /* Info.plist */,
+				2F5831BD1DBE35C900BAAA15 /* Common */,
 				2FB6DE491D98DEDF004A513F /* Components */,
 			);
 			path = mbUsingTest;
@@ -527,6 +538,7 @@
 				2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */,
 				2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */,
 				2F644B651D851A22009CF261 /* ViewController.swift in Sources */,
+				2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */,
 				2FA17CAF1D9917BD00CF30E1 /* AddController.swift in Sources */,
 				2F644B631D851A22009CF261 /* AppDelegate.swift in Sources */,
 				595A5A971DB2112D007DDBFA /* InfoViewController.swift in Sources */,

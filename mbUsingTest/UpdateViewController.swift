@@ -85,6 +85,8 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     
                     let login: LoginViewController = LoginViewController()
                     
+                    login.userData.register(defaults: ["useCount" : Bool()])
+                    login.userData.register(defaults: ["userID" : String()])
                     login.userData.set(true, forKey: "useCount")
                     login.userData.set(user?.objectId, forKey: "userID")
                     
