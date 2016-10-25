@@ -13,6 +13,7 @@ import  NCMB
 class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate {
     
     var userName : String = ""
+    var loginFlag: Bool = Bool()
     
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
@@ -105,7 +106,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -113,22 +114,5 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-
-    // MARK: - Navigation
-    //segueを呼び出したときに呼ばれるメソッド
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        //コメント表示画面へ行く前に詳細データを渡す
-        if segue.identifier == "PushMemoList" {
-            
-            let ViewController = segue.destination as! ViewController
-            
-            ViewController.userName = self.userName
-            
-        }
-    }
-
 
 }

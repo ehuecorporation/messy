@@ -13,7 +13,10 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     
     let userData = UserDefaults.standard
     
-    @IBOutlet weak var userMail: UITextField!
+    // trueならメアドによる新規登録falseならTwitterによる新規登録
+    var loginFlag = true
+    
+    @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPass: UITextField!
     @IBOutlet weak var loginLabel: UIButton!
     
@@ -24,12 +27,12 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     
     
     @IBAction func loginButton(_ sender: UIButton) {
-        let targetMail = self.userMail.text!
+        let targetName = self.userName.text!
         let targetPass = self.userPass.text!
         
         
         
-        if (targetMail.isEmpty || targetPass.isEmpty) {
+        if (targetName.isEmpty || targetPass.isEmpty) {
             
             //エラーアラートを表示してOKで戻る
             let errorAlert = UIAlertController(title: "エラー", message:"入力に不備があります", preferredStyle: UIAlertControllerStyle.alert)
@@ -46,7 +49,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         // 新規会員登録
         } else if (!userData.bool(forKey: "useCount")) {
             let newUser = NCMBUser()
-            newUser.userName = targetMail
+            newUser.userName = targetName
             newUser.password = targetPass
             newUser.signUpInBackground({
                 (error) in
@@ -66,17 +69,22 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
                     return
                 } else {
                     print("新規登録成功")
+                    self.userData.register(defaults: [ "userName": String()])
+                    self.userData.set(targetName, forKey: "userName")
+                    self.userData.register(defaults: ["userPass": String()])
+                    self.userData.set(targetPass, forKey: "userPass")
+                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))")
                     self.performSegue(withIdentifier: "pushUpdate", sender: nil)
                 }
             })
 
         } else {
-            NCMBUser.logInWithMailAddress(inBackground: targetMail, password: targetPass, block: {
+            NCMBUser.logInWithUsername(inBackground: targetName, password: targetPass, block: {
                 (user, error) in
                 
                 if error != nil {
                     //エラーアラートを表示してOKで戻る
-                    let errorAlert = UIAlertController(title: "認証エラー", message:"入力内容を確認の上、もう一度お試しください", preferredStyle: UIAlertControllerStyle.alert)
+                    let errorAlert = UIAlertController(title: "認証エラー", message:"\(error)", preferredStyle: UIAlertControllerStyle.alert)
                     
                     errorAlert.addAction(
                         UIAlertAction(
@@ -88,6 +96,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
                     self.present(errorAlert, animated: true, completion: nil)
                     return
                 } else if (user != nil){
+                    self.userData.set(targetName, forKey: "userName")
+                    self.userData.set(targetPass, forKey: "userPass")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
             })
@@ -195,6 +205,12 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+
+        
     }
     
     /*

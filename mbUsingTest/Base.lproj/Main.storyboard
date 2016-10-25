@@ -176,7 +176,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjY-W6-lmE">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mail：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-mj-2wQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-mj-2wQ">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="68G-gk-UZY"/>
                                             <constraint firstAttribute="width" constant="60" id="QCg-CG-RUT"/>
@@ -287,7 +287,7 @@
                     <navigationItem key="navigationItem" title="Login" id="Qwv-hD-KmJ"/>
                     <connections>
                         <outlet property="loginLabel" destination="DqM-oI-v4Y" id="Kls-4t-7f6"/>
-                        <outlet property="userMail" destination="ePt-xu-kuW" id="uSs-5E-Xpe"/>
+                        <outlet property="userName" destination="ePt-xu-kuW" id="9Fo-gu-7jE"/>
                         <outlet property="userPass" destination="GJE-A0-RBm" id="8No-Uh-LtT"/>
                         <segue destination="fR1-1F-DGY" kind="show" identifier="pushUpdate" id="yQj-jv-L7K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="pushMemos" id="tKT-Yl-Pmx"/>
@@ -589,7 +589,7 @@
             </objects>
             <point key="canvasLocation" x="-844" y="1039"/>
         </scene>
-        <!--Mymenu Collection View Cell-->
+        <!--Your Menu-->
         <scene sceneID="i02-Fs-46a">
             <objects>
                 <viewController id="nGz-R4-l77" customClass="MymenuCollectionViewCell" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -643,6 +643,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Your Menu" id="W3m-Vc-VpN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnJ-Qf-wyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -112,6 +112,10 @@ public class NCMBSearch {
                             tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
                             tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            // shopNumberがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopNumber") == nil {
+                                continue
+                            }
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             self.memos.append(tmp)
                         }
@@ -196,6 +200,10 @@ public class NCMBSearch {
                             tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
                             tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            // shopNumberがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopNumber") == nil {
+                                continue
+                            }
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             loadingMemos.append(tmp)
                         }
