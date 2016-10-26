@@ -15,6 +15,34 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             self.view.endEditing(true)
     }
     
+    
+    //ユーザーデータ
+    var userData = UserDefaults.standard
+    
+    //更新・追加・削除用のメンバ変数
+    var targetShopName: String = ""
+    var targetMenuName: String = ""
+    var targetMenuPrice: String = ""
+    var targetDisplayImage: UIImage? = nil
+    
+    //編集フラグ
+    var editFlag: Bool = false
+    
+    //更新フラグ
+    var updateFlag: Bool = false
+    
+    //編集対象メモのobjectId
+    var targetMemoObjectId: String = ""
+    
+    //メモリスト
+    var mbs: NCMBSearch = NCMBSearch()
+    
+    //編集対象メモのfilename
+    var targetFileName: String = ""
+    
+    //ViewController.swiftから渡されたデータ
+    var targetData: memo = memo()
+    
     @IBOutlet weak var shopName: UITextField!
     @IBOutlet weak var menuName: UITextField!
     @IBOutlet weak var menuPrice: UITextField!
@@ -36,17 +64,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         //情報が不十分の時エラーアラートを表示
         if (self.targetShopName.isEmpty || self.targetMenuName.isEmpty || self.targetMenuPrice.isEmpty || self.targetDisplayImage == nil) {
             
-            //エラーアラートを表示してOKで戻る
-            let errorAlert = UIAlertController(title: "エラー", message:"入力に不備があります", preferredStyle: UIAlertControllerStyle.alert)
-            
-            errorAlert.addAction(
-                UIAlertAction(
-                    title: "OK",
-                    style: UIAlertActionStyle.default,
-                    handler: nil
-                )
-            )
-            present(errorAlert, animated: true, completion: nil)
+            presentError("エラー", "入力内容にエラーがあります")
             
         } else {
             
@@ -74,7 +92,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                         obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
                         obj.save(&saveError)
                     } else {
-                        print("データ処理時にエラーが発生しました:\(error)")
+                        presentError("登録エラー", "\(error!.localizedDescription)")
                     }
                     
                     if targetFile.name != self.targetFileName {
@@ -85,7 +103,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                             if error == nil {
                                 print("画像データ保存完了: \(targetFile.name)")
                             } else {
-                                print("アップロード中にエラーが発生しました: \(error)")
+                                presentError("画像アップロードエラー", "\(error!.localizedDescription)")
                             }
                             
                             }, progressBlock: { (percentDone: Int32) -> Void in
@@ -121,16 +139,13 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     if error == nil {
                         print("画像データ保存完了: \(targetFile.name)")
                     } else {
-                        print("アップロード中にエラーが発生しました: \(error)")
+                        presentError("登録エラー", "\(error!.localizedDescription)")
                     }
                     }, progressBlock: {
                         (percentDone: Int32) -> Void
                         in
-                        
                         //進捗状況を終わるまで取得
                         print("進捗状況: \(percentDone)%アップロード済み")
-                        
-                        
                 })
                 
                 if saveError == nil {
@@ -142,71 +157,17 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 //UItextFieldを空にする
                 self.shopName.text = ""
                 self.menuName.text = ""
+                self.menuPrice.text = ""
+                self.displayImage.image = nil
                 
-                //登録されたアラートを表示してOKを押すと戻る
-                let errorAlert = UIAlertController(
-                    title: "完了",
-                    message: "入力データが登録されました。",
-                    preferredStyle: UIAlertControllerStyle.alert
-                )
-                errorAlert.addAction(
-                    UIAlertAction(
-                        title: "OK",
-                        style: UIAlertActionStyle.default,
-                        handler: saveComplete
-                    )
-                )
-                present(errorAlert, animated: true, completion: nil)
+                presentError("完了", "入力データが登録されました")
                 
             }
             
         }
         
     }
-/*
-    @IBAction func deleteMemo(_ sender: UIBarButtonItem) {
-        
-        let obj:NCMBObject = NCMBObject(className: "MemoClass")
-        obj.objectId = self.targetMemoObjectId
-        obj.deleteInBackground({
-            (error) in
-            
-            if(error == nil){
-                //削除成功時に画像も一緒に削除
-                let fileData = NCMBFile.file(withName: self.targetFileName, data: nil) as! NCMBFile
-                fileData.deleteInBackground({
-                    (error) in
-                    print("画像データ削除完了:\(self.targetFileName)")
-                })
-                
-                
-            } else {
-                print("データ処理時にエラーが発生しました:\(error)")
-            }
-        })
-        
-        //UITextFieldをからにする
-        self.shopName.text = ""
-        self.menuName.text = ""
-        self.updateFlag = true
-        
-        //削除完了を表示
-        let errorAlert = UIAlertController(
-            title: "完了",
-            message: "このデータは削除されました。",
-            preferredStyle: UIAlertControllerStyle.alert
-        )
-        errorAlert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: UIAlertActionStyle.default,
-                handler: saveComplete
-            )
-        )
-        present(errorAlert, animated: true, completion: nil)
 
-    }
-*/
     @IBAction func displayCamera(_ sender: UIBarButtonItem) {
         
         //UIActionSheetを起動して選択後、カメラ・フォントライブラリを起動
@@ -234,7 +195,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     handler: handlerActionSheet
                 )
             )
-            
         }
         
         alertActionSheet.addAction(
@@ -247,7 +207,89 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         
         present(alertActionSheet, animated: true, completion: nil)
         
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        //UITextFieldのプレースホルダー
+        self.shopName.placeholder = "(例) ラーメン二郎"
+        self.menuName.placeholder = "(例) ラーメン小"
+        self.menuPrice.placeholder = "(例) 800"
+        
+        //金額の部分は数字のキーボードを使用
+        self.menuPrice.keyboardType = UIKeyboardType.numbersAndPunctuation
+        
+        //UITextFieldのデリゲードの設定
+        self.shopName.delegate = self
+        self.menuName.delegate = self
+        self.menuPrice.delegate = self
+        
+        //追加・編集での入力状態の制御
+        if self.editFlag == true {
+            
+            //更新対象のobjetIdを入力
+            self.targetMemoObjectId = targetData.objectID
+            //UITextFieldに値を入れた状態にしておく
+            self.shopName.text = targetData.shopName
+            self.menuName.text = targetData.menuMoney
+            //登録されている画像イメージをセットする
+            self.displayImage.image = targetData.menuImage
+        }
+        
+    } // View Did Load end
+    
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        if (textField == shopName) {
+            // メニュー名欄へフォーカスする
+            menuName.becomeFirstResponder()
+        } else if (textField == menuName){
+            // 金額欄へフォーカス
+            menuPrice.becomeFirstResponder()
+        } else {
+            // キーボードを閉じる
+            textField.resignFirstResponder()
+            
+            //画像選択へ
+            displayCamera(UIBarButtonItem.init())
+        }
+        return true
+    }
+    
+    // 画像サイズの変更
+    func resizeImage(image: UIImage, width: Int, height: Int) -> UIImage {
+        
+        let size: CGSize = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContext(size)
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizeImage!
+    }
+    
+    // エラーメッセージを出す関数を定義
+    func presentError (_ title: String, _ message: String) {
+        let errorAlert = UIAlertController(
+            title: "\(title)",
+            message: "\(message)",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        self.present(errorAlert, animated: true, completion: nil)
         
     }
     
@@ -305,87 +347,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         let width = 360
         let height = 360
         let resizedImage =  resizeImage(image: image, width: width, height: height)
-
+        
         self.displayImage.image = resizedImage
     }
-    
-    //ユーザーデータ
-    var userData = UserDefaults.standard
-    
-    //更新・追加・削除用のメンバ変数
-    var targetShopName: String = ""
-    var targetMenuName: String = ""
-    var targetMenuPrice: String = ""
-    var targetDisplayImage: UIImage? = nil
-    
-    //編集フラグ
-    var editFlag: Bool = false
-    
-    //更新フラグ
-    var updateFlag: Bool = false
-    
-    //編集対象メモのobjectId
-    var targetMemoObjectId: String = ""
-    
-    //メモリスト
-    var mbs: NCMBSearch = NCMBSearch()
-    
-    //編集対象メモのfilename
-    var targetFileName: String = ""
-    
-    //ViewController.swiftから渡されたデータ
-    var targetData: memo = memo()
-    //参照している配列の場所
-    var targetNum: Int = Int()
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //UITextFieldのプレースホルダー
-        self.shopName.placeholder = "(例) ラーメン二郎"
-        self.menuName.placeholder = "(例) ラーメン小"
-        self.menuPrice.placeholder = "(例) 800"
-        
-        //金額の部分は数字のキーボードを使用
-        self.menuPrice.keyboardType = UIKeyboardType.numberPad
-        
-        //UITextFieldのデリゲードの設定
-        self.shopName.delegate = self
-        self.menuName.delegate = self
-        
-        //追加・編集での入力状態の制御
-        if self.editFlag == true {
-            
-            //更新対象のobjetIdを入力
-            self.targetMemoObjectId = targetData.objectID
-            //UITextFieldに値を入れた状態にしておく
-            self.shopName.text = targetData.shopName
-            self.menuName.text = targetData.menuMoney
-            //登録されている画像イメージをセットする
-            self.displayImage.image = targetData.menuImage
-        }
-        
-    } // View Did Load end
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    func resizeImage(image: UIImage, width: Int, height: Int) -> UIImage {
-        
-        let size: CGSize = CGSize(width: width, height: height)
-        UIGraphicsBeginImageContext(size)
-        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        
-        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return resizeImage!
-    }
-    
-    
     
     
     // MARK: - Navigation
@@ -398,5 +362,50 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         
 
     }
+    
+    /*
+     @IBAction func deleteMemo(_ sender: UIBarButtonItem) {
+     
+     let obj:NCMBObject = NCMBObject(className: "MemoClass")
+     obj.objectId = self.targetMemoObjectId
+     obj.deleteInBackground({
+     (error) in
+     
+     if(error == nil){
+     //削除成功時に画像も一緒に削除
+     let fileData = NCMBFile.file(withName: self.targetFileName, data: nil) as! NCMBFile
+     fileData.deleteInBackground({
+     (error) in
+     print("画像データ削除完了:\(self.targetFileName)")
+     })
+     
+     
+     } else {
+     print("データ処理時にエラーが発生しました:\(error)")
+     }
+     })
+     
+     //UITextFieldをからにする
+     self.shopName.text = ""
+     self.menuName.text = ""
+     self.updateFlag = true
+     
+     //削除完了を表示
+     let errorAlert = UIAlertController(
+     title: "完了",
+     message: "このデータは削除されました。",
+     preferredStyle: UIAlertControllerStyle.alert
+     )
+     errorAlert.addAction(
+     UIAlertAction(
+     title: "OK",
+     style: UIAlertActionStyle.default,
+     handler: saveComplete
+     )
+     )
+     present(errorAlert, animated: true, completion: nil)
+     
+     }
+     */
     
 }
