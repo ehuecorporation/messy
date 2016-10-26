@@ -35,17 +35,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         if (targetName.isEmpty || targetPass.isEmpty) {
             
             //エラーアラートを表示してOKで戻る
-            let errorAlert = UIAlertController(title: "エラー", message:"入力に不備があります", preferredStyle: UIAlertControllerStyle.alert)
-            
-            errorAlert.addAction(
-                UIAlertAction(
-                    title: "OK",
-                    style: UIAlertActionStyle.default,
-                    handler: nil
-                )
-            )
-            self.present(errorAlert, animated: true, completion: nil)
-            return
+            presentError("エラー", "入力に不備があります")
         // 新規会員登録
         } else if (!userData.bool(forKey: "useCount")) {
             let newUser = NCMBUser()
@@ -55,20 +45,11 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 (error) in
             
                 if error != nil {
-                    let errorAlert = UIAlertController(title: "登録エラー", message:"\(error)", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    errorAlert.addAction(
-                        UIAlertAction(
-                            title: "OK",
-                            style: UIAlertActionStyle.default,
-                            handler: nil
-                        )
-                    )
-                    print(error)
-                    self.present(errorAlert, animated: true, completion: nil)
-                    return
+                    self.presentError("登録エラー", "\(error!.localizedDescription)")
                 } else {
                     print("新規登録成功")
+                    
+                    // ユーザー情報を端末へ保存
                     self.userData.register(defaults: [ "userName": String()])
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.register(defaults: ["userPass": String()])
@@ -83,19 +64,10 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 (user, error) in
                 
                 if error != nil {
-                    //エラーアラートを表示してOKで戻る
-                    let errorAlert = UIAlertController(title: "認証エラー", message:"\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    self.presentError("認証エラー", "\(error!.localizedDescription)")
                     
-                    errorAlert.addAction(
-                        UIAlertAction(
-                            title: "OK",
-                            style: UIAlertActionStyle.default,
-                            handler: nil
-                        )
-                    )
-                    self.present(errorAlert, animated: true, completion: nil)
-                    return
                 } else if (user != nil){
+                    //端末情報への保存
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
                     print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
@@ -114,17 +86,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
             if(error != nil){
                 NSLog("Twitterでログインがキャンセルされました。:\(error)")
                 //エラーアラートを表示してOKで戻る
-                let errorAlert = UIAlertController(title: "認証エラー", message:"もう一度お試し下さい", preferredStyle: UIAlertControllerStyle.alert)
-                
-                errorAlert.addAction(
-                    UIAlertAction(
-                        title: "OK",
-                        style: UIAlertActionStyle.default,
-                        handler: nil
-                    )
-                )
-                self.present(errorAlert, animated: true, completion: nil)
-                return
+                self.presentError("認証エラー", "\(error!.localizedDescription)")
             } else if (user != nil){
                 
                 if !self.userData.bool(forKey: "userID") {
@@ -134,10 +96,12 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 
                 self.userData.register(defaults: ["useCount" : Bool()])
                 
+                // 初めての使用なら更新画面へ
                 if !self.userData.bool(forKey: "useCount"){
                     NSLog("Twitterで登録成功！");
                     self.performSegue(withIdentifier: "pushUpdate", sender: nil)
                 } else {
+                    // そうでないなら一覧画面へ
                     self.userData.set(true, forKey: "useCount")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
@@ -146,51 +110,6 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         })
         
     }
-    
-    
-/*
-    //ログインボタンが押された時の処理。Facebookの認証とその結果を取得する
-    func loginButton(_ loginButton: FBSDKLoginButton!,didCompleteWith
-        result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("User Logged In")
-        
-        if ((error) != nil)
-        {
-            //エラー処理
-        } else if result.isCancelled {
-            //キャンセルされた時
-            print("キャンセルされました")
-        } else {
-            //必要な情報が取れていることを確認(今回はemail必須)
-            if result.grantedPermissions.contains("email")
-            {
-                performSegue(withIdentifier: "PushMemos", sender: nil)
-            }
-        }
-    }
-    
-    //ログアウトボタンが押された時の処理
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if (FBSDKAccessToken.current() != nil) {
-            print("User Already Logged In")
-            //後で既にログインしていた場合の処理（メイン画面へ遷移）を書く
-        } else {
-            print("User not Logged In")
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-        }
-        // Do any additional setup after loading the view.
-    }
-*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,17 +127,19 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
             loginLabel.setTitle("会員登録", for: .normal)
         }
         
+        // 値をプリセット
         if let name = userData.object(forKey: "userName") {
-            userName.text = name as! String
+            userName.text = name as? String
         }
         if let pass = userData.object(forKey: "userPass") {
-            userPass.text = pass as! String
+            userPass.text = pass as? String
         }
     }
     
-    // キーボードの遷移処理
+    // キーボードの確定を押した後の処理
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         if (textField == userName) {
+            // password欄へフォーカスする
             userPass.becomeFirstResponder()
         } else {
             // キーボードを閉じる
@@ -227,26 +148,26 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
             // ログイン処理
             let targetName = self.userName.text!
             let targetPass = self.userPass.text!
+            
+            if (targetName.isEmpty || targetPass.isEmpty) {
+                
+                presentError("エラー", "入力内容に不備があります")
+                
+                // 新規会員登録
+            }
+            
             NCMBUser.logInWithUsername(inBackground: targetName, password: targetPass, block: {
                 (user, error) in
                 
                 if error != nil {
-                    //エラーアラートを表示してOKで戻る
-                    let errorAlert = UIAlertController(title: "認証エラー", message:"\(error)", preferredStyle: UIAlertControllerStyle.alert)
                     
-                    errorAlert.addAction(
-                        UIAlertAction(
-                            title: "OK",
-                            style: UIAlertActionStyle.default,
-                            handler: nil
-                        )
-                    )
-                    self.present(errorAlert, animated: true, completion: nil)
-                    return
+                    self.presentError("認証エラー", "\(error!.localizedDescription)")
+                    
                 } else if (user != nil){
+                    
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
-                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
+//                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
             })
@@ -255,15 +176,27 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         return true
     }
     
+    // エラーメッセージを出す関数を定義
+    func presentError (_ title: String, _ message: String) {
+        let errorAlert = UIAlertController(
+            title: "\(title)",
+            message: "\(message)",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        self.present(errorAlert, animated: true, completion: nil)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-
-        
     }
     
     /*
@@ -275,5 +208,49 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         // Pass the selected object to the new view controller.
     }
     */
+    
+    /*
+     //ログインボタンが押された時の処理。Facebookの認証とその結果を取得する
+     func loginButton(_ loginButton: FBSDKLoginButton!,didCompleteWith
+     result: FBSDKLoginManagerLoginResult!, error: Error!) {
+     print("User Logged In")
+     
+     if ((error) != nil)
+     {
+     //エラー処理
+     } else if result.isCancelled {
+     //キャンセルされた時
+     print("キャンセルされました")
+     } else {
+     //必要な情報が取れていることを確認(今回はemail必須)
+     if result.grantedPermissions.contains("email")
+     {
+     performSegue(withIdentifier: "PushMemos", sender: nil)
+     }
+     }
+     }
+     
+     //ログアウトボタンが押された時の処理
+     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+     print("User Logged Out")
+     }
+     
+     
+     override func viewDidLoad() {
+     super.viewDidLoad()
+     if (FBSDKAccessToken.current() != nil) {
+     print("User Already Logged In")
+     //後で既にログインしていた場合の処理（メイン画面へ遷移）を書く
+     } else {
+     print("User not Logged In")
+     let loginView : FBSDKLoginButton = FBSDKLoginButton()
+     self.view.addSubview(loginView)
+     loginView.center = self.view.center
+     loginView.readPermissions = ["public_profile", "email", "user_friends"]
+     loginView.delegate = self
+     }
+     // Do any additional setup after loading the view.
+     }
+     */
 
 }
