@@ -14,6 +14,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     
     var userName : String = ""
     var loginFlag: Bool = Bool()
+    var userData = UserDefaults.standard
     
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
@@ -106,6 +107,10 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let name = userData.object(forKey: "userName") {
+            userNewName.text = name as! String
+        }
         
         // Do any additional setup after loading the view.
     }

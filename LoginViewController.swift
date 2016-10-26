@@ -9,7 +9,7 @@
 import UIKit
 import NCMB
 
-class LoginViewController: UIViewController, UINavigationControllerDelegate{
+class LoginViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate{
     
     let userData = UserDefaults.standard
     
@@ -98,6 +98,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
                 } else if (user != nil){
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
+                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
             })
@@ -194,12 +195,64 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
+        
+        // デリゲートを通しておく
+        userName.delegate = self
+        userPass.delegate = self
+        
         //初めての利用であればボタンのラベルを変える
         self.userData.register(defaults: ["useCount" : Bool()])
         
         if !userData.bool(forKey: "useCount") {
             loginLabel.setTitle("会員登録", for: .normal)
         }
+        
+        if let name = userData.object(forKey: "userName") {
+            userName.text = name as! String
+        }
+        if let pass = userData.object(forKey: "userPass") {
+            userPass.text = pass as! String
+        }
+    }
+    
+    // キーボードの遷移処理
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        if (textField == userName) {
+            userPass.becomeFirstResponder()
+        } else {
+            // キーボードを閉じる
+            textField.resignFirstResponder()
+            
+            // ログイン処理
+            let targetName = self.userName.text!
+            let targetPass = self.userPass.text!
+            NCMBUser.logInWithUsername(inBackground: targetName, password: targetPass, block: {
+                (user, error) in
+                
+                if error != nil {
+                    //エラーアラートを表示してOKで戻る
+                    let errorAlert = UIAlertController(title: "認証エラー", message:"\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: nil
+                        )
+                    )
+                    self.present(errorAlert, animated: true, completion: nil)
+                    return
+                } else if (user != nil){
+                    self.userData.set(targetName, forKey: "userName")
+                    self.userData.set(targetPass, forKey: "userPass")
+                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
+                    self.performSegue(withIdentifier: "pushMemos", sender: nil)
+                }
+            })
+            
+        }
+        return true
     }
     
     override func didReceiveMemoryWarning() {
