@@ -10,7 +10,7 @@ import UIKit
 
 class MemoCell: UITableViewCell {
     
-    var favList = UserDefaults.standard
+    var userData = UserDefaults.standard
     var fav : Favorite = Favorite()
     
     @IBOutlet weak var userImage: UIImageView!
@@ -20,8 +20,11 @@ class MemoCell: UITableViewCell {
     @IBOutlet weak var menuCost: UILabel!
     
     @IBAction func likeButton(_ sender: UIButton) {
-        Favorite.add(shopName.text!)
-        print("Likeボタンの確認\(Favorite.favorites)")
+
+            Favorite.load()
+            Favorite.add("\(shopName.text!)")
+            
+            print("端末データの確認\((userData.object(forKey: "favorites") as? [String])!)")
     }
     
 

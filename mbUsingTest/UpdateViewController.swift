@@ -55,6 +55,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.set(true, forKey: "useCount")
                     self.userData.set(self.user?.objectId, forKey: "userID")
                     self.userData.set(self.user?.mailAddress, forKey: "userMail")
+                    self.userData.synchronize()
                     
                     self.presentError("完了", "会員情報を登録しました")
                     
@@ -99,8 +100,9 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.set(true, forKey: "useCount")
                     self.userData.set(self.user?.objectId, forKey: "userID")
                     self.userData.set(self.user?.mailAddress, forKey: "userMail")
+                    self.userData.synchronize()
                     
-                    self.self.presentError("完了", "会員情報を登録しました")
+                    self.presentError("完了", "会員情報を登録しました")
                     
                     
                 }

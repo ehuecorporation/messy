@@ -92,7 +92,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                         obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
                         obj.save(&saveError)
                     } else {
-                        presentError("登録エラー", "\(error!.localizedDescription)")
+                        self.presentError("登録エラー", "\(error!.localizedDescription)")
                     }
                     
                     if targetFile.name != self.targetFileName {
@@ -103,7 +103,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                             if error == nil {
                                 print("画像データ保存完了: \(targetFile.name)")
                             } else {
-                                presentError("画像アップロードエラー", "\(error!.localizedDescription)")
+                                self.self.presentError("画像アップロードエラー", "\(error!.localizedDescription)")
                             }
                             
                             }, progressBlock: { (percentDone: Int32) -> Void in
@@ -139,7 +139,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     if error == nil {
                         print("画像データ保存完了: \(targetFile.name)")
                     } else {
-                        presentError("登録エラー", "\(error!.localizedDescription)")
+                        self.presentError("登録エラー", "\(error!.localizedDescription)")
                     }
                     }, progressBlock: {
                         (percentDone: Int32) -> Void

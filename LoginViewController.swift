@@ -54,6 +54,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.register(defaults: ["userPass": String()])
                     self.userData.set(targetPass, forKey: "userPass")
+                    self.userData.synchronize()
                     print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))")
                     self.performSegue(withIdentifier: "pushUpdate", sender: nil)
                 }
@@ -70,6 +71,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     //端末情報への保存
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
+                    self.userData.synchronize()
                     print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
@@ -92,6 +94,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 if !self.userData.bool(forKey: "userID") {
                     self.userData.register(defaults: ["userID" : String()])
                     self.userData.set(user?.objectId, forKey: "userID")
+                                        self.userData.synchronize()
                 }
                 
                 self.userData.register(defaults: ["useCount" : Bool()])
@@ -103,6 +106,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 } else {
                     // そうでないなら一覧画面へ
                     self.userData.set(true, forKey: "useCount")
+                    self.userData.synchronize()
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
 
@@ -113,8 +117,6 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
         
         // デリゲートを通しておく
         userName.delegate = self
@@ -167,6 +169,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
+                    self.userData.synchronize()
 //                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                 }
