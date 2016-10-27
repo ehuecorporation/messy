@@ -14,6 +14,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     var userData = UserDefaults.standard
     
     
+    
      // サムネイル画像のタイトル
     let photos = ["menuSample1", "menuSample2","menuSample3","menuSample4"]
     

@@ -161,6 +161,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 self.displayImage.image = nil
                 
                 presentError("完了", "入力データが登録されました")
+                dismiss(animated: true, completion: nil)
                 
             }
             
