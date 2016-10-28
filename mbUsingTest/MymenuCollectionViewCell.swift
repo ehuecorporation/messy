@@ -12,7 +12,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     
     var userData = UserDefaults.standard
-    
+    var targetNum = 0
     
     
      // サムネイル画像のタイトル
@@ -21,6 +21,9 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.minimumInteritemSpacing = 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -31,14 +34,15 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // Tag番号を使ってImageViewのインスタンス生成
         let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
         // 画像配列の番号で指定された要素の名前の画像をUIImageとする
-        let cellImage = UIImage(named: photos[(indexPath as NSIndexPath).row])
+        let cellImage = UIImage(named: photos[targetNum])
         // UIImageをUIImageViewのimageとして設定
         imageView.image = cellImage
         
         
         // Tag番号を使ってLabelのインスタンス生成
         let label = testCell.contentView.viewWithTag(2) as! UILabel
-        label.text = photos[(indexPath as NSIndexPath).row]
+        label.text = photos[targetNum]
+        targetNum += 1
         
         
         return testCell
@@ -48,7 +52,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     // Screenサイズに応じたセルサイズを返す
     // UICollectionViewDelegateFlowLayoutの設定が必要
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize:CGFloat = self.view.frame.size.width/2-2
+        let cellSize:CGFloat = self.view.frame.size.width/2 - 2.5
         // 正方形で返すためにwidth,heightを同じにする
         return CGSize(width: cellSize, height: cellSize)
         
@@ -58,7 +62,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // section数は１つ
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

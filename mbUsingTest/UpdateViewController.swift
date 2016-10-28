@@ -103,6 +103,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.synchronize()
                     
                     self.presentError("完了", "会員情報を登録しました")
+                    self.performSegue(withIdentifier: "pushMemos", sender: nil)
                     
                     
                 }

@@ -133,6 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //自動計算の場合は必要
         
         self.memoTableView.estimatedRowHeight = 450.0
+    
         self.memoTableView.rowHeight = UITableViewAutomaticDimension
         
 //        titleLabel.text = "\(userInfo.userName!)さんのページです"
@@ -198,9 +199,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
+        
         cell!.shopName.text = targetMemoData.shopName
-        cell!.menuCost.text = targetMemoData.menuMoney
         cell!.menuName.text = targetMemoData.menuName
+        cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
         

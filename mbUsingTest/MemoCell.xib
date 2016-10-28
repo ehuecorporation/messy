@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="s1g-JC-pyc" customClass="MemoCell" customModule="mbUsingTest" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="448" id="s1g-JC-pyc" customClass="MemoCell" customModule="mbUsingTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1g-JC-pyc" id="dAk-g4-jQR">
-                <frame key="frameInset" width="320" height="449"/>
+                <frame key="frameInset" width="320" height="469.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rvi-48-9ED">
@@ -49,54 +49,33 @@
                             <mask key="constraints">
                                 <exclude reference="HYz-ud-BBq"/>
                                 <exclude reference="SHC-IB-dCT"/>
+                                <exclude reference="jPh-9P-Btj"/>
                             </mask>
                         </variation>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-T2-4Bj">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-T2-4Bj">
+                        <frame key="frameInset" minX="8" minY="397" width="45" height="66"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="8dW-9O-cNK"/>
                             <constraint firstAttribute="height" constant="45" id="GaC-UL-X1j"/>
+                            <constraint firstAttribute="height" constant="50" id="vFB-gk-hL8"/>
+                            <constraint firstAttribute="height" constant="40" id="z51-hl-DJM"/>
                         </constraints>
                         <state key="normal" title="❤️"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="GaC-UL-X1j"/>
+                                <exclude reference="vFB-gk-hL8"/>
+                                <exclude reference="z51-hl-DJM"/>
                             </mask>
                         </variation>
                         <connections>
                             <action selector="likeButton:" destination="s1g-JC-pyc" eventType="touchUpInside" id="VUt-3G-ybZ"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRz-ao-wJO">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="45" id="8g0-cf-cy4"/>
-                            <constraint firstAttribute="width" constant="45" id="zbg-7e-cgw"/>
-                        </constraints>
-                        <state key="normal" title="info"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="8g0-cf-cy4"/>
-                            </mask>
-                        </variation>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理の金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u56-fE-K8K">
-                        <constraints>
-                            <constraint firstAttribute="width" constant="198" id="k3s-ON-KMh"/>
-                            <constraint firstAttribute="height" constant="21" id="kGQ-Fs-NyC"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="k3s-ON-KMh"/>
-                                <exclude reference="kGQ-Fs-NyC"/>
-                            </mask>
-                        </variation>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M9-Qs-lHM">
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="KP9-7R-FGN"/>
+                            <constraint firstAttribute="height" constant="25" id="KP9-7R-FGN"/>
                             <constraint firstAttribute="width" constant="198" id="guQ-Yv-vDM"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -108,31 +87,53 @@
                             </mask>
                         </variation>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理の金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u56-fE-K8K">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="GHz-n1-fnM"/>
+                            <constraint firstAttribute="width" constant="198" id="k3s-ON-KMh"/>
+                            <constraint firstAttribute="height" constant="21" id="kGQ-Fs-NyC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GHz-n1-fnM"/>
+                                <exclude reference="k3s-ON-KMh"/>
+                                <exclude reference="kGQ-Fs-NyC"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="TkO-ty-u1M" firstAttribute="leading" secondItem="Rvi-48-9ED" secondAttribute="trailing" constant="8" id="Dra-Kh-pbu"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vRz-ao-wJO" secondAttribute="bottom" constant="8" id="ElJ-g0-xpo"/>
                     <constraint firstAttribute="trailingMargin" secondItem="TkO-ty-u1M" secondAttribute="trailing" id="FSa-Eb-AbY"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Juy-G2-t6G" secondAttribute="trailing" id="Hgu-st-3oT"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Juy-G2-t6G" secondAttribute="trailing" constant="-16" id="Hgu-st-3oT"/>
                     <constraint firstAttribute="topMargin" secondItem="TkO-ty-u1M" secondAttribute="top" id="IKk-yf-G3G"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4M9-Qs-lHM" secondAttribute="trailing" constant="8" id="JIJ-42-Nw8"/>
-                    <constraint firstItem="4M9-Qs-lHM" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="19" id="Kzk-Be-dTT"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="sC9-T2-4Bj" secondAttribute="bottom" constant="8" id="LH4-Gx-YUt"/>
-                    <constraint firstItem="u56-fE-K8K" firstAttribute="leading" secondItem="vRz-ao-wJO" secondAttribute="trailing" constant="8" id="QJI-zU-zur"/>
-                    <constraint firstItem="vRz-ao-wJO" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="33" id="U5T-K7-ssP"/>
+                    <constraint firstItem="4M9-Qs-lHM" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" id="Kzk-Be-dTT"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sC9-T2-4Bj" secondAttribute="bottom" id="LH4-Gx-YUt"/>
                     <constraint firstAttribute="topMargin" secondItem="Rvi-48-9ED" secondAttribute="top" id="VuN-u1-Jn5"/>
-                    <constraint firstItem="vRz-ao-wJO" firstAttribute="leading" secondItem="sC9-T2-4Bj" secondAttribute="trailing" constant="8" id="Yda-Pg-s75"/>
                     <constraint firstAttribute="trailingMargin" secondItem="u56-fE-K8K" secondAttribute="trailing" constant="8" id="Z10-FM-Goy"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="Juy-G2-t6G" secondAttribute="leading" id="byw-VD-6Hf"/>
-                    <constraint firstItem="u56-fE-K8K" firstAttribute="top" secondItem="4M9-Qs-lHM" secondAttribute="bottom" constant="6" id="gFo-73-4u5"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Juy-G2-t6G" secondAttribute="leading" constant="16" id="byw-VD-6Hf"/>
+                    <constraint firstItem="u56-fE-K8K" firstAttribute="top" secondItem="4M9-Qs-lHM" secondAttribute="bottom" id="gFo-73-4u5"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Rvi-48-9ED" secondAttribute="leading" id="knM-Tw-87z"/>
-                    <constraint firstItem="4M9-Qs-lHM" firstAttribute="leading" secondItem="vRz-ao-wJO" secondAttribute="trailing" constant="8" id="lQ0-Ef-OOe"/>
-                    <constraint firstItem="u56-fE-K8K" firstAttribute="leading" secondItem="vRz-ao-wJO" secondAttribute="trailing" constant="8" id="nCo-JP-pec"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="u56-fE-K8K" secondAttribute="bottom" id="l2d-ZH-AeN"/>
                     <constraint firstItem="Juy-G2-t6G" firstAttribute="top" secondItem="TkO-ty-u1M" secondAttribute="bottom" constant="8" id="qAv-Uk-9nN"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sC9-T2-4Bj" secondAttribute="bottom" id="qc4-jF-hJ7"/>
+                    <constraint firstItem="u56-fE-K8K" firstAttribute="top" secondItem="4M9-Qs-lHM" secondAttribute="bottom" constant="8" id="tmi-qE-0v5"/>
                     <constraint firstItem="sC9-T2-4Bj" firstAttribute="leading" secondItem="dAk-g4-jQR" secondAttribute="leadingMargin" id="vSq-fE-Edq"/>
                     <constraint firstItem="TkO-ty-u1M" firstAttribute="height" secondItem="Rvi-48-9ED" secondAttribute="height" id="wZe-4c-eyB"/>
-                    <constraint firstItem="sC9-T2-4Bj" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="33" id="zhA-5k-5ZD"/>
+                    <constraint firstAttribute="bottom" secondItem="sC9-T2-4Bj" secondAttribute="bottom" id="xT2-gx-Cmw"/>
+                    <constraint firstItem="sC9-T2-4Bj" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" id="zhA-5k-5ZD"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="LH4-Gx-YUt"/>
+                        <exclude reference="qc4-jF-hJ7"/>
+                        <exclude reference="gFo-73-4u5"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="menuCost" destination="u56-fE-K8K" id="lgA-Lj-jah"/>
@@ -141,7 +142,7 @@
                 <outlet property="shopName" destination="TkO-ty-u1M" id="lsp-XK-K2U"/>
                 <outlet property="userImage" destination="Rvi-48-9ED" id="nfQ-S7-Hvy"/>
             </connections>
-            <point key="canvasLocation" x="-33" y="-42"/>
+            <point key="canvasLocation" x="-33" y="-43"/>
         </tableViewCell>
     </objects>
 </document>
