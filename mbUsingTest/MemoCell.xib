@@ -53,15 +53,14 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-T2-4Bj">
-                        <frame key="frameInset" minX="8" minY="397" width="45" height="66"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-T2-4Bj">
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="8dW-9O-cNK"/>
                             <constraint firstAttribute="height" constant="45" id="GaC-UL-X1j"/>
                             <constraint firstAttribute="height" constant="50" id="vFB-gk-hL8"/>
                             <constraint firstAttribute="height" constant="40" id="z51-hl-DJM"/>
                         </constraints>
-                        <state key="normal" title="❤️"/>
+                        <state key="normal" image="myMenu_on"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="GaC-UL-X1j"/>
@@ -136,6 +135,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="favButton" destination="sC9-T2-4Bj" id="ZnL-jI-XNq"/>
                 <outlet property="menuCost" destination="u56-fE-K8K" id="lgA-Lj-jah"/>
                 <outlet property="menuImage" destination="Juy-G2-t6G" id="n4v-H2-d1h"/>
                 <outlet property="menuName" destination="4M9-Qs-lHM" id="YuZ-rp-OMD"/>
@@ -145,4 +145,7 @@
             <point key="canvasLocation" x="-33" y="-43"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="myMenu_on" width="24" height="24"/>
+    </resources>
 </document>

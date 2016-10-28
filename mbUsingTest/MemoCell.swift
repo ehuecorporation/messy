@@ -12,7 +12,10 @@ class MemoCell: UITableViewCell {
     
     var userData = UserDefaults.standard
     var fav : Favorite = Favorite()
+    let star_on = UIImage(named: "myMenu_on")
+    let star_off = UIImage(named: "myMenu_off")
     
+    @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var menuImage: UIImageView!
@@ -21,10 +24,19 @@ class MemoCell: UITableViewCell {
     
     @IBAction func likeButton(_ sender: UIButton) {
 
-            Favorite.load()
+        Favorite.load()
+        
+        if Favorite.inFavorites("\(shopName.text!)") {
+            Favorite.remove("\(shopName.text!)")
+            print("dislike")
+            favButton.setImage(star_on, for: .normal)
+        } else {
             Favorite.add("\(shopName.text!)")
+            print("like")
+            favButton.setImage(star_off, for: .normal)
+        }
             
-            print("端末データの確認\((userData.object(forKey: "favorites") as? [String])!)")
+        print("端末データの確認\((userData.object(forKey: "favorites") as? [String])!)")
     }
     
 

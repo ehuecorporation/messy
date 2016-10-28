@@ -140,12 +140,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="一覧" id="QcO-jO-dOY">
-                        <barButtonItem key="leftBarButtonItem" title="お気に入り" id="N55-jR-sXv">
+                        <barButtonItem key="leftBarButtonItem" image="list" id="N55-jR-sXv">
                             <connections>
                                 <action selector="goFavo:" destination="BYZ-38-t0r" id="tWN-3v-hwN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="ewy-pz-YJX">
+                        <barButtonItem key="rightBarButtonItem" image="pen" id="ewy-pz-YJX">
                             <connections>
                                 <action selector="goPost:" destination="BYZ-38-t0r" id="sHH-HJ-27v"/>
                             </connections>
@@ -495,25 +495,25 @@
                                     <constraint firstAttribute="height" constant="50" id="VO1-po-nwz"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SnQ-f3-GeL"/>
-                                    <barButtonItem title="Back" id="n3H-mg-vUx">
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="5Qo-UE-7rq"/>
+                                    <barButtonItem image="back" id="n3H-mg-vUx">
                                         <connections>
                                             <action selector="backButton:" destination="fRS-1y-RXI" id="7XB-gu-BAc"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="clV-Qu-LJL"/>
-                                    <barButtonItem systemItem="add" id="pvk-RT-Gqw">
-                                        <connections>
-                                            <action selector="addMemo:" destination="fRS-1y-RXI" id="rPg-y3-Nif"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uvd-3A-Ez6"/>
-                                    <barButtonItem systemItem="camera" id="Vly-Je-1Qb">
+                                    <barButtonItem image="comera" id="Vly-Je-1Qb">
                                         <connections>
                                             <action selector="displayCamera:" destination="fRS-1y-RXI" id="UoG-6D-HWl"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Oub-bW-5fP"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uvd-3A-Ez6"/>
+                                    <barButtonItem image="up" id="pvk-RT-Gqw">
+                                        <connections>
+                                            <action selector="addMemo:" destination="fRS-1y-RXI" id="rPg-y3-Nif"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="BFd-hG-dga"/>
                                 </items>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -659,6 +659,13 @@
             <point key="canvasLocation" x="140" y="-237.03148425787109"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="24" height="24"/>
+        <image name="comera" width="24" height="24"/>
+        <image name="list" width="24" height="24"/>
+        <image name="pen" width="24" height="24"/>
+        <image name="up" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NhY-aW-b9m"/>
     </inferredMetricsTieBreakers>

@@ -57,7 +57,19 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.set(self.user?.mailAddress, forKey: "userMail")
                     self.userData.synchronize()
                     
-                    self.presentError("完了", "会員情報を登録しました")
+                    let errorAlert = UIAlertController(
+                        title: "完了",
+                        message: "会員情報が更新されました",
+                        preferredStyle: UIAlertControllerStyle.alert
+                    )
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: self.saveComplete
+                        )
+                    )
+                    self.present(errorAlert, animated: true, completion: nil)
                     
 
                 }
@@ -102,8 +114,19 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.set(self.user?.mailAddress, forKey: "userMail")
                     self.userData.synchronize()
                     
-                    self.presentError("完了", "会員情報を登録しました")
-                    self.performSegue(withIdentifier: "pushMemos", sender: nil)
+                    let errorAlert = UIAlertController(
+                        title: "完了",
+                        message: "会員情報が更新されました",
+                        preferredStyle: UIAlertControllerStyle.alert
+                    )
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: self.saveComplete
+                        )
+                    )
+                    self.present(errorAlert, animated: true, completion: nil)
                     
                     
                 }

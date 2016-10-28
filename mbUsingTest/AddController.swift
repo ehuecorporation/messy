@@ -160,8 +160,18 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 self.menuPrice.text = ""
                 self.displayImage.image = nil
                 
-                presentError("完了", "入力データが登録されました")
-                dismiss(animated: true, completion: nil)
+                let errorAlert = UIAlertController(
+                    title: "投稿完了",
+                    message: "投稿が反映されるまでお待ち下さい",
+                    preferredStyle: UIAlertControllerStyle.alert
+                )
+                errorAlert.addAction(
+                    UIAlertAction(
+                        title: "OK",
+                        style: UIAlertActionStyle.default,
+                        handler: self.saveComplete                    )
+                )
+                self.present(errorAlert, animated: true, completion: nil)
                 
             }
             
@@ -296,7 +306,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     //登録が完了した際のアクション
     func saveComplete(_ ac: UIAlertAction) -> Void {
-        performSegue(withIdentifier: "BackMemos", sender: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     //アクションシートの結果に応じて処理を変更
