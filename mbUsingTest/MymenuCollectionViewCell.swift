@@ -13,6 +13,8 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     var userData = UserDefaults.standard
     var targetNum = 0
+    var myMenu = [String]()
+    var mbs = NCMBSearch()
     
     
      // サムネイル画像のタイトル
@@ -21,9 +23,11 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Favorite.load()
+        myMenu = Favorite.favorites
         
-//        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.minimumInteritemSpacing = 0.0
+        mbs.getFavList(myMenu)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{

@@ -87,51 +87,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             // キーボードを閉じる
             textField.resignFirstResponder()
             
-            // 更新処理
-            let targetNewName = self.userNewName.text!
-            let targetNewMailAdress = self.mailAdress.text!
-            
-            // 入力が足りない場合
-            if (targetNewName.isEmpty || targetNewMailAdress.isEmpty) {
-                
-                presentError("エラー", "入力に不備があります")
-                
-            }
-            
-            user?.saveInBackground({
-                (error) -> Void in
-                if let updateerror = error {
-                    // 更新失敗時の処理
-                    self.presentError("更新エラー", "\(updateerror.localizedDescription)")
-                    
-                } else {
-                    // 更新成功時の処理
-                    self.userData.register(defaults: ["useCount" : Bool()])
-                    self.userData.register(defaults: ["userID" : String()])
-                    self.userData.register(defaults: ["userMail" : String()])
-                    self.userData.set(true, forKey: "useCount")
-                    self.userData.set(self.user?.objectId, forKey: "userID")
-                    self.userData.set(self.user?.mailAddress, forKey: "userMail")
-                    self.userData.synchronize()
-                    
-                    let errorAlert = UIAlertController(
-                        title: "完了",
-                        message: "会員情報が更新されました",
-                        preferredStyle: UIAlertControllerStyle.alert
-                    )
-                    errorAlert.addAction(
-                        UIAlertAction(
-                            title: "OK",
-                            style: UIAlertActionStyle.default,
-                            handler: self.saveComplete
-                        )
-                    )
-                    self.present(errorAlert, animated: true, completion: nil)
-                    
-                    
-                }
-            })
-
+            Update(UIButton.init())
             
         }
         return true
@@ -166,6 +122,10 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         
         if let name = userData.object(forKey: "userName") {
             userNewName.text = name as? String
+        }
+        
+        if let mail = userData.object(forKey: "userMail") {
+            mailAdress.text = mail as? String
         }
         
         // Do any additional setup after loading the view.

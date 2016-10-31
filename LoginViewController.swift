@@ -42,48 +42,68 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
             //エラーアラートを表示してOKで戻る
             presentError("エラー", "入力に不備があります")
             loginFlag = false
-        // 新規会員登録
-        } else if (!userData.bool(forKey: "useCount")) {
-            let newUser = NCMBUser()
-            newUser.userName = targetName
-            newUser.password = targetPass
-            newUser.signUpInBackground({
-                (error) in
             
-                if error != nil {
-                    self.presentError("登録エラー", "\(error!.localizedDescription)")
-                    loginFlag =  false
-                } else {
-                    print("新規登録成功")
-                    
-                    // ユーザー情報を端末へ保存
-                    self.userData.register(defaults: [ "userName": String()])
-                    self.userData.set(targetName, forKey: "userName")
-                    self.userData.register(defaults: ["userPass": String()])
-                    self.userData.set(targetPass, forKey: "userPass")
-                    self.userData.synchronize()
-                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))")
-                    self.performSegue(withIdentifier: "pushUpdate", sender: nil)
-                }
-            })
-
         } else {
             NCMBUser.logInWithUsername(inBackground: targetName, password: targetPass, block: {
                 (user, error) in
                 
                 if error != nil {
                     self.presentError("認証エラー", "\(error!.localizedDescription)")
-                    loginFlag = false
+                    self.loginFlag = false
                     
-                } else if (user != nil){
-                    //端末情報への保存
+                } else if (user != nil) {
+                    // 該当ユーザーがいる場合会員認証
+                    
+                    //端末情報の更新
                     self.userData.set(targetName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
+                    if let userMail = user!.mailAddress {
+                        self.userData.set(userMail, forKey: "userMail")
+                    }
+                    if let userID = user!.objectId {
+                        self.userData.set(userID, forKey: "userID")
+                    }
+                    
                     self.userData.synchronize()
-                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
+                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
+                    
+                } else {
+                    //該当ユーザーがいない場合新規登録
+                    
+                    let newUser = NCMBUser()
+                    newUser.userName = targetName
+                    newUser.password = targetPass
+                    newUser.signUpInBackground({
+                        (error) in
+                        
+                        if error != nil {
+                            self.presentError("登録エラー", "\(error!.localizedDescription)")
+                            self.loginFlag =  false
+                        } else {
+                            print("新規登録成功")
+                            
+                            // ユーザー情報を端末へ保存
+                            self.userData.register(defaults: [ "userName": String()])
+                            self.userData.set(targetName, forKey: "userName")
+                            self.userData.register(defaults: ["userPass": String()])
+                            self.userData.set(targetPass, forKey: "userPass")
+                            if let userMail = user!.mailAddress {
+                                self.userData.set(userMail, forKey: "userMail")
+                            }
+                            if let userID = user!.objectId {
+                                self.userData.set(userID, forKey: "userID")
+                            }
+
+                            self.userData.synchronize()
+                            print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
+                            self.performSegue(withIdentifier: "pushUpdate", sender: nil)
+                        }
+                    })
+
                 }
-            })
+                
+            }) //loginWithUsername end
         }
         
     }
@@ -105,7 +125,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 NSLog("Twitterでログインがキャンセルされました。:\(error)")
                 //エラーアラートを表示してOKで戻る
                 self.presentError("認証エラー", "\(error!.localizedDescription)")
-                loginFlag = false
+                self.loginFlag = false
                 
             } else if (user != nil){
                 
@@ -165,33 +185,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
             // キーボードを閉じる
             textField.resignFirstResponder()
             
-            // ログイン処理
-            let targetName = self.userName.text!
-            let targetPass = self.userPass.text!
-            
-            if (targetName.isEmpty || targetPass.isEmpty) {
-                
-                presentError("エラー", "入力内容に不備があります")
-                
-                // 新規会員登録
-            }
-            
-            NCMBUser.logInWithUsername(inBackground: targetName, password: targetPass, block: {
-                (user, error) in
-                
-                if error != nil {
-                    
-                    self.presentError("認証エラー", "\(error!.localizedDescription)")
-                    
-                } else if (user != nil){
-                    
-                    self.userData.set(targetName, forKey: "userName")
-                    self.userData.set(targetPass, forKey: "userPass")
-                    self.userData.synchronize()
-//                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))")
-                    self.performSegue(withIdentifier: "pushMemos", sender: nil)
-                }
-            })
+            loginButton(UIButton.init())
             
         }
         return true

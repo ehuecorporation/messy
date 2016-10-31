@@ -44,6 +44,9 @@ public class NCMBSearch {
     //ポストの保管
     public var memos = [memo]()
     
+    //お気に入りリスト
+    public var favList = [memo]()
+    
     //店舗データ
     public var shopData = shop()
     
@@ -66,6 +69,7 @@ public class NCMBSearch {
     
     //trueなら読込中
     var loading_flag = false
+    
     
     //APIからデータを読み込む
     // reset = true ならデータを捨てて再度読み込む
@@ -144,6 +148,7 @@ public class NCMBSearch {
         
     } // loadMemoData end
     
+    // 画像を取得
     func getImage(_ targetNum : Int, _ targetList : [memo]) {
         let targetMemoData = targetList[targetNum]
         
@@ -162,6 +167,7 @@ public class NCMBSearch {
 
     } // getImage end
     
+    // 一覧画面を更新
     func reLoadData() {
         
         var loadingMemos = [memo]()
@@ -238,6 +244,7 @@ public class NCMBSearch {
         
     } // reloadData end
     
+    // 店舗の詳細ページを表示する時に使用
     func getShopData (_ shopNumber: Int) {
         var shopData: shop = shop()
         
@@ -274,6 +281,51 @@ public class NCMBSearch {
         
         })
         
-    }
+    } // getShopData end
+    
+    func getFavList (_ myMenuList: [String]) {
+        
+        let query: NCMBQuery = NCMBQuery(className: "MemoClass")
+        
+        query.whereKey("objectId", equalTo: myMenuList)
+        
+        query.findObjectsInBackground({
+            (objects, error) in
+            
+            print("お気に入り検索開始")
+            
+            if error == nil {
+                if let response = objects {
+                    if response.count > 0 {
+                        
+                        for i in 0 ..< response.count {
+                            let targetMemoData: AnyObject = response[i] as AnyObject
+                            var tmp = memo()
+                            
+                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
+                            tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+                            tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
+                            
+                            
+                            self.favList.append(tmp)
+                        }
+                       
+                        print("お気に入りは\(self.favList)")
+                        print("お気に入りの取得に成功")
+                    }
+                }
+            } else {
+                print("お気に入りの取得に失敗")
+            }
+        
+        
+        
+        }) // findObjects end
+        
+    } // getFavList end
+    
     
 }
