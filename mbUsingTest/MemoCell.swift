@@ -18,6 +18,7 @@ class MemoCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var shopName: UILabel!
+    @IBOutlet weak var objectID: UILabel!
     @IBOutlet weak var menuImage: UIImageView!
     @IBOutlet weak var menuName: UILabel!
     @IBOutlet weak var menuCost: UILabel!
@@ -26,12 +27,12 @@ class MemoCell: UITableViewCell {
 
         Favorite.load()
         
-        if Favorite.inFavorites("\(shopName.text!)") {
-            Favorite.remove("\(shopName.text!)")
+        if Favorite.inFavorites("\(objectID.text!)") {
+            Favorite.remove("\(objectID.text!)")
             print("dislike")
             favButton.setImage(star_on, for: .normal)
         } else {
-            Favorite.add("\(shopName.text!)")
+            Favorite.add("\(objectID.text!)")
             print("like")
             favButton.setImage(star_off, for: .normal)
         }

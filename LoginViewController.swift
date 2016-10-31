@@ -13,8 +13,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     
     let userData = UserDefaults.standard
     
-    // trueならメアドによる新規登録falseならTwitterによる新規登録
-    var loginFlag = true
+    var loginFlag = false
     
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPass: UITextField!
@@ -27,15 +26,22 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     
     
     @IBAction func loginButton(_ sender: UIButton) {
+        
         let targetName = self.userName.text!
         let targetPass = self.userPass.text!
         
+        //すでにログインを実行しているならなにもしない
+        if loginFlag {
+            return
+        }
         
+        loginFlag = true
         
         if (targetName.isEmpty || targetPass.isEmpty) {
             
             //エラーアラートを表示してOKで戻る
             presentError("エラー", "入力に不備があります")
+            loginFlag = false
         // 新規会員登録
         } else if (!userData.bool(forKey: "useCount")) {
             let newUser = NCMBUser()
@@ -46,6 +52,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
             
                 if error != nil {
                     self.presentError("登録エラー", "\(error!.localizedDescription)")
+                    loginFlag =  false
                 } else {
                     print("新規登録成功")
                     
@@ -66,6 +73,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 
                 if error != nil {
                     self.presentError("認証エラー", "\(error!.localizedDescription)")
+                    loginFlag = false
                     
                 } else if (user != nil){
                     //端末情報への保存
@@ -82,6 +90,14 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     
     //Twitter認証
     @IBAction func twitterLogin(_ sender: UIButton) {
+        
+        //すでにログインを実行中ならなにもしない
+        if loginFlag {
+            return
+        }
+        
+        loginFlag = true
+        
         NCMBTwitterUtils.logIn({
             (user, error) in
             
@@ -89,6 +105,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 NSLog("Twitterでログインがキャンセルされました。:\(error)")
                 //エラーアラートを表示してOKで戻る
                 self.presentError("認証エラー", "\(error!.localizedDescription)")
+                loginFlag = false
+                
             } else if (user != nil){
                 
                 if !self.userData.bool(forKey: "userID") {

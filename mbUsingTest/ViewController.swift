@@ -199,6 +199,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
+        // objectIDの保存と隠し
+        cell!.objectID.text = targetMemoData.objectID
+        cell!.objectID.isHidden = true
         
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
