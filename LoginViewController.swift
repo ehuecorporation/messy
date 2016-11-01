@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     if let userID = user!.objectId {
                         self.userData.set(userID, forKey: "userID")
                     }
-                    
+                    self.userData.set(true, forKey: "useCount")
                     self.userData.synchronize()
                     print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
