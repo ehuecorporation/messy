@@ -156,6 +156,9 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // ステータスバーのスタイル変更を促す
+        self.setNeedsStatusBarAppearanceUpdate();
+        
         // デリゲートを通しておく
         userName.delegate = self
         userPass.delegate = self
@@ -212,6 +215,13 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        // ステータスバーを白くする
+        return .lightContent;
     }
     
     /*

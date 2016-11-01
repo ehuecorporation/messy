@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //twitterのAPIキー
         NCMBTwitterUtils.initialize(withConsumerKey: "UVGEnYxLfLudJlCEVwcMDHo2C", consumerSecret: "Ot5yjc9N7jTxYLCa52nV8eRYYVvcByXCsqMZMj0Rb7NVYeyyir")
         
+        //ナビゲーションアイテムの色を変更
+        UINavigationBar.appearance().tintColor = UIColor.black
+        //ナビゲーションバーの背景を変更
+        UINavigationBar.appearance().barTintColor = UIColor.orange
+        //ナビゲーションのタイトル文字列の色を変更
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
+        
+        return true
+        
         FBSDKSettings.setAppID("1661651407480637")
 
 
