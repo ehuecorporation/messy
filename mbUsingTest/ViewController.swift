@@ -67,7 +67,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setname()
         
         //読込完了通知を受信した後の処理
         loadDataObserver = NotificationCenter.default.addObserver(
@@ -123,8 +122,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("ユーザーIDは\(userData.object(forKey: "userID"))")
         
         //お気に入りを読み込み
         Favorite.load()
@@ -216,7 +213,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
-        if Favorite.inFavorites(targetMemoData.objectID) {
+        
+        //お気に入りに入っていれば星をon
+        if Favorite.inFavorites(targetMemoData.filename) {
             cell!.favButton.setImage(star_on, for: .normal)
         } else {
             cell!.favButton.setImage(star_off, for: .normal)

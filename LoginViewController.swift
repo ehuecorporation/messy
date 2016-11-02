@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     let userData = UserDefaults.standard
     
     var loginFlag = false
+    var mbs: NCMBSearch = NCMBSearch()
     
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPass: UITextField!

@@ -7,27 +7,105 @@
 //
 
 import UIKit
+import NCMB
 
 class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var menuList: UICollectionView!
     
     var userData = UserDefaults.standard
     var targetNum = 0
-    var myMenu = [String]()
-    var mbs = NCMBSearch()
+    var mbs : NCMBSearch = NCMBSearch()
     
+    //NotificcationのObserver
+    var loadDataObserver: NSObjectProtocol?
+    var refreshObserver: NSObjectProtocol?
     
-     // サムネイル画像のタイトル
-    let photos = ["menuSample1", "menuSample2","menuSample3","menuSample4"]
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //読込完了通知を受信した後の処理
+        loadDataObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
+            object: nil,
+            queue: nil,
+            using:{
+                (notification) in
+                
+                //エラーがあればダイアログを開いて通知
+                if (notification as NSNotification).userInfo != nil {
+                    
+                    if let userInfo = (notification as NSNotification).userInfo as? [String: String?]{
+                        
+                        if userInfo["error"] != nil{
+                            
+                            let alertView = UIAlertController(
+                                title: "通信エラー",
+                                message: "通信エラーが発生しました",
+                                preferredStyle: .alert
+                            )
+                            
+                            alertView.addAction(
+                                UIAlertAction(title: "OK", style: .default){
+                                    action in return
+                                }
+                            )
+                            
+                            self.present(alertView, animated: true, completion: nil)
+                            
+                        } // error end
+                        
+                    } // userInfo ned
+                    
+                } else {
+                    self.targetNum = 0
+                    self.menuList.reloadData()
+                    print("読み込み完了")
+                    print(self.mbs.favList)
+                }// notification error end
+                
+            } // using end
+        ) // loadDataObserver end
+        
+        Favorite.load()
+        mbs.getFavList(Favorite.favorites)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Favorite.load()
-        myMenu = Favorite.favorites
         
-        mbs.getFavList(myMenu)
+        // pull to refreshの実装
+        let refreshControl = UIRefreshControl()
+        //下に引っ張った時に、リフレッシュさせる関数を実行する。
+        refreshControl.addTarget(self, action: #selector(MymenuCollectionViewCell.onRefresh(_:)), for: UIControlEvents.valueChanged)
+        //UICollectionView上に、ロード中...を表示するための新しいビューを作る
+        menuList.addSubview(refreshControl)
         
+    }
+    
+    func onRefresh(_ refreshControl: UIRefreshControl) {
+        
+        // UIRefreshControlを読込状態にする
+        refreshControl.beginRefreshing()
+        
+        // 終了通知を受信したらUIRefreshControlを停止する
+        refreshObserver = NotificationCenter.default.addObserver(
+            forName: NSNotification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
+            object: nil,
+            queue: nil,
+            using: {
+                notification in
+                // 通知の待受を終了
+                NotificationCenter.default.removeObserver(self.refreshObserver!)
+                // UIRefreshControlを停止する
+                refreshControl.endRefreshing()
+                
+                
+        }) // uisng block end
+        
+        // 通常のリフレッシュ
+        mbs.reLoadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -35,19 +113,45 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // Cell はストーリーボードで設定したセルのID
         let testCell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mymenuItem", for: indexPath)
         
-        // Tag番号を使ってImageViewのインスタンス生成
-        let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
-        // 画像配列の番号で指定された要素の名前の画像をUIImageとする
-        let cellImage = UIImage(named: photos[targetNum])
-        // UIImageをUIImageViewのimageとして設定
-        imageView.image = cellImage
+        if mbs.favList.count == 0 {
+            let label = testCell.contentView.viewWithTag(2) as! UILabel
+            label.text! = "読み込み中"
+            let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
+            imageView.image = #imageLiteral(resourceName: "loading")
+            return testCell
+        }
         
+        let targetMemoData :memo = mbs.favList[targetNum]
         
         // Tag番号を使ってLabelのインスタンス生成
         let label = testCell.contentView.viewWithTag(2) as! UILabel
-        label.text = photos[targetNum]
-        targetNum += 1
+        label.text! = targetMemoData.shopName
         
+        // Tag番号を使ってImageViewのインスタンス生成
+        let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
+        imageView.image = #imageLiteral(resourceName: "loading")
+        
+        // 画像の読み込み
+        if let image = targetMemoData.menuImage {
+            imageView.image = image
+        } else {
+            
+            let filename: String = targetMemoData.filename
+            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
+            
+            fileData.getDataInBackground {
+                (imageData, error) -> Void in
+                
+                if error != nil {
+                    print("写真の取得失敗: \(error)")
+                } else {
+                    imageView.image = UIImage(data: imageData!)
+                    self.mbs.favList[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
+                }
+            }
+        }
+
+        targetNum += 1
         
         return testCell
     }
@@ -71,7 +175,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 要素数を入れる、要素以上の数字を入れると表示でエラーとなる
-        return photos.count;
+        return Favorite.favorites.count;
     }
     
     

@@ -32,14 +32,14 @@ class MemoCell: UITableViewCell {
 
         Favorite.load()
         
-        if Favorite.inFavorites("\(objectID.text!)") {
-            Favorite.remove("\(objectID.text!)")
+        if Favorite.inFavorites("\(fileName.text!)") {
+            Favorite.remove("\(fileName.text!)")
             print("dislike")
-            favButton.setImage(star_on, for: .normal)
-        } else {
-            Favorite.add("\(objectID.text!)")
-            print("like")
             favButton.setImage(star_off, for: .normal)
+        } else {
+            Favorite.add("\(fileName.text!)")
+            print("like")
+            favButton.setImage(star_on, for: .normal)
         }
             
         print("端末データの確認\((userData.object(forKey: "favorites") as? [String])!)")

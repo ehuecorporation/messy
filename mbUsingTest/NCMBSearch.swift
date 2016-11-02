@@ -129,7 +129,6 @@ public class NCMBSearch {
                         //読込終了を反映
                         self.loading_flag = false
                         
-                        print("データ読込完了。データ件数は\(self.memos.count)です。")
                         //API終了通知
                         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
                         
@@ -223,12 +222,9 @@ public class NCMBSearch {
                         //読込終了を反映
                         self.loading_flag = false
                         
-                        print("データ読込完了。データ件数は\(self.memos.count)です。")
                         //API終了通知
                         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
-                        
-                        
-                        
+
                     } // response.count end
                 } // opt bind objects
             } else {
@@ -275,6 +271,12 @@ public class NCMBSearch {
                 }
             } else {
                 print("店舗データの取得に失敗しました")
+                var message = "Unknown error."
+                if let description = error?.localizedDescription {
+                    message = description
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                return
             }
             
             return
@@ -286,20 +288,24 @@ public class NCMBSearch {
     func getFavList (_ myMenuList: [String]) {
         
         let query: NCMBQuery = NCMBQuery(className: "MemoClass")
+        // 何回forを回すか
+        let myMenuItem = myMenuList.count
         
-        query.whereKey("objectId", equalTo: myMenuList)
+        var counter = 0
         
-        query.findObjectsInBackground({
-            (objects, error) in
+        NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBLoadStartNotification), object: nil)
+        
+        for i in 0 ..< myMenuItem {
             
-            print("お気に入り検索開始")
+            query.whereKey("filename", equalTo: myMenuList[i])
             
-            if error == nil {
-                if let response = objects {
-                    if response.count > 0 {
-                        
-                        for i in 0 ..< response.count {
-                            let targetMemoData: AnyObject = response[i] as AnyObject
+            query.findObjectsInBackground({
+                (objects, error) in
+                
+                if error == nil {
+                    if let response = objects {
+                        if response.count > 0 {
+                            let targetMemoData: AnyObject = response[0] as AnyObject
                             var tmp = memo()
                             
                             tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
@@ -308,22 +314,27 @@ public class NCMBSearch {
                             tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
                             tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
-                            
-                            
+                                
+                                
                             self.favList.append(tmp)
+                            counter += 1
+                            if counter == myMenuItem {
+                                //API終了通知
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
+                            }
                         }
-                       
-                        print("お気に入りは\(self.favList)")
-                        print("お気に入りの取得に成功")
+                    } // optional binding end
+                } else {
+                    var message = "Unknown error."
+                    if let description = error?.localizedDescription {
+                        message = description
                     }
-                }
-            } else {
-                print("お気に入りの取得に失敗")
-            }
-        
-        
-        
-        }) // findObjects end
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                    return
+                }// errorcheck end
+            }) // findObjects end
+            
+        } // for end
         
     } // getFavList end
     

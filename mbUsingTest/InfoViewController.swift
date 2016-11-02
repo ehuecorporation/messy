@@ -22,14 +22,51 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     var mbs : NCMBSearch = NCMBSearch()
     
+    //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
+    var refreshObserver: NSObjectProtocol?
     
     var locationManager = CLLocationManager()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //読込完了通知を受信した後の処理
+        loadDataObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
+            object: nil,
+            queue: nil,
+            using:{
+                (notification) in
+                
+                //エラーがあればダイアログを開いて通知
+                if (notification as NSNotification).userInfo != nil {
+                    if let userInfo = (notification as NSNotification).userInfo as? [String: String?]{
+                        if userInfo["error"] != nil{
+                            
+                            let alertView = UIAlertController(
+                                title: "通信エラー",
+                                message: "通信エラーが発生しました",
+                                preferredStyle: .alert
+                            )
+                            alertView.addAction(
+                                UIAlertAction(title: "OK", style: .default){
+                                    action in return
+                                }
+                            )
+                            self.present(alertView, animated: true, completion: nil)
+                        } // error end
+                    } // userInfo ned
+                }
+            }// using end
+        ) // loadDataObserver end
+        
+        mbs.getShopData(targetMemo.shopNumber)
+        
+    } // viewWillAppear end
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mbs.getShopData(targetMemo.shopNumber)
         
         // Do any additional setup after loading the view.
         locationManager.delegate = self
