@@ -56,9 +56,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //更新受信フラグ
     var updateFlag: Bool = false
-
+    
+    // 画像
+    let star_on = UIImage(named: "myMenu_on")
+    let star_off = UIImage(named: "myMenu_off")
+    
+    
     //ユーザー情報
-    var userName: String = ""
     var userData = UserDefaults.standard
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,6 +126,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         print("ユーザーIDは\(userData.object(forKey: "userID"))")
         
+        //お気に入りを読み込み
+        Favorite.load()
+        
         //テーブルビューのデリゲート
         self.memoTableView.delegate = self
         self.memoTableView.dataSource = self
@@ -135,8 +142,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.memoTableView.estimatedRowHeight = 450.0
     
         self.memoTableView.rowHeight = UITableViewAutomaticDimension
-        
-//        titleLabel.text = "\(userInfo.userName!)さんのページです"
+
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
@@ -199,15 +205,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
-        // objectIDの保存と隠し
+        // objectID,fileNamの保存と隠し
         cell!.objectID.text = targetMemoData.objectID
         cell!.objectID.isHidden = true
+        cell!.fileName.text = targetMemoData.filename
+        cell!.fileName.isHidden = true
         
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
+        if Favorite.inFavorites(targetMemoData.objectID) {
+            cell!.favButton.setImage(star_on, for: .normal)
+        } else {
+            cell!.favButton.setImage(star_off, for: .normal)
+        }
         
         if let image = targetMemoData.menuImage {
             cell!.menuImage.image = image

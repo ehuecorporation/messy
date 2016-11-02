@@ -18,7 +18,12 @@ class MemoCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var shopName: UILabel!
+    
+    // 隠し
     @IBOutlet weak var objectID: UILabel!
+    @IBOutlet weak var fileName: UILabel!
+    
+    
     @IBOutlet weak var menuImage: UIImageView!
     @IBOutlet weak var menuName: UILabel!
     @IBOutlet weak var menuCost: UILabel!
