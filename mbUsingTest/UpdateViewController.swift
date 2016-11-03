@@ -16,6 +16,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     var userName : String = ""
     var loginFlag: Bool = Bool()
     let user = NCMBUser.current()
+    var loading_flag = false
     
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
@@ -26,6 +27,10 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     
     @IBAction func Update(_ sender: UIButton) {
         
+        if loading_flag {
+            return
+        }
+        
         // textFieldの値を取得
         let targetNewName = self.userNewName.text!
         let targetNewMailAdress = self.mailAdress.text!
@@ -34,7 +39,11 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             
             presentError("エラー", "入力に不備があります")
             
+            
         } else {
+            
+            loading_flag = true
+
             // ユーザー情報を設定
             user?.setObject(targetNewName, forKey: "userName")
             user?.setObject(targetNewMailAdress, forKey: "mailAddress")
@@ -46,6 +55,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     // 更新失敗時の処理
                     print("エラー内容\(error)")
                     self.presentError("更新エラー", "\(updateerror.localizedDescription)")
+                    self.loading_flag = false
                     
                 } else {
                     
@@ -69,9 +79,11 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                             handler: self.saveComplete
                         )
                     )
+                    
+                    self.loading_flag = false
+                    
                     self.present(errorAlert, animated: true, completion: nil)
                     
-
                 }
             })
         }

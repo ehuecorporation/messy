@@ -16,6 +16,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     var userData = UserDefaults.standard
     var targetNum = 0
     var mbs : NCMBSearch = NCMBSearch()
+    var targetmemo = memo()
     
     //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
@@ -113,6 +114,14 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // Cell はストーリーボードで設定したセルのID
         let testCell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mymenuItem", for: indexPath)
         
+        if Favorite.favorites.count == 0 {
+            let label = testCell.contentView.viewWithTag(2) as! UILabel
+            label.text! = "お気に入りを追加しましょう"
+            let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
+            imageView.image = #imageLiteral(resourceName: "loading")
+            return testCell
+        }
+        
         if mbs.favList.count == 0 {
             let label = testCell.contentView.viewWithTag(2) as! UILabel
             label.text! = "読み込み中"
@@ -150,12 +159,22 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
                 }
             }
         }
-
-        targetNum += 1
         
         return testCell
     }
     
+    // Cell が選択された場合
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if Favorite.favorites.count == 0 {
+            return
+        }
+        
+        // [indexPath.row] から画像名を探し、UImage を設定
+        targetmemo = mbs.favList[(indexPath as NSIndexPath).row]
+        performSegue(withIdentifier: "pushDetailFromMyMenu",sender: nil)
+        
+    }
     
     // Screenサイズに応じたセルサイズを返す
     // UICollectionViewDelegateFlowLayoutの設定が必要
@@ -175,14 +194,31 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 要素数を入れる、要素以上の数字を入れると表示でエラーとなる
+        if Favorite.favorites.count == 0 {
+            return 1
+        }
         return Favorite.favorites.count;
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //segueを呼び出したときに呼ばれるメソッド
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //詳細画面へ行く前に詳細データを渡す
+        if segue.identifier == "pushDetailFromMyMenu" {
+            
+            let InfoController = segue.destination as! InfoViewController
+            InfoController.targetMemo = self.targetmemo
+            
+            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
+            
+        }
+    }
+
     
     
 }

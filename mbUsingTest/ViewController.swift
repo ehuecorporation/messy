@@ -240,6 +240,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
+        //画像を事前に取得
+        if (indexPath as NSIndexPath).row + 1 < mbs.memos.count {
+            let filename: String = mbs.memos[(indexPath as NSIndexPath).row + 1].filename
+            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
+            
+            fileData.getDataInBackground {
+                (imageData, error) -> Void in
+                
+                if error != nil {
+                    print("写真の取得失敗: \(error)")
+                } else {
+                    self.mbs.memos[(indexPath as NSIndexPath).row + 1].menuImage = UIImage(data: imageData!)
+                }
+            }
+        }
+        
+        if (indexPath as NSIndexPath).row + 2 < mbs.memos.count {
+            let filename: String = mbs.memos[(indexPath as NSIndexPath).row + 2].filename
+            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
+            
+            fileData.getDataInBackground {
+                (imageData, error) -> Void in
+                
+                if error != nil {
+                    print("写真の取得失敗: \(error)")
+                } else {
+                    self.mbs.memos[(indexPath as NSIndexPath).row + 2].menuImage = UIImage(data: imageData!)
+                }
+            }
+        }
+
+        
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
         

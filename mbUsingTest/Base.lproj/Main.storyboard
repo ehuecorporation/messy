@@ -124,6 +124,22 @@
             </objects>
             <point key="canvasLocation" x="-844" y="-601"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4eR-DK-LtY">
+            <objects>
+                <navigationController id="BZO-BM-o5a" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ib0-gc-q6t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fR1-1F-DGY" kind="relationship" relationship="rootViewController" id="Wdh-PC-LoU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O9P-FL-fmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1601" y="-601"/>
+        </scene>
         <!--一覧-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -323,8 +339,8 @@
                         <outlet property="loginLabel" destination="DqM-oI-v4Y" id="Kls-4t-7f6"/>
                         <outlet property="userName" destination="ePt-xu-kuW" id="9Fo-gu-7jE"/>
                         <outlet property="userPass" destination="GJE-A0-RBm" id="8No-Uh-LtT"/>
-                        <segue destination="fR1-1F-DGY" kind="show" identifier="pushUpdate" id="yQj-jv-L7K"/>
                         <segue destination="T5I-Uk-uwf" kind="show" identifier="pushMemos" id="sdu-tp-peM"/>
+                        <segue destination="BZO-BM-o5a" kind="show" identifier="pushUpdate" id="ogz-ra-TJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ly-GA-jJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -672,7 +688,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mymenuItem" id="gOF-ns-v9M">
-                                        <rect key="frame" x="79" y="0.0" width="218" height="223"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="218" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
@@ -682,9 +698,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBb-0g-va6">
-                                                    <rect key="frame" x="8" y="188" width="202" height="17"/>
+                                                    <rect key="frame" x="8" y="185.5" width="202" height="19.5"/>
                                                     <color key="backgroundColor" red="0.97752372382198949" green="0.97752372382198949" blue="0.97752372382198949" alpha="0.39899157801418439" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -718,6 +734,7 @@
                     <navigationItem key="navigationItem" title="Your Menu" id="W3m-Vc-VpN"/>
                     <connections>
                         <outlet property="menuList" destination="Oex-w0-nsS" id="s86-ze-ib4"/>
+                        <segue destination="8jb-gQ-xZS" kind="show" identifier="pushDetailFromMyMenu" id="vNz-yZ-lot"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnJ-Qf-wyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -735,6 +752,7 @@
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OPv-Ti-4yH"/>
+        <segue reference="ooR-Aa-El1"/>
+        <segue reference="vNz-yZ-lot"/>
     </inferredMetricsTieBreakers>
 </document>
