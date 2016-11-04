@@ -1,37 +1,25 @@
 //
-//  ViewController.swift
+//  ShopMenusViewController.swift
 //  mbUsingTest
 //
-//  Created by 蕭　喬仁 on 2016/09/11.
+//  Created by 松本匡平 on 2016/11/04.
 //  Copyright © 2016年 蕭　喬仁. All rights reserved.
 //
 
 import UIKit
-import  NCMB
+import NCMB
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+
+    @IBOutlet weak var menuList: UITableView!
     
-    
-    
-    @IBOutlet weak var memoTableView: UITableView!
-    
-    //新規追加時
-    @IBAction func goPost(_ sender: UIBarButtonItem) {
-        self.editFlag = false
-        performSegue(withIdentifier: "goAddMemo", sender: nil)
-    }
-    
-    @IBAction func goFavo(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goFavoList", sender: nil)
-        
-    }
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     
     //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
-
+    
     
     //コメント編集フラグ
     var editFlag: Bool = false
@@ -41,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //テーブルビューの要素数
     let sectionCount: Int = 1
-        
+    
     //対象MeMoのobjectID
     var targetMemoObjectId: String!
     
@@ -75,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             queue: nil,
             using:{
                 (notification) in
-             
+                
                 //エラーがあればダイアログを開いて通知
                 if (notification as NSNotification).userInfo != nil {
                     
@@ -102,7 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     } // userInfo ned
                     
                 } else {
-                    self.memoTableView.reloadData()
+                    self.menuList.reloadData()
                 }// notification error end
                 
             } // using end
@@ -117,9 +105,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if updateFlag {
             mbs.reLoadData()
         }
-
+        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,25 +115,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Favorite.load()
         
         //テーブルビューのデリゲート
-        self.memoTableView.delegate = self
-        self.memoTableView.dataSource = self
+        self.menuList.delegate = self
+        self.menuList.dataSource = self
         
         //Xibのクラスを読み込む
         let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
-        self.memoTableView.register(nib, forCellReuseIdentifier: "MemoCell")
+        self.menuList.register(nib, forCellReuseIdentifier: "MemoCell")
         
         //自動計算の場合は必要
         
-        self.memoTableView.estimatedRowHeight = 450.0
-    
-        self.memoTableView.rowHeight = UITableViewAutomaticDimension
-
+        self.menuList.estimatedRowHeight = 450.0
+        
+        self.menuList.rowHeight = UITableViewAutomaticDimension
+        
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ViewController.onRefresh(_:)), for: .valueChanged)
-        self.memoTableView.addSubview(refreshControl)
-
+        self.menuList.addSubview(refreshControl)
+        
         
     }
     
@@ -169,15 +157,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         ) // uisng block end
         // 通常のリフレッシュ
-            mbs.reLoadData()
+        mbs.reLoadData()
     } // onRefresh end
-
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         //通知待受を終了
         NotificationCenter.default.removeObserver(self.loadDataObserver)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -270,7 +258,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
-
+        
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -279,7 +267,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell!
     }
-
+    
     //セルをタップした場合に実行
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -296,21 +284,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return self.sectionCount
     }
     
-/*
-    func setname() {
-        if let userName = userData.object(forKey: "Name") {
-            
-        } else {
-            userData.set("\(userInfo.userName!)", forKey: "Name")
-            
-            
-        }
-    }
-*/
+    /*
+     func setname() {
+     if let userName = userData.object(forKey: "Name") {
+     
+     } else {
+     userData.set("\(userInfo.userName!)", forKey: "Name")
+     
+     
+     }
+     }
+     */
     
-    
-    
-   //segueを呼び出したときに呼ばれるメソッド
+    //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //詳細画面へ行く前に詳細データを渡す
@@ -325,5 +311,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
+
+
 }
 

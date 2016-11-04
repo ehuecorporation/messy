@@ -44,6 +44,7 @@ class MemoCell: UITableViewCell {
             
         print("端末データの確認\((userData.object(forKey: "favorites") as? [String])!)")
     }
+
     
 
     override func awakeFromNib() {

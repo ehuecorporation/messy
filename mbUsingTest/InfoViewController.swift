@@ -11,7 +11,6 @@ import MapKit
 
 class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate  {
     
-    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var openHours: UILabel!
@@ -27,6 +26,12 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     var refreshObserver: NSObjectProtocol?
     
     var locationManager = CLLocationManager()
+    
+    @IBAction func pushMenuList(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "goMenuList", sender: nil)
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
