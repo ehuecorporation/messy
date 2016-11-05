@@ -318,14 +318,24 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             print("NotDetermined")
         }
     }
-/*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goMenuList" {
+            
+            let ShopMenuController = segue.destination as! ShopMenusViewController
+            ShopMenuController.targetShopData = self.targetShopData
+            
+            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
+            
+        }
+
     }
-*/
+
 
 }

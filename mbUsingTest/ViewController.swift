@@ -240,37 +240,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        //画像を事前に取得
-        if (indexPath as NSIndexPath).row + 1 < mbs.memos.count {
-            let filename: String = mbs.memos[(indexPath as NSIndexPath).row + 1].filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    self.mbs.memos[(indexPath as NSIndexPath).row + 1].menuImage = UIImage(data: imageData!)
-                }
-            }
-        }
-        
-        if (indexPath as NSIndexPath).row + 2 < mbs.memos.count {
-            let filename: String = mbs.memos[(indexPath as NSIndexPath).row + 2].filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    self.mbs.memos[(indexPath as NSIndexPath).row + 2].menuImage = UIImage(data: imageData!)
-                }
-            }
-        }
-
+        //3個先まで画像を事前に取得
+        getCellImage((indexPath as NSIndexPath).row + 1)
+        getCellImage((indexPath as NSIndexPath).row + 2)
+        getCellImage((indexPath as NSIndexPath).row + 3)
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -296,17 +269,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return self.sectionCount
     }
     
-/*
-    func setname() {
-        if let userName = userData.object(forKey: "Name") {
+    //セルの画像を取得
+    func getCellImage(_ index: Int){
+        
+        if index < mbs.shopMenu.count {
+            let filename: String = mbs.shopMenu[index].filename
+            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             
-        } else {
-            userData.set("\(userInfo.userName!)", forKey: "Name")
-            
-            
+            fileData.getDataInBackground {
+                (imageData, error) -> Void in
+                
+                if error != nil {
+                    print("写真の取得失敗: \(error)")
+                } else {
+                    self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
+                }
+            }
         }
-    }
-*/
+        
+    } // getCellImage end
     
     
     

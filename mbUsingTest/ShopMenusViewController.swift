@@ -42,8 +42,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     //会員情報管理
     let userInfo = NCMBUser.current()!
     
-    //更新受信フラグ
-    var updateFlag: Bool = false
+    
+    var targetShopData: shop = shop()
     
     // 画像
     let star_on = UIImage(named: "myMenu_on")
@@ -96,14 +96,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             } // using end
         ) // loadDataObserver end
         
-        if mbs.memos.count == 0 {
+        if mbs.shopMenu.count == 0 {
             //通常の検索
-            mbs.loadMemoData(true)
-        }
-        
-        //リストの更新があった場合
-        if updateFlag {
-            mbs.reLoadData()
+            mbs.getShopMenu(targetShopData.shopNumber)
         }
         
     }
@@ -157,7 +152,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         ) // uisng block end
         // 通常のリフレッシュ
-        mbs.reLoadData()
+        mbs.getShopMenu(targetShopData.shopNumber)
     } // onRefresh end
     
     
@@ -175,8 +170,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //取得データの総数
-        if mbs.memos.count > 0 {
-            return mbs.memos.count
+        if mbs.shopMenu.count > 0 {
+            return mbs.shopMenu.count
         } else {
             return 0
         }
@@ -187,7 +182,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
         //各値をセルに入れる
-        let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        let targetMemoData: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
         // objectID,fileNamの保存と隠し
@@ -223,42 +218,15 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     print("写真の取得失敗: \(error)")
                 } else {
                     cell!.menuImage.image = UIImage(data: imageData!)
-                    self.mbs.memos[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
+                    self.mbs.shopMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                 }
             }
         }
         
-        //画像を事前に取得
-        if (indexPath as NSIndexPath).row + 1 < mbs.memos.count {
-            let filename: String = mbs.memos[(indexPath as NSIndexPath).row + 1].filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    self.mbs.memos[(indexPath as NSIndexPath).row + 1].menuImage = UIImage(data: imageData!)
-                }
-            }
-        }
-        
-        if (indexPath as NSIndexPath).row + 2 < mbs.memos.count {
-            let filename: String = mbs.memos[(indexPath as NSIndexPath).row + 2].filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    self.mbs.memos[(indexPath as NSIndexPath).row + 2].menuImage = UIImage(data: imageData!)
-                }
-            }
-        }
-        
+        //3セル先まで画像を事前に取得
+        getCellImage((indexPath as NSIndexPath).row + 1)
+        getCellImage((indexPath as NSIndexPath).row + 2)
+        getCellImage((indexPath as NSIndexPath).row + 3)
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -268,21 +236,42 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell!
     }
     
+/*
     //セルをタップした場合に実行
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //セグエの実行時に値を渡す
-        let targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        let targetMemo: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
         self.targetMemo = targetMemo
         
         self.editFlag = true
         performSegue(withIdentifier: "pushDetail", sender: targetMemo)
     }
-    
+*/
     //テーブルのセクションを設定する
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionCount
     }
+    
+    //セルの画像を取得
+    func getCellImage(_ index: Int){
+        
+        if index < mbs.shopMenu.count {
+            let filename: String = mbs.shopMenu[index].filename
+            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
+            
+            fileData.getDataInBackground {
+                (imageData, error) -> Void in
+                
+                if error != nil {
+                    print("写真の取得失敗: \(error)")
+                } else {
+                    self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
+                }
+            }
+        }
+        
+    } // getCellImage end
     
     /*
      func setname() {
@@ -299,15 +288,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //詳細画面へ行く前に詳細データを渡す
-        if segue.identifier == "pushDetail" {
-            
-            let InfoController = segue.destination as! InfoViewController
-            InfoController.targetMemo = self.targetMemo
-            
-            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
-            
-        }
     }
     
     

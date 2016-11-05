@@ -12,6 +12,7 @@ import  NCMB
 public struct shop {
     
     public var shopName: String = ""
+    public var shopNumber: Int = 0
     public var shopLat: Double = 0
     public var shopLon: Double = 0
     public var openHours: String = ""
@@ -46,6 +47,9 @@ public class NCMBSearch {
     
     //お気に入りリスト
     public var favList = [memo]()
+    
+    //ShopMenu
+    public var shopMenu = [memo]()
     
     //店舗データ
     public var shopData = shop()
@@ -261,6 +265,7 @@ public class NCMBSearch {
                 if let response = objects {
                     let targetMemoData: AnyObject = response[0] as AnyObject
                     shopData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                    shopData.shopNumber = (targetMemoData.object(forKey: "numbaer") as? Int)!
                     shopData.shopLon = (targetMemoData.object(forKey: "longtitude") as? Double)!
                     shopData.shopLat = (targetMemoData.object(forKey: "latitude") as? Double)!
                     shopData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!
@@ -284,6 +289,80 @@ public class NCMBSearch {
         })
         
     } // getShopData end
+    
+    //該当店舗のメニューを全て取得する
+    func getShopMenu(_ shopNumber: Int) {
+        
+        //読込中なら何もしない
+        if loading_flag {
+            return
+        }
+        
+        shopMenu = []
+        
+        //読込中であることを反映する
+        loading_flag = true
+        
+        //API実行開始を通知
+        NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBLoadStartNotification), object: nil)
+        
+        //API実行
+        let query: NCMBQuery = NCMBQuery(className: "MemoClass")
+        
+        query.whereKey("shopNumber" , equalTo: shopNumber as Int)
+        
+        //作成日順にする
+        query.order(byDescending: "createDate")
+        
+        query.findObjectsInBackground({(objects,  error) in
+            
+            
+            if error == nil {
+                if let response = objects {
+                    if (response.count) > 0 {
+                        
+                        for i in 0 ..< response.count {
+                            let targetMemoData: AnyObject = response[i] as AnyObject
+                            var tmp : memo = memo()
+                            tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+                            // shopNameがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopName") == nil {
+                                continue
+                            }
+                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
+                            tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            // shopNumberがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopNumber") == nil {
+                                continue
+                            }
+                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
+                            self.shopMenu.append(tmp)
+                        }
+                        
+                        //読込終了を反映
+                        self.loading_flag = false
+                        
+                        //API終了通知
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
+                        
+                    } // response.count end
+                } // opt bind objects
+            } else {
+                var message = "Unknown error."
+                if let description = error?.localizedDescription {
+                    message = description
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                return
+            } // errors end
+            
+        }) // findObjects end
+        
+        print(self.shopMenu)
+        
+    } // getShopMenu end
     
     func getFavList (_ myMenuList: [String]) {
         

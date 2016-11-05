@@ -210,8 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				2F644B621D851A22009CF261 /* AppDelegate.swift */,
-				2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */,
-				2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */,
 				2F644B641D851A22009CF261 /* ViewController.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
@@ -221,8 +219,9 @@
 				2F644B691D851A22009CF261 /* Assets.xcassets */,
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
 				2F644B6E1D851A22009CF261 /* Info.plist */,
+				2F6A1BDC1DCDF6BE00F083FD /* System */,
 				2F5831BD1DBE35C900BAAA15 /* Common */,
-				2FB6DE491D98DEDF004A513F /* Components */,
+				2FB6DE491D98DEDF004A513F /* MemoCell */,
 			);
 			path = mbUsingTest;
 			sourceTree = "<group>";
@@ -245,13 +244,22 @@
 			path = mbUsingTestUITests;
 			sourceTree = "<group>";
 		};
-		2FB6DE491D98DEDF004A513F /* Components */ = {
+		2F6A1BDC1DCDF6BE00F083FD /* System */ = {
+			isa = PBXGroup;
+			children = (
+				2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */,
+				2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+		2FB6DE491D98DEDF004A513F /* MemoCell */ = {
 			isa = PBXGroup;
 			children = (
 				2F2AF1A81DB0F15D00464B5E /* MemoCell.swift */,
 				2F2AF1A91DB0F15D00464B5E /* MemoCell.xib */,
 			);
-			name = Components;
+			name = MemoCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
