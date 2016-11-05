@@ -450,7 +450,7 @@
             </objects>
             <point key="canvasLocation" x="140" y="750"/>
         </scene>
-        <!--Shop Menus View Controller-->
+        <!--その他のメニュー-->
         <scene sceneID="xTh-ce-lk8">
             <objects>
                 <viewController storyboardIdentifier="bbbb" id="qkU-bo-USg" customClass="ShopMenusViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -475,8 +475,10 @@
                             <constraint firstItem="o7n-vv-vGG" firstAttribute="top" secondItem="n5X-Df-x8o" secondAttribute="top" id="fZD-dc-ld8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="その他のメニュー" id="Htm-Ph-ao3"/>
                     <connections>
                         <outlet property="menuList" destination="o7n-vv-vGG" id="GMH-q9-hUd"/>
+                        <outlet property="navigationTitle" destination="Htm-Ph-ao3" id="0Yz-xv-wvB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNX-GH-bAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -727,9 +729,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBb-0g-va6">
-                                                    <rect key="frame" x="8" y="185.5" width="202" height="19.5"/>
+                                                    <rect key="frame" x="8" y="187" width="202" height="18"/>
                                                     <color key="backgroundColor" red="0.97752372382198949" green="0.97752372382198949" blue="0.97752372382198949" alpha="0.39899157801418439" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -768,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnJ-Qf-wyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-241"/>
+            <point key="canvasLocation" x="140" y="-241.52923538230885"/>
         </scene>
     </scenes>
     <resources>

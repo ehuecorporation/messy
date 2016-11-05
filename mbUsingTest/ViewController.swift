@@ -272,8 +272,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //セルの画像を取得
     func getCellImage(_ index: Int){
         
-        if index < mbs.shopMenu.count {
-            let filename: String = mbs.shopMenu[index].filename
+        if index < mbs.memos.count {
+            let filename: String = mbs.memos[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             
             fileData.getDataInBackground {
@@ -282,7 +282,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if error != nil {
                     print("写真の取得失敗: \(error)")
                 } else {
-                    self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
+                    self.mbs.memos[index].menuImage = UIImage(data: imageData!)
                 }
             }
         }

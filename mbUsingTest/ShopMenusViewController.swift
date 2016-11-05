@@ -13,6 +13,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var menuList: UITableView!
     
+    @IBOutlet weak var navigationTitle: UINavigationItem!
+    
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     
@@ -108,6 +110,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //お気に入りを読み込み
         Favorite.load()
+        
+        navigationTitle.title = "提供メニュー"
         
         //テーブルビューのデリゲート
         self.menuList.delegate = self

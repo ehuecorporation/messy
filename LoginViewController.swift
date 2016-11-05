@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     // 該当ユーザーがいる場合会員認証
                     
                     //端末情報の更新
-                    self.userData.set(targetName, forKey: "userName")
+                    self.userData.set(user?.userName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
                     if let userMail = user!.mailAddress {
                         self.userData.set(userMail, forKey: "userMail")
@@ -130,13 +130,17 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 
             } else if (user != nil){
                 
-                if !self.userData.bool(forKey: "userID") {
-                    self.userData.register(defaults: ["userID" : String()])
-                    self.userData.set(user?.objectId, forKey: "userID")
-                                        self.userData.synchronize()
+                self.userData.set(user?.userName, forKey: "userName")
+                if let userMail = user!.mailAddress {
+                    self.userData.set(userMail, forKey: "userMail")
+                }
+                if let userID = user!.objectId {
+                    self.userData.set(userID, forKey: "userID")
                 }
                 
                 self.userData.register(defaults: ["useCount" : Bool()])
+                self.userData.synchronize()
+                
                 
                 // 初めての使用なら更新画面へ
                 if !self.userData.bool(forKey: "useCount"){
