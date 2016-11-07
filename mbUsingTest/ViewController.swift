@@ -7,11 +7,10 @@
 //
 
 import UIKit
+import  CoreLocation
 import  NCMB
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
-    
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
     @IBOutlet weak var memoTableView: UITableView!
     
@@ -61,9 +60,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")
     
-    
     //ユーザー情報
     var userData = UserDefaults.standard
+    
+    var myLocationManager: CLLocationManager!
+    // 取得した緯度を保持するインスタンス
+    var latitude: Double = Double()
+    // 取得した経度を保持するインスタンス
+    var longitude: Double = Double()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,21 +86,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if let userInfo = (notification as NSNotification).userInfo as? [String: String?]{
                         
                         if userInfo["error"] != nil{
-                            
-                            let alertView = UIAlertController(
-                                title: "通信エラー",
-                                message: "通信エラーが発生しました",
-                                preferredStyle: .alert
-                            )
-                            
-                            alertView.addAction(
-                                UIAlertAction(title: "OK", style: .default){
-                                    action in return
-                                }
-                            )
-                            
-                            self.present(alertView, animated: true, completion: nil)
-                            
+                            self.presentError("エラー", "通信エラーが発生しました")
                         } // error end
                         
                     } // userInfo ned
@@ -110,18 +100,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if mbs.memos.count == 0 {
             //通常の検索
-            mbs.geoSearch()
+            
         }
         
         //リストの更新があった場合
         if updateFlag {
-            mbs.reLoadData()
+            myLocationManager.startUpdatingLocation()
         }
 
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+        // Delegateの設定.
+        myLocationManager.delegate = self
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+        
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+            
+            print("not determined")
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
         
         //お気に入りを読み込み
         Favorite.load()
@@ -169,7 +182,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         ) // uisng block end
         // 通常のリフレッシュ
-            mbs.reLoadData()
+        
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+        
     } // onRefresh end
 
     
@@ -289,7 +305,69 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     } // getCellImage end
     
+    // GPSから値を取得した際に呼び出されるメソッド.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print("didUpdateLocations")
+        
+        // 配列から現在座標を取得.
+        let myLocations: NSArray = locations as NSArray
+        let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
+        let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
+        
+        print("\(myLocation.latitude), \(myLocation.longitude)")
+        
+        latitude = myLocation.latitude as Double
+        longitude = myLocation.longitude as Double
+        
+        myLocationManager.stopUpdatingLocation()
+        
+        mbs.geoSearch(latitude , longitude)
+    }
     
+    // 位置情報取得に失敗した時に呼び出されるデリゲート.
+    func locationManager(_ manager: CLLocationManager,didFailWithError error: Error){
+        print("locationManager error")
+        
+        //エラーアラートを表示してOKで戻る
+        presentError("エラー", "位置情報の利用を許可してください")
+        
+        return
+    }
+    
+    // 認証が変更された時に呼び出されるメソッド.
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .authorizedWhenInUse:
+            print("AuthorizedWhenInUse")
+        case .authorized:
+            print("Authorized")
+        case .denied:
+            print("Denied")
+        case .restricted:
+            print("Restricted")
+        case .notDetermined:
+            print("NotDetermined")
+        }
+    }
+    
+    // エラーメッセージを出す関数を定義
+    func presentError (_ title: String, _ message: String) {
+        let errorAlert = UIAlertController(
+            title: "\(title)",
+            message: "\(message)",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        self.present(errorAlert, animated: true, completion: nil)
+        
+    }
     
    //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

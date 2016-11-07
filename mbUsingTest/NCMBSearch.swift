@@ -417,13 +417,15 @@ public class NCMBSearch {
         
     } // getFavList end
     
-    func geoSearch() {
+    func geoSearch(_ latitude: Double , _ longtitude: Double) {
         
         let query: NCMBQuery = NCMBQuery(className: "MemoClass")
         let geoPoint: NCMBGeoPoint = NCMBGeoPoint()
-        geoPoint.latitude = 35.688666
-        geoPoint.longitude = 139.70265
+        geoPoint.latitude = latitude
+        geoPoint.longitude = longtitude
         query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.5)
+        
+         var tmpArray = [memo]()
         
         query.findObjectsInBackground({(objects,  error) in
             
@@ -449,9 +451,13 @@ public class NCMBSearch {
                                 continue
                             }
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
-                            self.memos.append(tmp)
+                            tmpArray.append(tmp)
                         }
-                                                
+                        
+                        if tmpArray.count != self.memos.count {
+                            self.memos = tmpArray
+                        }
+                        
                         //API終了通知
                         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
                         

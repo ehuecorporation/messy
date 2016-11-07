@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate  {
+class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -48,18 +48,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                 if (notification as NSNotification).userInfo != nil {
                     if let userInfo = (notification as NSNotification).userInfo as? [String: String?]{
                         if userInfo["error"] != nil{
-                            
-                            let alertView = UIAlertController(
-                                title: "通信エラー",
-                                message: "通信エラーが発生しました",
-                                preferredStyle: .alert
-                            )
-                            alertView.addAction(
-                                UIAlertAction(title: "OK", style: .default){
-                                    action in return
-                                }
-                            )
-                            self.present(alertView, animated: true, completion: nil)
+                            self.presentError("通信エラー", "通信エラーが発生しました")
                         } // error end
                     } // userInfo ned
                 }
@@ -171,16 +160,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         print("locationManager error")
         
         //エラーアラートを表示してOKで戻る
-        let errorAlert = UIAlertController(title: "エラー", message:"位置情報が取得できませんでした。", preferredStyle: UIAlertControllerStyle.alert)
-        
-        errorAlert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: UIAlertActionStyle.default,
-                handler: nil
-            )
-        )
-        present(errorAlert, animated: true, completion: nil)
+        presentError("エラー", "位置情報の利用を許可してください")
         
         return
     }
@@ -238,17 +218,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             // NSErrorを受け取ったか、ルートがない場合.
             if error != nil || response!.routes.isEmpty {
                 //エラーアラートを表示してOKで戻る
-                let errorAlert = UIAlertController(title: "エラー", message:"経路が取得できませんでした。", preferredStyle: UIAlertControllerStyle.alert)
-                
-                errorAlert.addAction(
-                    UIAlertAction(
-                        title: "OK",
-                        style: UIAlertActionStyle.default,
-                        handler: nil
-                    )
-                )
-                self.present(errorAlert, animated: true, completion: nil)
-                
+                self.presentError("エラー", "経路が取得できませんでした")
                 return
             }
             
@@ -318,6 +288,25 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             print("NotDetermined")
         }
     }
+    
+    // エラーメッセージを出す関数を定義
+    func presentError (_ title: String, _ message: String) {
+        let errorAlert = UIAlertController(
+            title: "\(title)",
+            message: "\(message)",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        self.present(errorAlert, animated: true, completion: nil)
+        
+    }
+
     
     // MARK: - Navigation
 
