@@ -417,5 +417,59 @@ public class NCMBSearch {
         
     } // getFavList end
     
+    func geoSearch() {
+        
+        let query: NCMBQuery = NCMBQuery(className: "MemoClass")
+        let geoPoint: NCMBGeoPoint = NCMBGeoPoint()
+        geoPoint.latitude = 35.688666
+        geoPoint.longitude = 139.70265
+        query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.5)
+        
+        query.findObjectsInBackground({(objects,  error) in
+            
+            
+            if error == nil {
+                if let response = objects {
+                    if (response.count) > 0 {
+                        
+                        for i in 0 ..< response.count {
+                            let targetMemoData: AnyObject = response[i] as AnyObject
+                            var tmp : memo = memo()
+                            tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+                            // shopNameがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopName") == nil {
+                                continue
+                            }
+                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
+                            tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            // shopNumberがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopNumber") == nil {
+                                continue
+                            }
+                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
+                            self.memos.append(tmp)
+                        }
+                                                
+                        //API終了通知
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
+                        
+                    } // response.count end
+                } // opt bind objects
+            } else {
+                var message = "Unknown error."
+                if let description = error?.localizedDescription {
+                    message = description
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                print(message)
+                return
+            } // errors end
+            
+        }) // findObjects end
+        
+    }// geoSearch End
+    
     
 }

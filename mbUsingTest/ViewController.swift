@@ -110,7 +110,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if mbs.memos.count == 0 {
             //通常の検索
-            mbs.loadMemoData(true)
+            mbs.geoSearch()
         }
         
         //リストの更新があった場合
