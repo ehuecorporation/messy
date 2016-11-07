@@ -90,6 +90,8 @@ public class NCMBSearch {
             total = 0
         }
         
+        var tmpArray = [memo]()
+        
         //読込中であることを反映する
         loading_flag = true
         
@@ -125,10 +127,14 @@ public class NCMBSearch {
                                 continue
                             }
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
-                            self.memos.append(tmp)
+                            tmpArray.append(tmp)
                         }
                         
-                        self.total = (response.count)
+                        if tmpArray.count != self.memos.count {
+                            self.memos = tmpArray
+                        }
+                        
+                        self.total = (self.memos.count)
                         
                         //読込終了を反映
                         self.loading_flag = false
@@ -169,80 +175,6 @@ public class NCMBSearch {
         }
 
     } // getImage end
-    
-    // 一覧画面を更新
-    func reLoadData() {
-        
-        var loadingMemos = [memo]()
-        
-        //読込中なら何もしない
-        if loading_flag {
-            return
-        }
-        
-        //読込中であることを反映する
-        loading_flag = true
-        
-        //API実行開始を通知
-        NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBLoadStartNotification), object: nil)
-        
-        //API実行
-        let query: NCMBQuery = NCMBQuery(className: "MemoClass")
-        //作成日順にする
-        query.order(byDescending: "createDate")
-        
-        query.findObjectsInBackground({(objects,  error) in
-            
-            if error == nil {
-                if let response = objects {
-                    if (response.count) > 0 {
-                        
-                        for i in 0 ..< response.count {
-                            let targetMemoData: AnyObject = response[i] as AnyObject
-                            var tmp : memo = memo()
-                            tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
-                            // shopNameがなければ飛ばす
-                            if targetMemoData.object(forKey: "shopName") == nil {
-                                continue
-                            }
-                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
-                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
-                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
-                            tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
-                            // shopNumberがなければ飛ばす
-                            if targetMemoData.object(forKey: "shopNumber") == nil {
-                                continue
-                            }
-                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
-                            loadingMemos.append(tmp)
-                        }
-                        
-                        if response.count != self.total {
-                            self.total = (response.count)
-                            self.memos.removeAll()
-                            self.memos = loadingMemos
-                        }
-                        
-                        //読込終了を反映
-                        self.loading_flag = false
-                        
-                        //API終了通知
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
-
-                    } // response.count end
-                } // opt bind objects
-            } else {
-                var message = "Unknown error."
-                if let description = error?.localizedDescription {
-                    message = description
-                }
-                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
-                return
-            } // errors end
-            
-        }) // findObjects end
-        
-    } // reloadData end
     
     // 店舗の詳細ページを表示する時に使用
     func getShopData (_ shopNumber: Int) {

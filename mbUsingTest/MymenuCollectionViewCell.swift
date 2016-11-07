@@ -106,7 +106,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         }) // uisng block end
         
         // 通常のリフレッシュ
-        mbs.reLoadData()
+        mbs.getFavList(Favorite.favorites)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
