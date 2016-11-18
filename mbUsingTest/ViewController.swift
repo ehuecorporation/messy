@@ -92,7 +92,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     } // userInfo ned
                     
                 } else {
+                    self.myLocationManager.startUpdatingLocation()
                     self.memoTableView.reloadData()
+
                 }// notification error end
                 
             } // using end
