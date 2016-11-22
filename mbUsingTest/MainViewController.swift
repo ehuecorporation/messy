@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import  CoreLocation
-import  NCMB
+import CoreLocation
+import NCMB
+import SlideMenuControllerSwift
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
+class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
     @IBOutlet weak var memoTableView: UITableView!
     
@@ -86,7 +87,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if let userInfo = (notification as NSNotification).userInfo as? [String: String?]{
                         
                         if userInfo["error"] != nil{
-                            self.presentError("エラー", "通信エラーが発生しました")
+                            self.presentError("エラー", userInfo["error"]!!)
                         } // error end
                         
                     } // userInfo ned
@@ -158,7 +159,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(ViewController.onRefresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
         self.memoTableView.addSubview(refreshControl)
 
         
@@ -330,6 +331,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 位置情報取得に失敗した時に呼び出されるデリゲート.
     func locationManager(_ manager: CLLocationManager,didFailWithError error: Error){
         print("locationManager error")
+        
+        myLocationManager.stopUpdatingLocation()
         
         //エラーアラートを表示してOKで戻る
         presentError("エラー", "位置情報の利用を許可してください")

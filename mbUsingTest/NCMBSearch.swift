@@ -389,12 +389,15 @@ public class NCMBSearch {
                         if tmpArray.count != self.memos.count {
                             self.memos = tmpArray
                         }
-                        
                         //API終了通知
                         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
                         
                     } // response.count end
-                } // opt bind objects
+                    
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": "近くに掲載店舗がないようです。"])
+                } else {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": "通信エラーが発生しました。"])
+                }// opt bind objects
             } else {
                 var message = "Unknown error."
                 if let description = error?.localizedDescription {

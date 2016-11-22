@@ -23,8 +23,9 @@
 		2F3431711D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431721D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5831BB1DBDF43300BAAA15 /* Favorite.swift */; };
+		2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */; };
 		2F644B631D851A22009CF261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B621D851A22009CF261 /* AppDelegate.swift */; };
-		2F644B651D851A22009CF261 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B641D851A22009CF261 /* ViewController.swift */; };
+		2F644B651D851A22009CF261 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B641D851A22009CF261 /* MainViewController.swift */; };
 		2F644B681D851A22009CF261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F644B661D851A22009CF261 /* Main.storyboard */; };
 		2F644B6A1D851A22009CF261 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F644B691D851A22009CF261 /* Assets.xcassets */; };
 		2F644B6D1D851A22009CF261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */; };
@@ -78,9 +79,10 @@
 		2F3431651D9D4425001E6C68 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		2F3431661D9D4425001E6C68 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		2F5831BB1DBDF43300BAAA15 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		2F644B5F1D851A22009CF261 /* mbUsingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mbUsingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F644B621D851A22009CF261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2F644B641D851A22009CF261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2F644B641D851A22009CF261 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2F644B671D851A22009CF261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F644B691D851A22009CF261 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F644B6C1D851A22009CF261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -210,11 +212,12 @@
 			isa = PBXGroup;
 			children = (
 				2F644B621D851A22009CF261 /* AppDelegate.swift */,
-				2F644B641D851A22009CF261 /* ViewController.swift */,
+				2F644B641D851A22009CF261 /* MainViewController.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
 				599344D51DBA37B300D2572C /* MymenuCollectionViewCell.swift */,
 				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
+				2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
 				2F644B691D851A22009CF261 /* Assets.xcassets */,
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
@@ -548,9 +551,10 @@
 			files = (
 				599344D61DBA37B300D2572C /* MymenuCollectionViewCell.swift in Sources */,
 				2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */,
+				2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */,
 				2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */,
 				2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */,
-				2F644B651D851A22009CF261 /* ViewController.swift in Sources */,
+				2F644B651D851A22009CF261 /* MainViewController.swift in Sources */,
 				59CE38081DCC781700FC35E0 /* ShopMenusViewController.swift in Sources */,
 				2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */,
 				2FA17CAF1D9917BD00CF30E1 /* AddController.swift in Sources */,

@@ -11,9 +11,11 @@ PODS:
     - FBSDKCoreKit
   - NCMB (2.3.3):
     - FBSDKLoginKit
+  - SlideMenuControllerSwift (3.0.0)
 
 DEPENDENCIES:
   - NCMB (from `https://github.com/ehuecorporation/ncmb_ios.git`)
+  - SlideMenuControllerSwift
 
 EXTERNAL SOURCES:
   NCMB:
@@ -29,7 +31,8 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   NCMB: 98e2fe41fc810f9bfb2ff13694a363a516ad7dfa
+  SlideMenuControllerSwift: 9c0a84f9a3fba51681debd7be77617094562ebcc
 
-PODFILE CHECKSUM: d6e40e422ebce41a978337fa198cf3cfcbef9914
+PODFILE CHECKSUM: 9aa3c7d977532affe8e2c60bb4d6b0c36debe3dd
 
 COCOAPODS: 1.0.1

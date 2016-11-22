@@ -367,9 +367,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //コメント表示画面へ行く前に詳細データを渡す
             
-            let ViewController = segue.destination as! ViewController
+            let MainViewController = segue.destination as! MainViewController
             
-            ViewController.updateFlag = self.updateFlag
+            MainViewController.updateFlag = self.updateFlag
         
 
     }

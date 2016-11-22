@@ -130,7 +130,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(ViewController.onRefresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
         self.menuList.addSubview(refreshControl)
         
         

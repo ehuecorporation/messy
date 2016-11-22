@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import  NCMB
-import  FBSDKLoginKit
-import  FBSDKCoreKit
+import NCMB
+import FBSDKLoginKit
+import FBSDKCoreKit
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //twitterのAPIキー
         NCMBTwitterUtils.initialize(withConsumerKey: "UVGEnYxLfLudJlCEVwcMDHo2C", consumerSecret: "Ot5yjc9N7jTxYLCa52nV8eRYYVvcByXCsqMZMj0Rb7NVYeyyir")
+        
+        let MainViewController: MainViewController
+        let LeftMenuController: LeftMenuViewController
+        
+        
+        let slideMenuController = SlideMenuController(mainViewController: MainViewController, leftMenuViewController: LeftMenuViewController, rightMenuViewController: LeftMenuViewController)
+        self.window?.makeKeyAndVisible()
         
         //ナビゲーションアイテムの色を変更
         UINavigationBar.appearance().tintColor = UIColor.black

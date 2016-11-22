@@ -143,7 +143,7 @@
         <!--一覧-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="aaaa" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="aaaa" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SlideMenuController" customModule="SlideMenuControllerSwift" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -351,6 +351,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2494" y="145"/>
+        </scene>
+        <!--Slide Menu Controller-->
+        <scene sceneID="xDQ-KW-8zf">
+            <objects>
+                <viewController id="u9g-0B-LEs" customClass="SlideMenuController" customModule="SlideMenuControllerSwift" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VZk-AN-h1o"/>
+                        <viewControllerLayoutGuide type="bottom" id="eAa-rL-GOb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qTJ-r1-dvO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iFw-FZ-IxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2495" y="892"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pIx-rd-VrJ">
@@ -785,6 +803,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NhY-aW-b9m"/>
-        <segue reference="vNz-yZ-lot"/>
+        <segue reference="e5v-Lu-OAG"/>
     </inferredMetricsTieBreakers>
 </document>
