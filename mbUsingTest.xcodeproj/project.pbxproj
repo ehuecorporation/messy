@@ -24,6 +24,7 @@
 		2F3431721D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5831BB1DBDF43300BAAA15 /* Favorite.swift */; };
 		2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */; };
+		2F63C8DE1DE408F5007EB8D5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63C8DD1DE408F5007EB8D5 /* ContainerViewController.swift */; };
 		2F644B631D851A22009CF261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B621D851A22009CF261 /* AppDelegate.swift */; };
 		2F644B651D851A22009CF261 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B641D851A22009CF261 /* MainViewController.swift */; };
 		2F644B681D851A22009CF261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F644B661D851A22009CF261 /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		2F3431661D9D4425001E6C68 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		2F5831BB1DBDF43300BAAA15 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		2F63C8DD1DE408F5007EB8D5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		2F644B5F1D851A22009CF261 /* mbUsingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mbUsingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F644B621D851A22009CF261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F644B641D851A22009CF261 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,16 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		2F63C8E11DE58194007EB8D5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2F63C8DD1DE408F5007EB8D5 /* ContainerViewController.swift */,
+				2F644B641D851A22009CF261 /* MainViewController.swift */,
+				2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		2F644B561D851A22009CF261 = {
 			isa = PBXGroup;
 			children = (
@@ -212,19 +224,18 @@
 			isa = PBXGroup;
 			children = (
 				2F644B621D851A22009CF261 /* AppDelegate.swift */,
-				2F644B641D851A22009CF261 /* MainViewController.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
 				599344D51DBA37B300D2572C /* MymenuCollectionViewCell.swift */,
 				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
-				2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
-				2F644B691D851A22009CF261 /* Assets.xcassets */,
-				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
-				2F644B6E1D851A22009CF261 /* Info.plist */,
+				2F63C8E11DE58194007EB8D5 /* Main */,
 				2F6A1BDC1DCDF6BE00F083FD /* System */,
 				2F5831BD1DBE35C900BAAA15 /* Common */,
 				2FB6DE491D98DEDF004A513F /* MemoCell */,
+				2F644B691D851A22009CF261 /* Assets.xcassets */,
+				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
+				2F644B6E1D851A22009CF261 /* Info.plist */,
 			);
 			path = mbUsingTest;
 			sourceTree = "<group>";
@@ -337,7 +348,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "蕭　喬仁";
 				TargetAttributes = {
 					2F644B5E1D851A22009CF261 = {
@@ -551,6 +562,7 @@
 			files = (
 				599344D61DBA37B300D2572C /* MymenuCollectionViewCell.swift in Sources */,
 				2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */,
+				2F63C8DE1DE408F5007EB8D5 /* ContainerViewController.swift in Sources */,
 				2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */,
 				2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */,
 				2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */,
@@ -720,6 +732,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45F8956D34F8F924A700AA08 /* Pods-mbUsingTest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -746,6 +759,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 855CD7EF6AA6D6D3ABC06F3A /* Pods-mbUsingTest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

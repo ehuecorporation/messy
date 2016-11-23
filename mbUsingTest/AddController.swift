@@ -8,8 +8,9 @@
 
 import UIKit
 import NCMB
+import SlideMenuControllerSwift
 
-class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class AddController: SlideMenuController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBAction func hideKeybord(_ sender: UITapGestureRecognizer) {
             self.view.endEditing(true)
@@ -40,7 +41,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     //編集対象メモのfilename
     var targetFileName: String = ""
     
-    //ViewController.swiftから渡されたデータ
+    //MainViewController.swiftから渡されたデータ
     var targetData: memo = memo()
     
     @IBOutlet weak var shopName: UITextField!
@@ -50,7 +51,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
 
     @IBAction func backButton(_ sender: UIBarButtonItem) {
-                dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "backMemos", sender: nil)
     }
 
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
@@ -366,11 +367,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //コメント表示画面へ行く前に詳細データを渡す
-            
-            let MainViewController = segue.destination as! MainViewController
-            
-            MainViewController.updateFlag = self.updateFlag
-        
 
     }
     

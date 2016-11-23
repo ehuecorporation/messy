@@ -93,6 +93,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                 } else {
                     self.menuList.reloadData()
+                    self.mbs.getShopMenu(self.targetShopData.shopNumber)
                 }// notification error end
                 
             } // using end

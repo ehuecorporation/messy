@@ -161,6 +161,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         //エラーアラートを表示してOKで戻る
         presentError("エラー", "位置情報の利用を許可してください")
+        locationManager.stopUpdatingLocation()
         
         return
     }
@@ -169,6 +170,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("didUpdateLocations")
+        locationManager.stopUpdatingLocation()
         
         self.mapView.removeAnnotations(mapView.annotations)
         self.mapView.removeOverlays(self.mapView.overlays)
@@ -179,6 +181,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
         
         print("現在地は\(myLocation.latitude), \(myLocation.longitude)")
+        
         
         // 縮尺.
         let myLatDist : CLLocationDistance = 600

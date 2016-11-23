@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  mbUsingTest
 //
 //  Created by 蕭　喬仁 on 2016/09/11.
@@ -14,7 +14,7 @@ import SlideMenuControllerSwift
 class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
     @IBOutlet weak var memoTableView: UITableView!
-    
+
     //新規追加時
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
@@ -22,7 +22,8 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func goFavo(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goFavoList", sender: nil)
+        self.slideMenuController()!.openLeft()
+        print("スライドメニューを実施")
         
     }
     //NCMBAPIの利用
@@ -53,9 +54,6 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
     
     //会員情報管理
     let userInfo = NCMBUser.current()!
-    
-    //更新受信フラグ
-    var updateFlag: Bool = false
     
     // 画像
     let star_on = UIImage(named: "myMenu_on")
@@ -101,18 +99,8 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
             } // using end
         ) // loadDataObserver end
         
-        if mbs.memos.count == 0 {
-            //通常の検索
-            
-        }
-        
-        //リストの更新があった場合
-        if updateFlag {
-            myLocationManager.startUpdatingLocation()
-        }
-
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,8 +125,10 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
         }
         
         // 位置情報の更新を開始.
-        myLocationManager.startUpdatingLocation()
-        
+        if mbs.memos.count == 0 {
+            myLocationManager.startUpdatingLocation()
+        }
+
         //お気に入りを読み込み
         Favorite.load()
         
@@ -312,6 +302,7 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("didUpdateLocations")
+        myLocationManager.stopUpdatingLocation()
         
         // 配列から現在座標を取得.
         let myLocations: NSArray = locations as NSArray
@@ -323,15 +314,12 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
         
-        myLocationManager.stopUpdatingLocation()
-        
         mbs.geoSearch(latitude , longitude)
     }
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.
     func locationManager(_ manager: CLLocationManager,didFailWithError error: Error){
         print("locationManager error")
-        
         myLocationManager.stopUpdatingLocation()
         
         //エラーアラートを表示してOKで戻る

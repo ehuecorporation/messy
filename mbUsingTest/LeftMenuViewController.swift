@@ -10,13 +10,17 @@ import UIKit
 import SlideMenuControllerSwift
 
 class LeftMenuViewController: SlideMenuController {
-
+    
+    @IBAction func goFavorite(_ sender: UIButton) {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,4 +37,37 @@ class LeftMenuViewController: SlideMenuController {
     }
     */
 
+}
+
+extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable
+    var borderWidth: CGFloat {
+        get {
+            return self.layer.borderWidth
+        }
+        set {
+            self.layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable
+    var borderColor: UIColor? {
+        get {
+            return UIColor(cgColor: self.layer.borderColor!)
+        }
+        set {
+            self.layer.borderColor = newValue?.cgColor
+        }
+    }
+    
 }

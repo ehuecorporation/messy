@@ -27,11 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //twitterのAPIキー
         NCMBTwitterUtils.initialize(withConsumerKey: "UVGEnYxLfLudJlCEVwcMDHo2C", consumerSecret: "Ot5yjc9N7jTxYLCa52nV8eRYYVvcByXCsqMZMj0Rb7NVYeyyir")
         
-        let MainViewController: MainViewController
-        let LeftMenuController: LeftMenuViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        let MainController = storyboard.instantiateViewController(withIdentifier: "Main")
+        let LeftMenuController = storyboard.instantiateViewController(withIdentifier: "Left")
         
-        let slideMenuController = SlideMenuController(mainViewController: MainViewController, leftMenuViewController: LeftMenuViewController, rightMenuViewController: LeftMenuViewController)
+        let slideMenuController = SlideMenuController(mainViewController: MainController, leftMenuViewController: LeftMenuController, rightMenuViewController: LeftMenuController)
         self.window?.makeKeyAndVisible()
         
         //ナビゲーションアイテムの色を変更

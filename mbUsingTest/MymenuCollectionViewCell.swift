@@ -69,7 +69,11 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         ) // loadDataObserver end
         
         Favorite.load()
-        mbs.getFavList(Favorite.favorites)
+        if Favorite.favorites.count == 0 {
+            presentError("お気に入りがありません", "お気に入りメニューを\n登録しましょう！")
+        } else {
+            mbs.getFavList(Favorite.favorites)
+        }
         
     }
     
@@ -188,6 +192,24 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // 要素数を入れる、要素以上の数字を入れると表示でエラーとなる
 
         return Favorite.favorites.count;
+    }
+    
+    // エラーメッセージを出す関数を定義
+    func presentError (_ title: String, _ message: String) {
+        let errorAlert = UIAlertController(
+            title: "\(title)",
+            message: "\(message)",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        self.present(errorAlert, animated: true, completion: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
