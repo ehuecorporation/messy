@@ -8,10 +8,13 @@
 
 import UIKit
 import NCMB
+import SWRevealViewController
 
 class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var menuList: UICollectionView!
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var userData = UserDefaults.standard
     var targetNum = 0
@@ -79,6 +82,14 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //ドロワーメニュー
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         
         // pull to refreshの実装
         let refreshControl = UIRefreshControl()

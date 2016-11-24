@@ -7,18 +7,23 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
 
-class LeftMenuViewController: SlideMenuController {
+class LeftMenuViewController: UIViewController {
+    
+    @IBOutlet weak var accountName: UILabel!
     
     @IBAction func goFavorite(_ sender: UIButton) {
-        
+
     }
     
+    var userData = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let name = userData.object(forKey: "userName") {
+            accountName.text = name as? String
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import  NCMB
+import NCMB
+import  SWRevealViewController
 
 
 class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate {
@@ -18,6 +19,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     let user = NCMBUser.current()
     var loading_flag = false
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
     
@@ -124,7 +126,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     }
     
     func saveComplete(_ ac: UIAlertAction) -> Void {
-        performSegue(withIdentifier: "PushMemoList", sender: nil)
+        performSegue(withIdentifier: "pushMain", sender: nil)
     }
 
     override func viewDidLoad() {
@@ -140,7 +142,6 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             mailAdress.text = mail as? String
         }
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

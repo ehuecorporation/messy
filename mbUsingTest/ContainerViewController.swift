@@ -7,23 +7,12 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
 
-class ContainerViewController: SlideMenuController, UITableViewDataSource, UITableViewDelegate {
+class ContainerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
-    @IBAction func openLeft(_ sender: UIBarButtonItem) {
-        if isOpenLeft {
-            self.slideMenuController()!.closeLeft()
-            isOpenLeft = false
-        } else {
-            self.slideMenuController()!.openLeft()
-            isOpenLeft = true
-        }
-
-    }
     
     @IBAction func goAdd(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goFav", sender: nil)
+        performSegue(withIdentifier: "goAdd", sender: nil)
     }
     
     var isOpenLeft = false
@@ -53,15 +42,6 @@ class ContainerViewController: SlideMenuController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    override func awakeFromNib() {
-        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Main") {
-            self.mainViewController = controller
-        }
-        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Left") {
-            self.leftViewController = controller
-        }
-        super.awakeFromNib()
-    }
 
     /*
     // MARK: - Navigation

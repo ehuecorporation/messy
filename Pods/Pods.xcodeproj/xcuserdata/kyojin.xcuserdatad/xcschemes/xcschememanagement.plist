@@ -4,21 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Bolts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FBSDKCoreKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FBSDKLoginKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>NCMB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,7 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SlideMenuControllerSwift.xcscheme</key>
+		<key>SWRevealViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2E303C3CE7513908EE880D9CA833AFAE</key>
+		<key>39A235B22EC818BC47F8BACCAEA35FB9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,17 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7CB01DA608F2A95E876B9F60277C69B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
+		<key>4D90B0334EDF9E582039CCE683A68044</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBA85BB3D6275481877A94F3179C88A2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F935521F59A5A4760B9DA7EA3BC18D30</key>
+		<key>ADD68827273E35267923696DECDE8047</key>
 		<dict>
 			<key>primary</key>
 			<true/>

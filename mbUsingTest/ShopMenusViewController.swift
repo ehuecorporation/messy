@@ -102,6 +102,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         if mbs.shopMenu.count == 0 {
             //通常の検索
             mbs.getShopMenu(targetShopData.shopNumber)
+        } else {
+            self.menuList.reloadData()
         }
         
     }
@@ -229,7 +231,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         //3セル先まで画像を事前に取得
-        getCellImage((indexPath as NSIndexPath).row + 1)
         getCellImage((indexPath as NSIndexPath).row + 2)
         getCellImage((indexPath as NSIndexPath).row + 3)
         

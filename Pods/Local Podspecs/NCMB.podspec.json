@@ -21,10 +21,5 @@
     "AudioToolbox",
     "SystemConfiguration"
   ],
-  "requires_arc": true,
-  "dependencies": {
-    "FBSDKLoginKit": [
-
-    ]
-  }
+  "requires_arc": true
 }

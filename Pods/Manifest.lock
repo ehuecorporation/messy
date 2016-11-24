@@ -1,21 +1,10 @@
 PODS:
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
-  - FBSDKCoreKit (4.16.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.16.1):
-    - FBSDKCoreKit
-  - NCMB (2.3.3):
-    - FBSDKLoginKit
-  - SlideMenuControllerSwift (3.0.0)
+  - NCMB (2.3.3)
+  - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
   - NCMB (from `https://github.com/ehuecorporation/ncmb_ios.git`)
-  - SlideMenuControllerSwift
+  - SWRevealViewController
 
 EXTERNAL SOURCES:
   NCMB:
@@ -23,16 +12,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   NCMB:
-    :commit: ea2f37a6a20fa72331a05cc1f515f6804029c8c0
+    :commit: 668a55df8671b381852d58e921da27af69dfec0f
     :git: https://github.com/ehuecorporation/ncmb_ios.git
 
 SPEC CHECKSUMS:
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
-  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
-  NCMB: 98e2fe41fc810f9bfb2ff13694a363a516ad7dfa
-  SlideMenuControllerSwift: 9c0a84f9a3fba51681debd7be77617094562ebcc
+  NCMB: 33829337aeb2e91a0fc1c771eeb77b642f7f6589
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: 9aa3c7d977532affe8e2c60bb4d6b0c36debe3dd
+PODFILE CHECKSUM: 1a3830b6102c4bf3bec58e88563aea054adc9c02
 
 COCOAPODS: 1.0.1

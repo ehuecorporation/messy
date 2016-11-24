@@ -9,11 +9,13 @@
 import UIKit
 import CoreLocation
 import NCMB
-import SlideMenuControllerSwift
+import SWRevealViewController
 
-class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
     @IBOutlet weak var memoTableView: UITableView!
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
 
     //新規追加時
     @IBAction func goPost(_ sender: UIBarButtonItem) {
@@ -21,11 +23,6 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
         performSegue(withIdentifier: "goAddMemo", sender: nil)
     }
     
-    @IBAction func goFavo(_ sender: UIBarButtonItem) {
-        self.slideMenuController()!.openLeft()
-        print("スライドメニューを実施")
-        
-    }
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     
@@ -33,6 +30,9 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
 
+    
+    // APIカウント
+    var apiCounter = 0
     
     //コメント編集フラグ
     var editFlag: Bool = false
@@ -127,6 +127,9 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
         // 位置情報の更新を開始.
         if mbs.memos.count == 0 {
             myLocationManager.startUpdatingLocation()
+            print("なう")
+        } else {
+            self.memoTableView.reloadData()
         }
 
         //お気に入りを読み込み
@@ -145,6 +148,15 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
         self.memoTableView.estimatedRowHeight = 450.0
     
         self.memoTableView.rowHeight = UITableViewAutomaticDimension
+        
+        //ドロワーメニュー
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        self.revealViewController().rearViewRevealWidth = 150
 
         
         // Pull to Refreshコントロール初期化
@@ -250,7 +262,6 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
         }
         
         //3個先まで画像を事前に取得
-        getCellImage((indexPath as NSIndexPath).row + 1)
         getCellImage((indexPath as NSIndexPath).row + 2)
         getCellImage((indexPath as NSIndexPath).row + 3)
         
@@ -294,6 +305,8 @@ class MainViewController: SlideMenuController, UITableViewDelegate, UITableViewD
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
                 }
             }
+            apiCounter += 1
+            print("API通信回数\(apiCounter)")
         }
         
     } // getCellImage end

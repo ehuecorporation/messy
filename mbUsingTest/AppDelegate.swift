@@ -8,9 +8,6 @@
 
 import UIKit
 import NCMB
-import FBSDKLoginKit
-import FBSDKCoreKit
-import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,14 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //twitterのAPIキー
         NCMBTwitterUtils.initialize(withConsumerKey: "UVGEnYxLfLudJlCEVwcMDHo2C", consumerSecret: "Ot5yjc9N7jTxYLCa52nV8eRYYVvcByXCsqMZMj0Rb7NVYeyyir")
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let MainController = storyboard.instantiateViewController(withIdentifier: "Main")
-        let LeftMenuController = storyboard.instantiateViewController(withIdentifier: "Left")
-        
-        let slideMenuController = SlideMenuController(mainViewController: MainController, leftMenuViewController: LeftMenuController, rightMenuViewController: LeftMenuController)
-        self.window?.makeKeyAndVisible()
         
         //ナビゲーションアイテムの色を変更
         UINavigationBar.appearance().tintColor = UIColor.black
@@ -61,18 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
     }
-    
-    private func application(application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
-    }
-    
 
 }
 

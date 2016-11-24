@@ -8,9 +8,8 @@
 
 import UIKit
 import NCMB
-import SlideMenuControllerSwift
 
-class AddController: SlideMenuController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBAction func hideKeybord(_ sender: UITapGestureRecognizer) {
             self.view.endEditing(true)
