@@ -15,7 +15,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             self.view.endEditing(true)
     }
     
-    
     //ユーザーデータ
     var userData = UserDefaults.standard
     
