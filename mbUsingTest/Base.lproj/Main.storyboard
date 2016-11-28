@@ -871,7 +871,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mymenuItem" id="gOF-ns-v9M">
-                                        <rect key="frame" x="79" y="0.0" width="218" height="223"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="218" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
@@ -938,10 +938,10 @@
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IWr-99-Qp8"/>
-        <segue reference="u3I-8D-p8B"/>
         <segue reference="ulA-g6-vGo"/>
-        <segue reference="ogz-ra-TJf"/>
-        <segue reference="vNz-yZ-lot"/>
+        <segue reference="151-mi-n0J"/>
+        <segue reference="u3I-8D-p8B"/>
+        <segue reference="IWr-99-Qp8"/>
+        <segue reference="e5v-Lu-OAG"/>
     </inferredMetricsTieBreakers>
 </document>
