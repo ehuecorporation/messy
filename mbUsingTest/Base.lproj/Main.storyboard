@@ -972,6 +972,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="wEm-Z0-vKL" id="xhj-mk-4Zv"/>
+                        <outlet property="postTable" destination="irO-7S-wkx" id="ch1-gu-JSe"/>
                         <segue destination="fRS-1y-RXI" kind="show" identifier="goAdd" id="FnF-jG-x1N"/>
                     </connections>
                 </viewController>
@@ -1076,10 +1077,10 @@
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Udy-kv-6Tb"/>
-        <segue reference="u3I-8D-p8B"/>
+        <segue reference="FnF-jG-x1N"/>
         <segue reference="ulA-g6-vGo"/>
         <segue reference="CKM-V6-8l9"/>
+        <segue reference="u3I-8D-p8B"/>
         <segue reference="IWr-99-Qp8"/>
         <segue reference="e5v-Lu-OAG"/>
     </inferredMetricsTieBreakers>

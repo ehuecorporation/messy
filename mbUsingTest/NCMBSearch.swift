@@ -51,6 +51,9 @@ public class NCMBSearch {
     //ShopMenu
     public var shopMenu = [memo]()
     
+    //PostMenu
+    public var postMenu = [memo]()
+    
     //店舗データ
     public var shopData = shop()
     
@@ -400,6 +403,65 @@ public class NCMBSearch {
         
     } // getFavList end
     
+    func getUserPost(_ userID: String) {
+        
+        let query: NCMBQuery = NCMBQuery(className: "MemoClass")
+        query.whereKey("postUser", equalTo: userID)
+        
+        var tmpArray = [memo]()
+        
+        query.findObjectsInBackground({(objects, error) in
+            
+            if error == nil {
+                if let response = objects {
+                    if (response.count) > 0 {
+                        
+                        for i in 0 ..< response.count {
+                            let targetMemoData: AnyObject = response[i] as AnyObject
+                            var tmp : memo = memo()
+                            tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+                            // shopNameがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopName") == nil {
+                                continue
+                            }
+                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
+                            tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+                            // shopNumberがなければ飛ばす
+                            if targetMemoData.object(forKey: "shopNumber") == nil {
+                                continue
+                            }
+                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
+                            tmpArray.append(tmp)
+                        }
+                        
+                        if tmpArray.count != self.postMenu.count {
+                            self.postMenu = tmpArray
+                        }
+                        //API終了通知
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
+                        
+                    } else {
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": "まだ投稿していない。"])
+                    }// response.count end
+                } else {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": "通信エラーが発生しました。"])
+                }// opt bind objects
+            } else {
+                var message = "Unknown error."
+                if let description = error?.localizedDescription {
+                    message = description
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                print(message)
+                return
+            } // errors end
+            
+        }) // findObjects end
+        
+    }
+    
     func geoSearch(_ latitude: Double , _ longtitude: Double) {
         
         let query: NCMBQuery = NCMBQuery(className: "MemoClass")
@@ -408,7 +470,7 @@ public class NCMBSearch {
         geoPoint.longitude = longtitude
         query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.5)
         
-         var tmpArray = [memo]()
+        var tmpArray = [memo]()
         
         query.findObjectsInBackground({(objects,  error) in
             

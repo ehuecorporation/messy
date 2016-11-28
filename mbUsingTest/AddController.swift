@@ -46,11 +46,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     @IBOutlet weak var menuName: UITextField!
     @IBOutlet weak var menuPrice: UITextField!
     @IBOutlet weak var displayImage: UIImageView!
-    
-
-    @IBAction func backButton(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "backMemos", sender: nil)
-    }
 
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         

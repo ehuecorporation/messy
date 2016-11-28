@@ -228,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				2F644B621D851A22009CF261 /* AppDelegate.swift */,
-				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
 				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
@@ -266,6 +265,7 @@
 			children = (
 				2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */,
 				2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */,
+				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 			);
 			name = System;
 			sourceTree = "<group>";
