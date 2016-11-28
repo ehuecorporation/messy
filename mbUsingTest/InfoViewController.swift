@@ -66,6 +66,11 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         locationManager.delegate = self
         mapView.delegate = self
         
+        //ドロワーメニュー
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
         // 距離のフィルタ.
         locationManager.distanceFilter = 300.0
         

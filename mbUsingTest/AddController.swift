@@ -227,6 +227,11 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.menuName.placeholder = "(例) ラーメン小"
         self.menuPrice.placeholder = "(例) 800"
         
+        //ドロワーメニュー
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
         //金額の部分は数字のキーボードを使用
         self.menuPrice.keyboardType = UIKeyboardType.numbersAndPunctuation
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B1C4189353A7C275A64DC40 /* Pods_mbUsingTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A4593D57B1A1B5A5A1B2AC /* Pods_mbUsingTestUITests.framework */; };
+		2F11458C1DEBF25A003F65A1 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F11458B1DEBF25A003F65A1 /* MyPostViewController.swift */; };
 		2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2AF1A81DB0F15D00464B5E /* MemoCell.swift */; };
 		2F2AF1AB1DB0F15D00464B5E /* MemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2AF1A91DB0F15D00464B5E /* MemoCell.xib */; };
 		2F3431671D9D4425001E6C68 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431631D9D4425001E6C68 /* Fabric.framework */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		2A2534F1CA638765B41FFD53 /* Pods_mbUsingTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mbUsingTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B838A5B0A937AF2B6F8930B /* Pods_mbUsingTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mbUsingTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F11458B1DEBF25A003F65A1 /* MyPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
 		2F2AF1A81DB0F15D00464B5E /* MemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		2F2AF1A91DB0F15D00464B5E /* MemoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoCell.xib; sourceTree = "<group>"; };
 		2F3431631D9D4425001E6C68 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -190,6 +192,8 @@
 				2F63C8DD1DE408F5007EB8D5 /* ContainerViewController.swift */,
 				2F644B641D851A22009CF261 /* MainViewController.swift */,
 				2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */,
+				599344D51DBA37B300D2572C /* MymenuCollectionViewCell.swift */,
+				2F11458B1DEBF25A003F65A1 /* MyPostViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -226,7 +230,6 @@
 				2F644B621D851A22009CF261 /* AppDelegate.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
-				599344D51DBA37B300D2572C /* MymenuCollectionViewCell.swift */,
 				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
 				2F63C8E11DE58194007EB8D5 /* Main */,
@@ -560,6 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F11458C1DEBF25A003F65A1 /* MyPostViewController.swift in Sources */,
 				599344D61DBA37B300D2572C /* MymenuCollectionViewCell.swift in Sources */,
 				2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */,
 				2F63C8DE1DE408F5007EB8D5 /* ContainerViewController.swift in Sources */,

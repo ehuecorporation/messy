@@ -16,6 +16,9 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBAction func reLoadButton(_ sender: UIBarButtonItem) {
+        mbs.getFavList(Favorite.favorites)
+    }
     var userData = UserDefaults.standard
     var targetNum = 0
     var mbs : NCMBSearch = NCMBSearch()

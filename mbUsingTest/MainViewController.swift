@@ -20,7 +20,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //新規追加時
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
-        performSegue(withIdentifier: "goAddMemo", sender: nil)
+        performSegue(withIdentifier: "goAdd", sender: nil)
     }
     
     //NCMBAPIの利用
@@ -156,7 +156,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        self.revealViewController().rearViewRevealWidth = 50
+        self.revealViewController().rearViewRevealWidth = 200
 
         
         // Pull to Refreshコントロール初期化

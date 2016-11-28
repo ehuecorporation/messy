@@ -124,6 +124,12 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
         self.menuList.register(nib, forCellReuseIdentifier: "MemoCell")
         
+        //ドロワーメニュー
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+
+        
         //自動計算の場合は必要
         
         self.menuList.estimatedRowHeight = 450.0
