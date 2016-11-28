@@ -8,7 +8,7 @@
 
 import UIKit
 import NCMB
-import  SWRevealViewController
+import SWRevealViewController
 
 
 class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate {
@@ -19,7 +19,9 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     let user = NCMBUser.current()
     var loading_flag = false
     
+
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
     
@@ -140,6 +142,13 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         
         if let mail = userData.object(forKey: "userMail") {
             mailAdress.text = mail as? String
+        }
+        
+        //ドロワーメニュー
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
     }

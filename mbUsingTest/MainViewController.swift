@@ -156,7 +156,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        self.revealViewController().rearViewRevealWidth = 150
+        self.revealViewController().rearViewRevealWidth = 50
 
         
         // Pull to Refreshコントロール初期化

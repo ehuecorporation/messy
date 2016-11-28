@@ -113,7 +113,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mailAdress" destination="1e7-MT-ApX" id="DJh-YF-nAK"/>
-                        <outlet property="menuButton" destination="fej-Rl-ISD" id="hah-nj-5GH"/>
+                        <outlet property="menuButton" destination="fej-Rl-ISD" id="O83-S2-sP7"/>
                         <outlet property="userNewName" destination="YJm-ob-Cwd" id="YzF-ue-cyF"/>
                         <segue destination="aRR-le-zPB" kind="custom" identifier="pushMain" customClass="SWRevealViewControllerSeguePushController" id="ulA-g6-vGo"/>
                     </connections>
@@ -368,113 +368,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuList" translatesAutoresizingMaskIntoConstraints="NO" id="7sm-Gk-aCh">
-                                <rect key="frame" x="138" y="20" width="100" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8N-4C-xD4">
+                                <rect key="frame" x="-4" y="0.0" width="200" height="687"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBe-Bm-DPa">
+                                        <rect key="frame" x="5" y="215" width="190" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hUa-7I-P0B"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="設定">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="fR1-1F-DGY" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="7it-bK-Plr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iX-eP-JEL">
+                                        <rect key="frame" x="5" y="180" width="190" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="uWE-97-wRf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="お気に入り">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="jq0-IW-cNf" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="iQw-pz-qcd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VH-Bb-Dec">
+                                        <rect key="frame" x="5" y="145" width="190" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hD5-ac-uxG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="周辺店舗">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goFavorite:" destination="u9g-0B-LEs" eventType="touchUpInside" id="KPD-fB-UDM"/>
+                                            <segue destination="eiC-Iq-Hl0" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="u3I-8D-p8B"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuList" translatesAutoresizingMaskIntoConstraints="NO" id="7sm-Gk-aCh">
+                                        <rect key="frame" x="50" y="10" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Mqp-WX-Axz"/>
+                                            <constraint firstAttribute="width" constant="100" id="QDP-LE-FUl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="45"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アカウント名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1i-mB-61O">
+                                        <rect key="frame" x="33" y="115" width="134" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="dKE-e3-0cl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Mqp-WX-Axz"/>
-                                    <constraint firstAttribute="width" constant="100" id="QDP-LE-FUl"/>
+                                    <constraint firstAttribute="trailing" secondItem="2iX-eP-JEL" secondAttribute="trailing" constant="5" id="9Wc-eU-Mmy"/>
+                                    <constraint firstItem="2iX-eP-JEL" firstAttribute="leading" secondItem="e8N-4C-xD4" secondAttribute="leading" constant="5" id="BXZ-eT-9v7"/>
+                                    <constraint firstItem="2VH-Bb-Dec" firstAttribute="top" secondItem="k1i-mB-61O" secondAttribute="bottom" constant="5" id="FJn-LI-ZrY"/>
+                                    <constraint firstItem="2VH-Bb-Dec" firstAttribute="leading" secondItem="e8N-4C-xD4" secondAttribute="leading" constant="5" id="HZq-on-pdM"/>
+                                    <constraint firstAttribute="trailing" secondItem="2VH-Bb-Dec" secondAttribute="trailing" constant="5" id="IpP-73-82J"/>
+                                    <constraint firstAttribute="trailing" secondItem="QBe-Bm-DPa" secondAttribute="trailing" constant="5" id="MgK-LN-krL"/>
+                                    <constraint firstItem="7sm-Gk-aCh" firstAttribute="centerX" secondItem="e8N-4C-xD4" secondAttribute="centerX" id="WQv-M9-hYR"/>
+                                    <constraint firstItem="QBe-Bm-DPa" firstAttribute="top" secondItem="2iX-eP-JEL" secondAttribute="bottom" constant="5" id="dR0-fs-Jam"/>
+                                    <constraint firstAttribute="width" constant="200" id="erZ-Fk-KdW"/>
+                                    <constraint firstItem="2iX-eP-JEL" firstAttribute="top" secondItem="2VH-Bb-Dec" secondAttribute="bottom" constant="5" id="hED-DH-Esf"/>
+                                    <constraint firstItem="k1i-mB-61O" firstAttribute="top" secondItem="7sm-Gk-aCh" secondAttribute="bottom" constant="5" id="hUX-ap-N2E"/>
+                                    <constraint firstItem="k1i-mB-61O" firstAttribute="centerX" secondItem="e8N-4C-xD4" secondAttribute="centerX" id="tmk-uI-EQa"/>
+                                    <constraint firstItem="7sm-Gk-aCh" firstAttribute="top" secondItem="e8N-4C-xD4" secondAttribute="top" constant="10" id="vlB-It-g0Z"/>
+                                    <constraint firstItem="QBe-Bm-DPa" firstAttribute="leading" secondItem="e8N-4C-xD4" secondAttribute="leading" constant="5" id="yrK-tv-I8m"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="45"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アカウント名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1i-mB-61O">
-                                <rect key="frame" x="121" y="130" width="134" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="dKE-e3-0cl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VH-Bb-Dec">
-                                <rect key="frame" x="5" y="160" width="365" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hD5-ac-uxG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="周辺店舗">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="goFavorite:" destination="u9g-0B-LEs" eventType="touchUpInside" id="KPD-fB-UDM"/>
-                                    <segue destination="eiC-Iq-Hl0" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="u3I-8D-p8B"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iX-eP-JEL">
-                                <rect key="frame" x="5" y="195" width="365" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uWE-97-wRf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="お気に入り">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="jq0-IW-cNf" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="iQw-pz-qcd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBe-Bm-DPa">
-                                <rect key="frame" x="5" y="230" width="365" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hUa-7I-P0B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="設定">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="BZO-BM-o5a" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="151-mi-n0J"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QBe-Bm-DPa" firstAttribute="top" secondItem="2iX-eP-JEL" secondAttribute="bottom" constant="5" id="048-a1-2Uf"/>
-                            <constraint firstItem="7sm-Gk-aCh" firstAttribute="centerX" secondItem="qTJ-r1-dvO" secondAttribute="centerX" id="1Vg-Td-dap"/>
-                            <constraint firstItem="k1i-mB-61O" firstAttribute="centerX" secondItem="qTJ-r1-dvO" secondAttribute="centerX" id="ByM-dM-5Rm"/>
-                            <constraint firstItem="k1i-mB-61O" firstAttribute="top" secondItem="7sm-Gk-aCh" secondAttribute="bottom" constant="10" id="GCG-hu-Fkr"/>
-                            <constraint firstAttribute="trailing" secondItem="QBe-Bm-DPa" secondAttribute="trailing" constant="5" id="Iu9-EN-aSR"/>
-                            <constraint firstAttribute="trailing" secondItem="2VH-Bb-Dec" secondAttribute="trailing" constant="5" id="Poa-lO-K1Q"/>
-                            <constraint firstItem="2iX-eP-JEL" firstAttribute="leading" secondItem="qTJ-r1-dvO" secondAttribute="leading" constant="5" id="YXL-ps-ZSy"/>
-                            <constraint firstItem="2iX-eP-JEL" firstAttribute="top" secondItem="2VH-Bb-Dec" secondAttribute="bottom" constant="5" id="agt-tF-rwE"/>
-                            <constraint firstItem="QBe-Bm-DPa" firstAttribute="leading" secondItem="qTJ-r1-dvO" secondAttribute="leading" constant="5" id="aje-YC-bYc"/>
-                            <constraint firstItem="2VH-Bb-Dec" firstAttribute="top" secondItem="k1i-mB-61O" secondAttribute="bottom" constant="5" id="fjW-xC-pUI"/>
-                            <constraint firstAttribute="trailing" secondItem="2iX-eP-JEL" secondAttribute="trailing" constant="5" id="nkp-RY-goW"/>
-                            <constraint firstItem="2VH-Bb-Dec" firstAttribute="leading" secondItem="qTJ-r1-dvO" secondAttribute="leading" constant="5" id="qit-6U-cWz"/>
-                            <constraint firstItem="7sm-Gk-aCh" firstAttribute="top" secondItem="qTJ-r1-dvO" secondAttribute="top" constant="20" id="ren-ab-XfE"/>
+                            <constraint firstItem="eAa-rL-GOb" firstAttribute="top" secondItem="e8N-4C-xD4" secondAttribute="bottom" constant="-20" id="Akc-if-MuP"/>
+                            <constraint firstItem="e8N-4C-xD4" firstAttribute="top" secondItem="VZk-AN-h1o" secondAttribute="bottom" constant="-20" id="NVM-v2-DLx"/>
+                            <constraint firstItem="e8N-4C-xD4" firstAttribute="leading" secondItem="qTJ-r1-dvO" secondAttribute="leadingMargin" constant="-20" id="anF-Gc-Asl"/>
                         </constraints>
                     </view>
                     <connections>
@@ -939,7 +951,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ulA-g6-vGo"/>
-        <segue reference="151-mi-n0J"/>
+        <segue reference="7it-bK-Plr"/>
         <segue reference="u3I-8D-p8B"/>
         <segue reference="IWr-99-Qp8"/>
         <segue reference="e5v-Lu-OAG"/>
