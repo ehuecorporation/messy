@@ -22,6 +22,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     var targetShopName: String = ""
     var targetMenuName: String = ""
     var targetMenuPrice: String = ""
+    var targetHousrs: Int? = nil
     var targetDisplayImage: UIImage? = nil
     
     //編集フラグ
@@ -47,6 +48,65 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     @IBOutlet weak var menuPrice: UITextField!
     @IBOutlet weak var displayImage: UIImageView!
 
+    @IBOutlet weak var morningButton: UIButton!
+    @IBOutlet weak var lunchButton: UIButton!
+    @IBOutlet weak var dinerButton: UIButton!
+    
+    @IBAction func selctMorning(_ sender: UIButton) {
+        
+        // 選択済みなら選択解除
+        if let selcted = targetHousrs {
+            if selcted == 0 {
+                morningButton.layer.borderColor = UIColor.black.cgColor
+                return
+            }
+        }
+        
+        // モーニングなら0
+        targetHousrs = 0
+        
+        // 色を変える
+        morningButton.layer.borderColor = UIColor.blue.cgColor
+        lunchButton.layer.borderColor = UIColor.black.cgColor
+        dinerButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    @IBAction func selctLunch(_ sender: UIButton) {
+        
+        // 選択済みなら選択解除
+        if let selcted = targetHousrs {
+            if selcted == 1 {
+                lunchButton.layer.borderColor = UIColor.black.cgColor
+            }
+        }
+        
+        // ランチなら1
+        targetHousrs = 1
+        
+        // 色を変える
+        morningButton.layer.borderColor = UIColor.black.cgColor
+        lunchButton.layer.borderColor = UIColor.blue.cgColor
+        dinerButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    @IBAction func selctDiner(_ sender: UIButton) {
+        
+        // 選択済みなら選択解除
+        if let selcted = targetHousrs {
+            if selcted == 2 {
+                dinerButton.layer.borderColor = UIColor.black.cgColor
+            }
+        }
+        
+        // ディナーなら2
+        targetHousrs = 2
+        
+        // 色を変える
+        morningButton.layer.borderColor = UIColor.black.cgColor
+        lunchButton.layer.borderColor = UIColor.black.cgColor
+        dinerButton.layer.borderColor = UIColor.blue.cgColor
+    }
+    
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         
         //バリデーションを通す前の準備
@@ -56,7 +116,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.targetDisplayImage = self.displayImage.image
         
         //情報が不十分の時エラーアラートを表示
-        if (self.targetShopName.isEmpty || self.targetMenuName.isEmpty || self.targetMenuPrice.isEmpty || self.targetDisplayImage == nil) {
+        if (self.targetShopName.isEmpty || self.targetMenuName.isEmpty || self.targetMenuPrice.isEmpty || self.targetDisplayImage == nil || self.targetHousrs == nil) {
             
             presentError("エラー", "入力内容にエラーがあります")
             
@@ -124,6 +184,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(self.targetMenuName, forKey: "menuName")
                 obj.setObject(targetFile.name, forKey: "filename")
                 obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
+                obj.setObject(self.userData.object(forKey: "userIconFileName")!, forKey: "postUserIcon")
+                obj.setObject(self.targetHousrs!, forKey: "menuHours")
                 obj.setObject(0 as Int, forKey: "lookCounter")
                 obj.setObject(0 as Int, forKey: "favoriteCounter")
                 obj.save(&saveError)
@@ -356,8 +418,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         //画像をセットして戻る
         self.dismiss(animated: true, completion: nil)
         
-        let width = image.size.width / 2
-        let height = image.size.height / 2
+        let width = image.size.width / 2.5
+        let height = image.size.height / 2.5
         let resizedImage =  resizeImage(image: image, width: Int(width), height: Int(height))
         
         self.displayImage.image = resizedImage
