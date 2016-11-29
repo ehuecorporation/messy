@@ -232,6 +232,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.objectID.isHidden = true
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
+        cell!.favoriteCounter.text = String(targetMemoData.favoriteCounter)
+        cell!.favoriteCounter.isHidden = true
+        cell!.lookCounter.text = String(targetMemoData.lookCounter)
+        cell!.lookCounter.isHidden = true
         
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
@@ -284,8 +288,33 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //セグエの実行時に値を渡す
-        let targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        var targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
         self.targetMemo = targetMemo
+        
+        var lookNum = targetMemo.lookCounter
+        lookNum += 1
+        targetMemo.lookCounter = lookNum
+        
+        // 値の更新
+        var saveError: NSError? = nil
+        let obj: NCMBObject = NCMBObject(className: "MemoClass")
+        obj.objectId = targetMemo.objectID
+        obj.fetchInBackground({(error) in
+            
+            if (error == nil) {
+                
+                obj.setObject(lookNum, forKey: "lookCounter")
+                obj.save(&saveError)
+                
+            }
+            
+            if saveError == nil {
+                print("success save data.")
+            } else {
+                print("failure save data. \(saveError)")
+            }
+            
+        })
         
         self.editFlag = true
         performSegue(withIdentifier: "pushDetail", sender: targetMemo)

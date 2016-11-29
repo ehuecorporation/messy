@@ -66,6 +66,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     }
                     self.userData.set(true, forKey: "useCount")
                     self.userData.synchronize()
+                    // ユーザーデータの確認
                     print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
                     self.performSegue(withIdentifier: "pushMemos", sender: nil)
                     

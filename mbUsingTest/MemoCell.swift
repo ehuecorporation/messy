@@ -23,6 +23,9 @@ class MemoCell: UITableViewCell {
     // 隠し
     @IBOutlet weak var objectID: UILabel!
     @IBOutlet weak var fileName: UILabel!
+    @IBOutlet weak var favoriteCounter: UILabel!
+    @IBOutlet weak var lookCounter: UILabel!
+    
     
     
     @IBOutlet weak var menuImage: UIImageView!
@@ -34,15 +37,66 @@ class MemoCell: UITableViewCell {
         Favorite.load()
         
         if Favorite.inFavorites("\(fileName.text!)") {
+            
             Favorite.remove("\(fileName.text!)")
             print("dislike")
             favButton.setImage(star_off, for: .normal)
+            var favoriteNum = Int(favoriteCounter.text!)!
+            
+            favoriteNum -= 1
+            
+            // 値の更新
+            var saveError: NSError? = nil
+            let obj: NCMBObject = NCMBObject(className: "MemoClass")
+            obj.objectId = objectID.text!
+            obj.fetchInBackground({(error) in
+                
+                if (error == nil) {
+                    
+                    obj.setObject(favoriteNum, forKey: "favoriteCounter")
+                    obj.save(&saveError)
+                    
+                }
+                
+                if saveError == nil {
+                    print("success save data.")
+                } else {
+                    print("failure save data. \(saveError)")
+                }
+                
+            })
         } else {
+            
             Favorite.add("\(fileName.text!)")
             print("like")
             favButton.setImage(star_on, for: .normal)
-        }
             
+            var favoriteNum = Int(favoriteCounter.text!)!
+            
+            favoriteNum += 1
+            
+            // 値の更新
+            var saveError: NSError? = nil
+            let obj: NCMBObject = NCMBObject(className: "MemoClass")
+            obj.objectId = objectID.text!
+            obj.fetchInBackground({(error) in
+                
+                if (error == nil) {
+                    
+                    obj.setObject(favoriteNum, forKey: "favoriteCounter")
+                    obj.save(&saveError)
+                    
+                }
+                
+                if saveError == nil {
+                    print("success save data.")
+                } else {
+                    print("failure save data. \(saveError)")
+                }
+                
+            })
+        }
+        
         print("端末データの確認\((userData.object(forKey: "favorites") as? [String])!)")
     }
 
