@@ -369,7 +369,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     //登録が完了した際のアクション
     func saveComplete(_ ac: UIAlertAction) -> Void {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     //アクションシートの結果に応じて処理を変更
