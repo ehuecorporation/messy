@@ -124,6 +124,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(self.targetMenuName, forKey: "menuName")
                 obj.setObject(targetFile.name, forKey: "filename")
                 obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
+                obj.setObject(0 as Int, forKey: "lookCounter")
+                obj.setObject(0 as Int, forKey: "favoriteCounter")
                 obj.save(&saveError)
                 
                 //ファイルをバックグランドで実行
@@ -218,9 +220,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         super.viewDidLoad()
         
         //UITextFieldのプレースホルダー
-        self.shopName.placeholder = "(例) ラーメン二郎"
-        self.menuName.placeholder = "(例) ラーメン小"
-        self.menuPrice.placeholder = "(例) 800"
+        self.shopName.placeholder = "Eggs'n Things 原宿店"
+        self.menuName.placeholder = "パンケーキ"
+        self.menuPrice.placeholder = "1080"
         
         //ドロワーメニュー
         if self.revealViewController() != nil {

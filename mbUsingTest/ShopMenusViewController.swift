@@ -269,6 +269,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     func getCellImage(_ index: Int){
         
         if index < mbs.shopMenu.count {
+            if mbs.shopMenu[index].menuImage != nil {
+                return
+            }
             let filename: String = mbs.shopMenu[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             

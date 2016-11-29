@@ -82,9 +82,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     } // userInfo ned
                     
                 } else {
-                    
-                    self.mbs.getUserPost(self.userData.object(forKey: "userID") as! String)
-                    self.postTable.reloadData()
+                    if !self.refreshFlag {
+                        self.mbs.getUserPost(self.userData.object(forKey: "userID") as! String)
+                        self.postTable.reloadData()
+                    }
+                    self.refreshFlag = true
                     
                 }// notification error end
                 
@@ -96,7 +98,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        // 位置情報の更新を開始.
+        // 投稿一覧の取得
         if mbs.postMenu.count == 0 {
             if let userID = userData.object(forKey: "userID"){
                 mbs.getUserPost(userID as! String)
@@ -160,7 +162,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
         }
         ) // uisng block end
+        
         // 通常のリフレッシュ
+        mbs.getUserPost(userData.object(forKey: "userID") as! String)
+        refreshFlag = false
         
     } // onRefresh end
     
@@ -205,6 +210,14 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
+        
+        if let icon = userData.object(forKey: "userIcon") {
+            let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
+            cell!.userImage.image = image
+        }
+        
+        // Iconを丸角に
+        cell!.userImage.layer.cornerRadius = 45
         
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
@@ -264,6 +277,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getCellImage(_ index: Int){
         
         if index < mbs.postMenu.count {
+            if mbs.postMenu[index].menuImage != nil {
+                return
+            }
             let filename: String = mbs.postMenu[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             

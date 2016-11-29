@@ -91,9 +91,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     } // userInfo ned
                     
                 } else {
-                    self.myLocationManager.startUpdatingLocation()
+                    if !self.refreshFlag {
+                        self.myLocationManager.startUpdatingLocation()
+                    }
+                    
                     self.memoTableView.reloadData()
-
+                    self.refreshFlag = true
+                    
                 }// notification error end
                 
             } // using end
@@ -235,6 +239,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
         
+        // Iconを丸角に
+        cell!.userImage.layer.cornerRadius = 45
+        
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
             cell!.favButton.setImage(star_on, for: .normal)
@@ -293,6 +300,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getCellImage(_ index: Int){
         
         if index < mbs.memos.count {
+            if mbs.memos[index].menuImage != nil {
+                return
+            }
             let filename: String = mbs.memos[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             

@@ -10,6 +10,7 @@ import UIKit
 
 class LeftMenuViewController: UIViewController {
     
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var accountName: UILabel!
     
     @IBAction func goFavorite(_ sender: UIButton) {
@@ -24,6 +25,12 @@ class LeftMenuViewController: UIViewController {
         if let name = userData.object(forKey: "userName") {
             accountName.text = name as? String
         }
+        
+        if let icon = userData.object(forKey: "userIcon") {
+            let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
+            userImage.image = image
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
