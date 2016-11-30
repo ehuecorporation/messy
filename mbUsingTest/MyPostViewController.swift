@@ -49,9 +49,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //対象メモ
     var targetMemo: memo = memo()
     
-    //会員情報管理
-    let userInfo = NCMBUser.current()!
-    
     // 画像
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")
@@ -208,6 +205,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
+        cell!.favoriteCounter.text = "お気に入り:\(targetMemoData.favoriteCounter)"
+        cell!.lookCounter.text = "表示回数:\(targetMemoData.lookCounter)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
         

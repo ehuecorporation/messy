@@ -52,9 +52,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //対象メモ
     var targetMemo: memo = memo()
     
-    //会員情報管理
-    let userInfo = NCMBUser.current()!
-    
     // 画像
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")

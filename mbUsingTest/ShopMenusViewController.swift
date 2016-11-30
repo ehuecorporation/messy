@@ -22,7 +22,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
     
-    
     //コメント編集フラグ
     var editFlag: Bool = false
     
@@ -40,10 +39,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //対象メモ
     var targetMemo: memo = memo()
-    
-    //会員情報管理
-    let userInfo = NCMBUser.current()!
-    
     
     var targetShopData: shop = shop()
     
