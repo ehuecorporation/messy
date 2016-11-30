@@ -79,12 +79,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     } // userInfo ned
                     
                 } else {
-                    if !self.refreshFlag {
-                        self.mbs.getUserPost(self.userData.object(forKey: "userID") as! String)
-                        self.postTable.reloadData()
-                    }
-                    self.refreshFlag = true
-                    
+                    self.postTable.reloadData()
                 }// notification error end
                 
         } // using end
@@ -205,8 +200,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
-        cell!.favoriteCounter.text = "お気に入り:\(targetMemoData.favoriteCounter)"
-        cell!.lookCounter.text = "表示回数:\(targetMemoData.lookCounter)"
+        cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
+        cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "loading")
         
@@ -240,6 +235,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 } else {
                     cell!.menuImage.image = UIImage(data: imageData!)
                     self.mbs.postMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
+                    self.postTable.reloadData()
                 }
             }
         }

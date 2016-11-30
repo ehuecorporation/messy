@@ -106,7 +106,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隠し" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKI-Cm-3LS">
-                        <rect key="frame" x="148" y="412" width="42" height="21"/>
+                        <rect key="frame" x="208" y="412" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="STW-X9-OTS"/>
                             <constraint firstAttribute="width" constant="42" id="SUf-FI-ZKE"/>
@@ -115,14 +115,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隠し" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f50-me-YO3">
-                        <rect key="frame" x="157" y="441" width="35" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="look" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlA-gW-3cm">
+                        <rect key="frame" x="153" y="413" width="32.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隠し" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlA-gW-3cm">
-                        <rect key="frame" x="112" y="441" width="35" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="表示回数：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAi-3W-NOo">
+                        <rect key="frame" x="61" y="413" width="87" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　LIKE数：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-BX-TYD">
+                        <rect key="frame" x="61" y="439" width="86" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likeNum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f50-me-YO3">
+                        <rect key="frame" x="152" y="439" width="62" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -130,31 +142,35 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="OKI-Cm-3LS" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="4" id="12l-au-Pel"/>
+                    <constraint firstItem="f50-me-YO3" firstAttribute="leading" secondItem="2eB-BX-TYD" secondAttribute="trailing" constant="5" id="1Gd-EU-7pR"/>
                     <constraint firstItem="TkO-ty-u1M" firstAttribute="leading" secondItem="Rvi-48-9ED" secondAttribute="trailing" constant="8" id="Dra-Kh-pbu"/>
-                    <constraint firstAttribute="bottom" secondItem="nlA-gW-3cm" secondAttribute="bottom" constant="7" id="EFb-E0-aEq"/>
                     <constraint firstAttribute="trailingMargin" secondItem="TkO-ty-u1M" secondAttribute="trailing" id="FSa-Eb-AbY"/>
                     <constraint firstAttribute="topMargin" secondItem="TkO-ty-u1M" secondAttribute="top" id="IKk-yf-G3G"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4M9-Qs-lHM" secondAttribute="trailing" constant="8" id="JIJ-42-Nw8"/>
-                    <constraint firstItem="f50-me-YO3" firstAttribute="leading" secondItem="nlA-gW-3cm" secondAttribute="trailing" constant="10" id="Knx-Lt-flz"/>
                     <constraint firstItem="4M9-Qs-lHM" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" id="Kzk-Be-dTT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sC9-T2-4Bj" secondAttribute="bottom" id="LH4-Gx-YUt"/>
-                    <constraint firstAttribute="bottom" secondItem="f50-me-YO3" secondAttribute="bottom" constant="7" id="P1T-9h-iXt"/>
+                    <constraint firstItem="HAi-3W-NOo" firstAttribute="leading" secondItem="sC9-T2-4Bj" secondAttribute="trailing" constant="8" id="Lp8-fh-w2g"/>
+                    <constraint firstItem="f50-me-YO3" firstAttribute="top" secondItem="nlA-gW-3cm" secondAttribute="bottom" constant="5" id="Q4c-Kb-fVd"/>
+                    <constraint firstItem="nlA-gW-3cm" firstAttribute="leading" secondItem="HAi-3W-NOo" secondAttribute="trailing" constant="5" id="Uii-to-gtF"/>
                     <constraint firstAttribute="topMargin" secondItem="Rvi-48-9ED" secondAttribute="top" id="VuN-u1-Jn5"/>
                     <constraint firstItem="Juy-G2-t6G" firstAttribute="leading" secondItem="dAk-g4-jQR" secondAttribute="leading" id="Y4L-x1-ixv"/>
                     <constraint firstAttribute="trailingMargin" secondItem="u56-fE-K8K" secondAttribute="trailing" constant="8" id="Z10-FM-Goy"/>
+                    <constraint firstItem="2eB-BX-TYD" firstAttribute="leading" secondItem="sC9-T2-4Bj" secondAttribute="trailing" constant="8" id="Zne-92-1bF"/>
                     <constraint firstAttribute="trailing" secondItem="Juy-G2-t6G" secondAttribute="trailing" id="bIL-Pf-Wwf"/>
                     <constraint firstItem="u56-fE-K8K" firstAttribute="top" secondItem="4M9-Qs-lHM" secondAttribute="bottom" id="gFo-73-4u5"/>
+                    <constraint firstItem="2eB-BX-TYD" firstAttribute="top" secondItem="HAi-3W-NOo" secondAttribute="bottom" constant="5" id="hpy-LI-yDK"/>
+                    <constraint firstItem="nlA-gW-3cm" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="5" id="iW0-N2-LBO"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Rvi-48-9ED" secondAttribute="leading" id="knM-Tw-87z"/>
                     <constraint firstAttribute="bottomMargin" secondItem="u56-fE-K8K" secondAttribute="bottom" id="l2d-ZH-AeN"/>
+                    <constraint firstItem="HAi-3W-NOo" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="5" id="mUg-D8-Az9"/>
                     <constraint firstItem="Juy-G2-t6G" firstAttribute="top" secondItem="TkO-ty-u1M" secondAttribute="bottom" constant="8" id="qAv-Uk-9nN"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sC9-T2-4Bj" secondAttribute="bottom" id="qc4-jF-hJ7"/>
                     <constraint firstItem="u56-fE-K8K" firstAttribute="top" secondItem="4M9-Qs-lHM" secondAttribute="bottom" constant="8" id="tmi-qE-0v5"/>
                     <constraint firstItem="sC9-T2-4Bj" firstAttribute="leading" secondItem="dAk-g4-jQR" secondAttribute="leadingMargin" id="vSq-fE-Edq"/>
                     <constraint firstItem="TkO-ty-u1M" firstAttribute="height" secondItem="Rvi-48-9ED" secondAttribute="height" id="wZe-4c-eyB"/>
                     <constraint firstAttribute="bottom" secondItem="sC9-T2-4Bj" secondAttribute="bottom" id="xT2-gx-Cmw"/>
-                    <constraint firstItem="4M9-Qs-lHM" firstAttribute="leading" secondItem="OKI-Cm-3LS" secondAttribute="trailing" constant="65" id="yYb-iE-d4a"/>
+                    <constraint firstItem="4M9-Qs-lHM" firstAttribute="leading" secondItem="OKI-Cm-3LS" secondAttribute="trailing" constant="5" id="yYb-iE-d4a"/>
                     <constraint firstItem="sC9-T2-4Bj" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" id="zhA-5k-5ZD"/>
-                    <constraint firstItem="u56-fE-K8K" firstAttribute="leading" secondItem="f50-me-YO3" secondAttribute="trailing" constant="30" id="zlG-Jn-qei"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -167,8 +183,10 @@
             <connections>
                 <outlet property="favButton" destination="sC9-T2-4Bj" id="ZnL-jI-XNq"/>
                 <outlet property="favoriteCounter" destination="nlA-gW-3cm" id="VK8-pb-utF"/>
+                <outlet property="favoriteCounterLabel" destination="2eB-BX-TYD" id="492-jc-1xt"/>
                 <outlet property="fileName" destination="OKI-Cm-3LS" id="EfM-T0-UQR"/>
                 <outlet property="lookCounter" destination="f50-me-YO3" id="ugp-0S-AO5"/>
+                <outlet property="lookCounterLabel" destination="HAi-3W-NOo" id="LO5-OB-k7A"/>
                 <outlet property="menuCost" destination="u56-fE-K8K" id="lgA-Lj-jah"/>
                 <outlet property="menuImage" destination="Juy-G2-t6G" id="n4v-H2-d1h"/>
                 <outlet property="menuName" destination="4M9-Qs-lHM" id="YuZ-rp-OMD"/>

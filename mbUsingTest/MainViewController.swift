@@ -88,12 +88,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     } // userInfo ned
                     
                 } else {
-                    if !self.refreshFlag {
-                        self.myLocationManager.startUpdatingLocation()
-                    }
                     
                     self.memoTableView.reloadData()
-                    self.refreshFlag = true
                     
                 }// notification error end
                 
@@ -233,6 +229,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.favoriteCounter.isHidden = true
         cell!.lookCounter.text = String(targetMemoData.lookCounter)
         cell!.lookCounter.isHidden = true
+        cell!.lookCounterLabel.isHidden = true
+        cell!.favoriteCounterLabel.isHidden = true
         
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
@@ -265,6 +263,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 } else {
                     cell!.menuImage.image = UIImage(data: imageData!)
                     self.mbs.memos[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
+                    self.memoTableView.reloadData()
                 }
             }
         }

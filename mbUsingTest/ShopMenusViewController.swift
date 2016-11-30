@@ -88,7 +88,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                 } else {
                     self.menuList.reloadData()
-                    self.mbs.getShopMenu(self.targetShopData.shopNumber)
                 }// notification error end
                 
             } // using end
@@ -198,6 +197,10 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.objectID.isHidden = true
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
+        cell!.lookCounterLabel.isHidden = true
+        cell!.favoriteCounterLabel.isHidden = true
+        cell!.lookCounter.isHidden = true
+        cell!.favoriteCounter.isHidden = true
         
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
@@ -227,6 +230,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 } else {
                     cell!.menuImage.image = UIImage(data: imageData!)
                     self.mbs.shopMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
+                    self.menuList.reloadData()
                 }
             }
         }
