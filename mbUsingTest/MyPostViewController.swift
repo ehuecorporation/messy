@@ -113,7 +113,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //自動計算の場合は必要
         
-        self.postTable.estimatedRowHeight = 450.0
+        self.postTable.estimatedRowHeight = 500.0
         
         self.postTable.rowHeight = UITableViewAutomaticDimension
         
@@ -187,6 +187,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        
         //各値をセルに入れる
         let targetMemoData: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
@@ -202,8 +204,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
-        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
-        cell!.userImage.image = #imageLiteral(resourceName: "loading")
+        cell!.menuImage.addSubview(indicator)
+        cell!.userImage.addSubview(indicator)
+        indicator.startAnimating()
         
         if let icon = userData.object(forKey: "userIcon") {
             let image: UIImage = UIImage(data: (icon as! NSData) as Data)!

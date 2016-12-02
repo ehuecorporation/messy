@@ -142,13 +142,17 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         
         let targetMemoData :memo = mbs.favList[(indexPath as NSIndexPath).row]
         
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
+        
         // Tag番号を使ってLabelのインスタンス生成
         let label = testCell.contentView.viewWithTag(2) as! UILabel
         label.text! = targetMemoData.shopName
         
         // Tag番号を使ってImageViewのインスタンス生成
         let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = #imageLiteral(resourceName: "loading")
+        imageView.addSubview(indicator)
+        indicator.startAnimating()
         
         // 画像の読み込み
         if let image = targetMemoData.menuImage {

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1g-JC-pyc" id="dAk-g4-jQR">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="469"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="469.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rvi-48-9ED">
@@ -66,9 +66,10 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M9-Qs-lHM">
-                        <rect key="frame" x="255" y="408" width="49" height="25"/>
+                        <rect key="frame" x="204" y="408" width="100" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="KP9-7R-FGN"/>
+                            <constraint firstAttribute="width" constant="100" id="Ndu-rl-IYW"/>
                             <constraint firstAttribute="width" constant="198" id="guQ-Yv-vDM"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -106,7 +107,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隠し" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKI-Cm-3LS">
-                        <rect key="frame" x="208" y="412" width="42" height="21"/>
+                        <rect key="frame" x="157" y="412" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="STW-X9-OTS"/>
                             <constraint firstAttribute="width" constant="42" id="SUf-FI-ZKE"/>

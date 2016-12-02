@@ -101,10 +101,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var LMVS = LeftMenuViewController()
-        
-//        LMVS.goFavorite(UIButton.init())
-        
         // LocationManagerの生成.
         myLocationManager = CLLocationManager()
         // Delegateの設定.
@@ -145,7 +141,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //自動計算の場合は必要
         
-        self.memoTableView.estimatedRowHeight = 450.0
+        self.memoTableView.estimatedRowHeight = 500.0
     
         self.memoTableView.rowHeight = UITableViewAutomaticDimension
         
@@ -223,6 +219,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        
         // objectID,fileNamの保存と隠し
         cell!.objectID.text = targetMemoData.objectID
         cell!.objectID.isHidden = true
@@ -238,8 +236,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
-        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
-        cell!.userImage.image = #imageLiteral(resourceName: "loading")
+        cell!.menuImage.addSubview(indicator)
+        
+        indicator.startAnimating()
         
         // Iconを丸角に
         cell!.userImage.layer.cornerRadius = 45

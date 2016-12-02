@@ -77,6 +77,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         if let selcted = targetHousrs {
             if selcted == 1 {
                 lunchButton.layer.borderColor = UIColor.black.cgColor
+                return
             }
         }
         
@@ -95,6 +96,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         if let selcted = targetHousrs {
             if selcted == 2 {
                 dinerButton.layer.borderColor = UIColor.black.cgColor
+                return
             }
         }
         
