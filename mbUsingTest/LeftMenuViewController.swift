@@ -14,7 +14,7 @@ class LeftMenuViewController: UIViewController {
     @IBOutlet weak var accountName: UILabel!
     
     @IBAction func goFavorite(_ sender: UIButton) {
-
+        
     }
     
     var userData = UserDefaults.standard

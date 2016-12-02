@@ -101,6 +101,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var LMVS = LeftMenuViewController()
+        
+//        LMVS.goFavorite(UIButton.init())
+        
         // LocationManagerの生成.
         myLocationManager = CLLocationManager()
         // Delegateの設定.
@@ -124,7 +128,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // 位置情報の更新を開始.
         if mbs.memos.count == 0 {
             myLocationManager.startUpdatingLocation()
-            print("なう")
         } else {
             self.memoTableView.reloadData()
         }

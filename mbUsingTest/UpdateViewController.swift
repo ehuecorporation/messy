@@ -45,7 +45,6 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             
             presentError("エラー", "入力に不備があります")
             
-            
         } else {
             
             loading_flag = true
@@ -65,8 +64,9 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                 if let updateerror = error {
                     // 更新失敗時の処理
                     print("エラー内容\(error)")
-                    self.presentError("更新エラー", "\(updateerror.localizedDescription)")
                     self.loading_flag = false
+                    self.presentError("更新エラー", "\(updateerror.localizedDescription)")
+
                     
                 } else {
                     

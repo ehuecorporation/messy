@@ -8,35 +8,13 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-        
-    
-    @IBAction func goAdd(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goAdd", sender: nil)
-    }
-    
-    var isOpenLeft = false
+class ContainerViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    //各セルの要素を設定する
-    func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // tableCell の ID で UITableViewCell のインスタンスを生成
-        let cell = table.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath)
-        
-        
-        return cell
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
