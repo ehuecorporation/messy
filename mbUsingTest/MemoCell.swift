@@ -23,6 +23,7 @@ class MemoCell: UITableViewCell {
     // 隠し
     @IBOutlet weak var objectID: UILabel!
     @IBOutlet weak var fileName: UILabel!
+    
     @IBOutlet weak var favoriteCounter: UILabel!
     @IBOutlet weak var lookCounter: UILabel!
     @IBOutlet weak var lookCounterLabel: UILabel!

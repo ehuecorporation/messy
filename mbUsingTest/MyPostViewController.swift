@@ -111,11 +111,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
         self.postTable.register(nib, forCellReuseIdentifier: "MemoCell")
         
-        //自動計算の場合は必要
-        
-        self.postTable.estimatedRowHeight = 500.0
-        
-        self.postTable.rowHeight = UITableViewAutomaticDimension
+        //セルの高さを設定
+        self.postTable.rowHeight = self.view.frame.size.width + 120
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
@@ -187,7 +184,19 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        //アイコン画像のぐるぐる
+        let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorOfIcon.color = UIColor.gray
+        // 画面の中央に表示するようにframeを変更する
+        let w = indicatorOfIcon.frame.size.width
+        let h = indicatorOfIcon.frame.size.height
+        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
+        
+        //アイコン画像のぐるぐる
+        let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorOfIcon.color = UIColor.gray
+        // 画面の中央に表示するようにframeを変更する
+        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
         
         //各値をセルに入れる
         let targetMemoData: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
@@ -204,9 +213,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
-        cell!.menuImage.addSubview(indicator)
-        cell!.userImage.addSubview(indicator)
-        indicator.startAnimating()
+        cell!.menuImage.addSubview(indicatorOfImage)
+        cell!.userImage.addSubview(indicatorOfIcon)
+        indicatorOfIcon.startAnimating()
+        indicatorOfImage.startAnimating()
         
         if let icon = userData.object(forKey: "userIcon") {
             let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
@@ -224,6 +234,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         if let image = targetMemoData.menuImage {
+            indicatorOfImage.stopAnimating()
             cell!.menuImage.image = image
         } else {
             
@@ -236,6 +247,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if error != nil {
                     print("写真の取得失敗: \(error)")
                 } else {
+                    indicatorOfImage.stopAnimating()
                     cell!.menuImage.image = UIImage(data: imageData!)
                     self.mbs.postMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                     self.postTable.reloadData()

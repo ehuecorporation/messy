@@ -124,11 +124,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
 
         
-        //自動計算の場合は必要
-        
-        self.menuList.estimatedRowHeight = 450.0
-        
-        self.menuList.rowHeight = UITableViewAutomaticDimension
+        //セルの高さを設定
+        self.menuList.rowHeight = 400
         
         
         // Pull to Refreshコントロール初期化

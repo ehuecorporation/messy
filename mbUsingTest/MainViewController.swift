@@ -139,11 +139,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
         self.memoTableView.register(nib, forCellReuseIdentifier: "MemoCell")
         
-        //自動計算の場合は必要
-        
-        self.memoTableView.estimatedRowHeight = 500.0
-    
-        self.memoTableView.rowHeight = UITableViewAutomaticDimension
+        //セルの高さを設定
+        self.memoTableView.rowHeight = 400
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
@@ -214,12 +211,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
+        cell!.frame.size.height = 500
         
         //各値をセルに入れる
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorOfIcon.color = UIColor.gray
+        // 画面の中央に表示するようにframeを変更する
+        let w = indicatorOfIcon.frame.size.width
+        let h = indicatorOfIcon.frame.size.height
+        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
+        
+        let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         
         // objectID,fileNamの保存と隠し
         cell!.objectID.text = targetMemoData.objectID
@@ -236,9 +241,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
-        cell!.menuImage.addSubview(indicator)
-        
-        indicator.startAnimating()
+        indicatorOfIcon.center = cell!.userImage.center
+        cell!.userImage.addSubview(indicatorOfIcon)
+        indicatorOfIcon.startAnimating()
+        cell!.menuImage.addSubview(indicatorOfImage)
+        indicatorOfImage.startAnimating()
         
         // Iconを丸角に
         cell!.userImage.layer.cornerRadius = 45
@@ -252,6 +259,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let image = targetMemoData.menuImage {
             cell!.menuImage.image = image
+            indicatorOfImage.stopAnimating()
         } else {
             
             let filename: String = targetMemoData.filename
@@ -264,6 +272,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("写真の取得失敗: \(error)")
                 } else {
                     cell!.menuImage.image = UIImage(data: imageData!)
+                    indicatorOfImage.stopAnimating()
                     self.mbs.memos[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                     self.memoTableView.reloadData()
                 }

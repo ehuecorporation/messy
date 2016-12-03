@@ -129,6 +129,11 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicator.color = UIColor.gray
+        let w = indicator.frame.size.width
+        let h = indicator.frame.size.height
+
         // Cell はストーリーボードで設定したセルのID
         let testCell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mymenuItem", for: indexPath)
         
@@ -136,14 +141,14 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
             let label = testCell.contentView.viewWithTag(2) as! UILabel
             label.text! = "読み込み中"
             let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
-            imageView.image = #imageLiteral(resourceName: "loading")
+
+            indicator.frame = CGRect(origin: CGPoint(x: imageView.frame.size.width/2 - w/2, y: imageView.frame.size.height/2 - h/2), size: CGSize(width: indicator.frame.size.width, height:  indicator.frame.size.height))
+            imageView.addSubview(indicator)
+            indicator.startAnimating()
             return testCell
         }
         
         let targetMemoData :memo = mbs.favList[(indexPath as NSIndexPath).row]
-        
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-
         
         // Tag番号を使ってLabelのインスタンス生成
         let label = testCell.contentView.viewWithTag(2) as! UILabel
@@ -151,12 +156,11 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         
         // Tag番号を使ってImageViewのインスタンス生成
         let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
-        imageView.addSubview(indicator)
-        indicator.startAnimating()
         
         // 画像の読み込み
         if let image = targetMemoData.menuImage {
             imageView.image = image
+            indicator.stopAnimating()
         } else {
             
             let filename: String = targetMemoData.filename
@@ -169,6 +173,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
                     print("写真の取得失敗: \(error)")
                 } else {
                     imageView.image = UIImage(data: imageData!)
+                    indicator.stopAnimating()
                     self.mbs.favList[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                 }
             }
