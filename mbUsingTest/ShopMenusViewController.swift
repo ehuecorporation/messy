@@ -125,7 +125,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
 
         
         //セルの高さを設定
-        self.menuList.rowHeight = 400
+        self.menuList.rowHeight = self.view.frame.size.width + 120
         
         
         // Pull to Refreshコントロール初期化
@@ -185,6 +185,20 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
+        //アイコン画像のぐるぐる
+        let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorOfIcon.color = UIColor.gray
+        // 画面の中央に表示するようにframeを変更する
+        let w = indicatorOfIcon.frame.size.width
+        let h = indicatorOfIcon.frame.size.height
+        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
+        
+        //メニュー画像のぐるぐる
+        let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorOfIcon.color = UIColor.gray
+        // 画面の中央に表示するようにframeを変更する
+        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
+        
         //各値をセルに入れる
         let targetMemoData: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
@@ -202,8 +216,10 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
-        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
-        cell!.userImage.image = #imageLiteral(resourceName: "loading")
+        cell!.menuImage.addSubview(indicatorOfImage)
+        cell!.userImage.addSubview(indicatorOfIcon)
+        indicatorOfIcon.startAnimating()
+        indicatorOfImage.startAnimating()
         
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
@@ -213,6 +229,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         if let image = targetMemoData.menuImage {
+            indicatorOfImage.stopAnimating()
             cell!.menuImage.image = image
         } else {
             
@@ -225,6 +242,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 if error != nil {
                     print("写真の取得失敗: \(error)")
                 } else {
+                    indicatorOfImage.stopAnimating()
                     cell!.menuImage.image = UIImage(data: imageData!)
                     self.mbs.shopMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                     self.menuList.reloadData()

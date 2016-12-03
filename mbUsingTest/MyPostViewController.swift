@@ -192,7 +192,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let h = indicatorOfIcon.frame.size.height
         indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
         
-        //アイコン画像のぐるぐる
+        //メニュー画像のぐるぐる
         let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicatorOfIcon.color = UIColor.gray
         // 画面の中央に表示するようにframeを変更する

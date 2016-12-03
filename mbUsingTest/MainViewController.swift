@@ -140,7 +140,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.memoTableView.register(nib, forCellReuseIdentifier: "MemoCell")
         
         //セルの高さを設定
-        self.memoTableView.rowHeight = 400
+        self.memoTableView.rowHeight = self.view.frame.size.width + 120
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
@@ -211,7 +211,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
-        cell!.frame.size.height = 500
         
         //各値をセルに入れる
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
@@ -271,8 +270,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if error != nil {
                     print("写真の取得失敗: \(error)")
                 } else {
-                    cell!.menuImage.image = UIImage(data: imageData!)
                     indicatorOfImage.stopAnimating()
+                    cell!.menuImage.image = UIImage(data: imageData!)
                     self.mbs.memos[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                     self.memoTableView.reloadData()
                 }
