@@ -462,6 +462,7 @@ public class NCMBSearch {
         
     }// geoSearch End
     
+    // アイコンアップロード時に前のデータを削除
     func deleteIcon (_ iconFileName : String) {
         
         var fileData : NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
@@ -470,9 +471,18 @@ public class NCMBSearch {
         
             if error == nil {
                 if data != nil {
-                    fileData = NCMBFile.file(with: data!) as! NCMBFile
-                    fileData.delete(nil)
+                    fileData.deleteInBackground({(error) in
+                        if error == nil {
+                            print("消しました")
+                        } else {
+                            print(error!.localizedDescription)
+                        }
+                    })
+                } else {
+                    print("そんなデータは無い")
                 }
+            } else {
+                print(error!.localizedDescription)
             }
         })
     }

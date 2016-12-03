@@ -504,7 +504,7 @@
                                             <segue destination="eiC-Iq-Hl0" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="u3I-8D-p8B"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuList" translatesAutoresizingMaskIntoConstraints="NO" id="7sm-Gk-aCh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7sm-Gk-aCh">
                                         <rect key="frame" x="50" y="20" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Mqp-WX-Axz"/>
@@ -1286,6 +1286,7 @@
     <resources>
         <image name="background" width="337" height="225"/>
         <image name="comera" width="24" height="24"/>
+        <image name="defaultIcon" width="128" height="128"/>
         <image name="list" width="24" height="24"/>
         <image name="menuList" width="24" height="24"/>
         <image name="messyLogo" width="778" height="308"/>
