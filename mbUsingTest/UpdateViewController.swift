@@ -78,6 +78,11 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.set(self.user?.mailAddress, forKey: "userMail")
                     self.userData.synchronize()
                     
+                    if let iconFileName = self.userData.object(forKey: "userIconFileName") {
+                        var mbs: NCMBSearch = NCMBSearch()
+                        mbs.deleteIcon(iconFileName as! String)
+                    }
+                    
                     targetFile.saveInBackground({
                         (error) -> Void in
                         
@@ -204,6 +209,8 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         super.viewDidLoad()
         userNewName.delegate = self
         mailAdress.delegate = self
+        
+        userImage.image = #imageLiteral(resourceName: "defaultIcon")
         
         if let name = userData.object(forKey: "userName") {
             userNewName.text = name as? String

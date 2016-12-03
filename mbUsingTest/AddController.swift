@@ -186,7 +186,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(self.targetMenuName, forKey: "menuName")
                 obj.setObject(targetFile.name, forKey: "filename")
                 obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
-                obj.setObject(self.userData.object(forKey: "userIconFileName")!, forKey: "postUserIcon")
                 obj.setObject(self.targetHousrs!, forKey: "menuHours")
                 obj.setObject(0 as Int, forKey: "lookCounter")
                 obj.setObject(0 as Int, forKey: "favoriteCounter")

@@ -62,13 +62,12 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(user?.userName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
                     
-/*
                     if !user!.mailAddress.isEmpty {
                         print("なう")
                         self.userData.register(defaults: ["userMail": String()])
                         self.userData.set(user!.mailAddress, forKey: "userMail")
                     }
- */
+ 
                     if let userID = user!.objectId {
                         self.userData.register(defaults: ["userID": String()])
                         self.userData.set(userID, forKey: "userID")
@@ -122,6 +121,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 // 端末に入っているmessyのデータを削除
                 let appDomain = Bundle.main.bundleIdentifier
                 UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+                
+                // メールアドレスを初期化
 
                     
                 // ユーザー情報を端末へ保存

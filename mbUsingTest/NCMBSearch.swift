@@ -32,7 +32,7 @@ public struct memo {
     public var menuHours: Int = 0
     public var lookCounter: Int = 0
     public var favoriteCounter: Int = 0
-    public var postUserIon: String = ""
+    public var postUser: String = ""
     
     public var description: String {
         get {
@@ -196,7 +196,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
-                            tmp.postUserIon = (targetMemoData.object(forKey: "postUserIcon") as? String)!
+                            tmp.postUser = (targetMemoData.object(forKey: "postUserIcon") as? String)!
                             tmpMenu.append(tmp)
                         }
                         
@@ -304,8 +304,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
-                            tmp.postUserIon = (targetMemoData.object(forKey: "postUserIcon") as? String)!
-                            
+                            tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                                 
                             tmpFavList.append(tmp)
                             counter += 1
@@ -366,7 +365,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
-                            tmp.postUserIon = (targetMemoData.object(forKey: "postUserIcon") as? String)!
+                            tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             tmpArray.append(tmp)
                         }
                         
@@ -433,7 +432,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
-                            tmp.postUserIon = (targetMemoData.object(forKey: "postUserIcon") as? String)!
+                            tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             tmpArray.append(tmp)
                         }
                         
@@ -462,6 +461,21 @@ public class NCMBSearch {
         }) // findObjects end
         
     }// geoSearch End
+    
+    func deleteIcon (_ iconFileName : String) {
+        
+        var fileData : NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
+        
+        fileData.getDataInBackground({(data, error) in
+        
+            if error == nil {
+                if data != nil {
+                    fileData = NCMBFile.file(with: data!) as! NCMBFile
+                    fileData.delete(nil)
+                }
+            }
+        })
+    }
     
     
 }
