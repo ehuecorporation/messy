@@ -79,6 +79,8 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.synchronize()
                     
                     if let iconFileName = self.userData.object(forKey: "userIconFileName") {
+                        self.userData.removeObject(forKey: "userIcon")
+                        self.userData.removeObject(forKey: "userIconFileName")
                         let mbs: NCMBSearch = NCMBSearch()
                         mbs.deleteIcon(iconFileName as! String)
                     }
