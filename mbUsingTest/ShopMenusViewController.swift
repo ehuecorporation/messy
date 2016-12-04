@@ -203,7 +203,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         let targetMemoData: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
-        // objectID,fileNamの保存と隠し
+        //隠しておく要素
         cell!.objectID.text = targetMemoData.objectID
         cell!.objectID.isHidden = true
         cell!.fileName.text = targetMemoData.filename
@@ -213,6 +213,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.lookCounter.isHidden = true
         cell!.favoriteCounter.isHidden = true
         
+        // 表示する要素
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
@@ -220,6 +221,16 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.userImage.addSubview(indicatorOfIcon)
         indicatorOfIcon.startAnimating()
         indicatorOfImage.startAnimating()
+        
+        // menuHoursに従って色分け
+        if targetMemoData.menuHours == 0 {
+            cell!.backgroundColor = UIColor.blue
+        } else if targetMemoData.menuHours == 1 {
+            cell!.backgroundColor = UIColor.orange
+        } else {
+            cell!.backgroundColor = UIColor.gray
+        }
+
         
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {

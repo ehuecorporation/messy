@@ -225,7 +225,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         
-        // objectID,fileNamの保存と隠し
+        //隠しておく要素
         cell!.objectID.text = targetMemoData.objectID
         cell!.objectID.isHidden = true
         cell!.fileName.text = targetMemoData.filename
@@ -237,6 +237,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.lookCounterLabel.isHidden = true
         cell!.favoriteCounterLabel.isHidden = true
         
+        //表示する要素
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
@@ -245,6 +246,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         indicatorOfIcon.startAnimating()
         cell!.menuImage.addSubview(indicatorOfImage)
         indicatorOfImage.startAnimating()
+        
+        // menuHoursに従って色分け
+        if targetMemoData.menuHours == 0 {
+            cell!.backgroundColor = UIColor.blue
+        } else if targetMemoData.menuHours == 1 {
+            cell!.backgroundColor = UIColor.orange
+        } else {
+            cell!.backgroundColor = UIColor.gray
+        }
         
         // Iconを丸角に
         cell!.userImage.layer.cornerRadius = 45

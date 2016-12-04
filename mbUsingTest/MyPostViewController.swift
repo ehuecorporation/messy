@@ -202,12 +202,13 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let targetMemoData: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
         
-        // objectID,fileNamの保存と隠し
+        //隠しておく要素
         cell!.objectID.text = targetMemoData.objectID
         cell!.objectID.isHidden = true
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
         
+        //表示する要素
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
@@ -217,6 +218,16 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.userImage.addSubview(indicatorOfIcon)
         indicatorOfIcon.startAnimating()
         indicatorOfImage.startAnimating()
+        
+        // menuHoursに従って色分け
+        if targetMemoData.menuHours == 0 {
+            cell!.backgroundColor = UIColor.blue
+        } else if targetMemoData.menuHours == 1 {
+            cell!.backgroundColor = UIColor.orange
+        } else {
+            cell!.backgroundColor = UIColor.gray
+        }
+
         
         if let icon = userData.object(forKey: "userIcon") {
             let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
