@@ -67,6 +67,13 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                         self.userData.register(defaults: ["userMail": String()])
                         self.userData.set(user!.mailAddress, forKey: "userMail")
                     }
+                    
+                    self.userData.set(user?.object(forKey: "userIcon"), forKey: "userIconFileName")
+                    
+                    if !self.userData.bool(forKey: "userIcon") {
+                        var mbs = NCMBSearch()
+                        mbs.loadIcon()
+                    }
  
                     if let userID = user!.objectId {
                         self.userData.register(defaults: ["userID": String()])
@@ -202,14 +209,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         // デリゲートを通しておく
         userName.delegate = self
         userPass.delegate = self
-        
-        //初めての利用であればボタンのラベルを変える
-        self.userData.register(defaults: ["useCount" : Bool()])
-        
-        if !userData.bool(forKey: "useCount") {
-            loginLabel.setTitle("会員登録", for: .normal)
-        }
-        
+                
         // 値をプリセット
         if let name = userData.object(forKey: "userName") {
             userName.text = name as? String

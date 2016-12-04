@@ -465,7 +465,7 @@ public class NCMBSearch {
     // アイコンアップロード時に前のデータを削除
     func deleteIcon (_ iconFileName : String) {
         
-        var fileData : NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
+        var fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
         
         fileData.getDataInBackground({(data, error) in
         
@@ -475,16 +475,37 @@ public class NCMBSearch {
                         if error == nil {
                             print("消しました")
                         } else {
-                            print(error!.localizedDescription)
+                            print("削除時\(error!.localizedDescription)")
                         }
                     })
                 } else {
                     print("そんなデータは無い")
                 }
             } else {
-                print(error!.localizedDescription)
+                print("検索時\(error!.localizedDescription)")
             }
         })
+    }
+    
+    func loadIcon() {
+        
+        var userData = UserDefaults.standard
+        let iconFileName = userData.object(forKey: "userIconFileName") as! String
+        var fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
+        
+        fileData.getDataInBackground({(data, error) in
+            if error == nil {
+                if data != nil {
+                    if let userIcon = UIImagePNGRepresentation(UIImage(data: data!)!) {
+                        userData.set(userIcon, forKey: "userIcon")
+                    }
+                }
+            } else {
+                print("検索時\(error!.localizedDescription)")
+            }
+        
+        })
+        
     }
     
     
