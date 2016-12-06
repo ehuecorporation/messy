@@ -15,6 +15,7 @@ public struct shop {
     public var shopNumber: Int = 0
     public var shopLat: Double = 0
     public var shopLon: Double = 0
+    public var shopGeo: NCMBGeoPoint = NCMBGeoPoint()
     public var openHours: String = ""
     public var restDay: String = ""
     
@@ -122,10 +123,11 @@ public class NCMBSearch {
                     let targetMemoData: AnyObject = response[0] as AnyObject
                     shopData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
                     shopData.shopNumber = (targetMemoData.object(forKey: "numbaer") as? Int)!
-                    shopData.shopLon = (targetMemoData.object(forKey: "longtitude") as? Double)!
-                    shopData.shopLat = (targetMemoData.object(forKey: "latitude") as? Double)!
                     shopData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!
                     shopData.restDay = (targetMemoData.object(forKey: "restDay") as? String)!
+                    shopData.shopGeo = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
+                    shopData.shopLon = shopData.shopGeo.longitude
+                    shopData.shopLat = shopData.shopGeo.latitude
                     print("店舗データの取得に成功しました")
                     self.shopData = shopData
                     NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil)
@@ -334,6 +336,7 @@ public class NCMBSearch {
     func getUserPost(_ userID: String) {
         
         let query: NCMBQuery = NCMBQuery(className: "MemoClass")
+        query.order(byDescending: "createDate")
         query.whereKey("postUser", equalTo: userID)
         
         var tmpArray = [memo]()

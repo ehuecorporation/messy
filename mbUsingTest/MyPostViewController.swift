@@ -214,6 +214,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
+        cell!.menuImage.image = nil
         cell!.menuImage.addSubview(indicatorOfImage)
         cell!.userImage.addSubview(indicatorOfIcon)
         indicatorOfIcon.startAnimating()

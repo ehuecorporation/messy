@@ -336,31 +336,6 @@
                                             <action selector="signInButton:" destination="hgm-yw-r7P" eventType="touchUpInside" id="hTG-EB-D7X"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvX-7x-eii">
-                                        <rect key="frame" x="20" y="335" width="335" height="50"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBy-TD-abS">
-                                                <rect key="frame" x="118" y="5" width="100" height="40"/>
-                                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="EEK-BL-K7x"/>
-                                                    <constraint firstAttribute="height" constant="40" id="Que-Ws-cwC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Twitter">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="twitterLogin:" destination="hgm-yw-r7P" eventType="touchUpInside" id="kOW-ka-Sps"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="cBy-TD-abS" firstAttribute="centerY" secondItem="nvX-7x-eii" secondAttribute="centerY" id="4PS-hc-ZiH"/>
-                                            <constraint firstAttribute="height" constant="50" id="iH0-il-Q3E"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -372,11 +347,7 @@
                                     <constraint firstItem="mIU-mj-2wQ" firstAttribute="leading" secondItem="CjY-W6-lmE" secondAttribute="leading" constant="30" id="IMQ-V1-l35"/>
                                     <constraint firstItem="DqM-oI-v4Y" firstAttribute="centerX" secondItem="CjY-W6-lmE" secondAttribute="centerX" id="J2y-Cp-IhR"/>
                                     <constraint firstItem="mIU-mj-2wQ" firstAttribute="top" secondItem="CjY-W6-lmE" secondAttribute="top" constant="100" id="KTy-Yj-p1x"/>
-                                    <constraint firstItem="nvX-7x-eii" firstAttribute="top" secondItem="fkN-en-lZ3" secondAttribute="bottom" constant="15" id="Mju-Vv-gGG"/>
-                                    <constraint firstAttribute="trailing" secondItem="nvX-7x-eii" secondAttribute="trailing" constant="20" id="Tae-nj-zLD"/>
-                                    <constraint firstItem="nvX-7x-eii" firstAttribute="leading" secondItem="CjY-W6-lmE" secondAttribute="leading" constant="20" id="XGf-Z1-3Bz"/>
                                     <constraint firstItem="8b1-Xq-zP9" firstAttribute="top" secondItem="mIU-mj-2wQ" secondAttribute="bottom" constant="30" id="Xsc-lE-yhM"/>
-                                    <constraint firstItem="cBy-TD-abS" firstAttribute="centerX" secondItem="CjY-W6-lmE" secondAttribute="centerX" id="anE-OZ-NJm"/>
                                     <constraint firstItem="ePt-xu-kuW" firstAttribute="leading" secondItem="mIU-mj-2wQ" secondAttribute="trailing" constant="20" id="bLy-Ow-44H"/>
                                     <constraint firstAttribute="trailing" secondItem="ePt-xu-kuW" secondAttribute="trailing" constant="30" id="cAl-vu-LwS"/>
                                     <constraint firstItem="8b1-Xq-zP9" firstAttribute="leading" secondItem="CjY-W6-lmE" secondAttribute="leading" constant="30" id="cEm-Gu-Fqi"/>
@@ -1221,7 +1192,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mymenuItem" id="gOF-ns-v9M">
-                                        <rect key="frame" x="79" y="0.0" width="218" height="223"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="218" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
@@ -1297,8 +1268,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="zbS-2T-nYv"/>
         <segue reference="iaH-Ro-qJe"/>
+        <segue reference="uE1-04-o1p"/>
         <segue reference="u3I-8D-p8B"/>
-        <segue reference="CKM-V6-8l9"/>
         <segue reference="Udy-kv-6Tb"/>
         <segue reference="IWr-99-Qp8"/>
         <segue reference="vNz-yZ-lot"/>

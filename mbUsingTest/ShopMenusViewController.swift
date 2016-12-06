@@ -217,6 +217,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
+        cell!.menuImage.image = nil
         cell!.menuImage.addSubview(indicatorOfImage)
         cell!.userImage.addSubview(indicatorOfIcon)
         indicatorOfIcon.startAnimating()

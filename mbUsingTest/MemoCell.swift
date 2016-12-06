@@ -12,6 +12,7 @@ import NCMB
 class MemoCell: UITableViewCell {
     
     var userData = UserDefaults.standard
+    let user = NCMBUser.current()
     var fav : Favorite = Favorite()
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")
@@ -47,6 +48,17 @@ class MemoCell: UITableViewCell {
             
             favoriteNum -= 1
             
+            // cloud上のfavListの更新
+            let tmpFav = Favorite.favorites
+            user?.setObject(tmpFav, forKey: "favList")
+            user?.saveInBackground({(error) in
+                
+                if error == nil {
+                    print("cloud上に保存")
+                }
+                
+            })
+            
             // 値の更新
             var saveError: NSError? = nil
             let obj: NCMBObject = NCMBObject(className: "MemoClass")
@@ -76,6 +88,18 @@ class MemoCell: UITableViewCell {
             var favoriteNum = Int(favoriteCounter.text!)!
             
             favoriteNum += 1
+            
+            // cloud上のfavListの更新
+            let tmpFav = Favorite.favorites
+            user?.setObject(tmpFav, forKey: "favList")
+            user?.saveInBackground({(error) in
+            
+                if error == nil {
+                    print("cloud上に保存")
+                }
+            
+            })
+
             
             // 値の更新
             var saveError: NSError? = nil
