@@ -251,9 +251,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if targetMemoData.menuHours == 0 {
             cell!.backgroundColor = UIColor.blue
         } else if targetMemoData.menuHours == 1 {
-            cell!.backgroundColor = UIColor.orange
+            cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.backgroundColor = UIColor.gray
+            cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
+//            cell!.backgroundColor = UIColor.init(red: 122/255.0, green: 139/255.0, blue: 258/255.0, alpha: 1)
         }
         
         // Iconを丸角に

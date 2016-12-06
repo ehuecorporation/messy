@@ -943,7 +943,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="clV-Qu-LJL"/>
-                                    <barButtonItem image="comera" id="Vly-Je-1Qb">
+                                    <barButtonItem image="picture" id="Vly-Je-1Qb">
                                         <connections>
                                             <action selector="displayCamera:" destination="fRS-1y-RXI" id="UoG-6D-HWl"/>
                                         </connections>
@@ -1262,6 +1262,7 @@
         <image name="menuList" width="24" height="24"/>
         <image name="messyLogo" width="778" height="308"/>
         <image name="pen" width="24" height="24"/>
+        <image name="picture" width="24" height="24"/>
         <image name="reload" width="24" height="24"/>
         <image name="up" width="24" height="24"/>
     </resources>

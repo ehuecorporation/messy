@@ -184,19 +184,13 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
-        //アイコン画像のぐるぐる
-        let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfIcon.color = UIColor.gray
-        // 画面の中央に表示するようにframeを変更する
-        let w = indicatorOfIcon.frame.size.width
-        let h = indicatorOfIcon.frame.size.height
-        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
-        
         //メニュー画像のぐるぐる
         let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfIcon.color = UIColor.gray
+        indicatorOfImage.color = UIColor.gray
+        let w = indicatorOfImage.frame.size.width
+        let h = indicatorOfImage.frame.size.height
         // 画面の中央に表示するようにframeを変更する
-        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
+        indicatorOfImage.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
         
         //各値をセルに入れる
         let targetMemoData: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
@@ -216,8 +210,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
         cell!.menuImage.image = nil
         cell!.menuImage.addSubview(indicatorOfImage)
-        cell!.userImage.addSubview(indicatorOfIcon)
-        indicatorOfIcon.startAnimating()
         indicatorOfImage.startAnimating()
         
         // menuHoursに従って色分け
@@ -226,7 +218,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if targetMemoData.menuHours == 1 {
             cell!.backgroundColor = UIColor.orange
         } else {
-            cell!.backgroundColor = UIColor.gray
+            cell!.backgroundColor = UIColor.init(red: 52, green: 69, blue: 188, alpha: 0)
         }
 
         

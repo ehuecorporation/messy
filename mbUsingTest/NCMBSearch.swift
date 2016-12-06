@@ -404,7 +404,7 @@ public class NCMBSearch {
         let geoPoint: NCMBGeoPoint = NCMBGeoPoint()
         geoPoint.latitude = latitude
         geoPoint.longitude = longtitude
-        query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.5)
+        query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.8)
         
         var tmpArray = [memo]()
         
