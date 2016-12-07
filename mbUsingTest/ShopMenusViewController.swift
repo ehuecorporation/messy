@@ -227,11 +227,10 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         if targetMemoData.menuHours == 0 {
             cell!.backgroundColor = UIColor.blue
         } else if targetMemoData.menuHours == 1 {
-            cell!.backgroundColor = UIColor.orange
+            cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.backgroundColor = UIColor.gray
+            cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
         }
-
         
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
@@ -240,27 +239,22 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             cell!.favButton.setImage(star_off, for: .normal)
         }
         
+        // メニュー画像の取得
         if let image = targetMemoData.menuImage {
             indicatorOfImage.stopAnimating()
             cell!.menuImage.image = image
         } else {
-            
-            let filename: String = targetMemoData.filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    indicatorOfImage.stopAnimating()
-                    cell!.menuImage.image = UIImage(data: imageData!)
-                    self.mbs.shopMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
-                    self.menuList.reloadData()
-                }
-            }
+            getCellImage((indexPath as NSIndexPath).row)
         }
+        
+        // ポストユーザーのアイコンの取得
+        if let icon = targetMemoData.postUserIcon {
+            cell!.userImage.image = icon
+            indicatorOfIcon.stopAnimating()
+        } else {
+            getCellIcon((indexPath as NSIndexPath).row)
+        }
+
         
         //3セル先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
@@ -268,8 +262,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
-        
-        print(targetMemoData)
         
         return cell!
     }
@@ -308,31 +300,38 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     print("写真の取得失敗: \(error)")
                 } else {
                     self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
+                    self.menuList.reloadData()
                 }
             }
         }
-        
-    } // getCellImage end
-    
-    /*
-     func setname() {
-     if let userName = userData.object(forKey: "Name") {
-     
-     } else {
-     userData.set("\(userInfo.userName!)", forKey: "Name")
-     
-     
-     }
-     }
-     */
-    
-    //segueを呼び出したときに呼ばれるメソッド
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
     }
     
+    // アイコンの取得
+    func getCellIcon(_ index: Int) {
+        
+        if index < mbs.memos.count {
+            if mbs.memos[index].postUserIcon != nil {
+                return
+            }
+            let postUser: NCMBUser = NCMBUser()
+            postUser.objectId = mbs.memos[index].postUser
+            postUser.fetchInBackground({(error) -> Void in
+                if error == nil {
+                    
+                    let filename: String = postUser.object(forKey: "userIcon") as! String
+                    let fileData = NCMBFile.file(withName:filename, data: nil) as! NCMBFile
+                    
+                    fileData.getDataInBackground({(imageData, error) in
+                        if error == nil {
+                            self.mbs.memos[index].postUserIcon = UIImage(data: imageData!)
+                            self.menuList.reloadData()
+                        }
+                    })
+                }
+            })
+        }
+        
+    } // getCellIcon end
     
-
-
 }
 

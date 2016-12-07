@@ -61,14 +61,9 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     //端末情報の更新
                     self.userData.set(user?.userName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
-                    
-                    if !user!.mailAddress.isEmpty {
-                        print("なう")
-                        self.userData.register(defaults: ["userMail": String()])
-                        self.userData.set(user!.mailAddress, forKey: "userMail")
-                    }
-                    
+                    self.userData.set(user!.mailAddress, forKey: "userMail")
                     self.userData.set(user?.object(forKey: "userIcon"), forKey: "userIconFileName")
+                    self.userData.set(user?.object(forKey: "favList"), forKey: "favorites")
                     
                     if !self.userData.bool(forKey: "userIcon") {
                         let mbs = NCMBSearch()

@@ -33,6 +33,7 @@ public struct memo {
     public var menuHours: Int = 0
     public var lookCounter: Int = 0
     public var favoriteCounter: Int = 0
+    public var postUserIcon: UIImage? = nil
     public var postUser: String = ""
     
     public var description: String {
@@ -198,7 +199,6 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
-                            tmp.postUser = (targetMemoData.object(forKey: "postUserIcon") as? String)!
                             tmpMenu.append(tmp)
                         }
                         

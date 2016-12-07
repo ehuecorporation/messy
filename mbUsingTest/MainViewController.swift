@@ -212,10 +212,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
-        //各値をセルに入れる
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
-        print(targetMemoData)
         
+        // アイコンのぐるぐる
         let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicatorOfIcon.color = UIColor.gray
         // 画面の中央に表示するようにframeを変更する
@@ -223,7 +222,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let h = indicatorOfIcon.frame.size.height
         indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
         
+        //メニュー画像のぐるぐる
         let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorOfImage.color = UIColor.gray
+        // 画面の中央に表示するようにframeを変更する
+        indicatorOfImage.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
         
         //隠しておく要素
         cell!.objectID.text = targetMemoData.objectID
@@ -254,7 +257,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
             cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
-//            cell!.backgroundColor = UIColor.init(red: 122/255.0, green: 139/255.0, blue: 258/255.0, alpha: 1)
         }
         
         // Iconを丸角に
@@ -267,31 +269,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell!.favButton.setImage(star_off, for: .normal)
         }
         
+        // メニュー画像の取得
         if let image = targetMemoData.menuImage {
             cell!.menuImage.image = image
             indicatorOfImage.stopAnimating()
         } else {
-            
-            let filename: String = targetMemoData.filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    indicatorOfImage.stopAnimating()
-                    cell!.menuImage.image = UIImage(data: imageData!)
-                    self.mbs.memos[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
-                    self.memoTableView.reloadData()
-                }
-            }
+            getCellImage((indexPath as NSIndexPath).row)
+        }
+        
+        // ポストユーザーのアイコンの取得
+        if let icon = targetMemoData.postUserIcon {
+            cell!.userImage.image = icon
+            indicatorOfIcon.stopAnimating()
+        } else {
+            getCellIcon((indexPath as NSIndexPath).row)
         }
         
         //3個先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
         getCellImage((indexPath as NSIndexPath).row + 3)
+        getCellIcon((indexPath as NSIndexPath).row + 2)
+        getCellIcon((indexPath as NSIndexPath).row + 3)
+
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -359,6 +358,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("写真の取得失敗: \(error)")
                 } else {
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
+                    self.memoTableView.reloadData()
                 }
             }
             apiCounter += 1
@@ -366,6 +366,33 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     } // getCellImage end
+    
+    // アイコンの取得
+    func getCellIcon(_ index: Int) {
+        
+        if index < mbs.memos.count {
+            if mbs.memos[index].postUserIcon != nil {
+                return
+            }
+            let postUser: NCMBUser = NCMBUser()
+            postUser.objectId = mbs.memos[index].postUser
+            postUser.fetchInBackground({(error) -> Void in
+                if error == nil {
+                    
+                    let filename: String = postUser.object(forKey: "userIcon") as! String
+                    let fileData = NCMBFile.file(withName:filename, data: nil) as! NCMBFile
+                    
+                    fileData.getDataInBackground({(imageData, error) in
+                        if error == nil {
+                            self.mbs.memos[index].postUserIcon = UIImage(data: imageData!)
+                            self.memoTableView.reloadData()
+                        }
+                    })
+                }
+            })
+        }
+        
+    } // getCellIcon end
     
     // GPSから値を取得した際に呼び出されるメソッド.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

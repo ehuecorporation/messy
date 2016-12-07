@@ -216,9 +216,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if targetMemoData.menuHours == 0 {
             cell!.backgroundColor = UIColor.blue
         } else if targetMemoData.menuHours == 1 {
-            cell!.backgroundColor = UIColor.orange
+            cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.backgroundColor = UIColor.init(red: 52, green: 69, blue: 188, alpha: 0)
+            cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
         }
 
         
@@ -237,26 +237,12 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell!.favButton.setImage(star_off, for: .normal)
         }
         
+        // メニュー画像の取得
         if let image = targetMemoData.menuImage {
             indicatorOfImage.stopAnimating()
             cell!.menuImage.image = image
         } else {
-            
-            let filename: String = targetMemoData.filename
-            let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
-            fileData.getDataInBackground {
-                (imageData, error) -> Void in
-                
-                if error != nil {
-                    print("写真の取得失敗: \(error)")
-                } else {
-                    indicatorOfImage.stopAnimating()
-                    cell!.menuImage.image = UIImage(data: imageData!)
-                    self.mbs.postMenu[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
-                    self.postTable.reloadData()
-                }
-            }
+            getCellImage((indexPath as NSIndexPath).row)
         }
         
         //3個先まで画像を事前に取得
@@ -304,6 +290,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     print("写真の取得失敗: \(error)")
                 } else {
                     self.mbs.postMenu[index].menuImage = UIImage(data: imageData!)
+                    self.postTable.reloadData()
                 }
             }
             apiCounter += 1
