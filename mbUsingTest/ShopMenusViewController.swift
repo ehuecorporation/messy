@@ -309,12 +309,12 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     // アイコンの取得
     func getCellIcon(_ index: Int) {
         
-        if index < mbs.memos.count {
-            if mbs.memos[index].postUserIcon != nil {
+        if index < mbs.shopMenu.count {
+            if mbs.shopMenu[index].postUserIcon != nil {
                 return
             }
             let postUser: NCMBUser = NCMBUser()
-            postUser.objectId = mbs.memos[index].postUser
+            postUser.objectId = mbs.shopMenu[index].postUser
             postUser.fetchInBackground({(error) -> Void in
                 if error == nil {
                     
@@ -323,7 +323,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                     fileData.getDataInBackground({(imageData, error) in
                         if error == nil {
-                            self.mbs.memos[index].postUserIcon = UIImage(data: imageData!)
+                            self.mbs.shopMenu[index].postUserIcon = UIImage(data: imageData!)
                             self.menuList.reloadData()
                         }
                     })
