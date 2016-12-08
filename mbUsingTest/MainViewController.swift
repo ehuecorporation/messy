@@ -258,10 +258,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
         }
-        
-        // Iconを丸角に
-        cell!.userImage.layer.cornerRadius = 45
-        
+                
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
             cell!.favButton.setImage(star_on, for: .normal)

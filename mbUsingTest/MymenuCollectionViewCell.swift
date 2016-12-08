@@ -94,37 +94,10 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        // pull to refreshの実装
-        let refreshControl = UIRefreshControl()
-        //下に引っ張った時に、リフレッシュさせる関数を実行する。
-        refreshControl.addTarget(self, action: #selector(MymenuCollectionViewCell.onRefresh(_:)), for: UIControlEvents.valueChanged)
-        //UICollectionView上に、ロード中...を表示するための新しいビューを作る
-        menuList.addSubview(refreshControl)
+        // セルサイズをあらかじめ指定
+        menuList.contentSize = CGSize(width: self.view.frame.size.width/2 - 2.5, height: self.view.frame.size.width/2 - 2.5)
         
-    }
-    
-    func onRefresh(_ refreshControl: UIRefreshControl) {
         
-        // UIRefreshControlを読込状態にする
-        refreshControl.beginRefreshing()
-        
-        // 終了通知を受信したらUIRefreshControlを停止する
-        refreshObserver = NotificationCenter.default.addObserver(
-            forName: NSNotification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
-            object: nil,
-            queue: nil,
-            using: {
-                notification in
-                // 通知の待受を終了
-                NotificationCenter.default.removeObserver(self.refreshObserver!)
-                // UIRefreshControlを停止する
-                refreshControl.endRefreshing()
-                
-                
-        }) // uisng block end
-        
-        // 通常のリフレッシュ
-        mbs.getFavList(Favorite.favorites)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -185,10 +158,6 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     // Cell が選択された場合
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if Favorite.favorites.count == 0 {
-            return
-        }
-        
         // [indexPath.row] から画像名を探し、UImage を設定
         targetmemo = mbs.favList[(indexPath as NSIndexPath).row]
         performSegue(withIdentifier: "pushDetailFromMyMenu",sender: nil)
@@ -196,15 +165,12 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     }
     
     // Screenサイズに応じたセルサイズを返す
-    // UICollectionViewDelegateFlowLayoutの設定が必要
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize:CGFloat = self.view.frame.size.width/2 - 2.5
         // 正方形で返すためにwidth,heightを同じにする
         return CGSize(width: cellSize, height: cellSize)
         
     }
-    
-    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // section数は１つ

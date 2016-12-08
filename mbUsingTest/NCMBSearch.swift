@@ -437,6 +437,7 @@ public class NCMBSearch {
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
+                            print(targetMemoData.object(forKey: "updateDate"))
                             tmpArray.append(tmp)
                         }
                         

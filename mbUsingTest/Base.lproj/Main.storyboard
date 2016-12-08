@@ -112,7 +112,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="7qK-dV-POI"/>
-                                            <barButtonItem image="comera" id="4z5-AV-tFB">
+                                            <barButtonItem image="picture" id="4z5-AV-tFB">
                                                 <connections>
                                                     <action selector="displayCamera:" destination="fR1-1F-DGY" id="MXE-Km-FtR"/>
                                                 </connections>
@@ -1192,7 +1192,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mymenuItem" id="gOF-ns-v9M">
-                                        <rect key="frame" x="78.5" y="0.0" width="218" height="223"/>
+                                        <rect key="frame" x="79" y="0.0" width="218" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
@@ -1256,7 +1256,6 @@
     </scenes>
     <resources>
         <image name="background" width="337" height="225"/>
-        <image name="comera" width="24" height="24"/>
         <image name="defaultIcon" width="128" height="128"/>
         <image name="list" width="24" height="24"/>
         <image name="menuList" width="24" height="24"/>
@@ -1267,12 +1266,12 @@
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zbS-2T-nYv"/>
-        <segue reference="iaH-Ro-qJe"/>
         <segue reference="uE1-04-o1p"/>
+        <segue reference="iaH-Ro-qJe"/>
         <segue reference="u3I-8D-p8B"/>
-        <segue reference="Udy-kv-6Tb"/>
         <segue reference="IWr-99-Qp8"/>
+        <segue reference="Udy-kv-6Tb"/>
         <segue reference="vNz-yZ-lot"/>
+        <segue reference="ulA-g6-vGo"/>
     </inferredMetricsTieBreakers>
 </document>

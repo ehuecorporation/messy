@@ -227,9 +227,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell!.userImage.image = image
         }
         
-        // Iconを丸角に
-        cell!.userImage.layer.cornerRadius = 45
-        
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
             cell!.favButton.setImage(star_on, for: .normal)
