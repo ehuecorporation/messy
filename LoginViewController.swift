@@ -63,7 +63,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(targetPass, forKey: "userPass")
                     self.userData.set(user!.mailAddress, forKey: "userMail")
                     self.userData.set(user?.object(forKey: "userIcon"), forKey: "userIconFileName")
-                    self.userData.set(user?.object(forKey: "favList"), forKey: "favorites")
+                    let favList: [String] = user?.object(forKey: "favList") as! [String]
+                    self.userData.set( favList, forKey: "favorites")
                     
                     if !self.userData.bool(forKey: "userIcon") {
                         let mbs = NCMBSearch()
