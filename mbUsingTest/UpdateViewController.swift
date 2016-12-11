@@ -18,14 +18,28 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     var loginFlag: Bool = Bool()
     let user = NCMBUser.current()
     var loading_flag = false
-    
+    var user_sex: Int? = nil
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userImage: UIImageView!
     
     @IBOutlet weak var userNewName: UITextField!
     @IBOutlet weak var mailAdress: UITextField!
+    @IBOutlet weak var manButton: UIButton!
+    @IBOutlet weak var womanButton: UIButton!
 
+    @IBAction func setMan(_ sender: UIButton) {
+        user_sex = 0
+        manButton.borderColor = UIColor.blue
+        womanButton.borderColor = UIColor.black
+    }
+    
+    @IBAction func setWoman(_ sender: UIButton) {
+        user_sex = 1
+        manButton.borderColor = UIColor.black
+        womanButton.borderColor = UIColor.blue
+    }
+    
     
     @IBAction func hydeKeybord(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -40,8 +54,9 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         let targetNewName = self.userNewName.text!
         let targetNewMailAdress = self.mailAdress.text!
         let targetUserImage = self.userImage.image
+        let targetSex = self.user_sex
         
-        if (targetNewName.isEmpty || targetNewMailAdress.isEmpty || targetUserImage == nil) {
+        if (targetNewName.isEmpty || targetNewMailAdress.isEmpty || targetSex == nil||targetUserImage == nil) {
             
             presentError("エラー", "入力に不備があります")
             
@@ -52,6 +67,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             // ユーザー情報を設定
             user?.setObject(targetNewName, forKey: "userName")
             user?.setObject(targetNewMailAdress, forKey: "mailAddress")
+            user?.setObject(targetSex, forKey: "userSex")
             
             // アイコン画像の設定
             let imageData: Data = UIImagePNGRepresentation(targetUserImage!)!
@@ -73,9 +89,11 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                     self.userData.register(defaults: ["useCount" : Bool()])
                     self.userData.register(defaults: ["userID" : String()])
                     self.userData.register(defaults: ["userMail" : String()])
+                    self.userData.register(defaults: ["userSex " : Int()])
                     self.userData.set(true, forKey: "useCount")
                     self.userData.set(self.user?.objectId, forKey: "userID")
                     self.userData.set(self.user?.mailAddress, forKey: "userMail")
+                    self.userData.set(targetSex, forKey: "userSex")
                     self.userData.synchronize()
                     
                     if let iconFileName = self.userData.object(forKey: "userIconFileName") {
@@ -225,6 +243,15 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         if let icon = userData.object(forKey: "userIcon") {
             let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
             userImage.image = image
+        }
+        
+        if let tmp = userData.object(forKey: "userSex") {
+            let sex = tmp as! Int
+            if sex == 0 {
+                manButton.borderColor = UIColor.blue
+            } else {
+                womanButton.borderColor = UIColor.blue
+            }
         }
         
         //ドロワーメニュー
