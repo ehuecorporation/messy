@@ -205,6 +205,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //表示する要素
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
+        cell!.updateDate.text = targetMemoData.updateDate
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"

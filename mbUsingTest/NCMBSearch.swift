@@ -35,6 +35,7 @@ public struct memo {
     public var favoriteCounter: Int = 0
     public var postUserIcon: UIImage? = nil
     public var postUser: String = ""
+    public var updateDate: String = ""
     
     public var description: String {
         get {
@@ -200,6 +201,8 @@ public class NCMBSearch {
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
+                            let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
+                            tmp.updateDate = updateDate.substring(to: updateDate.index(updateDate.startIndex, offsetBy: 10))
                             tmpMenu.append(tmp)
                         }
                         
@@ -308,7 +311,9 @@ public class NCMBSearch {
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
-                                
+                            let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
+                            tmp.updateDate = updateDate.substring(to: updateDate.index(updateDate.startIndex, offsetBy: 10))
+                            
                             tmpFavList.append(tmp)
                             counter += 1
                             if counter == myMenuItem {
@@ -370,6 +375,8 @@ public class NCMBSearch {
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
+                            let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
+                            tmp.updateDate = updateDate.substring(to: updateDate.index(updateDate.startIndex, offsetBy: 10))
                             tmpArray.append(tmp)
                         }
                         
@@ -437,7 +444,8 @@ public class NCMBSearch {
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
-                            print(targetMemoData.object(forKey: "updateDate"))
+                            let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
+                            tmp.updateDate = updateDate.substring(to: updateDate.index(updateDate.startIndex, offsetBy: 10))
                             tmpArray.append(tmp)
                         }
                         

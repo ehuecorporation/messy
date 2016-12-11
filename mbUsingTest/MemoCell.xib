@@ -30,8 +30,8 @@
                             <action selector="likeButton:" destination="s1g-JC-pyc" eventType="touchUpInside" id="VUt-3G-ybZ"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="料理の金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u56-fE-K8K">
-                        <rect key="frame" x="230" y="402" width="82" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理の金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u56-fE-K8K">
+                        <rect key="frame" x="230" y="396" width="82" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Pj8-hl-7BC"/>
                         </constraints>
@@ -97,7 +97,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkO-ty-u1M">
-                                <rect key="frame" x="55" y="15" width="260" height="21.5"/>
+                                <rect key="frame" x="55" y="14" width="260" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -136,9 +136,20 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDc-TB-DKG">
+                        <rect key="frame" x="215" y="416" width="100" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Vbe-sS-gRi"/>
+                            <constraint firstAttribute="height" constant="20" id="gS9-1p-knQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="u56-fE-K8K" secondAttribute="trailing" constant="8" id="1An-Ad-O6T"/>
+                    <constraint firstItem="DDc-TB-DKG" firstAttribute="top" secondItem="u56-fE-K8K" secondAttribute="bottom" id="49x-jI-7gV"/>
                     <constraint firstItem="f50-me-YO3" firstAttribute="leading" secondItem="HAi-3W-NOo" secondAttribute="trailing" id="4Xt-Af-0y2"/>
                     <constraint firstAttribute="trailing" secondItem="Juy-G2-t6G" secondAttribute="trailing" id="AXz-DW-fqV"/>
                     <constraint firstItem="2eB-BX-TYD" firstAttribute="leading" secondItem="sC9-T2-4Bj" secondAttribute="trailing" constant="8" id="BMe-b9-5gT"/>
@@ -161,6 +172,7 @@
                     <constraint firstItem="HAi-3W-NOo" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="8" id="iRB-A3-yLz"/>
                     <constraint firstItem="u56-fE-K8K" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="21" id="kgz-3a-ERO"/>
                     <constraint firstItem="0g5-w6-Bgk" firstAttribute="top" secondItem="dAk-g4-jQR" secondAttribute="top" id="nRD-Zv-nbS"/>
+                    <constraint firstAttribute="trailing" secondItem="DDc-TB-DKG" secondAttribute="trailing" constant="5" id="rlW-kW-f8B"/>
                     <constraint firstItem="Juy-G2-t6G" firstAttribute="top" secondItem="0g5-w6-Bgk" secondAttribute="bottom" constant="5" id="zHK-Xj-NwG"/>
                 </constraints>
             </tableViewCellContentView>
@@ -176,6 +188,7 @@
                 <outlet property="menuName" destination="4M9-Qs-lHM" id="YuZ-rp-OMD"/>
                 <outlet property="objectID" destination="jub-8D-Fq8" id="a49-Nt-n6R"/>
                 <outlet property="shopName" destination="TkO-ty-u1M" id="lsp-XK-K2U"/>
+                <outlet property="updateDate" destination="DDc-TB-DKG" id="1UP-ts-TwC"/>
                 <outlet property="userImage" destination="Rvi-48-9ED" id="nfQ-S7-Hvy"/>
             </connections>
             <point key="canvasLocation" x="-132" y="-79"/>

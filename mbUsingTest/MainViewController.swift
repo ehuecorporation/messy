@@ -244,6 +244,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.shopName.text = targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
+        cell!.updateDate.text = targetMemoData.updateDate
         cell!.menuImage.image = nil
         cell!.userImage.addSubview(indicatorOfIcon)
         indicatorOfIcon.startAnimating()
