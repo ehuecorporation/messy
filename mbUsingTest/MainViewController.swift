@@ -20,7 +20,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //新規追加時
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
-        performSegue(withIdentifier: "goAdd", sender: nil)
+        let errorAlert = UIAlertController(
+            title: "投稿画面へ移動します",
+            message: "近隣の店舗を取得できます",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "投稿画面へ",
+                style: UIAlertActionStyle.default,
+                handler: self.goAddView
+            )
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "現在地から取得",
+                style: UIAlertActionStyle.default,
+                handler: self.goShopListView
+            )
+        )
+        self.present(errorAlert, animated: true, completion: nil)
+
     }
     
     //NCMBAPIの利用
@@ -51,6 +71,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //対象メモ
     var targetMemo: memo = memo()
+    
+    //各ポストユーザーの格納
+    var postUserArray = [String]()
+    
+    //各アイコンの格納
+    var iconArray = [UIImage]()
     
     // 画像
     let star_on = UIImage(named: "myMenu_on")
@@ -369,27 +395,32 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getCellIcon(_ index: Int) {
         
         if index < mbs.memos.count {
-            if mbs.memos[index].postUserIcon != nil {
-                return
-            }
-            let postUser: NCMBUser = NCMBUser()
-            postUser.objectId = mbs.memos[index].postUser
-            postUser.fetchInBackground({(error) -> Void in
-                if error == nil {
-                    
-                    let filename: String = postUser.object(forKey: "userIcon") as! String
-                    let fileData = NCMBFile.file(withName:filename, data: nil) as! NCMBFile
-                    
-                    fileData.getDataInBackground({(imageData, error) in
-                        if error == nil {
-                            self.mbs.memos[index].postUserIcon = UIImage(data: imageData!)
-                            self.memoTableView.reloadData()
-                        }
-                    })
+            let postUserID = mbs.memos[index].postUser
+            if let number = postUserArray.index(of: postUserID) {
+                print(number)
+                if number < iconArray.count {
+                    mbs.memos[index].postUserIcon = iconArray[number]
                 }
-            })
-        }
-        
+            } else {
+                let postUser: NCMBUser = NCMBUser()
+                postUser.objectId = postUserID
+                postUserArray.append(postUserID)
+                postUser.fetchInBackground({(error) -> Void in
+                    if error == nil {
+                        
+                        let filename: String = postUser.object(forKey: "userIcon") as! String
+                        let fileData = NCMBFile.file(withName:filename, data: nil) as! NCMBFile
+                        
+                        fileData.getDataInBackground({(imageData, error) in
+                            if error == nil {
+                                self.iconArray.append(UIImage(data: imageData!)!)
+                                self.memoTableView.reloadData()
+                            }
+                        })
+                    }
+                })
+            }
+        } // index out of bounds check
     } // getCellIcon end
     
     // GPSから値を取得した際に呼び出されるメソッド.
@@ -455,6 +486,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(errorAlert, animated: true, completion: nil)
         
     }
+    
+    func goAddView(_ ac: UIAlertAction) -> Void {
+        performSegue(withIdentifier: "goAdd", sender: nil)
+    }
+
+    func goShopListView(_ ac: UIAlertAction) -> Void {
+        performSegue(withIdentifier: "goShopList", sender: nil)
+    }
+
     
    //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

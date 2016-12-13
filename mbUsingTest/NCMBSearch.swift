@@ -49,7 +49,8 @@ public struct memo {
 }
 
 public class NCMBSearch {
-    //ポストの保管
+    
+    //近隣店舗のリスト
     public var memos = [memo]()
     
     //お気に入りリスト
@@ -63,6 +64,9 @@ public class NCMBSearch {
     
     //店舗データ
     public var shopData = shop()
+    
+    //近隣店舗のリスト
+    public var restaurants = [shop]()
     
     // 全何件か
     public var total = 0
@@ -474,6 +478,64 @@ public class NCMBSearch {
         }) // findObjects end
         
     }// geoSearch End
+    
+    func getShopList(_ latitude : Double, _ longtitude : Double) {
+
+        var tmpArray = [shop]()
+        
+        //API実行
+        let query: NCMBQuery = NCMBQuery(className: "test")
+        let geoPoint: NCMBGeoPoint = NCMBGeoPoint()
+        geoPoint.latitude = latitude
+        geoPoint.longitude = longtitude
+        query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.8)
+        
+        //店舗検索を通知
+        NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBShopLoadStartNotification), object: nil)
+        
+        query.findObjectsInBackground({
+            (objects, error) in
+            
+            if error == nil {
+                if let response = objects {
+                    if response.count > 0 {
+                    for  i in 0 ..< response.count {
+                        let targetMemoData: AnyObject = response[i] as AnyObject
+                        var tmpData = shop()
+                        tmpData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+                        tmpData.shopNumber = (targetMemoData.object(forKey: "numbaer") as? Int)!
+                        tmpData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!
+                        tmpData.restDay = (targetMemoData.object(forKey: "restDay") as? String)!
+                        tmpData.shopGeo = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
+                        tmpData.shopLon = tmpData.shopGeo.longitude
+                        tmpData.shopLat = tmpData.shopGeo.latitude
+                        tmpArray.append(tmpData)
+                    }
+                    if self.restaurants.count != tmpArray.count {
+                        self.restaurants = tmpArray
+                    }
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil)
+                    return
+                    
+                    } else {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil, userInfo: ["error": "近くの店舗はまだ掲載されてないようです。"])
+                    return
+                    } // response.count end
+                }
+            } else {
+                print("店舗データの取得に失敗しました")
+                var message = "Unknown error."
+                if let description = error?.localizedDescription {
+                    message = description
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                return
+            } // error check
+            
+            return
+        
+        }) // findObjects end
+    } // getShopListend
     
     // アイコンアップロード時に前のデータを削除
     func deleteIcon (_ iconFileName : String) {

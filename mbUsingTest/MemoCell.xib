@@ -191,7 +191,7 @@
                 <outlet property="updateDate" destination="DDc-TB-DKG" id="1UP-ts-TwC"/>
                 <outlet property="userImage" destination="Rvi-48-9ED" id="nfQ-S7-Hvy"/>
             </connections>
-            <point key="canvasLocation" x="-132" y="-79"/>
+            <point key="canvasLocation" x="-145" y="-60"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -45,6 +45,7 @@
 		2FE5CD3C1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
 		2FE5CD3D1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
 		2FE5CD3E1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
+		2FE7875F1DFE649A008428CC /* ShopListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */; };
 		32374AF0DA3F2EB90E5BC07E /* Pods_mbUsingTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A2534F1CA638765B41FFD53 /* Pods_mbUsingTestTests.framework */; };
 		595A5A971DB2112D007DDBFA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A5A961DB2112D007DDBFA /* InfoViewController.swift */; };
 		595A5A991DB214BB007DDBFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A5A981DB214BB007DDBFA /* MapKit.framework */; };
@@ -102,6 +103,7 @@
 		2FA17CAE1D9917BD00CF30E1 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListTableViewController.swift; sourceTree = "<group>"; };
 		595A5A961DB2112D007DDBFA /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		595A5A981DB214BB007DDBFA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		599344D51DBA37B300D2572C /* MymenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MymenuCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -228,13 +230,12 @@
 			isa = PBXGroup;
 			children = (
 				2F644B621D851A22009CF261 /* AppDelegate.swift */,
-				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
-				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
 				2F644B661D851A22009CF261 /* Main.storyboard */,
 				2F63C8E11DE58194007EB8D5 /* Main */,
 				2F6A1BDC1DCDF6BE00F083FD /* System */,
 				2F5831BD1DBE35C900BAAA15 /* Common */,
 				2FB6DE491D98DEDF004A513F /* MemoCell */,
+				2FE7875D1DFE6438008428CC /* Shop */,
 				2F644B691D851A22009CF261 /* Assets.xcassets */,
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
 				2F644B6E1D851A22009CF261 /* Info.plist */,
@@ -277,6 +278,16 @@
 				2F2AF1A91DB0F15D00464B5E /* MemoCell.xib */,
 			);
 			name = MemoCell;
+			sourceTree = "<group>";
+		};
+		2FE7875D1DFE6438008428CC /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
+				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
+				2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */,
+			);
+			name = Shop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,6 +582,7 @@
 				2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */,
 				2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */,
 				2F644B651D851A22009CF261 /* MainViewController.swift in Sources */,
+				2FE7875F1DFE649A008428CC /* ShopListTableViewController.swift in Sources */,
 				59CE38081DCC781700FC35E0 /* ShopMenusViewController.swift in Sources */,
 				2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */,
 				2FA17CAF1D9917BD00CF30E1 /* AddController.swift in Sources */,

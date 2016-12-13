@@ -24,9 +24,13 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     var targetMenuPrice: String = ""
     var targetHousrs: Int? = nil
     var targetDisplayImage: UIImage? = nil
+    @IBOutlet weak var toolBar: UIToolbar!
     
     //編集フラグ
     var editFlag: Bool = false
+    
+    //店舗セレクトフラグ
+    var selectFlag: Bool = false
     
     //更新フラグ
     var updateFlag: Bool = false
@@ -42,6 +46,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     //MainViewController.swiftから渡されたデータ
     var targetData: memo = memo()
+    
+    //ShopListTableから渡される値
+    var targetShopData: shop = shop()
     
     @IBOutlet weak var shopName: UITextField!
     @IBOutlet weak var menuName: UITextField!
@@ -176,6 +183,64 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     }
                     
                 })
+            } else if selectFlag {
+                //新規データを一件登録する
+                var saveError: NSError? = nil
+                let obj: NCMBObject = NCMBObject(className: "MemoClass")
+                obj.setObject(self.targetShopName, forKey: "shopName")
+                obj.setObject(self.targetMenuPrice, forKey: "menuPrice")
+                obj.setObject(self.targetMenuName, forKey: "menuName")
+                obj.setObject(targetFile.name, forKey: "filename")
+                obj.setObject(self.userData.object(forKey: "userID")!, forKey: "postUser")
+                obj.setObject(self.targetHousrs!, forKey: "menuHours")
+                obj.setObject(0 as Int, forKey: "lookCounter")
+                obj.setObject(0 as Int, forKey: "favoriteCounter")
+                obj.setObject(self.targetShopData.shopGeo as NCMBGeoPoint, forKey: "geoPoint")
+                obj.setObject(self.targetShopData.shopNumber as Int, forKey: "shopNumber")
+                obj.setObject(self.targetShopData.shopName as String, forKey: "shopName")
+                obj.save(&saveError)
+                
+                //ファイルをバックグランドで実行
+                targetFile.saveInBackground({
+                    (error) -> Void in
+                    
+                    if error == nil {
+                        print("画像データ保存完了: \(targetFile.name)")
+                    } else {
+                        self.presentError("登録エラー", "\(error!.localizedDescription)")
+                    }
+                }, progressBlock: {
+                    (percentDone: Int32) -> Void
+                    in
+                    //進捗状況を終わるまで取得
+                    print("進捗状況: \(percentDone)%アップロード済み")
+                })
+                
+                if saveError == nil {
+                    print("success save data.")
+                } else {
+                    print("failure save data.\(saveError)")
+                }
+                
+                //UItextFieldを空にする
+                self.shopName.text = ""
+                self.menuName.text = ""
+                self.menuPrice.text = ""
+                self.displayImage.image = nil
+                
+                let errorAlert = UIAlertController(
+                    title: "投稿完了",
+                    message: "投稿が反映されるまでお待ち下さい",
+                    preferredStyle: UIAlertControllerStyle.alert
+                )
+                errorAlert.addAction(
+                    UIAlertAction(
+                        title: "OK",
+                        style: UIAlertActionStyle.default,
+                        handler: self.saveComplete                    )
+                )
+                self.present(errorAlert, animated: true, completion: nil)
+                
             } else {
                 
                 //新規データを一件登録する
@@ -232,11 +297,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 )
                 self.present(errorAlert, animated: true, completion: nil)
                 
-            }
-            
+            } // normal add end
         }
-        
-    }
+    } // addmemo end
 
     @IBAction func displayCamera(_ sender: UIBarButtonItem) {
         
@@ -287,6 +350,10 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.menuName.placeholder = "パンケーキ"
         self.menuPrice.placeholder = "1080"
         
+        if selectFlag {
+            self.shopName.text = targetShopData.shopName
+        }
+        
         //ドロワーメニュー
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -299,6 +366,10 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.shopName.delegate = self
         self.menuName.delegate = self
         self.menuPrice.delegate = self
+        
+        //ツールバーの配色
+        toolBar.backgroundColor = UIColor.orange
+        toolBar.tintColor = UIColor.black
         
         //追加・編集での入力状態の制御
         if self.editFlag == true {
