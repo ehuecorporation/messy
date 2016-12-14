@@ -21,7 +21,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
         let errorAlert = UIAlertController(
-            title: "投稿画面へ移動します",
+            title: "投稿画面へ移動",
             message: "近隣の店舗を取得できます",
             preferredStyle: UIAlertControllerStyle.alert
         )
@@ -39,6 +39,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 handler: self.goShopListView
             )
         )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+
         self.present(errorAlert, animated: true, completion: nil)
 
     }
@@ -77,6 +85,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //各アイコンの格納
     var iconArray = [UIImage]()
+    
+    //画像取得時のリロード回数を制限
+    var reloadCount = 0
     
     // 画像
     let star_on = UIImage(named: "myMenu_on")
@@ -236,7 +247,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
-        getCellIcon((indexPath as NSIndexPath).row)
         
         // アイコンのぐるぐる
         let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
@@ -300,9 +310,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // ポストユーザーのアイコンの取得
-        if let icon = targetMemoData.postUserIcon {
-            cell!.userImage.image = icon
-            indicatorOfIcon.stopAnimating()
+        if let number = postUserArray.index(of: targetMemoData.postUser){
+            if number < iconArray.count {
+                cell!.userImage.image = iconArray[number]
+                indicatorOfIcon.stopAnimating()
+            }
+        } else {
+            getCellIcon((indexPath as NSIndexPath).row)
         }
         //3個先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
@@ -374,7 +388,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("写真の取得失敗: \(error)")
                 } else {
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
-                    self.memoTableView.reloadData()
+                    self.reloadCount += 1
+                    if self.reloadCount % 2 == 0 {
+                        self.memoTableView.reloadData()
+                    }
                 }
             }
             apiCounter += 1

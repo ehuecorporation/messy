@@ -125,7 +125,8 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.shopListTable.register(nib, forCellReuseIdentifier: "MemoCell")
         
         //セルの高さを設定
-        self.shopListTable.rowHeight = 60
+        self.shopListTable.rowHeight = 50
+        self.shopListTable.tableFooterView = UIView(frame: .zero)
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
