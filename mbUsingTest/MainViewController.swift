@@ -151,7 +151,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if mbs.memos.count == 0 {
             myLocationManager.startUpdatingLocation()
         } else {
-            self.memoTableView.reloadData()
         }
 
         //お気に入りを読み込み
@@ -201,8 +200,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 NotificationCenter.default.removeObserver(self.refreshObserver!)
                 // UIRefreshControlを停止する
                 refreshControl.endRefreshing()
-                
-                
             }
         ) // uisng block end
         // 通常のリフレッシュ
@@ -239,6 +236,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        getCellIcon((indexPath as NSIndexPath).row)
         
         // アイコンのぐるぐる
         let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
@@ -279,11 +277,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.backgroundColor = UIColor.blue
+            cell!.shopName.backgroundColor = UIColor.blue
         } else if targetMemoData.menuHours == 1 {
-            cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
         }
                 
         //お気に入りに入っていれば星をon
@@ -305,16 +303,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let icon = targetMemoData.postUserIcon {
             cell!.userImage.image = icon
             indicatorOfIcon.stopAnimating()
-        } else {
-            getCellIcon((indexPath as NSIndexPath).row)
         }
-        
         //3個先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
-        getCellImage((indexPath as NSIndexPath).row + 3)
         getCellIcon((indexPath as NSIndexPath).row + 2)
-        getCellIcon((indexPath as NSIndexPath).row + 3)
-
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -397,7 +389,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if index < mbs.memos.count {
             let postUserID = mbs.memos[index].postUser
             if let number = postUserArray.index(of: postUserID) {
-                print(number)
                 if number < iconArray.count {
                     mbs.memos[index].postUserIcon = iconArray[number]
                 }
@@ -414,7 +405,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         fileData.getDataInBackground({(imageData, error) in
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
-                                self.memoTableView.reloadData()
                             }
                         })
                     }

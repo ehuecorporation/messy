@@ -923,7 +923,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写真：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH1-aO-k5z">
-                                <rect key="frame" x="10" y="235" width="80" height="30"/>
+                                <rect key="frame" x="10" y="215" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="jeS-Od-apA"/>
                                     <constraint firstAttribute="height" constant="30" id="vt1-LQ-phv"/>
@@ -1022,7 +1022,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kln-B3-9h7">
-                                <rect key="frame" x="0.0" y="185" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間帯：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGG-k9-Xzu">
                                         <rect key="frame" x="10" y="8" width="80" height="30"/>
@@ -1121,7 +1121,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Px-zv-MiH">
-                                <rect key="frame" x="0.0" y="40" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeK-Af-jAa">
                                         <rect key="frame" x="10" y="5" width="120" height="20"/>
@@ -1165,7 +1165,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IE-jn-8Dh">
-                                <rect key="frame" x="0.0" y="90" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理の名前：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMz-Ge-Nbr">
                                         <rect key="frame" x="10" y="5" width="120" height="20"/>
@@ -1222,7 +1222,7 @@
                             <constraint firstItem="awW-gX-OPo" firstAttribute="centerX" secondItem="WIN-kK-zeS" secondAttribute="centerX" id="Qw3-7E-PSD"/>
                             <constraint firstItem="awW-gX-OPo" firstAttribute="leading" secondItem="WIN-kK-zeS" secondAttribute="leadingMargin" constant="35" id="SG7-0s-dpe"/>
                             <constraint firstAttribute="trailing" secondItem="Kln-B3-9h7" secondAttribute="trailing" id="Vzc-Bw-pYf"/>
-                            <constraint firstItem="4Px-zv-MiH" firstAttribute="top" secondItem="f3Q-Sr-f76" secondAttribute="bottom" constant="20" id="aIq-Eb-JBb"/>
+                            <constraint firstItem="4Px-zv-MiH" firstAttribute="top" secondItem="f3Q-Sr-f76" secondAttribute="bottom" id="aIq-Eb-JBb"/>
                             <constraint firstItem="Kln-B3-9h7" firstAttribute="leading" secondItem="WIN-kK-zeS" secondAttribute="leading" id="bcf-9s-dzy"/>
                             <constraint firstItem="4Px-zv-MiH" firstAttribute="leading" secondItem="WIN-kK-zeS" secondAttribute="leading" id="ipQ-YI-u74"/>
                             <constraint firstItem="4yQ-Ls-TKZ" firstAttribute="top" secondItem="hag-uT-xLd" secondAttribute="bottom" id="kLc-BZ-n0I"/>
