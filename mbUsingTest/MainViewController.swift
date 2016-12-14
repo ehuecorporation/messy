@@ -178,6 +178,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //セルの高さを設定
         self.memoTableView.rowHeight = self.view.frame.size.width + 120
         
+        // 空セルを非表示
+        self.memoTableView.tableFooterView = UIView(frame: .zero)
+        
         //ドロワーメニュー
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -406,9 +409,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if index < mbs.memos.count {
             let postUserID = mbs.memos[index].postUser
             if let number = postUserArray.index(of: postUserID) {
-                if number < iconArray.count {
-                    mbs.memos[index].postUserIcon = iconArray[number]
-                }
             } else {
                 let postUser: NCMBUser = NCMBUser()
                 postUser.objectId = postUserID
@@ -424,6 +424,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 self.iconArray.append(UIImage(data: imageData!)!)
                             }
                         })
+                    } else {
+                        print(error?.localizedDescription)
                     }
                 })
             }

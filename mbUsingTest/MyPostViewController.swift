@@ -114,6 +114,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //セルの高さを設定
         self.postTable.rowHeight = self.view.frame.size.width + 120
         
+        self.postTable.tableFooterView = UIView(frame: .zero)
+        
         //ドロワーメニュー
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
