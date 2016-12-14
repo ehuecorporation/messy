@@ -111,7 +111,9 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         let newUser = NCMBUser()
         newUser.userName = targetName
         newUser.password = targetPass
-        newUser.setObject([], forKey: "favList")
+        newUser.acl.setPublicReadAccess(true)
+        newUser.acl.setWriteAccess(true, for: newUser)
+        newUser.setObject( [], forKey: "favList")
         newUser.signUpInBackground({(error) in
             
             if error != nil {

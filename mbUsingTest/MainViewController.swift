@@ -324,6 +324,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //3個先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
         getCellIcon((indexPath as NSIndexPath).row + 2)
+
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -383,7 +384,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             let filename: String = mbs.memos[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
-            
             fileData.getDataInBackground {
                 (imageData, error) -> Void in
                 
@@ -392,7 +392,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 } else {
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
                     self.reloadCount += 1
-                    if self.reloadCount % 2 == 0 {
+                    if self.reloadCount % 3 == 0 {
                         self.memoTableView.reloadData()
                     }
                 }
@@ -422,6 +422,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         fileData.getDataInBackground({(imageData, error) in
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
+                                self.reloadCount += 1
+                                if self.reloadCount % 3 == 0 {
+                                    self.memoTableView.reloadData()
+                                }
                             }
                         })
                     } else {

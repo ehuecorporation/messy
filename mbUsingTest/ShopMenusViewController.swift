@@ -28,6 +28,15 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     //更新フラグ
     var refreshFlag: Bool = false
     
+    //各ポストユーザーの格納
+    var postUserArray = [String]()
+    
+    //各アイコンの格納
+    var iconArray = [UIImage]()
+
+    //テーブル再描画回数を制限
+    var reloadCount = 0
+    
     //テーブルビューの要素数
     let sectionCount: Int = 1
     
@@ -226,11 +235,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.backgroundColor = UIColor.blue
+            cell!.shopName.backgroundColor = UIColor.blue
         } else if targetMemoData.menuHours == 1 {
-            cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
         }
         
         //お気に入りに入っていれば星をon
@@ -249,9 +258,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         // ポストユーザーのアイコンの取得
-        if let icon = targetMemoData.postUserIcon {
-            cell!.userImage.image = icon
-            indicatorOfIcon.stopAnimating()
+        if let number = postUserArray.index(of: targetMemoData.postUser){
+            if number < iconArray.count {
+                cell!.userImage.image = iconArray[number]
+                indicatorOfIcon.stopAnimating()
+            }
         } else {
             getCellIcon((indexPath as NSIndexPath).row)
         }
@@ -259,8 +270,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //3セル先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
-        getCellImage((indexPath as NSIndexPath).row + 3)
-        
+        getCellIcon((indexPath as NSIndexPath).row + 2)
+
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
         
@@ -301,7 +312,10 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     print("写真の取得失敗: \(error)")
                 } else {
                     self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
-                    self.menuList.reloadData()
+                    self.reloadCount += 1
+                    if self.reloadCount % 3 == 0 {
+                        self.menuList.reloadData()
+                    }
                 }
             }
         }
@@ -311,27 +325,33 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     func getCellIcon(_ index: Int) {
         
         if index < mbs.shopMenu.count {
-            if mbs.shopMenu[index].postUserIcon != nil {
-                return
+            let postUserID = mbs.shopMenu[index].postUser
+            if let number = postUserArray.index(of: postUserID) {
+            } else {
+                let postUser: NCMBUser = NCMBUser()
+                postUser.objectId = postUserID
+                postUserArray.append(postUserID)
+                postUser.fetchInBackground({(error) -> Void in
+                    if error == nil {
+                        
+                        let filename: String = postUser.object(forKey: "userIcon") as! String
+                        let fileData = NCMBFile.file(withName:filename, data: nil) as! NCMBFile
+                        
+                        fileData.getDataInBackground({(imageData, error) in
+                            if error == nil {
+                                self.iconArray.append(UIImage(data: imageData!)!)
+                                self.reloadCount += 1
+                                if self.reloadCount % 3 == 0 {
+                                    self.menuList.reloadData()
+                                }
+                            }
+                        })
+                    } else {
+                        print(error?.localizedDescription)
+                    }
+                })
             }
-            let postUser: NCMBUser = NCMBUser()
-            postUser.objectId = mbs.shopMenu[index].postUser
-            postUser.fetchInBackground({(error) -> Void in
-                if error == nil {
-                    
-                    let filename: String = postUser.object(forKey: "userIcon") as! String
-                    let fileData = NCMBFile.file(withName:filename, data: nil) as! NCMBFile
-                    
-                    fileData.getDataInBackground({(imageData, error) in
-                        if error == nil {
-                            self.mbs.shopMenu[index].postUserIcon = UIImage(data: imageData!)
-                            self.menuList.reloadData()
-                        }
-                    })
-                }
-            })
-        }
-        
+        } // index out of bounds check        
     } // getCellIcon end
     
 }

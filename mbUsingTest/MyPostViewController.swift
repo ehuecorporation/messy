@@ -40,6 +40,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //テーブルビューの要素数
     let sectionCount: Int = 1
     
+    // テーブル再描画回数を制限
+    var reloadCount = 0
+    
     //対象MeMoのobjectID
     var targetMemoObjectId: String!
     
@@ -217,11 +220,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.backgroundColor = UIColor.blue
+            cell!.shopName.backgroundColor = UIColor.blue
         } else if targetMemoData.menuHours == 1 {
-            cell!.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
         }
 
         
@@ -247,13 +250,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //3個先まで画像を事前に取得
         getCellImage((indexPath as NSIndexPath).row + 2)
-        getCellImage((indexPath as NSIndexPath).row + 3)
+
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
-        
-        print(targetMemoData)
-        
+                
         return cell!
     }
     
@@ -290,7 +291,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     print("写真の取得失敗: \(error)")
                 } else {
                     self.mbs.postMenu[index].menuImage = UIImage(data: imageData!)
-                    self.postTable.reloadData()
+                    self.reloadCount += 1
+                    if self.reloadCount % 2 == 0 {
+                        self.postTable.reloadData()
+                    }
                 }
             }
             apiCounter += 1
