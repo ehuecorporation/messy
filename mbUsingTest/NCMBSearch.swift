@@ -563,13 +563,10 @@ public class NCMBSearch {
     }
     
     func loadIcon() {
-        print("ここにきました")
         var userData = UserDefaults.standard
         if userData.object(forKey: "userIconFileName") as! String == "" {
-            print("a")
             return
         }
-        print("到達")
         let iconFileName = userData.object(forKey: "userIconFileName") as! String
         var fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
         

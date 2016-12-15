@@ -57,15 +57,21 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     
                 } else {
                     
-                    // 端末に入っているmessyのデータを削除
-                    let appDomain = Bundle.main.bundleIdentifier
-                    UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+                    if !self.userData.bool(forKey: "userName"){
+                        print(user!.userName)
+                        print(self.userData.object(forKey: "userName"))
+                        if user!.userName != self.userData.object(forKey: "userName") as? String{
+                            // 端末に入っているmessyのデータを削除
+                            let appDomain = Bundle.main.bundleIdentifier
+                            UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+                        }
+                    }
 
                     //端末情報の更新
-                    self.userData.set(user?.userName, forKey: "userName")
+                    self.userData.set(user!.userName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
                     self.userData.set(user!.mailAddress, forKey: "userMail")
-                    self.userData.set(user?.object(forKey: "userIcon"), forKey: "userIconFileName")
+                    self.userData.set(user!.object(forKey: "userIcon"), forKey: "userIconFileName")
                     let favList: [String] = user?.object(forKey: "favList") as! [String]
                     self.userData.set( favList, forKey: "favorites")
                     
@@ -82,7 +88,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(true, forKey: "useCount")
                     self.userData.synchronize()
                     // ユーザーデータの確認
-                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))\(self.userData.object(forKey: "userIconFileName"))")
+                    print("\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))\(self.userData.object(forKey: "userIconFileName"))")
                     
                     // 該当端末で初めての使用なら更新画面へ
                     if !self.userData.bool(forKey: "useCount"){
