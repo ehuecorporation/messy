@@ -235,11 +235,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.shopName.backgroundColor = UIColor.blue
+            cell!.shopName.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 0.75)
         } else if targetMemoData.menuHours == 1 {
             cell!.shopName.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
         } else {
-            cell!.shopName.backgroundColor = UIColor.init(red: 62/255.0, green: 79/255.0, blue: 198/255.0, alpha: 0.75)
+            cell!.shopName.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
         }
         
         //お気に入りに入っていれば星をon

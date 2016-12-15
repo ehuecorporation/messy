@@ -29,15 +29,37 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     @IBOutlet weak var womanButton: UIButton!
 
     @IBAction func setMan(_ sender: UIButton) {
+        if let sex = user_sex {
+            if sex == 0 {
+                user_sex = nil
+                manButton.backgroundColor = UIColor.white
+                manButton.setTitleColor(UIColor.black, for: .normal)
+                return
+            }
+        }
         user_sex = 0
-        manButton.borderColor = UIColor.blue
-        womanButton.borderColor = UIColor.black
+        manButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
+        manButton.setTitleColor(UIColor.white, for: .normal)
+        womanButton.backgroundColor = UIColor.white
+        womanButton.setTitleColor(UIColor.black, for: .normal)
+
     }
     
     @IBAction func setWoman(_ sender: UIButton) {
+        if let sex = user_sex {
+            if sex == 1 {
+                user_sex = nil
+                womanButton.backgroundColor = UIColor.white
+                womanButton.setTitleColor(UIColor.black, for: .normal)
+                return
+            }
+        }
         user_sex = 1
-        manButton.borderColor = UIColor.black
-        womanButton.borderColor = UIColor.blue
+        manButton.backgroundColor = UIColor.white
+        manButton.setTitleColor(UIColor.black, for: .normal)
+        womanButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
+        womanButton.setTitleColor(UIColor.white, for: .normal)
+
     }
     
     
@@ -56,7 +78,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         let targetUserImage = self.userImage.image
         let targetSex = self.user_sex
         
-        if (targetNewName.isEmpty || targetNewMailAdress.isEmpty || targetSex == nil||targetUserImage == nil) {
+        if (targetNewName.isEmpty || targetNewMailAdress.isEmpty || targetUserImage == nil) {
             
             presentError("エラー", "入力に不備があります")
             
@@ -67,7 +89,9 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             // ユーザー情報を設定
             user?.setObject(targetNewName, forKey: "userName")
             user?.setObject(targetNewMailAdress, forKey: "mailAddress")
-            user?.setObject(targetSex, forKey: "userSex")
+            if targetSex != nil {
+                user?.setObject(targetSex, forKey: "userSex")
+            }
             user?.acl.setPublicReadAccess(true)
             // アイコン画像の設定
             let imageData: Data = UIImagePNGRepresentation(targetUserImage!)!

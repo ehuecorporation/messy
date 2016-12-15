@@ -64,7 +64,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         // 選択済みなら選択解除
         if let selcted = targetHousrs {
             if selcted == 0 {
-                morningButton.layer.borderColor = UIColor.black.cgColor
+                targetHousrs = nil
+                morningButton.backgroundColor = UIColor.white
+                morningButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
@@ -73,9 +75,12 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         targetHousrs = 0
         
         // 色を変える
-        morningButton.layer.borderColor = UIColor.blue.cgColor
-        lunchButton.layer.borderColor = UIColor.black.cgColor
-        dinerButton.layer.borderColor = UIColor.black.cgColor
+        morningButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
+        morningButton.setTitleColor(UIColor.white, for: .normal)
+        lunchButton.backgroundColor = UIColor.white
+        lunchButton.setTitleColor(UIColor.black, for: .normal)
+        dinerButton.backgroundColor = UIColor.white
+        dinerButton.setTitleColor(UIColor.black, for: .normal)
     }
     
     @IBAction func selctLunch(_ sender: UIButton) {
@@ -83,7 +88,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         // 選択済みなら選択解除
         if let selcted = targetHousrs {
             if selcted == 1 {
-                lunchButton.layer.borderColor = UIColor.black.cgColor
+                targetHousrs = nil
+                lunchButton.backgroundColor = UIColor.white
+                lunchButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
@@ -92,9 +99,12 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         targetHousrs = 1
         
         // 色を変える
-        morningButton.layer.borderColor = UIColor.black.cgColor
-        lunchButton.layer.borderColor = UIColor.blue.cgColor
-        dinerButton.layer.borderColor = UIColor.black.cgColor
+        morningButton.backgroundColor = UIColor.white
+        morningButton.setTitleColor(UIColor.black, for: .normal)
+        lunchButton.backgroundColor = UIColor.init(red: 253/255.0, green: 147/255.0, blue: 10/255.0, alpha: 0.75)
+        lunchButton.setTitleColor(UIColor.white, for: .normal)
+        dinerButton.backgroundColor = UIColor.white
+        dinerButton.setTitleColor(UIColor.black, for: .normal)
     }
     
     @IBAction func selctDiner(_ sender: UIButton) {
@@ -102,7 +112,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         // 選択済みなら選択解除
         if let selcted = targetHousrs {
             if selcted == 2 {
-                dinerButton.layer.borderColor = UIColor.black.cgColor
+                targetHousrs = nil
+                dinerButton.backgroundColor = UIColor.white
+                dinerButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
@@ -111,9 +123,13 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         targetHousrs = 2
         
         // 色を変える
-        morningButton.layer.borderColor = UIColor.black.cgColor
-        lunchButton.layer.borderColor = UIColor.black.cgColor
-        dinerButton.layer.borderColor = UIColor.blue.cgColor
+        // 色を変える
+        morningButton.backgroundColor = UIColor.white
+        morningButton.setTitleColor(UIColor.black, for: .normal)
+        lunchButton.backgroundColor = UIColor.white
+        lunchButton.setTitleColor(UIColor.black, for: .normal)
+        dinerButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
+        dinerButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
