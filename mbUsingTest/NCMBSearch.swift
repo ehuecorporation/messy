@@ -391,7 +391,7 @@ public class NCMBSearch {
                         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
                         
                     } else {
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": "投稿がまだありません。"])
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": ""])
                     }// response.count end
                 } else {
                     NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error": "通信エラーが発生しました。"])
@@ -563,8 +563,13 @@ public class NCMBSearch {
     }
     
     func loadIcon() {
-        
+        print("ここにきました")
         var userData = UserDefaults.standard
+        if userData.object(forKey: "userIconFileName") as! String == "" {
+            print("a")
+            return
+        }
+        print("到達")
         let iconFileName = userData.object(forKey: "userIconFileName") as! String
         var fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
         

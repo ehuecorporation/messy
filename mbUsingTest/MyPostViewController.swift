@@ -76,6 +76,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     if let userInfo = (notification as NSNotification).userInfo as? [String: String?]{
                         
                         if userInfo["error"] != nil{
+                            if userInfo["error"]! == "" {
+                                self.presentError("まだ投稿がありません", "投稿画面からメニューを投稿して見ましょう！")
+                            }
                             self.presentError("エラー", userInfo["error"]!!)
                         } // error end
                         
@@ -97,7 +100,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if mbs.postMenu.count == 0 {
             if let userID = userData.object(forKey: "userID"){
                 mbs.getUserPost(userID as! String)
-                print("なう")
             }
         } else {
             self.postTable.reloadData()

@@ -56,8 +56,11 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.presentError("認証エラー", "\(error!.localizedDescription)")
                     
                 } else {
-                    // 該当ユーザーがいる場合会員認証
                     
+                    // 端末に入っているmessyのデータを削除
+                    let appDomain = Bundle.main.bundleIdentifier
+                    UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+
                     //端末情報の更新
                     self.userData.set(user?.userName, forKey: "userName")
                     self.userData.set(targetPass, forKey: "userPass")
@@ -79,7 +82,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(true, forKey: "useCount")
                     self.userData.synchronize()
                     // ユーザーデータの確認
-                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
+                    print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))\(self.userData.object(forKey: "userIconFileName"))")
                     
                     // 該当端末で初めての使用なら更新画面へ
                     if !self.userData.bool(forKey: "useCount"){
@@ -111,9 +114,10 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         let newUser = NCMBUser()
         newUser.userName = targetName
         newUser.password = targetPass
-        newUser.acl.setPublicReadAccess(true)
-        newUser.acl.setWriteAccess(true, for: newUser)
-        newUser.setObject( [], forKey: "favList")
+        newUser.setObject([], forKey: "favList")
+        //デフォルト設定
+        newUser.mailAddress = "default@gmail.com"
+        newUser.setObject("", forKey: "userIcon")
         newUser.signUpInBackground({(error) in
             
             if error != nil {

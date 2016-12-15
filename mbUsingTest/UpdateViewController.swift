@@ -68,7 +68,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             user?.setObject(targetNewName, forKey: "userName")
             user?.setObject(targetNewMailAdress, forKey: "mailAddress")
             user?.setObject(targetSex, forKey: "userSex")
-            
+            user?.acl.setPublicReadAccess(true)
             // アイコン画像の設定
             let imageData: Data = UIImagePNGRepresentation(targetUserImage!)!
             let targetFile = NCMBFile.file(with: imageData) as! NCMBFile
@@ -243,6 +243,10 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         if let icon = userData.object(forKey: "userIcon") {
             let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
             userImage.image = image
+        }
+        
+        if !userData.bool(forKey: "useCount") {
+            menuButton.isEnabled = false
         }
         
         if let tmp = userData.object(forKey: "userSex") {
