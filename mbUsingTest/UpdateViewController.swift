@@ -93,6 +93,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                 user?.setObject(targetSex, forKey: "userSex")
             }
             user?.acl.setPublicReadAccess(true)
+            user?.acl.setWriteAccess(true, for: user)
             // アイコン画像の設定
             let imageData: Data = UIImagePNGRepresentation(targetUserImage!)!
             let targetFile = NCMBFile.file(with: imageData) as! NCMBFile
@@ -276,9 +277,11 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         if let tmp = userData.object(forKey: "userSex") {
             let sex = tmp as! Int
             if sex == 0 {
-                manButton.borderColor = UIColor.blue
+                manButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
+                manButton.setTitleColor(UIColor.white, for: .normal)
             } else {
-                womanButton.borderColor = UIColor.blue
+                womanButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
+                womanButton.setTitleColor(UIColor.white, for: .normal)
             }
         }
         
