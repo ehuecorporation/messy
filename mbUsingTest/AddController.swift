@@ -477,7 +477,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         )
         errorAlert.addAction(
             UIAlertAction(
-                title: "FaceBook",
+                title: "Facebook",
                 style: UIAlertActionStyle.default,
                 handler: nil
             )

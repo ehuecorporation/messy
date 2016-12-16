@@ -538,7 +538,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             )
             errorAlert.addAction(
                 UIAlertAction(
-                    title: "FaceBook",
+                    title: "Facebook",
                     style: UIAlertActionStyle.default,
                     handler: nil
                 )
