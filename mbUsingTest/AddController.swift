@@ -249,6 +249,15 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                         style: UIAlertActionStyle.default,
                         handler: self.saveComplete                    )
                 )
+                
+                errorAlert.addAction(
+                    UIAlertAction(
+                        title: "投稿をSNSにシェア",
+                        style: UIAlertActionStyle.default,
+                        handler: self.socialShare                   )
+                )
+
+                
                 self.present(errorAlert, animated: true, completion: nil)
                 
             } else {
@@ -299,6 +308,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                         style: UIAlertActionStyle.default,
                         handler: self.saveComplete                    )
                 )
+                
                 errorAlert.addAction(
                     UIAlertAction(
                         title: "投稿をSNSにシェア",
