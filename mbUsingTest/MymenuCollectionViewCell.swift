@@ -215,11 +215,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
             let InfoController = segue.destination as! InfoViewController
             InfoController.targetMemo = self.targetmemo
             
-            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
-            
         }
     }
-
-    
     
 }

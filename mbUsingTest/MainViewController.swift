@@ -11,7 +11,7 @@ import CoreLocation
 import NCMB
 import SWRevealViewController
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,UIGestureRecognizerDelegate{
     
     @IBOutlet weak var memoTableView: UITableView!
     
@@ -188,7 +188,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        //左スライドメニューの幅
         self.revealViewController().rearViewRevealWidth = 200
+        
+        // UILongPressGestureRecognizer宣言
+        var longPressRecognizer = UILongPressGestureRecognizer()
+        longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        longPressRecognizer.delegate = self
+        
+        // tableViewにrecognizerを設定
+        memoTableView.addGestureRecognizer(longPressRecognizer)
 
         
         // Pull to Refreshコントロール初期化
@@ -408,8 +419,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if index < mbs.memos.count {
             let postUserID = mbs.memos[index].postUser
-            if let number = postUserArray.index(of: postUserID) {
-            } else {
+            if postUserArray.index(of: postUserID) == nil {
+                
                 let postUser: NCMBUser = NCMBUser()
                 postUser.objectId = postUserID
                 postUserArray.append(postUserID)
@@ -500,10 +511,71 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    /* 長押しした際に呼ばれるメソッド */
+    func cellLongPressed(recognizer: UILongPressGestureRecognizer) {
+        
+        // 押された位置でcellのPathを取得
+        let point = recognizer.location(in: memoTableView)
+        let indexPath = memoTableView.indexPathForRow(at: point)
+        
+        if indexPath == nil {
+            
+        } else if recognizer.state == UIGestureRecognizerState.began  {
+            // 長押しされた場合の処理
+            print("長押しされたcellのindexPath:\(indexPath?.row)")
+            
+            let errorAlert = UIAlertController(
+                title: "メニューをシェア",
+                message: "シェアしたいSNSを選択してください",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Twitter",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "FaceBook",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "LINE",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Instagram",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+
+            self.present(errorAlert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    // 選択されたアクションに応じて移動先を決定
     func goAddView(_ ac: UIAlertAction) -> Void {
         performSegue(withIdentifier: "goAdd", sender: nil)
     }
-
     func goShopListView(_ ac: UIAlertAction) -> Void {
         performSegue(withIdentifier: "goShopList", sender: nil)
     }
