@@ -238,12 +238,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     print("failure save data.\(saveError)")
                 }
                 
-                //UItextFieldを空にする
-                self.shopName.text = ""
-                self.menuName.text = ""
-                self.menuPrice.text = ""
-                self.displayImage.image = nil
-                
                 let errorAlert = UIAlertController(
                     title: "投稿完了",
                     message: "投稿が反映されるまでお待ち下さい",
@@ -294,15 +288,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     print("failure save data.\(saveError)")
                 }
                 
-                //UItextFieldを空にする
-                self.shopName.text = ""
-                self.menuName.text = ""
-                self.menuPrice.text = ""
-                self.displayImage.image = nil
-                
                 let errorAlert = UIAlertController(
                     title: "投稿完了",
-                    message: "投稿が反映されるまでお待ち下さい",
+                    message: "投稿が反映されるまでお待ちください",
                     preferredStyle: UIAlertControllerStyle.alert
                 )
                 errorAlert.addAction(
@@ -311,6 +299,13 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                         style: UIAlertActionStyle.default,
                         handler: self.saveComplete                    )
                 )
+                errorAlert.addAction(
+                    UIAlertAction(
+                        title: "投稿をSNSにシェア",
+                        style: UIAlertActionStyle.default,
+                        handler: self.socialShare                   )
+                )
+
                 self.present(errorAlert, animated: true, completion: nil)
                 
             } // normal add end
@@ -457,7 +452,62 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     //登録が完了した際のアクション
     func saveComplete(_ ac: UIAlertAction) -> Void {
+        //UItextFieldを空にする
+        self.shopName.text = ""
+        self.menuName.text = ""
+        self.menuPrice.text = ""
+        self.displayImage.image = nil
         navigationController?.popViewController(animated: true)
+    }
+    
+    //登録完了後SNSへシェア
+    func socialShare(_ ac: UIAlertAction) -> Void {
+        
+        let errorAlert = UIAlertController(
+            title: "メニューをシェア",
+            message: "シェアしたいSNSを選択してください",
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "Twitter",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "FaceBook",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "LINE",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "Instagram",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertActionStyle.default,
+                handler: nil
+            )
+        )
+        
+        self.present(errorAlert, animated: true, completion: nil)
+        
     }
     
     //アクションシートの結果に応じて処理を変更
