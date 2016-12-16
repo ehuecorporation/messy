@@ -74,6 +74,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(user!.object(forKey: "userIcon"), forKey: "userIconFileName")
                     let favList: [String] = user?.object(forKey: "favList") as! [String]
                     self.userData.set( favList, forKey: "favorites")
+                    self.userData.set( user!.object(forKey: "userSex"), forKey: "userSex")
                     
                     if !self.userData.bool(forKey: "userIcon") {
                         let mbs = NCMBSearch()
@@ -124,6 +125,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         //デフォルト設定
         newUser.mailAddress = "default@gmail.com"
         newUser.setObject("", forKey: "userIcon")
+        newUser.setObject(0, forKey: "userSex")
         newUser.signUpInBackground({(error) in
             
             if error != nil {

@@ -53,6 +53,10 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
     // 取得した経度を保持するインスタンス
     var longitude: Double = Double()
     
+    @IBAction func addNewShop(_ sender: UIBarButtonItem) {
+        self.selctFlag = false
+        performSegue(withIdentifier: "goPostView", sender: nil)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -216,6 +220,7 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         //セグエの実行時に値を渡す
         let targetShopData: shop = mbs.restaurants[(indexPath as NSIndexPath).row]
         self.targetShop = targetShopData
+        self.selctFlag = true
         
         performSegue(withIdentifier: "goPostView", sender: targetShop)
     }
@@ -232,7 +237,7 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         if segue.identifier == "goPostView" {
             
             let addControler = segue.destination as! AddController
-            addControler.selectFlag = true
+            addControler.selectFlag = self.selctFlag
             addControler.targetShopData = self.targetShop
             
             //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する

@@ -488,7 +488,7 @@ public class NCMBSearch {
         let geoPoint: NCMBGeoPoint = NCMBGeoPoint()
         geoPoint.latitude = latitude
         geoPoint.longitude = longtitude
-        query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.8)
+        query.whereKey("geoPoint", nearGeoPoint: geoPoint, withinKilometers: 0.4)
         
         //店舗検索を通知
         NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBShopLoadStartNotification), object: nil)

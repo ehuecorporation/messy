@@ -219,6 +219,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.fileName.isHidden = true
         cell!.lookCounterLabel.isHidden = true
         cell!.favoriteCounterLabel.isHidden = true
+        cell!.favoriteCounter.text = String(targetMemoData.favoriteCounter)
+        cell!.lookCounter.text = String(targetMemoData.lookCounter)
         cell!.lookCounter.isHidden = true
         cell!.favoriteCounter.isHidden = true
         
@@ -313,7 +315,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 } else {
                     self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
                     self.reloadCount += 1
-                    if self.reloadCount % 3 == 0 {
+                    if self.reloadCount % 2 == 0 {
                         self.menuList.reloadData()
                     }
                 }
@@ -341,7 +343,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
                                 self.reloadCount += 1
-                                if self.reloadCount % 3 == 0 {
+                                if self.reloadCount % 2 == 0 {
                                     self.menuList.reloadData()
                                 }
                             }

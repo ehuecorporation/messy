@@ -27,17 +27,17 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     @IBOutlet weak var mailAdress: UITextField!
     @IBOutlet weak var manButton: UIButton!
     @IBOutlet weak var womanButton: UIButton!
-
+    @IBOutlet weak var toolbar: UIToolbar!
     @IBAction func setMan(_ sender: UIButton) {
         if let sex = user_sex {
-            if sex == 0 {
+            if sex == 1 {
                 user_sex = nil
                 manButton.backgroundColor = UIColor.white
                 manButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
-        user_sex = 0
+        user_sex = 1
         manButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
         manButton.setTitleColor(UIColor.white, for: .normal)
         womanButton.backgroundColor = UIColor.white
@@ -47,14 +47,14 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     
     @IBAction func setWoman(_ sender: UIButton) {
         if let sex = user_sex {
-            if sex == 1 {
+            if sex == 2 {
                 user_sex = nil
                 womanButton.backgroundColor = UIColor.white
                 womanButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
-        user_sex = 1
+        user_sex = 2
         manButton.backgroundColor = UIColor.white
         manButton.setTitleColor(UIColor.black, for: .normal)
         womanButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
@@ -276,14 +276,20 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         
         if let tmp = userData.object(forKey: "userSex") {
             let sex = tmp as! Int
-            if sex == 0 {
+            if sex == 1 {
                 manButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
                 manButton.setTitleColor(UIColor.white, for: .normal)
-            } else {
+            }
+            if sex == 2 {
                 womanButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
                 womanButton.setTitleColor(UIColor.white, for: .normal)
             }
         }
+        
+        //ツールバーの配色
+        toolbar.backgroundColor = UIColor.orange
+        toolbar.tintColor = UIColor.black
+
         
         //ドロワーメニュー
         if self.revealViewController() != nil {

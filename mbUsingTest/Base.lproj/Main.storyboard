@@ -107,7 +107,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-Ov-QQt">
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-Ov-QQt">
                                         <rect key="frame" x="0.0" y="603" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
@@ -125,6 +125,7 @@
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="XrP-fA-bZw"/>
                                         </items>
+                                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </toolbar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性別:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWF-2r-2uh">
                                         <rect key="frame" x="10" y="110" width="110" height="40"/>
@@ -233,6 +234,7 @@
                         <outlet property="mailAdress" destination="1e7-MT-ApX" id="DJh-YF-nAK"/>
                         <outlet property="manButton" destination="hI6-jo-GPf" id="Ial-el-5du"/>
                         <outlet property="menuButton" destination="fej-Rl-ISD" id="O83-S2-sP7"/>
+                        <outlet property="toolbar" destination="3ij-Ov-QQt" id="LIH-Pq-kzz"/>
                         <outlet property="userImage" destination="00Z-uk-0vN" id="Mfj-Ti-kx0"/>
                         <outlet property="userNewName" destination="YJm-ob-Cwd" id="YzF-ue-cyF"/>
                         <outlet property="womanButton" destination="9MP-Nd-fyI" id="3Hi-gT-veb"/>
@@ -876,7 +878,7 @@
             </objects>
             <point key="canvasLocation" x="-2927" y="1742"/>
         </scene>
-        <!--Shop List Table View Controller-->
+        <!--店舗リスト-->
         <scene sceneID="SXd-Ee-xjv">
             <objects>
                 <viewController id="Yy0-T3-QKL" customClass="ShopListTableViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -901,6 +903,13 @@
                             <constraint firstItem="3lu-tm-mP0" firstAttribute="top" secondItem="nvU-RT-FQD" secondAttribute="top" id="vHC-og-fSp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="店舗リスト" id="s8Q-Qy-ewn">
+                        <barButtonItem key="rightBarButtonItem" title="新規登録" id="fNV-qk-Jag" userLabel="無かった場合">
+                            <connections>
+                                <action selector="addNewShop:" destination="Yy0-T3-QKL" id="PCA-gx-KmN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="shopListTable" destination="3lu-tm-mP0" id="HzX-Em-2sN"/>
                         <segue destination="fRS-1y-RXI" kind="show" identifier="goPostView" id="3jO-4z-AfM"/>
@@ -910,7 +919,7 @@
             </objects>
             <point key="canvasLocation" x="-1170" y="1819"/>
         </scene>
-        <!--Add Controller-->
+        <!--投稿画面-->
         <scene sceneID="8r8-Iw-Zq5">
             <objects>
                 <viewController id="fRS-1y-RXI" customClass="AddController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -1239,6 +1248,7 @@
                         </connections>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="投稿画面" id="Sti-w5-Xcq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dinerButton" destination="Ws1-eA-pcS" id="mWn-Qe-1Jm"/>
