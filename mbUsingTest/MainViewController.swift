@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import NCMB
 import SWRevealViewController
+import Social
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,UIGestureRecognizerDelegate{
     
@@ -192,7 +193,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.revealViewController().rearViewRevealWidth = 200
         
         // UILongPressGestureRecognizer宣言
-        var longPressRecognizer = UILongPressGestureRecognizer()
+        let longPressRecognizer = UILongPressGestureRecognizer()
         longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
         
         // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
@@ -517,6 +518,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // 押された位置でcellのPathを取得
         let point = recognizer.location(in: memoTableView)
         let indexPath = memoTableView.indexPathForRow(at: point)
+        self.targetMemo = mbs.memos[((indexPath)?.row)!]
         
         if indexPath == nil {
             
@@ -540,14 +542,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UIAlertAction(
                     title: "Facebook",
                     style: UIAlertActionStyle.default,
-                    handler: nil
+                    handler: self.sharefacebook
                 )
             )
             errorAlert.addAction(
                 UIAlertAction(
                     title: "LINE",
                     style: UIAlertActionStyle.default,
-                    handler: nil
+                    handler: self.shareLine
                 )
             )
             
@@ -578,6 +580,40 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func goShopListView(_ ac: UIAlertAction) -> Void {
         performSegue(withIdentifier: "goShopList", sender: nil)
+    }
+    
+    func shareTwitter(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
+        if self.targetMemo.menuImage != nil {
+            vc?.add(self.targetMemo.menuImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func sharefacebook(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
+        if self.targetMemo.menuImage != nil {
+            vc?.add(self.targetMemo.menuImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func shareLine(_ ac: UIAlertAction) -> Void {
+        var message = ""
+        message += self.targetMemo.shopName + "\n"
+        message += self.targetMemo.menuName + "\n"
+        let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
+        if (UIApplication.shared.canOpenURL(messageURL as URL)) {
+            UIApplication.shared.openURL( messageURL as URL)
+        }
+        
     }
 
     
