@@ -8,8 +8,9 @@
 
 import UIKit
 import NCMB
+import Social
 
-class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate{
 
     @IBOutlet weak var menuList: UITableView!
     
@@ -135,6 +136,16 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //セルの高さを設定
         self.menuList.rowHeight = self.view.frame.size.width + 120
+        
+        // UILongPressGestureRecognizer宣言
+        let longPressRecognizer = UILongPressGestureRecognizer()
+        longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        longPressRecognizer.delegate = self
+        
+        // tableViewにrecognizerを設定
+        menuList.addGestureRecognizer(longPressRecognizer)
         
         
         // Pull to Refreshコントロール初期化
@@ -355,6 +366,104 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         } // index out of bounds check        
     } // getCellIcon end
+    
+    /* 長押しした際に呼ばれるメソッド */
+    func cellLongPressed(recognizer: UILongPressGestureRecognizer) {
+        
+        // 押された位置でcellのPathを取得
+        let point = recognizer.location(in: menuList)
+        let indexPath = menuList.indexPathForRow(at: point)
+        self.targetMemo = mbs.shopMenu[((indexPath)?.row)!]
+        
+        if indexPath == nil {
+            
+        } else if recognizer.state == UIGestureRecognizerState.began  {
+            // 長押しされた場合の処理
+            print("長押しされたcellのindexPath:\(indexPath?.row)")
+            
+            let errorAlert = UIAlertController(
+                title: "メニューをシェア",
+                message: "シェアしたいSNSを選択してください",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Twitter",
+                    style: UIAlertActionStyle.default,
+                    handler: self.shareTwitter
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Facebook",
+                    style: UIAlertActionStyle.default,
+                    handler: self.sharefacebook
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "LINE",
+                    style: UIAlertActionStyle.default,
+                    handler: self.shareLine
+                )
+            )
+            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Instagram",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            
+            self.present(errorAlert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    
+    // アクションシートに応じた処理
+    func shareTwitter(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
+        if self.targetMemo.menuImage != nil {
+            vc?.add(self.targetMemo.menuImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func sharefacebook(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
+        if self.targetMemo.menuImage != nil {
+            vc?.add(self.targetMemo.menuImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func shareLine(_ ac: UIAlertAction) -> Void {
+        var message = ""
+        message += self.targetMemo.shopName + "\n"
+        message += self.targetMemo.menuName + "\n"
+        let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
+        if (UIApplication.shared.canOpenURL(messageURL as URL)) {
+            UIApplication.shared.openURL( messageURL as URL)
+        }
+        
+    }
     
 }
 

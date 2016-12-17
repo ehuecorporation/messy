@@ -422,7 +422,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
-    
     func shareLine(_ ac: UIAlertAction) -> Void {
         var message = ""
         message += self.targetMemo.shopName + "\n"
