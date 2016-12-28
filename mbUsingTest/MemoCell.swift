@@ -22,6 +22,7 @@ class MemoCell: UITableViewCell {
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var updateDate: UILabel!
     
+    @IBOutlet weak var hoursIcon: UIImageView!
     // 隠し
     @IBOutlet weak var objectID: UILabel!
     @IBOutlet weak var fileName: UILabel!

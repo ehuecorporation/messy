@@ -9,7 +9,7 @@
 import UIKit
 import NCMB
 
-class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIGestureRecognizerDelegate{
     
     @IBAction func hideKeybord(_ sender: UITapGestureRecognizer) {
             self.view.endEditing(true)
@@ -404,6 +404,16 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             self.displayImage.image = targetData.menuImage
         }
         
+        // UILongPressGestureRecognizer宣言
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(AddController.imageTapped(recognizer:)))
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        tapRecognizer.delegate = self
+        
+        // tableViewにrecognizerを設定
+        displayImage.addGestureRecognizer(tapRecognizer)
+        
     } // View Did Load end
     
     
@@ -440,6 +450,11 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return resizeImage!
+    }
+    
+    func imageTapped(recognizer: UITapGestureRecognizer) {
+        print("tapped")
+        displayCamera(UIBarButtonItem.init())
     }
     
     // エラーメッセージを出す関数を定義

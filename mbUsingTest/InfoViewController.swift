@@ -84,12 +84,8 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let myLon: CLLocationDegrees = 139.775327
         let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon) as CLLocationCoordinate2D
         
-        // 縮尺.
-        let myLatDist : CLLocationDistance = 300
-        let myLonDist : CLLocationDistance = 300
-        
         // Regionを作成.
-        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
+        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, 300, 300);
         
         // MapViewに反映.
         mapView.setRegion(myRegion, animated: true)
@@ -185,14 +181,25 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
         let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
         
+        // 店の座標
+        let shopLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(targetShopData.shopLat, targetShopData.shopLon) as CLLocationCoordinate2D
+        
         print("現在地は\(myLocation.latitude), \(myLocation.longitude)")
         
+        // 現在地と目的地を含む矩形を計算
+        let maxLat:Double = fmax(myLocation.latitude,  shopLocation.latitude)
+        let maxLon:Double = fmax(myLocation.longitude, shopLocation.longitude)
+        let minLat:Double = fmin(myLocation.latitude,  shopLocation.latitude)
+        let minLon:Double = fmin(myLocation.longitude, shopLocation.longitude)
         
-        // 縮尺.
-        let myLatDist : CLLocationDistance = 600
-        let myLonDist : CLLocationDistance = 600
+        // 地図表示するときの緯度、経度の幅を計算
+        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
+        let leastCoordSpan:Double = 0.0002;    // 拡大表示したときの最大値
+        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin);
+        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin);
         
-        let shopLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(targetShopData.shopLat, targetShopData.shopLon) as CLLocationCoordinate2D
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y);
+
         
         let fromPlace: MKPlacemark = MKPlacemark(coordinate: myLocation, addressDictionary: nil)
         
@@ -238,23 +245,23 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             self.mapView.add(route.polyline)
         }
         
-        // Regionを作成.
-        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myLocation, myLatDist, myLonDist);
+        // 現在地を目的地の中心を計算
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2);
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span);
         
         // MapViewに反映.
-        mapView.setRegion(myRegion, animated: true)
+        mapView.setRegion(region, animated: true)
         
-        // ピンを生成.
-        let fromPin: MKPointAnnotation = MKPointAnnotation()
-        let toPin: MKPointAnnotation = MKPointAnnotation()
-        
-        // 座標をセット.
+        // 現在地のピン
+        let fromPin: CustomMKPointAnnotation = CustomMKPointAnnotation()
         fromPin.coordinate = myLocation
-        toPin.coordinate = shopLocation
-        
-        // titleをセット.
         fromPin.title = "現在地"
+        
+        // 目的地のピン
+        let toPin: CustomMKPointAnnotation = CustomMKPointAnnotation()
+        toPin.coordinate = shopLocation
         toPin.title = targetShopData.shopName
+        toPin.pinImage = #imageLiteral(resourceName: "shopPin")
         
         // mapViewに追加.
         mapView.addAnnotation(fromPin)
@@ -274,6 +281,22 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         // ルートの線の色.
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
+    }
+    
+    //アノテーションビューを返すメソッド
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if let test = annotation as? CustomMKPointAnnotation {
+
+            let testPinView = MKAnnotationView()
+            testPinView.annotation = annotation
+            testPinView.image = test.pinImage
+            testPinView.canShowCallout = true
+            
+            return testPinView
+        } else {
+            return MKAnnotationView()
+        }
     }
     
     // Regionが変更した時に呼び出されるメソッド.
