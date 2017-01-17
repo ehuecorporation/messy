@@ -114,7 +114,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         
         // Tag番号を使ってLabelのインスタンス生成
         let label = testCell.contentView.viewWithTag(2) as! UILabel
-        label.text! = targetMemoData.shopName
+        label.text! = targetMemoData.menuName
         
         // Tag番号を使ってImageViewのインスタンス生成
         let imageView = testCell.contentView.viewWithTag(1) as! UIImageView

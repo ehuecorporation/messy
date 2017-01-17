@@ -236,7 +236,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.favoriteCounter.isHidden = true
         
         // 表示する要素
-        cell!.shopName.text = targetMemoData.shopName
+        cell!.shopName.text = "#"+targetMemoData.shopName
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.updateDate.text = targetMemoData.updateDate

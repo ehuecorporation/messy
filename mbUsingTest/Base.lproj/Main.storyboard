@@ -112,12 +112,6 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="7qK-dV-POI"/>
-                                            <barButtonItem image="picture" id="4z5-AV-tFB">
-                                                <connections>
-                                                    <action selector="displayCamera:" destination="fR1-1F-DGY" id="MXE-Km-FtR"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="8vU-CV-59l"/>
                                             <barButtonItem image="up" id="qTh-Fs-wLi">
                                                 <connections>
                                                     <action selector="update:" destination="fR1-1F-DGY" id="y6n-Uy-bPh"/>
@@ -703,7 +697,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店の名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awA-YR-PBy">
-                                <rect key="frame" x="16" y="74" width="343" height="45"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.64732102670000002" blue="0.30782167329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="IHK-7m-cQL"/>
@@ -723,8 +717,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rc-kK-p44">
-                                <rect key="frame" x="16" y="626.5" width="343" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rc-kK-p44">
+                                <rect key="frame" x="16" y="626" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -752,15 +746,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="osN-kz-pQV" firstAttribute="centerX" secondItem="FRe-LJ-uqk" secondAttribute="centerX" id="2OS-K6-0Zj"/>
-                            <constraint firstItem="osN-kz-pQV" firstAttribute="width" secondItem="FRe-LJ-uqk" secondAttribute="height" multiplier="290:560" id="4eh-0x-Rxm"/>
+                            <constraint firstItem="osN-kz-pQV" firstAttribute="width" secondItem="FRe-LJ-uqk" secondAttribute="height" multiplier="280:560" id="4eh-0x-Rxm"/>
                             <constraint firstItem="awA-YR-PBy" firstAttribute="top" secondItem="pfE-2c-3OA" secondAttribute="bottom" constant="10" id="8Yh-Om-Kfe"/>
                             <constraint firstItem="osN-kz-pQV" firstAttribute="top" secondItem="awA-YR-PBy" secondAttribute="bottom" constant="10" id="Bc7-gf-MvW"/>
                             <constraint firstItem="4rc-kK-p44" firstAttribute="leading" secondItem="FRe-LJ-uqk" secondAttribute="leadingMargin" id="Pf2-pQ-7QN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="awA-YR-PBy" secondAttribute="trailing" id="Yd9-DB-a1K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="awA-YR-PBy" secondAttribute="trailing" constant="-16" id="Yd9-DB-a1K"/>
                             <constraint firstItem="HnV-7d-LqL" firstAttribute="top" secondItem="4rc-kK-p44" secondAttribute="bottom" constant="20" id="hjf-Kc-BY4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4rc-kK-p44" secondAttribute="trailing" id="i91-DF-V96"/>
                             <constraint firstItem="4rc-kK-p44" firstAttribute="top" secondItem="osN-kz-pQV" secondAttribute="bottom" constant="10" id="jXu-8g-zrB"/>
-                            <constraint firstItem="awA-YR-PBy" firstAttribute="leading" secondItem="FRe-LJ-uqk" secondAttribute="leadingMargin" id="kOZ-Zy-0mV"/>
+                            <constraint firstItem="awA-YR-PBy" firstAttribute="leading" secondItem="FRe-LJ-uqk" secondAttribute="leadingMargin" constant="-16" id="kOZ-Zy-0mV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="店舗詳細" id="7Vq-6r-Ph5">
@@ -940,12 +934,6 @@
                                     <constraint firstAttribute="height" constant="50" id="VO1-po-nwz"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="clV-Qu-LJL"/>
-                                    <barButtonItem image="picture" id="Vly-Je-1Qb">
-                                        <connections>
-                                            <action selector="displayCamera:" destination="fRS-1y-RXI" id="UoG-6D-HWl"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Uvd-3A-Ez6"/>
                                     <barButtonItem image="up" id="pvk-RT-Gqw">
                                         <connections>
@@ -1400,18 +1388,17 @@
         <image name="list" width="24" height="24"/>
         <image name="menuList" width="24" height="24"/>
         <image name="pen" width="24" height="24"/>
-        <image name="picture" width="24" height="24"/>
         <image name="reload" width="24" height="24"/>
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zhy-U0-6Nh"/>
-        <segue reference="zbS-2T-nYv"/>
-        <segue reference="iaH-Ro-qJe"/>
+        <segue reference="ulA-g6-vGo"/>
         <segue reference="uE1-04-o1p"/>
-        <segue reference="e5v-Lu-OAG"/>
+        <segue reference="iaH-Ro-qJe"/>
         <segue reference="4GV-q7-1qo"/>
         <segue reference="IWr-99-Qp8"/>
+        <segue reference="e5v-Lu-OAG"/>
         <segue reference="3jO-4z-AfM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -173,7 +173,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             }) // user save
         }
     } // update end
-    
+
     @IBAction func displayCamera(_ sender: UIBarButtonItem) {
         //UIActionSheetを起動して選択後、カメラ・フォントライブラリを起動
         let alertActionSheet = UIAlertController(
@@ -227,7 +227,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         }
         return true
     }
-    
+ 
     // エラーメッセージを出す関数を定義
     func presentError (_ title: String, _ message: String) {
         let errorAlert = UIAlertController(
