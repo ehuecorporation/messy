@@ -8,6 +8,7 @@
 
 import UIKit
 import NCMB
+import Social
 
 class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIGestureRecognizerDelegate{
     
@@ -497,21 +498,21 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             UIAlertAction(
                 title: "Twitter",
                 style: UIAlertActionStyle.default,
-                handler: nil
+                handler: self.shareTwitter
             )
         )
         errorAlert.addAction(
             UIAlertAction(
                 title: "Facebook",
                 style: UIAlertActionStyle.default,
-                handler: nil
+                handler: self.sharefacebook
             )
         )
         errorAlert.addAction(
             UIAlertAction(
                 title: "LINE",
                 style: UIAlertActionStyle.default,
-                handler: nil
+                handler: self.shareLine
             )
         )
         
@@ -532,6 +533,41 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         )
         
         self.present(errorAlert, animated: true, completion: nil)
+        
+    }
+    
+    func shareTwitter(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        vc?.setInitialText(self.targetShopName + "\n" + self.targetMenuName + "\n")
+        if self.targetDisplayImage != nil {
+            vc?.add(self.targetDisplayImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func sharefacebook(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        vc?.setInitialText(self.targetShopName + "\n" + self.targetMenuName + "\n")
+        if self.targetDisplayImage != nil {
+            vc?.add(self.targetDisplayImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    
+    func shareLine(_ ac: UIAlertAction) -> Void {
+        var message = ""
+        message += self.targetShopName + "\n"
+        message += self.targetMenuName + "\n"
+        let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
+        if (UIApplication.shared.canOpenURL(messageURL as URL)) {
+            UIApplication.shared.openURL( messageURL as URL)
+        }
         
     }
     

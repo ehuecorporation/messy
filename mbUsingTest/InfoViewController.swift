@@ -114,7 +114,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
             }
         )
-
+        
     } // ViewDidLoad end
 
     override func didReceiveMemoryWarning() {

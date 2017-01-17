@@ -535,7 +535,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UIAlertAction(
                     title: "Twitter",
                     style: UIAlertActionStyle.default,
-                    handler: nil
+                    handler: self.shareTwitter
                 )
             )
             errorAlert.addAction(
@@ -614,6 +614,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIApplication.shared.openURL( messageURL as URL)
         }
         
+    }
+    
+    func shareInstagram(_ ac:UIAlertAction) -> Void {
+        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
+        
+        let temporaryDirectory = URL(string: NSTemporaryDirectory())
+        let temporaryImagePath = temporaryDirectory!.appendingPathComponent("YourImageFileName.igo")
+        try? imageData?.write( to: temporaryImagePath, options: .atomic)
+        let documentInteractionController = UIDocumentInteractionController()
+        
+        documentInteractionController.url = temporaryImagePath
+        documentInteractionController.uti = "com.instagram.exclusivegram"
+        documentInteractionController.presentOpenInMenu(
+            from: self.memoTableView.bounds,
+            in: self.memoTableView,
+            animated: true
+        )
+
     }
 
     

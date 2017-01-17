@@ -11,7 +11,7 @@ import NCMB
 import SWRevealViewController
 
 
-class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate {
     
     var userData = UserDefaults.standard
     var userName : String = ""
@@ -276,11 +276,11 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         
         if let tmp = userData.object(forKey: "userSex") {
             let sex = tmp as! Int
-            if sex == 1 {
+            if sex == 0 {
                 manButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
                 manButton.setTitleColor(UIColor.white, for: .normal)
             }
-            if sex == 2 {
+            if sex == 1 {
                 womanButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
                 womanButton.setTitleColor(UIColor.white, for: .normal)
             }
@@ -297,6 +297,16 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        // UILongPressGestureRecognizer宣言
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(UpdateViewController.imageTapped(recognizer:)))
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        tapRecognizer.delegate = self
+        
+        // tableViewにrecognizerを設定
+        userImage.addGestureRecognizer(tapRecognizer)
         
     }
 
@@ -316,7 +326,12 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         UIGraphicsEndImageContext()
         return resizeImage!
     }
-        
+    
+    func imageTapped(recognizer: UITapGestureRecognizer) {
+        print("tapped")
+        displayCamera(UIBarButtonItem.init())
+    }
+    
     //アクションシートの結果に応じて処理を変更
     func handlerActionSheet(_ ac: UIAlertAction) -> Void {
         

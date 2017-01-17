@@ -110,17 +110,6 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // Cell はストーリーボードで設定したセルのID
         let testCell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mymenuItem", for: indexPath)
         
-        if mbs.favList.count == 0 {
-            let label = testCell.contentView.viewWithTag(2) as! UILabel
-            label.text! = "読み込み中"
-            let imageView = testCell.contentView.viewWithTag(1) as! UIImageView
-
-            indicator.frame = CGRect(origin: CGPoint(x: imageView.frame.size.width/2 - w/2, y: imageView.frame.size.height/2 - h/2), size: CGSize(width: indicator.frame.size.width, height:  indicator.frame.size.height))
-            imageView.addSubview(indicator)
-            indicator.startAnimating()
-            return testCell
-        }
-        
         let targetMemoData :memo = mbs.favList[(indexPath as NSIndexPath).row]
         
         // Tag番号を使ってLabelのインスタンス生成
@@ -179,8 +168,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 要素数を入れる、要素以上の数字を入れると表示でエラーとなる
-
-        return Favorite.favorites.count;
+        return mbs.favList.count;
     }
     
     // エラーメッセージを出す関数を定義
