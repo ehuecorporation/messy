@@ -56,6 +56,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")
     
+    // instagramShare用
+    var documentInteractionController = UIDocumentInteractionController()
     
     //ユーザー情報
     var userData = UserDefaults.standard
@@ -412,7 +414,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 UIAlertAction(
                     title: "Instagram",
                     style: UIAlertActionStyle.default,
-                    handler: nil
+                    handler: self.shareInstagram
                 )
             )
             
@@ -448,9 +450,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         if self.targetMemo.menuImage != nil {
             vc?.add(self.targetMemo.menuImage)
         }
-        
         self.present(vc!, animated: true, completion: nil)
-        
     }
     
     func shareLine(_ ac: UIAlertAction) -> Void {
@@ -462,7 +462,22 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         if (UIApplication.shared.canOpenURL(messageURL as URL)) {
             UIApplication.shared.openURL( messageURL as URL)
         }
+    }
+    
+    func shareInstagram(_ ac:UIAlertAction) -> Void {
+        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         
+        let temporaryDirectory = URL(string: NSTemporaryDirectory())
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
+        try? imageData?.write( to: url!, options: .atomic)
+        
+        documentInteractionController.url = url
+        documentInteractionController.uti = "com.instagram.exclusivegram"
+        documentInteractionController.presentOpenInMenu(
+            from: self.menuList.bounds,
+            in: self.menuList,
+            animated: true
+        )
     }
     
 }

@@ -878,6 +878,8 @@ THE SOFTWARE.
 
 
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>NCMB</string>
 			<key>Type</key>
@@ -906,6 +908,8 @@ THE SOFTWARE.
  THE SOFTWARE.
 
  Early code inspired on a similar class by Philip Kluz (Philip.Kluz@zuui.org)</string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>SWRevealViewController</string>
 			<key>Type</key>
