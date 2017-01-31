@@ -34,6 +34,8 @@
 		2F644B781D851A22009CF261 /* mbUsingTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B771D851A22009CF261 /* mbUsingTestTests.swift */; };
 		2F644B831D851A22009CF261 /* mbUsingTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B821D851A22009CF261 /* mbUsingTestUITests.swift */; };
 		2F79FA4A1E3EBAC800174BB1 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79FA491E3EBAC800174BB1 /* Like.swift */; };
+		2F79FA4D1E40A2EC00174BB1 /* ShopListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79FA4B1E40A2EC00174BB1 /* ShopListCell.swift */; };
+		2F79FA4E1E40A2EC00174BB1 /* ShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F79FA4C1E40A2EC00174BB1 /* ShopListCell.xib */; };
 		2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
 		2F99EDC11DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
 		2F99EDC21DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
@@ -102,6 +104,8 @@
 		2F644B821D851A22009CF261 /* mbUsingTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mbUsingTestUITests.swift; sourceTree = "<group>"; };
 		2F644B841D851A22009CF261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F79FA491E3EBAC800174BB1 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		2F79FA4B1E40A2EC00174BB1 /* ShopListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListCell.swift; sourceTree = "<group>"; };
+		2F79FA4C1E40A2EC00174BB1 /* ShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopListCell.xib; sourceTree = "<group>"; };
 		2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCMBSearch.swift; sourceTree = "<group>"; };
 		2FA17CAE1D9917BD00CF30E1 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		2FACC0101E10F1A3000E5D68 /* CustomMKPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKPointAnnotation.swift; sourceTree = "<group>"; };
@@ -239,7 +243,7 @@
 				2F63C8E11DE58194007EB8D5 /* Main */,
 				2F6A1BDC1DCDF6BE00F083FD /* System */,
 				2F5831BD1DBE35C900BAAA15 /* Common */,
-				2FB6DE491D98DEDF004A513F /* MemoCell */,
+				2FB6DE491D98DEDF004A513F /* Cell */,
 				2FE7875D1DFE6438008428CC /* Shop */,
 				2F644B691D851A22009CF261 /* Assets.xcassets */,
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
@@ -277,13 +281,15 @@
 			name = System;
 			sourceTree = "<group>";
 		};
-		2FB6DE491D98DEDF004A513F /* MemoCell */ = {
+		2FB6DE491D98DEDF004A513F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				2F2AF1A81DB0F15D00464B5E /* MemoCell.swift */,
 				2F2AF1A91DB0F15D00464B5E /* MemoCell.xib */,
+				2F79FA4B1E40A2EC00174BB1 /* ShopListCell.swift */,
+				2F79FA4C1E40A2EC00174BB1 /* ShopListCell.xib */,
 			);
-			name = MemoCell;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		2FE7875D1DFE6438008428CC /* Shop */ = {
@@ -415,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F644B6D1D851A22009CF261 /* LaunchScreen.storyboard in Resources */,
+				2F79FA4E1E40A2EC00174BB1 /* ShopListCell.xib in Resources */,
 				2F644B6A1D851A22009CF261 /* Assets.xcassets in Resources */,
 				2F644B681D851A22009CF261 /* Main.storyboard in Resources */,
 				2F2AF1AB1DB0F15D00464B5E /* MemoCell.xib in Resources */,
@@ -603,6 +610,7 @@
 				2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */,
 				2F63C8DE1DE408F5007EB8D5 /* ContainerViewController.swift in Sources */,
 				2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */,
+				2F79FA4D1E40A2EC00174BB1 /* ShopListCell.swift in Sources */,
 				2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */,
 				2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */,
 				2F644B651D851A22009CF261 /* MainViewController.swift in Sources */,

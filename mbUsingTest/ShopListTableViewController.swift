@@ -125,8 +125,8 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.shopListTable.dataSource = self
         
         //Xibのクラスを読み込む
-        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
-        self.shopListTable.register(nib, forCellReuseIdentifier: "MemoCell")
+        let nib: UINib = UINib(nibName: "ShopListCell", bundle:  Bundle(for: ShopListCell.self))
+        self.shopListTable.register(nib, forCellReuseIdentifier: "ShopListCell")
         
         //セルの高さを設定
         self.shopListTable.rowHeight = 50
@@ -188,25 +188,9 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShopListCell") as? ShopListCell
         
         let targetShopData: shop = mbs.restaurants[(indexPath as NSIndexPath).row]
-    
-        //隠しておく要素
-        cell!.objectID.isHidden = true
-        cell!.fileName.isHidden = true
-        cell!.favoriteCounter.isHidden = true
-        cell!.lookCounter.isHidden = true
-        cell!.likeCounter.isHidden = true
-        cell!.lookCounterLabel.isHidden = true
-        cell!.favoriteCounterLabel.isHidden = true
-        cell!.likeCounterLabel.isHidden = true
-        cell!.menuName.isHidden = true
-        cell!.menuCost.isHidden = true
-        cell!.menuImage.isHidden = true
-        cell!.updateDate.isHidden = true
-        cell!.favoriteButton.isHidden = true
-        cell!.likeButton.isHidden = true
         
         //表示する要素
         cell!.shopName.text = targetShopData.shopName

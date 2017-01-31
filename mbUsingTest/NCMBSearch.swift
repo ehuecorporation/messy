@@ -34,6 +34,7 @@ public struct memo {
     public var lookCounter: Int = 0
     public var favoriteCounter: Int = 0
     public var likeCounter: Int = 0
+    public var geoPoint: NCMBGeoPoint = NCMBGeoPoint()
     public var postUserIcon: UIImage? = nil
     public var postUser: String = ""
     public var updateDate: String = ""
@@ -206,6 +207,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
+                            tmp.geoPoint = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -317,6 +319,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
+                            tmp.geoPoint = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -382,6 +385,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
+                            tmp.geoPoint = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -452,6 +456,7 @@ public class NCMBSearch {
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
                             tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
+                            tmp.geoPoint = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -546,7 +551,7 @@ public class NCMBSearch {
     // アイコンアップロード時に前のデータを削除
     func deleteIcon (_ iconFileName : String) {
         
-        var fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
+        let fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
         
         fileData.getDataInBackground({(data, error) in
         
@@ -569,7 +574,7 @@ public class NCMBSearch {
     }
     
     func loadIcon() {
-        var userData = UserDefaults.standard
+        let userData = UserDefaults.standard
         if userData.object(forKey: "userIconFileName") as! String == "" {
             return
         }

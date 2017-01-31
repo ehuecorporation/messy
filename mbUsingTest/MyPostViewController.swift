@@ -11,7 +11,7 @@ import NCMB
 import SWRevealViewController
 import Social
 
-class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -27,7 +27,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
-    
     
     // APIカウント
     var apiCounter = 0
@@ -63,6 +62,12 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //ユーザー情報
     var userData = UserDefaults.standard
     
+    var myLocationManager: CLLocationManager!
+    // 取得した緯度を保持するインスタンス
+    var latitude: Double = Double()
+    // 取得した経度を保持するインスタンス
+    var longitude: Double = Double()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -99,7 +104,32 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+        // Delegateの設定.
+        myLocationManager.delegate = self
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+        
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+            
+            print("not determined")
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        // 位置情報の更新を開始.
+        if mbs.memos.count == 0 {
+            myLocationManager.startUpdatingLocation()
+        }
+        
         // 投稿一覧の取得
         if mbs.postMenu.count == 0 {
             if let userID = userData.object(forKey: "userID"){
@@ -235,6 +265,19 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.menuImage.image = nil
         cell!.menuImage.addSubview(indicatorOfImage)
         indicatorOfImage.startAnimating()
+        
+        if latitude != 0 {
+            // 距離の計算
+            let destination : CLLocation = CLLocation(latitude: targetMemoData.geoPoint.latitude,longitude: targetMemoData.geoPoint.longitude)
+            let department: CLLocation = CLLocation(latitude: latitude, longitude: longitude)
+            let d = destination.distance(from: department)
+            cell!.shopGeo.text = "\(round(d/10)/100)km"
+        } else {
+            // 位置情報がなければ隠す
+            cell!.shopGeo.isHidden = true
+            cell!.shopGeoLabel.isHidden = true
+        }
+
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
@@ -450,6 +493,74 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             in: self.postTable,
             animated: true
         )
+    }
+    
+    // GPSから値を取得した際に呼び出されるメソッド.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print("didUpdateLocations")
+        myLocationManager.stopUpdatingLocation()
+        
+        // 配列から現在座標を取得.
+        let myLocations: NSArray = locations as NSArray
+        let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
+        let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
+        
+        print("\(myLocation.latitude), \(myLocation.longitude)")
+        
+        latitude = myLocation.latitude as Double
+        longitude = myLocation.longitude as Double
+        
+        // 位置情報の保存
+        let user = NCMBUser.current()
+        if user != nil {
+            let lastLocations = NCMBGeoPoint(latitude: latitude,longitude: longitude)
+            var saveError: NSError? = nil
+            user?.objectId = userData.object(forKey: "userID") as! String!
+            user?.fetchInBackground({(error) in
+                if (error == nil) {
+                    print("保存")
+                    user?.setObject(lastLocations, forKey: "lastLocations")
+                    user?.save(&saveError)
+                    if saveError == nil {
+                        print("success save data.")
+                    } else {
+                        print("failure save data. \(saveError)")
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+            })
+        } // unwrap user
+
+    }
+    
+    // 位置情報取得に失敗した時に呼び出されるデリゲート.
+    func locationManager(_ manager: CLLocationManager,didFailWithError error: Error){
+        
+        print("locationManager error")
+        myLocationManager.stopUpdatingLocation()
+        
+        //エラーアラートを表示してOKで戻る
+        presentError("エラー", "位置情報の利用を許可してください")
+        
+        return
+    }
+    
+    // 認証が変更された時に呼び出されるメソッド.
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .authorizedWhenInUse:
+            print("AuthorizedWhenInUse")
+        case .authorized:
+            print("Authorized")
+        case .denied:
+            print("Denied")
+        case .restricted:
+            print("Restricted")
+        case .notDetermined:
+            print("NotDetermined")
+        }
     }
     
     //segueを呼び出したときに呼ばれるメソッド

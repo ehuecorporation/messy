@@ -104,9 +104,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.color = UIColor.gray
-        let w = indicator.frame.size.width
-        let h = indicator.frame.size.height
-
+        
         // Cell はストーリーボードで設定したセルのID
         let testCell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mymenuItem", for: indexPath)
         

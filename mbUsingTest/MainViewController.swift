@@ -165,7 +165,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // 位置情報の更新を開始.
         if mbs.memos.count == 0 {
             myLocationManager.startUpdatingLocation()
-        } else {
         }
 
         //お気に入りを読み込み
@@ -308,7 +307,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         indicatorOfIcon.startAnimating()
         cell!.menuImage.addSubview(indicatorOfImage)
         indicatorOfImage.startAnimating()
+        
+        if latitude != 0 {
+            // 距離の計算
+            let destination : CLLocation = CLLocation(latitude: targetMemoData.geoPoint.latitude,longitude: targetMemoData.geoPoint.longitude)
+            let department: CLLocation = CLLocation(latitude: latitude, longitude: longitude)
+            let d = destination.distance(from: department)
+            cell!.shopGeo.text = "\(round(d/10)/100)km"
+        } else {
+            // 位置情報がなければ隠す
+            cell!.shopGeo.isHidden = true
+            cell!.shopGeoLabel.isHidden = true
+        }
 
+        
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
             cell!.hoursIcon.image = #imageLiteral(resourceName: "morningIcon")
@@ -476,23 +488,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
-            print("")
-            let lastLocations = NCMBGeoPoint(latitude: longitude,longitude: latitude)
+            let lastLocations = NCMBGeoPoint(latitude: latitude,longitude: longitude)
             var saveError: NSError? = nil
-            let obj: NCMBObject = NCMBObject(className: "MemoClass")
             user?.objectId = userData.object(forKey: "userID") as! String!
             user?.fetchInBackground({(error) in
                 if (error == nil) {
-                    obj.setObject(lastLocations, forKey: "lastLocations")
-                    obj.save(&saveError)
-                }
-                if saveError == nil {
-                    print("success save data.")
+                    print("保存")
+                    user?.setObject(lastLocations, forKey: "lastLocations")
+                    user?.save(&saveError)
+                    if saveError == nil {
+                        print("success save data.")
+                    } else {
+                        print("failure save data. \(saveError)")
+                    }
                 } else {
-                    print("failure save data. \(saveError)")
+                    print(error!.localizedDescription)
                 }
             })
-        }
+        } // unwrap user
         
         mbs.geoSearch(latitude , longitude)
     }
@@ -539,7 +552,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             )
         )
         self.present(errorAlert, animated: true, completion: nil)
-        
     }
     
     /* 長押しした際に呼ばれるメソッド */

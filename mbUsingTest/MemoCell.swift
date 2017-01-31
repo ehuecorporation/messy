@@ -22,6 +22,8 @@ class MemoCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var shopName: UILabel!
+    @IBOutlet weak var shopGeo: UILabel!
+    @IBOutlet weak var shopGeoLabel: UIImageView!
     @IBOutlet weak var updateDate: UILabel!
     
     @IBOutlet weak var hoursIcon: UIImageView!
