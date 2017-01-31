@@ -197,13 +197,16 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         cell!.fileName.isHidden = true
         cell!.favoriteCounter.isHidden = true
         cell!.lookCounter.isHidden = true
+        cell!.likeCounter.isHidden = true
         cell!.lookCounterLabel.isHidden = true
         cell!.favoriteCounterLabel.isHidden = true
+        cell!.likeCounterLabel.isHidden = true
         cell!.menuName.isHidden = true
         cell!.menuCost.isHidden = true
         cell!.menuImage.isHidden = true
         cell!.updateDate.isHidden = true
-        cell!.favButton.isHidden = true
+        cell!.favoriteButton.isHidden = true
+        cell!.likeButton.isHidden = true
         
         //表示する要素
         cell!.shopName.text = targetShopData.shopName

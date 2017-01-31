@@ -216,6 +216,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Pull to Refresh
     func onRefresh(_ refreshControl: UIRefreshControl){
+        
+        reloadCount = 0
+        
         // UIRefreshControlを読込状態にする
         refreshControl.beginRefreshing()
         // 終了通知を受信したらUIRefreshControlを停止する
@@ -286,11 +289,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
         cell!.favoriteCounter.text = String(targetMemoData.favoriteCounter)
-        cell!.favoriteCounter.isHidden = true
         cell!.lookCounter.text = String(targetMemoData.lookCounter)
+        cell!.likeCounter.text = String(targetMemoData.likeCounter)
+        cell!.favoriteCounter.isHidden = true
         cell!.lookCounter.isHidden = true
+        cell!.likeCounter.isHidden = true
         cell!.lookCounterLabel.isHidden = true
         cell!.favoriteCounterLabel.isHidden = true
+        cell!.likeCounterLabel.isHidden = true
         
         //表示する要素
         cell!.shopName.text = "#"+targetMemoData.shopName
@@ -314,9 +320,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
-            cell!.favButton.setImage(star_on, for: .normal)
+            cell!.favoriteButton.setImage(star_on, for: .normal)
         } else {
-            cell!.favButton.setImage(star_off, for: .normal)
+            cell!.favoriteButton.setImage(star_off, for: .normal)
         }
         
         // メニュー画像の取得
@@ -467,6 +473,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
         
+        // 位置情報の保存
+        let user = NCMBUser.current()
+        if user != nil {
+            print("")
+            let lastLocations = NCMBGeoPoint(latitude: longitude,longitude: latitude)
+            var saveError: NSError? = nil
+            let obj: NCMBObject = NCMBObject(className: "MemoClass")
+            user?.objectId = userData.object(forKey: "userID") as! String!
+            user?.fetchInBackground({(error) in
+                if (error == nil) {
+                    obj.setObject(lastLocations, forKey: "lastLocations")
+                    obj.save(&saveError)
+                }
+                if saveError == nil {
+                    print("success save data.")
+                } else {
+                    print("failure save data. \(saveError)")
+                }
+            })
+        }
+        
         mbs.geoSearch(latitude , longitude)
     }
     
@@ -560,7 +587,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UIAlertAction(
                     title: "Instagram",
                     style: UIAlertActionStyle.default,
-                    handler: nil
+                    handler: self.shareInstagram
                 )
             )
             

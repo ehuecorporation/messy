@@ -33,6 +33,7 @@ public struct memo {
     public var menuHours: Int = 0
     public var lookCounter: Int = 0
     public var favoriteCounter: Int = 0
+    public var likeCounter: Int = 0
     public var postUserIcon: UIImage? = nil
     public var postUser: String = ""
     public var updateDate: String = ""
@@ -138,6 +139,7 @@ public class NCMBSearch {
                     self.shopData = shopData
                     NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBShopLoadCompleteNotification), object: nil)
                 }
+                
             } else {
                 print("店舗データの取得に失敗しました")
                 var message = "Unknown error."
@@ -203,6 +205,7 @@ public class NCMBSearch {
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
+                            tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -313,6 +316,7 @@ public class NCMBSearch {
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
+                            tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -377,6 +381,7 @@ public class NCMBSearch {
                             
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
+                            tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
@@ -446,6 +451,7 @@ public class NCMBSearch {
                             tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
                             tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
                             tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
+                            tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
                             tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
                             tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
                             let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!

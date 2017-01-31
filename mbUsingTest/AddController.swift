@@ -212,6 +212,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(self.targetHousrs!, forKey: "menuHours")
                 obj.setObject(0 as Int, forKey: "lookCounter")
                 obj.setObject(0 as Int, forKey: "favoriteCounter")
+                obj.setObject(0 as Int, forKey: "likeCounter")
                 obj.setObject(self.targetShopData.shopGeo as NCMBGeoPoint, forKey: "geoPoint")
                 obj.setObject(self.targetShopData.shopNumber as Int, forKey: "shopNumber")
                 obj.setObject(self.targetShopData.shopName as String, forKey: "shopName")
@@ -274,6 +275,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(self.targetHousrs!, forKey: "menuHours")
                 obj.setObject(0 as Int, forKey: "lookCounter")
                 obj.setObject(0 as Int, forKey: "favoriteCounter")
+                obj.setObject(0 as Int, forKey: "likeCounter")
                 obj.save(&saveError)
                 
                 //ファイルをバックグランドで実行

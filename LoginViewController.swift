@@ -74,7 +74,9 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(user!.mailAddress, forKey: "userMail")
                     self.userData.set(user!.object(forKey: "userIcon"), forKey: "userIconFileName")
                     let favList: [String] = user?.object(forKey: "favList") as! [String]
+                    let likeList: [String] = user?.object(forKey: "likeList") as! [String]
                     self.userData.set( favList, forKey: "favorites")
+                    self.userData.set( likeList, forKey: "likes")
                     self.userData.set( user!.object(forKey: "userSex"), forKey: "userSex")
                     
                     if !self.userData.bool(forKey: "userIcon") {
@@ -123,6 +125,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
         newUser.userName = targetName
         newUser.password = targetPass
         newUser.setObject([], forKey: "favList")
+        newUser.setObject([], forKey: "likeList")
+        
         //デフォルト設定
         newUser.mailAddress = "default@gmail.com"
         newUser.setObject("", forKey: "userIcon")

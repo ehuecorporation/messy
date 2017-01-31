@@ -27,7 +27,7 @@
                         </constraints>
                         <state key="normal" image="myMenu_on"/>
                         <connections>
-                            <action selector="likeButton:" destination="s1g-JC-pyc" eventType="touchUpInside" id="VUt-3G-ybZ"/>
+                            <action selector="favoriteButton:" destination="s1g-JC-pyc" eventType="touchUpInside" id="j0O-hV-tOh"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理の金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u56-fE-K8K">
@@ -62,7 +62,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ View：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAi-3W-NOo">
-                        <rect key="frame" x="94" y="395" width="46" height="15"/>
+                        <rect key="frame" x="99" y="395" width="46" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="6ts-1w-yqB"/>
                         </constraints>
@@ -70,7 +70,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ Like：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-BX-TYD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@ Fav：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-BX-TYD">
                         <rect key="frame" x="171" y="395" width="42" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="AT3-B3-IRc"/>
@@ -80,7 +80,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="look" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f50-me-YO3">
-                        <rect key="frame" x="140" y="395" width="21" height="15"/>
+                        <rect key="frame" x="145" y="395" width="21" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="dck-CB-kWq"/>
                         </constraints>
@@ -170,7 +170,28 @@
                             <constraint firstAttribute="width" constant="45" id="wrj-lV-A6h"/>
                         </constraints>
                         <state key="normal" title="❤️"/>
+                        <connections>
+                            <action selector="likeButton:" destination="s1g-JC-pyc" eventType="touchUpInside" id="m1L-A9-Ep2"/>
+                        </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ Like：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNc-1T-zNG">
+                        <rect key="frame" x="99" y="415" width="42" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="UIf-CN-1iG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdJ-id-QIX">
+                        <rect key="frame" x="141" y="415" width="26.5" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="JW3-aW-zue"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="u56-fE-K8K" secondAttribute="trailing" constant="8" id="1An-Ad-O6T"/>
@@ -180,12 +201,13 @@
                     <constraint firstAttribute="trailing" secondItem="Juy-G2-t6G" secondAttribute="trailing" id="AXz-DW-fqV"/>
                     <constraint firstItem="2eB-BX-TYD" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="10" id="Bm9-Zm-jhb"/>
                     <constraint firstAttribute="trailing" secondItem="OKI-Cm-3LS" secondAttribute="trailing" id="GcZ-q5-iGN"/>
-                    <constraint firstItem="HAi-3W-NOo" firstAttribute="leading" secondItem="sC9-T2-4Bj" secondAttribute="trailing" constant="40" id="GpZ-gP-Qv2"/>
                     <constraint firstItem="sC9-T2-4Bj" firstAttribute="leading" secondItem="dAk-g4-jQR" secondAttribute="leading" constant="9" id="Jrb-NT-4q7"/>
                     <constraint firstAttribute="trailing" secondItem="0g5-w6-Bgk" secondAttribute="trailing" id="OXK-OI-3Gv"/>
                     <constraint firstItem="eY5-dz-CH8" firstAttribute="leading" secondItem="DDc-TB-DKG" secondAttribute="trailing" constant="5" id="OrN-iL-FYY"/>
+                    <constraint firstItem="tNc-1T-zNG" firstAttribute="top" secondItem="HAi-3W-NOo" secondAttribute="bottom" constant="5" id="Tzu-48-3s6"/>
                     <constraint firstItem="sC9-T2-4Bj" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="9" id="W5y-ip-TL5"/>
                     <constraint firstItem="nlA-gW-3cm" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="10" id="aUD-jB-vtu"/>
+                    <constraint firstItem="tNc-1T-zNG" firstAttribute="leading" secondItem="6p9-bJ-ZM2" secondAttribute="trailing" id="aaU-1O-vAS"/>
                     <constraint firstItem="6p9-bJ-ZM2" firstAttribute="leading" secondItem="sC9-T2-4Bj" secondAttribute="trailing" id="aqu-qt-YlH"/>
                     <constraint firstItem="f50-me-YO3" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="10" id="cBK-bP-ULB"/>
                     <constraint firstItem="OKI-Cm-3LS" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" id="daI-B0-hHq"/>
@@ -198,16 +220,22 @@
                     <constraint firstItem="2eB-BX-TYD" firstAttribute="leading" secondItem="f50-me-YO3" secondAttribute="trailing" constant="10" id="qT9-sc-1CF"/>
                     <constraint firstItem="eY5-dz-CH8" firstAttribute="top" secondItem="OKI-Cm-3LS" secondAttribute="bottom" constant="10" id="sqz-B8-SRP"/>
                     <constraint firstItem="6p9-bJ-ZM2" firstAttribute="top" secondItem="Juy-G2-t6G" secondAttribute="bottom" constant="9" id="taT-a2-jz1"/>
+                    <constraint firstItem="vdJ-id-QIX" firstAttribute="top" secondItem="f50-me-YO3" secondAttribute="bottom" constant="5" id="wbs-Mt-ZRs"/>
+                    <constraint firstItem="vdJ-id-QIX" firstAttribute="leading" secondItem="tNc-1T-zNG" secondAttribute="trailing" id="xYc-oo-Ma2"/>
+                    <constraint firstItem="HAi-3W-NOo" firstAttribute="leading" secondItem="6p9-bJ-ZM2" secondAttribute="trailing" id="xgV-cY-fDO"/>
                     <constraint firstItem="Juy-G2-t6G" firstAttribute="top" secondItem="0g5-w6-Bgk" secondAttribute="bottom" constant="5" id="zHK-Xj-NwG"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="favButton" destination="sC9-T2-4Bj" id="ZnL-jI-XNq"/>
+                <outlet property="favoriteButton" destination="sC9-T2-4Bj" id="rJC-kh-SVc"/>
                 <outlet property="favoriteCounter" destination="nlA-gW-3cm" id="O7g-pJ-4gl"/>
                 <outlet property="favoriteCounterLabel" destination="2eB-BX-TYD" id="492-jc-1xt"/>
                 <outlet property="fileName" destination="OKI-Cm-3LS" id="EfM-T0-UQR"/>
                 <outlet property="hoursIcon" destination="eY5-dz-CH8" id="aEe-cp-xJE"/>
+                <outlet property="likeButton" destination="6p9-bJ-ZM2" id="T87-3o-Skp"/>
+                <outlet property="likeCounter" destination="tNc-1T-zNG" id="wad-nE-s5X"/>
+                <outlet property="likeCounterLabel" destination="vdJ-id-QIX" id="bPf-ca-xQF"/>
                 <outlet property="lookCounter" destination="f50-me-YO3" id="3Ls-2x-7Q8"/>
                 <outlet property="lookCounterLabel" destination="HAi-3W-NOo" id="LO5-OB-k7A"/>
                 <outlet property="menuCost" destination="u56-fE-K8K" id="lgA-Lj-jah"/>
@@ -218,7 +246,7 @@
                 <outlet property="updateDate" destination="DDc-TB-DKG" id="1UP-ts-TwC"/>
                 <outlet property="userImage" destination="Rvi-48-9ED" id="nfQ-S7-Hvy"/>
             </connections>
-            <point key="canvasLocation" x="-145" y="-60"/>
+            <point key="canvasLocation" x="-378" y="-34"/>
         </tableViewCell>
     </objects>
     <resources>

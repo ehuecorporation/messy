@@ -230,12 +230,15 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.objectID.isHidden = true
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
-        cell!.lookCounterLabel.isHidden = true
-        cell!.favoriteCounterLabel.isHidden = true
         cell!.favoriteCounter.text = String(targetMemoData.favoriteCounter)
         cell!.lookCounter.text = String(targetMemoData.lookCounter)
-        cell!.lookCounter.isHidden = true
+        cell!.likeCounter.text = String(targetMemoData.likeCounter)
         cell!.favoriteCounter.isHidden = true
+        cell!.lookCounter.isHidden = true
+        cell!.likeCounter.isHidden = true
+        cell!.lookCounterLabel.isHidden = true
+        cell!.favoriteCounterLabel.isHidden = true
+        cell!.likeCounterLabel.isHidden = true
         
         // 表示する要素
         cell!.shopName.text = "#"+targetMemoData.shopName
@@ -259,9 +262,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //お気に入りに入っていれば星をon
         if Favorite.inFavorites(targetMemoData.filename) {
-            cell!.favButton.setImage(star_on, for: .normal)
+            cell!.favoriteButton.setImage(star_on, for: .normal)
         } else {
-            cell!.favButton.setImage(star_off, for: .normal)
+            cell!.favoriteButton.setImage(star_off, for: .normal)
         }
         
         // メニュー画像の取得

@@ -33,6 +33,7 @@
 		2F644B6D1D851A22009CF261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */; };
 		2F644B781D851A22009CF261 /* mbUsingTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B771D851A22009CF261 /* mbUsingTestTests.swift */; };
 		2F644B831D851A22009CF261 /* mbUsingTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644B821D851A22009CF261 /* mbUsingTestUITests.swift */; };
+		2F79FA4A1E3EBAC800174BB1 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79FA491E3EBAC800174BB1 /* Like.swift */; };
 		2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
 		2F99EDC11DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
 		2F99EDC21DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
@@ -100,6 +101,7 @@
 		2F644B7E1D851A22009CF261 /* mbUsingTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mbUsingTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F644B821D851A22009CF261 /* mbUsingTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mbUsingTestUITests.swift; sourceTree = "<group>"; };
 		2F644B841D851A22009CF261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F79FA491E3EBAC800174BB1 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCMBSearch.swift; sourceTree = "<group>"; };
 		2FA17CAE1D9917BD00CF30E1 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		2FACC0101E10F1A3000E5D68 /* CustomMKPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKPointAnnotation.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				2F5831BB1DBDF43300BAAA15 /* Favorite.swift */,
+				2F79FA491E3EBAC800174BB1 /* Like.swift */,
 				2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */,
 			);
 			name = Common;
@@ -596,6 +599,7 @@
 				2FACC0111E10F1A3000E5D68 /* CustomMKPointAnnotation.swift in Sources */,
 				2F11458C1DEBF25A003F65A1 /* MyPostViewController.swift in Sources */,
 				599344D61DBA37B300D2572C /* MymenuCollectionViewCell.swift in Sources */,
+				2F79FA4A1E3EBAC800174BB1 /* Like.swift in Sources */,
 				2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */,
 				2F63C8DE1DE408F5007EB8D5 /* ContainerViewController.swift in Sources */,
 				2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */,
