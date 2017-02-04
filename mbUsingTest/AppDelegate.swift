@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NCMBTwitterUtils.initialize(withConsumerKey: "UVGEnYxLfLudJlCEVwcMDHo2C", consumerSecret: "Ot5yjc9N7jTxYLCa52nV8eRYYVvcByXCsqMZMj0Rb7NVYeyyir")
         
         //ナビゲーションアイテムの色を変更
-        UINavigationBar.appearance().tintColor = UIColor.black
+        UINavigationBar.appearance().tintColor = UIColor.white
         //ナビゲーションバーの背景を変更
-        UINavigationBar.appearance().barTintColor = UIColor.orange
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 44/255, green: 150/255, blue: 26/255, alpha: 0.5)
         //ナビゲーションのタイトル文字列の色を変更
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         return true
     }

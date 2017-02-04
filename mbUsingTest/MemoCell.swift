@@ -33,6 +33,7 @@ class MemoCell: UITableViewCell {
     
     @IBOutlet weak var favoriteCounter: UILabel!
     @IBOutlet weak var lookCounter: UILabel!
+
     @IBOutlet weak var likeCounter: UILabel!
     @IBOutlet weak var lookCounterLabel: UILabel!
     @IBOutlet weak var favoriteCounterLabel: UILabel!

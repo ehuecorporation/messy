@@ -235,15 +235,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
-        
-        //メニュー画像のぐるぐる
-        let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfImage.color = UIColor.gray
-        let w = indicatorOfImage.frame.size.width
-        let h = indicatorOfImage.frame.size.height
-        // 画面の中央に表示するようにframeを変更する
-        indicatorOfImage.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
-        
         //各値をセルに入れる
         let targetMemoData: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
@@ -262,9 +253,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
         cell!.likeCounter.text = "\(targetMemoData.likeCounter)"
-        cell!.menuImage.image = nil
-        cell!.menuImage.addSubview(indicatorOfImage)
-        indicatorOfImage.startAnimating()
+        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         
         if latitude != 0 {
             // 距離の計算
@@ -303,7 +292,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
-            indicatorOfImage.stopAnimating()
             cell!.menuImage.image = image
         } else {
             getCellImage((indexPath as NSIndexPath).row)
@@ -326,8 +314,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let targetMemo: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
         self.targetMemo = targetMemo
         
-        self.editFlag = true
-//       performSegue(withIdentifier: "pushDetail", sender: targetMemo)
+        performSegue(withIdentifier: "pushDetail", sender: targetMemo)
     }
     
     //テーブルのセクションを設定する
@@ -397,9 +384,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("長押しされたcellのindexPath:\(indexPath?.row)")
             
             let errorAlert = UIAlertController(
-                title: "メニューをシェア",
-                message: "シェアしたいSNSを選択してください",
-                preferredStyle: UIAlertControllerStyle.alert
+                title: nil,
+                message: nil,
+                preferredStyle: UIAlertControllerStyle.actionSheet
             )
             errorAlert.addAction(
                 UIAlertAction(
@@ -422,7 +409,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     handler: self.shareLine
                 )
             )
-            
             errorAlert.addAction(
                 UIAlertAction(
                     title: "Instagram",
@@ -430,11 +416,18 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     handler: self.shareInstagram
                 )
             )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "投稿を修正",
+                    style: UIAlertActionStyle.default,
+                    handler: self.edit
+                )
+            )
             
             errorAlert.addAction(
                 UIAlertAction(
                     title: "キャンセル",
-                    style: UIAlertActionStyle.default,
+                    style: UIAlertActionStyle.cancel,
                     handler: nil
                 )
             )
@@ -456,7 +449,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.present(vc!, animated: true, completion: nil)
         
     }
-    
     func sharefacebook(_ ac: UIAlertAction) -> Void {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
@@ -467,7 +459,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.present(vc!, animated: true, completion: nil)
         
     }
-
     func shareLine(_ ac: UIAlertAction) -> Void {
         var message = ""
         message += self.targetMemo.shopName + "\n"
@@ -478,7 +469,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             UIApplication.shared.openURL( messageURL as URL)
         }
     }
-    
     func shareInstagram(_ ac:UIAlertAction) -> Void {
         let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         
@@ -493,6 +483,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             in: self.postTable,
             animated: true
         )
+    }
+    func edit(_ ac:UIAlertAction) -> Void{
+        self.editFlag = true
+        performSegue(withIdentifier: "goAdd", sender: nil)
     }
     
     // GPSから値を取得した際に呼び出されるメソッド.
@@ -568,13 +562,17 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //詳細画面へ行く前に詳細データを渡す
         if segue.identifier == "pushDetail" {
-            
             let InfoController = segue.destination as! InfoViewController
             InfoController.targetMemo = self.targetMemo
-            
-            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
-            
         }
+        
+        //投稿画面へ行く際に渡すデータ
+        if segue.identifier == "goAdd" {
+            let AddController = segue.destination as! AddController
+            AddController.editFlag = self.editFlag
+            AddController.targetData = targetMemo
+        }
+        
     }
     
 }

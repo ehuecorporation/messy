@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hgm-yw-r7P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hgm-yw-r7P">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -107,9 +107,10 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-Ov-QQt">
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-Ov-QQt">
                                         <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="7qK-dV-POI"/>
                                             <barButtonItem image="up" id="qTh-Fs-wLi">
@@ -119,7 +120,8 @@
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="XrP-fA-bZw"/>
                                         </items>
-                                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="barTintColor" red="0.17254901960784313" green="0.58823529411764708" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                     </toolbar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性別:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWF-2r-2uh">
                                         <rect key="frame" x="10" y="110" width="110" height="40"/>
@@ -260,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="-844" y="-612"/>
         </scene>
-        <!--周辺店舗-->
+        <!--messy-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -285,7 +287,7 @@
                             <constraint firstItem="pAP-QC-dXF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s7K-3T-FFd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="周辺店舗" id="QcO-jO-dOY">
+                    <navigationItem key="navigationItem" title="messy" id="QcO-jO-dOY">
                         <barButtonItem key="leftBarButtonItem" image="list" id="N55-jR-sXv">
                             <connections>
                                 <action selector="goFavo:" destination="BYZ-38-t0r" id="tWN-3v-hwN"/>
@@ -300,10 +302,12 @@
                     <connections>
                         <outlet property="memoTableView" destination="pAP-QC-dXF" id="Or8-0Z-Ycb"/>
                         <outlet property="menuButton" destination="N55-jR-sXv" id="YdL-w0-CEV"/>
+                        <outlet property="navigationItem" destination="QcO-jO-dOY" id="YAT-mh-7Vv"/>
                         <segue destination="8jb-gQ-xZS" kind="show" identifier="pushDetail" id="e5v-Lu-OAG"/>
                         <segue destination="nGz-R4-l77" kind="show" identifier="goFavoList" id="IWr-99-Qp8"/>
                         <segue destination="fRS-1y-RXI" kind="show" identifier="goAdd" id="Udy-kv-6Tb"/>
                         <segue destination="Yy0-T3-QKL" kind="show" identifier="goShopList" id="4GV-q7-1qo"/>
+                        <segue destination="QF5-Iu-PM0" kind="show" identifier="goReport" id="gc2-Eu-4Gy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -903,7 +907,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnY-aN-aXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1170" y="1819"/>
+            <point key="canvasLocation" x="-866" y="1818"/>
         </scene>
         <!--投稿画面-->
         <scene sceneID="8r8-Iw-Zq5">
@@ -927,9 +931,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hag-uT-xLd">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hag-uT-xLd">
                                 <rect key="frame" x="0.0" y="573" width="375" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VO1-po-nwz"/>
                                 </constraints>
@@ -942,7 +946,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="405-3Z-E3q"/>
                                 </items>
-                                <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.17254901960784313" green="0.58823529411764708" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="VO1-po-nwz"/>
@@ -1239,7 +1244,6 @@
                         <outlet property="menuPrice" destination="fIn-6B-aWA" id="ZUc-uy-X2n"/>
                         <outlet property="morningButton" destination="aga-Js-tgK" id="xIF-q0-KmR"/>
                         <outlet property="shopName" destination="lTb-3r-g7k" id="wq0-QY-egH"/>
-                        <outlet property="toolBar" destination="hag-uT-xLd" id="hVu-No-apH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbH-zZ-Esb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1250,7 +1254,186 @@
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="44m-ep-wXg"/>
             </objects>
-            <point key="canvasLocation" x="-174" y="1820"/>
+            <point key="canvasLocation" x="-47" y="1818"/>
+        </scene>
+        <!--違反報告-->
+        <scene sceneID="vRM-YT-00g">
+            <objects>
+                <viewController id="QF5-Iu-PM0" customClass="ReportViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="azF-da-DtC"/>
+                        <viewControllerLayoutGuide type="bottom" id="vvn-ff-Sy0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Waa-iu-efG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQZ-Hi-w90">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iAM-3M-fPf"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uiq-nz-aL8"/>
+                                    <barButtonItem image="up" id="D3s-dw-Rif">
+                                        <connections>
+                                            <action selector="sendReport:" destination="QF5-Iu-PM0" id="KZJ-OA-gdV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="quo-vG-K8W"/>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.17254901960784313" green="0.58823529411764708" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRl-hb-tF7">
+                                <rect key="frame" x="5" y="114" width="365" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lVG-eX-KG4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="写真が不適切である。">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="report1:" destination="QF5-Iu-PM0" eventType="touchUpInside" id="HxF-wm-ue0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="違反理由を選択してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nl-s2-MpG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hgi-Ho-ttd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syc-rW-AWv">
+                                <rect key="frame" x="5" y="224" width="365" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gyT-1M-uG8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="情報が間違っている。">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="report3:" destination="QF5-Iu-PM0" eventType="touchUpInside" id="AGU-kq-NDK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjn-Ar-v7L">
+                                <rect key="frame" x="5" y="279" width="365" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7XB-4F-1Np"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="その他">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="report4:" destination="QF5-Iu-PM0" eventType="touchUpInside" id="QC9-0l-QCN"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbm-Rd-KuF">
+                                <rect key="frame" x="5" y="349" width="365" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ygI-0f-bZa"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzz-cn-a3y">
+                                <rect key="frame" x="5" y="169" width="365" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ah3-tJ-r2U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="写真に盗用の疑いがある。">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="report2:" destination="QF5-Iu-PM0" eventType="touchUpInside" id="f1c-lZ-5Cr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RQZ-Hi-w90" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" id="03J-GU-Ad2"/>
+                            <constraint firstItem="Jzz-cn-a3y" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" constant="5" id="7Lh-24-PgS"/>
+                            <constraint firstAttribute="trailing" secondItem="Syc-rW-AWv" secondAttribute="trailing" constant="5" id="7Wa-cS-XB5"/>
+                            <constraint firstItem="fRl-hb-tF7" firstAttribute="top" secondItem="5Nl-s2-MpG" secondAttribute="bottom" id="9H6-2O-ck7"/>
+                            <constraint firstAttribute="trailing" secondItem="Jjn-Ar-v7L" secondAttribute="trailing" constant="5" id="Bki-j6-zC9"/>
+                            <constraint firstItem="Jjn-Ar-v7L" firstAttribute="top" secondItem="Syc-rW-AWv" secondAttribute="bottom" constant="5" id="Hpi-uD-dAy"/>
+                            <constraint firstAttribute="trailing" secondItem="vbm-Rd-KuF" secondAttribute="trailing" constant="5" id="Rtc-ZZ-KWc"/>
+                            <constraint firstItem="vvn-ff-Sy0" firstAttribute="top" secondItem="RQZ-Hi-w90" secondAttribute="bottom" id="SVA-oH-6Jb"/>
+                            <constraint firstItem="Jzz-cn-a3y" firstAttribute="top" secondItem="fRl-hb-tF7" secondAttribute="bottom" constant="5" id="VKd-S6-ZDe"/>
+                            <constraint firstItem="vbm-Rd-KuF" firstAttribute="top" secondItem="Jjn-Ar-v7L" secondAttribute="bottom" constant="20" id="bQh-NL-mjD"/>
+                            <constraint firstItem="Jjn-Ar-v7L" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" constant="5" id="cJF-B0-Kj8"/>
+                            <constraint firstItem="vbm-Rd-KuF" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" constant="5" id="cV3-wV-qMQ"/>
+                            <constraint firstItem="Syc-rW-AWv" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" constant="5" id="dX9-M1-b1O"/>
+                            <constraint firstAttribute="trailing" secondItem="RQZ-Hi-w90" secondAttribute="trailing" id="flW-L4-Mzr"/>
+                            <constraint firstItem="5Nl-s2-MpG" firstAttribute="top" secondItem="azF-da-DtC" secondAttribute="bottom" id="gNC-Zu-PNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="5Nl-s2-MpG" secondAttribute="trailing" id="hTu-J5-bAy"/>
+                            <constraint firstItem="fRl-hb-tF7" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" constant="5" id="hjb-WP-pVs"/>
+                            <constraint firstItem="Syc-rW-AWv" firstAttribute="top" secondItem="Jzz-cn-a3y" secondAttribute="bottom" constant="5" id="nZy-hX-C6Z"/>
+                            <constraint firstItem="5Nl-s2-MpG" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" id="vOY-wJ-YZR"/>
+                            <constraint firstAttribute="trailing" secondItem="fRl-hb-tF7" secondAttribute="trailing" constant="5" id="w4E-Ho-Xot"/>
+                            <constraint firstAttribute="trailing" secondItem="Jzz-cn-a3y" secondAttribute="trailing" constant="5" id="yR7-kD-QEB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="違反報告" id="knF-wE-6Ku"/>
+                    <connections>
+                        <outlet property="reportReason" destination="vbm-Rd-KuF" id="xCK-aa-X05"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yzy-TW-fFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4297" y="1742"/>
         </scene>
         <!--投稿一覧-->
         <scene sceneID="2pM-ND-1mU">
@@ -1290,11 +1473,12 @@
                         <outlet property="postTable" destination="irO-7S-wkx" id="ch1-gu-JSe"/>
                         <segue destination="fRS-1y-RXI" kind="show" identifier="goAdd" id="FnF-jG-x1N"/>
                         <segue destination="Yy0-T3-QKL" kind="show" identifier="goShopList" id="43F-yT-ryS"/>
+                        <segue destination="8jb-gQ-xZS" kind="show" identifier="pushDetail" id="vss-Eb-Cnl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4U-rr-AzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24.800000000000001" y="953.97301349325346"/>
+            <point key="canvasLocation" x="-47" y="975"/>
         </scene>
         <!--Your Menu-->
         <scene sceneID="i02-Fs-46a">
@@ -1326,7 +1510,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-O9-jPj">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-O9-jPj">
                                                     <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBb-0g-va6">
@@ -1386,19 +1570,20 @@
         <image name="background" width="388" height="690"/>
         <image name="defaultIcon" width="128" height="128"/>
         <image name="list" width="24" height="24"/>
+        <image name="loading" width="225" height="63"/>
         <image name="menuList" width="24" height="24"/>
         <image name="pen" width="24" height="24"/>
         <image name="reload" width="24" height="24"/>
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zhy-U0-6Nh"/>
-        <segue reference="ulA-g6-vGo"/>
-        <segue reference="uE1-04-o1p"/>
         <segue reference="iaH-Ro-qJe"/>
-        <segue reference="4GV-q7-1qo"/>
+        <segue reference="uE1-04-o1p"/>
+        <segue reference="ulA-g6-vGo"/>
+        <segue reference="u3I-8D-p8B"/>
         <segue reference="IWr-99-Qp8"/>
-        <segue reference="e5v-Lu-OAG"/>
-        <segue reference="3jO-4z-AfM"/>
+        <segue reference="vNz-yZ-lot"/>
+        <segue reference="FnF-jG-x1N"/>
+        <segue reference="43F-yT-ryS"/>
     </inferredMetricsTieBreakers>
 </document>

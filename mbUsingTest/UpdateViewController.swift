@@ -286,11 +286,6 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             }
         }
         
-        //ツールバーの配色
-        toolbar.backgroundColor = UIColor.orange
-        toolbar.tintColor = UIColor.black
-
-        
         //ドロワーメニュー
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()

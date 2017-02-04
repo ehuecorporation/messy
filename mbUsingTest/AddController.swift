@@ -25,8 +25,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     var targetMenuPrice: String = ""
     var targetHousrs: Int? = nil
     var targetDisplayImage: UIImage? = nil
-    @IBOutlet weak var toolBar: UIToolbar!
-    
+
     //編集フラグ
     var editFlag: Bool = false
     
@@ -45,7 +44,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     //編集対象メモのfilename
     var targetFileName: String = ""
     
-    //MainViewController.swiftから渡されたデータ
+    //MyPostViewViewController.swiftから渡されたデータ
     var targetData: memo = memo()
     
     //ShopListTableから渡される値
@@ -213,6 +212,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(0 as Int, forKey: "lookCounter")
                 obj.setObject(0 as Int, forKey: "favoriteCounter")
                 obj.setObject(0 as Int, forKey: "likeCounter")
+                obj.setObject(0 as Int, forKey: "reportCounter")
                 obj.setObject(self.targetShopData.shopGeo as NCMBGeoPoint, forKey: "geoPoint")
                 obj.setObject(self.targetShopData.shopNumber as Int, forKey: "shopNumber")
                 obj.setObject(self.targetShopData.shopName as String, forKey: "shopName")
@@ -276,6 +276,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 obj.setObject(0 as Int, forKey: "lookCounter")
                 obj.setObject(0 as Int, forKey: "favoriteCounter")
                 obj.setObject(0 as Int, forKey: "likeCounter")
+                obj.setObject(0 as Int, forKey: "reportCounter")
                 obj.save(&saveError)
                 
                 //ファイルをバックグランドで実行
@@ -374,8 +375,29 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.menuName.placeholder = "パンケーキ"
         self.menuPrice.placeholder = "1080"
         
+        // 店舗リストから到達した場合
         if selectFlag {
             self.shopName.text = targetShopData.shopName
+        }
+        
+        //投稿内容を修正
+        if editFlag {
+            // 現在の登録内容の反映
+            self.shopName.text = targetData.shopName
+            self.menuName.text = targetData.menuName
+            self.menuPrice.text = targetData.menuMoney
+            self.targetHousrs = targetData.menuHours
+            self.displayImage.image = targetData.menuImage
+            if let selectHours = targetHousrs {
+                targetHousrs = nil
+                switch selectHours {
+                case 0: self.selctMorning(UIButton.init())
+                case 1: self.selctLunch(UIButton.init())
+                case 2: self.selctDiner(UIButton.init())
+                default:
+                    break
+                }
+            }
         }
         
         //ドロワーメニュー
@@ -390,22 +412,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.shopName.delegate = self
         self.menuName.delegate = self
         self.menuPrice.delegate = self
-        
-        //ツールバーの配色
-        toolBar.backgroundColor = UIColor.orange
-        toolBar.tintColor = UIColor.black
-        
-        //追加・編集での入力状態の制御
-        if self.editFlag == true {
-            
-            //更新対象のobjetIdを入力
-            self.targetMemoObjectId = targetData.objectID
-            //UITextFieldに値を入れた状態にしておく
-            self.shopName.text = targetData.shopName
-            self.menuName.text = targetData.menuMoney
-            //登録されている画像イメージをセットする
-            self.displayImage.image = targetData.menuImage
-        }
         
         // UILongPressGestureRecognizer宣言
         let tapRecognizer = UITapGestureRecognizer()

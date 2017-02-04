@@ -23,6 +23,7 @@
 		2F3431701D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431711D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431721D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
+		2F3C9CAC1E45AE2E00392F11 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C9CAB1E45AE2E00392F11 /* ReportViewController.swift */; };
 		2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5831BB1DBDF43300BAAA15 /* Favorite.swift */; };
 		2F63C8DA1DE3DA23007EB8D5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */; };
 		2F63C8DE1DE408F5007EB8D5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63C8DD1DE408F5007EB8D5 /* ContainerViewController.swift */; };
@@ -87,6 +88,7 @@
 		2F3431641D9D4425001E6C68 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		2F3431651D9D4425001E6C68 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		2F3431661D9D4425001E6C68 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		2F3C9CAB1E45AE2E00392F11 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2F5831BB1DBDF43300BAAA15 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		2F63C8D91DE3DA23007EB8D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		2F63C8DD1DE408F5007EB8D5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */,
 				2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */,
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
+				2F3C9CAB1E45AE2E00392F11 /* ReportViewController.swift */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 			files = (
 				2FACC0111E10F1A3000E5D68 /* CustomMKPointAnnotation.swift in Sources */,
 				2F11458C1DEBF25A003F65A1 /* MyPostViewController.swift in Sources */,
+				2F3C9CAC1E45AE2E00392F11 /* ReportViewController.swift in Sources */,
 				599344D61DBA37B300D2572C /* MymenuCollectionViewCell.swift in Sources */,
 				2F79FA4A1E3EBAC800174BB1 /* Like.swift in Sources */,
 				2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */,

@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var memoTableView: UITableView!
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
-
+    
     //新規追加時
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
@@ -203,13 +203,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // tableViewにrecognizerを設定
         memoTableView.addGestureRecognizer(longPressRecognizer)
-
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
         self.memoTableView.addSubview(refreshControl)
-
+        
+        // navigationItemのタイトル
+        navigationItem.titleView = UIImageView.init(image: #imageLiteral(resourceName: "logoForNavigationBar"))
         
     }
     
@@ -265,22 +266,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
-        
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
-        
-        // アイコンのぐるぐる
-        let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfIcon.color = UIColor.gray
-        // 画面の中央に表示するようにframeを変更する
-        let w = indicatorOfIcon.frame.size.width
-        let h = indicatorOfIcon.frame.size.height
-        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
-        
-        //メニュー画像のぐるぐる
-        let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfImage.color = UIColor.gray
-        // 画面の中央に表示するようにframeを変更する
-        indicatorOfImage.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
         
         //隠しておく要素
         cell!.objectID.text = targetMemoData.objectID
@@ -302,11 +288,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.updateDate.text = targetMemoData.updateDate
-        cell!.menuImage.image = nil
-        cell!.userImage.addSubview(indicatorOfIcon)
-        indicatorOfIcon.startAnimating()
-        cell!.menuImage.addSubview(indicatorOfImage)
-        indicatorOfImage.startAnimating()
+        cell!.userImage.image = #imageLiteral(resourceName: "defaultIcon")
+        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         
         if latitude != 0 {
             // 距離の計算
@@ -340,7 +323,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
             cell!.menuImage.image = image
-            indicatorOfImage.stopAnimating()
         } else {
             getCellImage((indexPath as NSIndexPath).row)
         }
@@ -349,7 +331,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let number = postUserArray.index(of: targetMemoData.postUser){
             if number < iconArray.count {
                 cell!.userImage.image = iconArray[number]
-                indicatorOfIcon.stopAnimating()
             }
         } else {
             getCellIcon((indexPath as NSIndexPath).row)
@@ -569,9 +550,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("長押しされたcellのindexPath:\(indexPath?.row)")
             
             let errorAlert = UIAlertController(
-                title: "メニューをシェア",
-                message: "シェアしたいSNSを選択してください",
-                preferredStyle: UIAlertControllerStyle.alert
+                title: nil,
+                message: nil,
+                preferredStyle: UIAlertControllerStyle.actionSheet
             )
             errorAlert.addAction(
                 UIAlertAction(
@@ -602,11 +583,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     handler: self.shareInstagram
                 )
             )
-            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "違反報告",
+                    style: UIAlertActionStyle.destructive,
+                    handler: self.goReport
+                )
+            )
             errorAlert.addAction(
                 UIAlertAction(
                     title: "キャンセル",
-                    style: UIAlertActionStyle.default,
+                    style: UIAlertActionStyle.cancel,
                     handler: nil
                 )
             )
@@ -624,6 +611,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "goShopList", sender: nil)
     }
     
+    // SNSシェアの各挙動
     func shareTwitter(_ ac: UIAlertAction) -> Void {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
@@ -673,8 +661,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             animated: true
         )
     }
-
-
+    
+    // 違反報告
+    func goReport(_ ac:UIAlertAction) -> Void {
+        performSegue(withIdentifier: "goReport", sender: nil)
+    }
+    
     
    //segueを呼び出したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -238,21 +238,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
-        
-        //アイコン画像のぐるぐる
-        let indicatorOfIcon = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfIcon.color = UIColor.gray
-        // 画面の中央に表示するようにframeを変更する
-        let w = indicatorOfIcon.frame.size.width
-        let h = indicatorOfIcon.frame.size.height
-        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.userImage.frame.size.width/2 - w/2, y: cell!.userImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfIcon.frame.size.width, height:  indicatorOfIcon.frame.size.height))
-        
-        //メニュー画像のぐるぐる
-        let indicatorOfImage = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicatorOfIcon.color = UIColor.gray
-        // 画面の中央に表示するようにframeを変更する
-        indicatorOfIcon.frame = CGRect(origin: CGPoint(x: cell!.menuImage.frame.size.width/2 - w/2, y: cell!.menuImage.frame.size.height/2 - h/2), size: CGSize(width: indicatorOfImage.frame.size.width, height:  indicatorOfImage.frame.size.height))
-        
         //各値をセルに入れる
         let targetMemoData: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
         print(targetMemoData)
@@ -277,11 +262,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.updateDate.text = targetMemoData.updateDate
-        cell!.menuImage.image = nil
-        cell!.menuImage.addSubview(indicatorOfImage)
-        cell!.userImage.addSubview(indicatorOfIcon)
-        indicatorOfIcon.startAnimating()
-        indicatorOfImage.startAnimating()
+        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
+        cell!.userImage.image = #imageLiteral(resourceName: "defaultIcon")
         
         if latitude != 0 {
             // 距離の計算
@@ -314,7 +296,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
-            indicatorOfImage.stopAnimating()
             cell!.menuImage.image = image
         } else {
             getCellImage((indexPath as NSIndexPath).row)
@@ -324,7 +305,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         if let number = postUserArray.index(of: targetMemoData.postUser){
             if number < iconArray.count {
                 cell!.userImage.image = iconArray[number]
-                indicatorOfIcon.stopAnimating()
             }
         } else {
             getCellIcon((indexPath as NSIndexPath).row)
@@ -341,18 +321,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell!
     }
     
-/*
-    //セルをタップした場合に実行
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //セグエの実行時に値を渡す
-        let targetMemo: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
-        self.targetMemo = targetMemo
-        
-        self.editFlag = true
-        performSegue(withIdentifier: "pushDetail", sender: targetMemo)
-    }
-*/
     //テーブルのセクションを設定する
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionCount
@@ -432,9 +400,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             print("長押しされたcellのindexPath:\(indexPath?.row)")
             
             let errorAlert = UIAlertController(
-                title: "メニューをシェア",
-                message: "シェアしたいSNSを選択してください",
-                preferredStyle: UIAlertControllerStyle.alert
+                title: nil,
+                message: nil,
+                preferredStyle: UIAlertControllerStyle.actionSheet
             )
             errorAlert.addAction(
                 UIAlertAction(
@@ -457,7 +425,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     handler: self.shareLine
                 )
             )
-            
             errorAlert.addAction(
                 UIAlertAction(
                     title: "Instagram",
@@ -465,11 +432,10 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     handler: self.shareInstagram
                 )
             )
-            
             errorAlert.addAction(
                 UIAlertAction(
                     title: "キャンセル",
-                    style: UIAlertActionStyle.default,
+                    style: UIAlertActionStyle.cancel,
                     handler: nil
                 )
             )
@@ -491,7 +457,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         self.present(vc!, animated: true, completion: nil)
         
     }
-    
     func sharefacebook(_ ac: UIAlertAction) -> Void {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
@@ -500,7 +465,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         self.present(vc!, animated: true, completion: nil)
     }
-    
     func shareLine(_ ac: UIAlertAction) -> Void {
         var message = ""
         message += self.targetMemo.shopName + "\n"
@@ -511,7 +475,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             UIApplication.shared.openURL( messageURL as URL)
         }
     }
-    
     func shareInstagram(_ ac:UIAlertAction) -> Void {
         let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         

@@ -102,9 +102,6 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicator.color = UIColor.gray
-        
         // Cell はストーリーボードで設定したセルのID
         let testCell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mymenuItem", for: indexPath)
         
@@ -120,7 +117,6 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // 画像の読み込み
         if let image = targetMemoData.menuImage {
             imageView.image = image
-            indicator.stopAnimating()
         } else {
             
             let filename: String = targetMemoData.filename
@@ -133,7 +129,6 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
                     print("写真の取得失敗: \(error)")
                 } else {
                     imageView.image = UIImage(data: imageData!)
-                    indicator.stopAnimating()
                     self.mbs.favList[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)
                 }
             }
