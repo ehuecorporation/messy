@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let errorAlert = UIAlertController(
             title: "投稿画面へ移動",
             message: "近隣の店舗を取得できます",
-            preferredStyle: UIAlertControllerStyle.alert
+            preferredStyle: UIAlertControllerStyle.actionSheet
         )
         errorAlert.addAction(
             UIAlertAction(
@@ -43,7 +43,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         errorAlert.addAction(
             UIAlertAction(
                 title: "キャンセル",
-                style: UIAlertActionStyle.default,
+                style: UIAlertActionStyle.cancel,
                 handler: nil
             )
         )
@@ -266,6 +266,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
+        print(cell?.menuImage.constraints.description)
+
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         
         //隠しておく要素
@@ -383,6 +385,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.editFlag = true
         performSegue(withIdentifier: "pushDetail", sender: targetMemo)
     }
+    
+    // セルの高さを設定
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        let imageHeight = targetMemoData.menuImage?.size.height
+        let imageWidth = targetMemoData.menuImage?.size.width
+        if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
+            let aspect = Double(imageHeight!)/Double(imageWidth!)
+            let height = Double(self.view.frame.size.width)*aspect
+            return CGFloat(height) + 115
+        } else {
+            let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
+            let height = Double(self.view.frame.size.width)*aspect
+            return CGFloat(height) + 95
+        }
+    }
+
     
     //テーブルのセクションを設定する
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -673,12 +692,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //詳細画面へ行く前に詳細データを渡す
         if segue.identifier == "pushDetail" {
-            
             let InfoController = segue.destination as! InfoViewController
             InfoController.targetMemo = self.targetMemo
-            
-            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
-            
+        }
+        
+        if segue.identifier == "goReport" {
+            let reportController = segue.destination as! ReportViewController
+            reportController.targetMemo = self.targetMemo
         }
     }
     

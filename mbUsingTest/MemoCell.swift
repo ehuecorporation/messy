@@ -96,8 +96,6 @@ class MemoCell: UITableViewCell {
                     print("cloud上に保存")
                 }
             })
-            
-            // 値の更新
             var saveError: NSError? = nil
             let obj: NCMBObject = NCMBObject(className: "MemoClass")
             obj.objectId = objectID.text!
@@ -189,6 +187,23 @@ class MemoCell: UITableViewCell {
         
         print("端末データの確認\((userData.object(forKey: "likes") as? [String])!)")
     }
+    
+    func menuImageSetter(_ image: UIImage?) {
+        
+        menuImage.image = image
+        
+        let constraint = NSLayoutConstraint(
+            item: menuImage,
+            attribute:NSLayoutAttribute.height,
+            relatedBy:NSLayoutRelation.equal,
+            toItem: menuImage,
+            attribute: NSLayoutAttribute.width,
+            multiplier: (image?.size.height)! / (image?.size.width)!,
+            constant:0)
+        
+        NSLayoutConstraint.activate([constraint])
+    }
+
     
 
     override func awakeFromNib() {

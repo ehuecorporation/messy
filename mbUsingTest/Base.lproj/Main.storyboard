@@ -1367,14 +1367,14 @@
                                     <action selector="report4:" destination="QF5-Iu-PM0" eventType="touchUpInside" id="QC9-0l-QCN"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbm-Rd-KuF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbm-Rd-KuF">
                                 <rect key="frame" x="5" y="349" width="365" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="ygI-0f-bZa"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzz-cn-a3y">
                                 <rect key="frame" x="5" y="169" width="365" height="50"/>
@@ -1402,6 +1402,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="RQZ-Hi-w90" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" id="03J-GU-Ad2"/>
                             <constraint firstItem="Jzz-cn-a3y" firstAttribute="leading" secondItem="Waa-iu-efG" secondAttribute="leading" constant="5" id="7Lh-24-PgS"/>
@@ -1425,6 +1426,9 @@
                             <constraint firstAttribute="trailing" secondItem="fRl-hb-tF7" secondAttribute="trailing" constant="5" id="w4E-Ho-Xot"/>
                             <constraint firstAttribute="trailing" secondItem="Jzz-cn-a3y" secondAttribute="trailing" constant="5" id="yR7-kD-QEB"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aKP-Me-xB0" appends="YES" id="6Rb-BY-ujb"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="違反報告" id="knF-wE-6Ku"/>
                     <connections>
@@ -1432,6 +1436,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yzy-TW-fFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aKP-Me-xB0">
+                    <connections>
+                        <action selector="hydeKeyboard:" destination="QF5-Iu-PM0" id="a1z-Xj-oML"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-4297" y="1742"/>
         </scene>
@@ -1512,6 +1521,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-O9-jPj">
                                                     <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBb-0g-va6">
                                                     <rect key="frame" x="8" y="187" width="202" height="18"/>
@@ -1578,12 +1588,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iaH-Ro-qJe"/>
+        <segue reference="zbS-2T-nYv"/>
         <segue reference="uE1-04-o1p"/>
-        <segue reference="ulA-g6-vGo"/>
         <segue reference="u3I-8D-p8B"/>
+        <segue reference="Udy-kv-6Tb"/>
         <segue reference="IWr-99-Qp8"/>
+        <segue reference="4GV-q7-1qo"/>
         <segue reference="vNz-yZ-lot"/>
-        <segue reference="FnF-jG-x1N"/>
-        <segue reference="43F-yT-ryS"/>
     </inferredMetricsTieBreakers>
 </document>

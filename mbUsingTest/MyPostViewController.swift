@@ -298,7 +298,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         //3個先まで画像を事前に取得
-        getCellImage((indexPath as NSIndexPath).row + 2)
+        getCellImage((indexPath as NSIndexPath).row + 4)
 
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
@@ -306,6 +306,23 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
         return cell!
     }
+    
+    // セルの高さを設定
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let targetMemoData: memo = mbs.postMenu[(indexPath as NSIndexPath).row]
+        let imageHeight = targetMemoData.menuImage?.size.height
+        let imageWidth = targetMemoData.menuImage?.size.width
+        if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
+            let aspect = Double(imageHeight!)/Double(imageWidth!)
+            let height = Double(self.view.frame.size.width)*aspect
+            return CGFloat(height) + 115
+        } else {
+            let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
+            let height = Double(self.view.frame.size.width)*aspect
+            return CGFloat(height) + 70
+        }
+    }
+
     
     //セルをタップした場合に実行
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

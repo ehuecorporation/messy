@@ -566,7 +566,6 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         
     }
     
-    
     func shareLine(_ ac: UIAlertAction) -> Void {
         var message = ""
         message += self.targetShopName + "\n"
@@ -625,19 +624,13 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         //画像をセットして戻る
         self.dismiss(animated: true, completion: nil)
         
-        let width = image.size.width / 1.7
-        let height = image.size.height / 1.7
+        let width = image.size.width / 2
+        let height = image.size.height / 2
         let resizedImage =  resizeImage(image: image, width: Int(width), height: Int(height))
         
         self.displayImage.image = resizedImage
     }
     
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //コメント表示画面へ行く前に詳細データを渡す
-
-    }
     
     /*
      @IBAction func deleteMemo(_ sender: UIBarButtonItem) {

@@ -23,37 +23,37 @@ public struct Favorite {
         ud.synchronize()
     } // save end
     
-    public static func add(_ shopName: String?) {
-        if shopName == nil || shopName == "" { return }
-        if favorites.contains(shopName!) {
-            remove(shopName!)
+    public static func add(_ objectId: String?) {
+        if objectId == nil || objectId == "" { return }
+        if favorites.contains(objectId!) {
+            remove(objectId!)
         }
-        favorites.append(shopName!)
+        favorites.append(objectId!)
         save()
     } // add end
     
-    public static func remove(_ shopName: String?) {
-        if shopName == nil || shopName == "" { return }
+    public static func remove(_ objectId: String?) {
+        if objectId == nil || objectId == "" { return }
         
-        if let index = favorites.index(of: shopName!) {
+        if let index = favorites.index(of: objectId!) {
             favorites.remove(at: index)
         }
         save()
     } // remove end
     
-    public static func inFavorites(_ shopName: String?) -> Bool{
-        if shopName == nil || shopName == ""{ return false}
+    public static func inFavorites(_ objectId: String?) -> Bool{
+        if objectId == nil || objectId == ""{ return false}
         
-        return favorites.contains(shopName!)
+        return favorites.contains(objectId!)
     } // inFavorites end
     
-    public static func toggle(_ shopName: String?) {
-        if shopName == nil { return }
+    public static func toggle(_ objectId: String?) {
+        if objectId == nil { return }
         
-        if inFavorites(shopName!) {
-            remove(shopName!)
+        if inFavorites(objectId!) {
+            remove(objectId!)
         } else {
-            add(shopName!)
+            add(objectId!)
         }
     } // toggle end
     

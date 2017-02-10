@@ -8,9 +8,10 @@
 
 import UIKit
 import NCMB
+import Social
 import SWRevealViewController
 
-class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
+class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var menuList: UICollectionView!
     
@@ -22,11 +23,16 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     var userData = UserDefaults.standard
     var targetNum = 0
     var mbs : NCMBSearch = NCMBSearch()
-    var targetmemo = memo()
+    var targetMemo: memo = memo()
+    
+    // instagramShare用
+    var documentInteractionController = UIDocumentInteractionController()
     
     //NotificcationのObserver
     var loadDataObserver: NSObjectProtocol?
     var refreshObserver: NSObjectProtocol?
+    
+    let user = NCMBUser.current()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -97,7 +103,13 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         // セルサイズをあらかじめ指定
         menuList.contentSize = CGSize(width: self.view.frame.size.width/2 - 2.5, height: self.view.frame.size.width/2 - 2.5)
         
-        
+        // 長押し処理の追加
+        let longPressRecognizer = UILongPressGestureRecognizer()
+        longPressRecognizer.delegate = self
+        longPressRecognizer.addTarget(self, action: #selector(MymenuCollectionViewCell.cellLongPressed(recognizer:)))
+        menuList.addGestureRecognizer(longPressRecognizer)
+
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -139,10 +151,76 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
     
     // Cell が選択された場合
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         // [indexPath.row] から画像名を探し、UImage を設定
-        targetmemo = mbs.favList[(indexPath as NSIndexPath).row]
+        targetMemo = mbs.favList[(indexPath as NSIndexPath).row]
         performSegue(withIdentifier: "pushDetailFromMyMenu",sender: nil)
+    }
+    
+    // 長押し
+    func cellLongPressed(recognizer: UILongPressGestureRecognizer) {
+        let point: CGPoint = recognizer.location(in: self.menuList)
+        let indexPaths = menuList.indexPathForItem(at: point)
+        let indexPath = (indexPaths?.row)! + (indexPaths?.section)! * 2
+        self.targetMemo = mbs.favList[indexPath]
+        
+        if indexPath == nil {
+            return
+        } else if recognizer.state == UIGestureRecognizerState.began  {
+            // 長押しされた場合の処理
+            print("長押しされたcellのindexPath:\(indexPath)")
+            
+            let errorAlert = UIAlertController(
+                title: nil,
+                message: nil,
+                preferredStyle: UIAlertControllerStyle.actionSheet
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Twitter",
+                    style: UIAlertActionStyle.default,
+                    handler: self.shareTwitter
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Facebook",
+                    style: UIAlertActionStyle.default,
+                    handler: self.sharefacebook
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "LINE",
+                    style: UIAlertActionStyle.default,
+                    handler: self.shareLine
+                )
+            )
+            
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "Instagram",
+                    style: UIAlertActionStyle.default,
+                    handler: self.shareInstagram
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "お気に入りから削除",
+                    style: UIAlertActionStyle.destructive,
+                    handler: self.removeFav
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.cancel,
+                    handler: nil
+                )
+            )
+            
+            self.present(errorAlert, animated: true, completion: nil)
+            
+        }
         
     }
     
@@ -182,6 +260,75 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         
     }
     
+    // SNSシェアの各挙動
+    func shareTwitter(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
+        if self.targetMemo.menuImage != nil {
+            vc?.add(self.targetMemo.menuImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func sharefacebook(_ ac: UIAlertAction) -> Void {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        vc?.setInitialText(self.targetMemo.shopName + "\n" + self.targetMemo.menuName + "\n")
+        if self.targetMemo.menuImage != nil {
+            vc?.add(self.targetMemo.menuImage)
+        }
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func shareLine(_ ac: UIAlertAction) -> Void {
+        var message = ""
+        message += self.targetMemo.shopName + "\n"
+        message += self.targetMemo.menuName + "\n"
+        let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
+        if (UIApplication.shared.canOpenURL(messageURL as URL)) {
+            UIApplication.shared.openURL( messageURL as URL)
+        }
+        
+    }
+    
+    func shareInstagram(_ ac:UIAlertAction) -> Void {
+        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
+        
+        let temporaryDirectory = URL(string: NSTemporaryDirectory())
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
+        try? imageData?.write( to: url!, options: .atomic)
+        
+        documentInteractionController.url = url
+        documentInteractionController.uti = "com.instagram.exclusivegram"
+        documentInteractionController.presentOpenInMenu(
+            from: self.menuList.bounds,
+            in: self.menuList,
+            animated: true
+        )
+    }
+    
+    func removeFav(_ ac:UIAlertAction) -> Void {
+        // お気に入りはファイル名で管理
+        Favorite.remove(targetMemo.filename)
+        
+        // cloud上のfavListの更新
+        let tmpFav = Favorite.favorites
+        user?.setObject(tmpFav, forKey: "favList")
+        user?.saveInBackground({(error) in
+            if error == nil {
+                print("cloud上に保存")
+            }
+        })
+        
+        reLoadButton(UIBarButtonItem.init())
+    
+        presentError("削除完了", "")
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -194,7 +341,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         if segue.identifier == "pushDetailFromMyMenu" {
             
             let InfoController = segue.destination as! InfoViewController
-            InfoController.targetMemo = self.targetmemo
+            InfoController.targetMemo = self.targetMemo
             
         }
     }
