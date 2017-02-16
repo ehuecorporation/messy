@@ -227,8 +227,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                     self.sendingFlag = false
                     
                     let errorAlert = UIAlertController(
-                        title: "投稿完了",
-                        message: "投稿が反映されるまでお待ち下さい",
+                        title: "更新完了",
+                        message: "更新が完了しました",
                         preferredStyle: UIAlertControllerStyle.alert
                     )
                     errorAlert.addAction(
@@ -294,7 +294,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 
                 let errorAlert = UIAlertController(
                     title: "投稿完了",
-                    message: "投稿が反映されるまでお待ち下さい",
+                    message: "投稿が反映されました。",
                     preferredStyle: UIAlertControllerStyle.alert
                 )
                 errorAlert.addAction(

@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2016 Google
+
 ## NCMB
 
  Copyright 2014 NIFTY Corporation All Rights Reserved.

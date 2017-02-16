@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eC-vb-jfq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGp-x8-bo3">
                                         <rect key="frame" x="10" y="10" width="110" height="40"/>
@@ -169,7 +169,7 @@
                                         </connections>
                                     </button>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-Ov-QQt">
-                                        <rect key="frame" x="0.0" y="558" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="602" width="375" height="45"/>
                                         <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Mzs-Un-Dg0"/>
@@ -718,7 +718,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店の名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awA-YR-PBy">
-                                <rect key="frame" x="0.0" y="74" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.64732102670000002" blue="0.30782167329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="IHK-7m-cQL"/>
@@ -756,7 +756,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="osN-kz-pQV">
-                                <rect key="frame" x="21" y="129" width="333" height="487"/>
+                                <rect key="frame" x="21" y="85" width="333" height="531"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
@@ -940,7 +940,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写真：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH1-aO-k5z">
-                                <rect key="frame" x="10" y="254" width="80" height="30"/>
+                                <rect key="frame" x="10" y="210" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="jeS-Od-apA"/>
                                     <constraint firstAttribute="height" constant="30" id="vt1-LQ-phv"/>
@@ -978,7 +978,7 @@
                                 </variation>
                             </toolbar>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awW-gX-OPo">
-                                <rect key="frame" x="51" y="289" width="273" height="273"/>
+                                <rect key="frame" x="51" y="245" width="273" height="273"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="awW-gX-OPo" secondAttribute="height" multiplier="1:1" id="Kfm-nt-R3d"/>
@@ -993,7 +993,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hea-lc-lLX">
-                                <rect key="frame" x="0.0" y="164" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 金額：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYy-OC-LA2" userLabel="金額：">
                                         <rect key="frame" x="10" y="8" width="80" height="30"/>
@@ -1035,7 +1035,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kln-B3-9h7">
-                                <rect key="frame" x="0.0" y="209" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間帯：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGG-k9-Xzu">
                                         <rect key="frame" x="10" y="8" width="80" height="30"/>
@@ -1134,7 +1134,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Px-zv-MiH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お店の名前：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeK-Af-jAa">
                                         <rect key="frame" x="10" y="5" width="120" height="20"/>
@@ -1178,7 +1178,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IE-jn-8Dh">
-                                <rect key="frame" x="0.0" y="114" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理の名前：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMz-Ge-Nbr">
                                         <rect key="frame" x="10" y="5" width="120" height="20"/>
@@ -1296,7 +1296,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzz-cn-a3y">
-                                <rect key="frame" x="10" y="169" width="355" height="50"/>
+                                <rect key="frame" x="10" y="125" width="355" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ah3-tJ-r2U"/>
                                 </constraints>
@@ -1320,7 +1320,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjn-Ar-v7L">
-                                <rect key="frame" x="10" y="279" width="355" height="50"/>
+                                <rect key="frame" x="10" y="235" width="355" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7XB-4F-1Np"/>
                                 </constraints>
@@ -1344,7 +1344,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syc-rW-AWv">
-                                <rect key="frame" x="10" y="224" width="355" height="50"/>
+                                <rect key="frame" x="10" y="180" width="355" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gyT-1M-uG8"/>
                                 </constraints>
@@ -1368,7 +1368,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="違反理由を選択してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nl-s2-MpG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hgi-Ho-ttd"/>
                                 </constraints>
@@ -1377,7 +1377,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRl-hb-tF7">
-                                <rect key="frame" x="10" y="114" width="355" height="50"/>
+                                <rect key="frame" x="10" y="70" width="355" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lVG-eX-KG4"/>
                                 </constraints>
@@ -1545,7 +1545,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oex-w0-nsS">
-                                <rect key="frame" x="0.0" y="4" width="375" height="663"/>
+                                <rect key="frame" x="0.0" y="-40" width="375" height="707"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="2.5" minY="0.0" maxX="2.5" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="2.5" id="mzp-K2-GQm">
@@ -1556,13 +1556,13 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mymenuItem" id="gOF-ns-v9M">
-                                        <rect key="frame" x="79" y="0.0" width="218" height="223"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="218" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-O9-jPj">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading_sq" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-O9-jPj">
                                                     <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
@@ -1623,21 +1623,21 @@
         <image name="background" width="388" height="690"/>
         <image name="defaultIcon" width="128" height="128"/>
         <image name="list" width="24" height="24"/>
-        <image name="loading" width="225" height="63"/>
+        <image name="loading_sq" width="232" height="190"/>
         <image name="menuList" width="24" height="24"/>
         <image name="pen" width="24" height="24"/>
         <image name="reload" width="24" height="24"/>
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="u3I-8D-p8B"/>
         <segue reference="e4a-4Z-NFi"/>
         <segue reference="ulA-g6-vGo"/>
         <segue reference="CKM-V6-8l9"/>
-        <segue reference="u3I-8D-p8B"/>
-        <segue reference="gc2-Eu-4Gy"/>
-        <segue reference="Udy-kv-6Tb"/>
-        <segue reference="e5v-Lu-OAG"/>
-        <segue reference="IWr-99-Qp8"/>
         <segue reference="43F-yT-ryS"/>
+        <segue reference="Udy-kv-6Tb"/>
+        <segue reference="IWr-99-Qp8"/>
+        <segue reference="gc2-Eu-4Gy"/>
+        <segue reference="vNz-yZ-lot"/>
     </inferredMetricsTieBreakers>
 </document>

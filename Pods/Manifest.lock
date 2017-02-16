@@ -1,8 +1,10 @@
 PODS:
+  - Google-Mobile-Ads-SDK (7.16.0)
   - NCMB (2.3.3)
   - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
+  - Google-Mobile-Ads-SDK (~> 7.0)
   - NCMB (from `https://github.com/ehuecorporation/ncmb_ios.git`)
   - SWRevealViewController
 
@@ -16,9 +18,10 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ehuecorporation/ncmb_ios.git
 
 SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: 92dff0e9ce1cfdfe640d9d80ab86d5e4371e478f
   NCMB: 33829337aeb2e91a0fc1c771eeb77b642f7f6589
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: 1a3830b6102c4bf3bec58e88563aea054adc9c02
+PODFILE CHECKSUM: 1fb4692da9beb948e03abf0ab64cd5fc51aea15e
 
 COCOAPODS: 1.1.1
