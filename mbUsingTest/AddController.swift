@@ -50,6 +50,16 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     //ShopListTableから渡される値
     var targetShopData: shop = shop()
     
+    //送信ボタンの制限
+    var sendingFlag = false
+    
+    // instagramShare用
+    var documentInteractionController = UIDocumentInteractionController()
+
+    
+    //カメラの使用有無
+    var useCamera = false
+    
     @IBOutlet weak var shopName: UITextField!
     @IBOutlet weak var menuName: UITextField!
     @IBOutlet weak var menuPrice: UITextField!
@@ -60,6 +70,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     @IBOutlet weak var dinerButton: UIButton!
     
     @IBAction func selctMorning(_ sender: UIButton) {
+        
+        // キーボードを閉じる
+        self.view.endEditing(true)
         
         // 選択済みなら選択解除
         if let selcted = targetHousrs {
@@ -85,6 +98,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     @IBAction func selctLunch(_ sender: UIButton) {
         
+        // キーボードを閉じる
+        self.view.endEditing(true)
+        
         // 選択済みなら選択解除
         if let selcted = targetHousrs {
             if selcted == 1 {
@@ -108,6 +124,9 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     }
     
     @IBAction func selctDiner(_ sender: UIButton) {
+        
+        // キーボードを閉じる
+        self.view.endEditing(true)
         
         // 選択済みなら選択解除
         if let selcted = targetHousrs {
@@ -134,6 +153,12 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         
+        if sendingFlag {
+           return
+        }
+        
+        sendingFlag = true
+        
         //バリデーションを通す前の準備
         self.targetShopName = self.shopName.text!
         self.targetMenuName = self.menuName.text!
@@ -143,6 +168,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         //情報が不十分の時エラーアラートを表示
         if (self.targetShopName.isEmpty || self.targetMenuName.isEmpty || self.targetMenuPrice.isEmpty || self.targetDisplayImage == nil || self.targetHousrs == nil) {
             
+            sendingFlag = false
             presentError("エラー", "入力内容にエラーがあります")
             
         } else {
@@ -198,6 +224,30 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                         print("failure save data. \(saveError)")
                     }
                     
+                    self.sendingFlag = false
+                    
+                    let errorAlert = UIAlertController(
+                        title: "投稿完了",
+                        message: "投稿が反映されるまでお待ち下さい",
+                        preferredStyle: UIAlertControllerStyle.alert
+                    )
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: self.saveComplete                    )
+                    )
+                    
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "投稿をSNSにシェア",
+                            style: UIAlertActionStyle.default,
+                            handler: self.socialShare                   )
+                    )
+                    
+                    
+                    self.present(errorAlert, animated: true, completion: nil)
+                    
                 })
             } else if selectFlag {
                 //新規データを一件登録する
@@ -239,6 +289,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 } else {
                     print("failure save data.\(saveError)")
                 }
+                
+                self.sendingFlag = false
                 
                 let errorAlert = UIAlertController(
                     title: "投稿完了",
@@ -462,7 +514,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     }
     
     func imageTapped(recognizer: UITapGestureRecognizer) {
-        print("tapped")
+        // キーボードを閉じる
+        self.view.endEditing(true)
         displayCamera(UIBarButtonItem.init())
     }
     
@@ -491,7 +544,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         self.menuName.text = ""
         self.menuPrice.text = ""
         self.displayImage.image = nil
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     //登録完了後SNSへシェア
@@ -500,7 +553,7 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         let errorAlert = UIAlertController(
             title: "メニューをシェア",
             message: "シェアしたいSNSを選択してください",
-            preferredStyle: UIAlertControllerStyle.alert
+            preferredStyle: UIAlertControllerStyle.actionSheet
         )
         errorAlert.addAction(
             UIAlertAction(
@@ -528,14 +581,14 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
             UIAlertAction(
                 title: "Instagram",
                 style: UIAlertActionStyle.default,
-                handler: nil
+                handler: self.shareInstagram
             )
         )
         
         errorAlert.addAction(
             UIAlertAction(
                 title: "キャンセル",
-                style: UIAlertActionStyle.default,
+                style: UIAlertActionStyle.cancel,
                 handler: nil
             )
         )
@@ -573,10 +626,24 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
         if (UIApplication.shared.canOpenURL(messageURL as URL)) {
-            UIApplication.shared.openURL( messageURL as URL)
+            UIApplication.shared.open( messageURL as URL,options: [String:Int](),completionHandler: nil)
         }
-        
     }
+    func shareInstagram(_ ac:UIAlertAction) -> Void {
+        
+        let imageData = UIImageJPEGRepresentation(self.targetDisplayImage!, 1.0)
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
+        try? imageData?.write( to: url!, options: .atomic)
+        
+        documentInteractionController.url = url
+        documentInteractionController.uti = "com.instagram.exclusivegram"
+        documentInteractionController.presentOpenInMenu(
+            from: self.view.bounds,
+            in: self.view,
+            animated: true
+        )
+    }
+
     
     //アクションシートの結果に応じて処理を変更
     func handlerActionSheet(_ ac: UIAlertAction) -> Void {
@@ -610,9 +677,11 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     //カメラで撮影してimageに書き出す
     func loadAndDisplayFromCamera() {
         
+        useCamera = true
+        
         //カメラを起動
         let ip = UIImagePickerController()
-        ip.allowsEditing = true
+        ip.allowsEditing = false
         ip.delegate = self
         ip.sourceType = UIImagePickerControllerSourceType.camera
         present(ip, animated: true, completion: nil)
@@ -620,6 +689,14 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     //画像を選択した時のイベント
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        if useCamera {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            dismiss(animated: true, completion: nil)
+            self.selectAndDisplayFromPhotoLibrary()
+            useCamera = false
+            return
+        }
         
         //画像をセットして戻る
         self.dismiss(animated: true, completion: nil)
@@ -630,51 +707,5 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         
         self.displayImage.image = resizedImage
     }
-    
-    
-    /*
-     @IBAction func deleteMemo(_ sender: UIBarButtonItem) {
-     
-     let obj:NCMBObject = NCMBObject(className: "MemoClass")
-     obj.objectId = self.targetMemoObjectId
-     obj.deleteInBackground({
-     (error) in
-     
-     if(error == nil){
-     //削除成功時に画像も一緒に削除
-     let fileData = NCMBFile.file(withName: self.targetFileName, data: nil) as! NCMBFile
-     fileData.deleteInBackground({
-     (error) in
-     print("画像データ削除完了:\(self.targetFileName)")
-     })
-     
-     
-     } else {
-     print("データ処理時にエラーが発生しました:\(error)")
-     }
-     })
-     
-     //UITextFieldをからにする
-     self.shopName.text = ""
-     self.menuName.text = ""
-     self.updateFlag = true
-     
-     //削除完了を表示
-     let errorAlert = UIAlertController(
-     title: "完了",
-     message: "このデータは削除されました。",
-     preferredStyle: UIAlertControllerStyle.alert
-     )
-     errorAlert.addAction(
-     UIAlertAction(
-     title: "OK",
-     style: UIAlertActionStyle.default,
-     handler: saveComplete
-     )
-     )
-     present(errorAlert, animated: true, completion: nil)
-     
-     }
-     */
     
 }

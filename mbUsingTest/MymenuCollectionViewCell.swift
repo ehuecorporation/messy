@@ -163,9 +163,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         let indexPath = (indexPaths?.row)! + (indexPaths?.section)! * 2
         self.targetMemo = mbs.favList[indexPath]
         
-        if indexPath == nil {
-            return
-        } else if recognizer.state == UIGestureRecognizerState.began  {
+        if recognizer.state == UIGestureRecognizerState.began  {
             // 長押しされた場合の処理
             print("長押しされたcellのindexPath:\(indexPath)")
             
@@ -290,15 +288,14 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
         let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
         if (UIApplication.shared.canOpenURL(messageURL as URL)) {
-            UIApplication.shared.openURL( messageURL as URL)
+            UIApplication.shared.open( messageURL as URL,options: [String:Int](),completionHandler: nil)
         }
         
     }
     
     func shareInstagram(_ ac:UIAlertAction) -> Void {
-        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         
-        let temporaryDirectory = URL(string: NSTemporaryDirectory())
+        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
         try? imageData?.write( to: url!, options: .atomic)
         

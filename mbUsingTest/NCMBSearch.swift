@@ -579,7 +579,7 @@ public class NCMBSearch {
             return
         }
         let iconFileName = userData.object(forKey: "userIconFileName") as! String
-        var fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
+        let fileData: NCMBFile = NCMBFile.file(withName: iconFileName, data: nil) as! NCMBFile
         
         fileData.getDataInBackground({(data, error) in
             if error == nil {

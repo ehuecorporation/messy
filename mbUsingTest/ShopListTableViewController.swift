@@ -47,6 +47,9 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
     //ユーザー情報
     var userData = UserDefaults.standard
     
+    //API呼び込みを制御
+    var firstAppear = true
+    
     var myLocationManager: CLLocationManager!
     // 取得した緯度を保持するインスタンス
     var latitude: Double = Double()
@@ -82,6 +85,7 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
                 } else {
                     
                     self.shopListTable.reloadData()
+                    self.firstAppear = false
                     
                 }// notification error end
                 
@@ -114,7 +118,7 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         // 位置情報の更新を開始.
-        if mbs.memos.count == 0 {
+        if firstAppear {
             myLocationManager.startUpdatingLocation()
         } else {
             self.shopListTable.reloadData()
@@ -167,7 +171,7 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillDisappear(_ animated: Bool) {
         //通知待受を終了
-        NotificationCenter.default.removeObserver(self.loadDataObserver)
+        NotificationCenter.default.removeObserver(self.loadDataObserver!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -266,7 +270,7 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
-        
+                
         mbs.getShopList(latitude , longitude)
     }
     

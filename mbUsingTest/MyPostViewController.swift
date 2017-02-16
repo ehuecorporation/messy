@@ -30,6 +30,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // APIカウント
     var apiCounter = 0
+    var firstAppear = true
     
     //コメント編集フラグ
     var editFlag: Bool = false
@@ -126,8 +127,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // 位置情報の更新を開始.
-        if mbs.memos.count == 0 {
+        if firstAppear {
             myLocationManager.startUpdatingLocation()
+            firstAppear = false
         }
         
         // 投稿一覧の取得
@@ -213,7 +215,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillDisappear(_ animated: Bool) {
         //通知待受を終了
-        NotificationCenter.default.removeObserver(self.loadDataObserver)
+        NotificationCenter.default.removeObserver(self.loadDataObserver!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -319,7 +321,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
             let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 70
+            return CGFloat(height) + 95
         }
     }
 
@@ -483,13 +485,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
         if (UIApplication.shared.canOpenURL(messageURL as URL)) {
-            UIApplication.shared.openURL( messageURL as URL)
+            UIApplication.shared.open( messageURL as URL,options: [String:Int](),completionHandler: nil)
         }
     }
     func shareInstagram(_ ac:UIAlertAction) -> Void {
         let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
-        
-        let temporaryDirectory = URL(string: NSTemporaryDirectory())
         let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
         try? imageData?.write( to: url!, options: .atomic)
         
@@ -522,6 +522,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
         
+        if !firstAppear {
+            return
+        }
+        
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
@@ -539,7 +543,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         print("failure save data. \(saveError)")
                     }
                 } else {
-                    print(error?.localizedDescription)
+//                    print(error?.localizedDescription)
                 }
             })
         } // unwrap user

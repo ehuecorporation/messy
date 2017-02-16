@@ -40,6 +40,8 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
         reportReason.becomeFirstResponder()
     }
     
+    @IBOutlet weak var underSpaceHeight: NSLayoutConstraint!
+    
     @IBAction func sendReport(_ sender: UIBarButtonItem) {
         
         let targetNum  = reportNum
@@ -89,12 +91,39 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
     //ユーザー情報
     var userData = UserDefaults.standard
 
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self,selector: #selector(LoginViewController.keyboardWillBeShown(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reportReason.delegate = self
+        
 
     }
+    
+    func keyboardWillBeShown(_ notification: Notification) {
+        self.view.setNeedsUpdateConstraints()
+        underSpaceHeight.constant = CGFloat(210.0)
+        // アニメーションによる移動
+        UIView.animate(withDuration: 0.3, animations: self.view.layoutIfNeeded)
+    }
+    
+    func keyboardWillBeHidden(_ notification : Notification) {
+        self.view.setNeedsUpdateConstraints()
+        underSpaceHeight.constant = CGFloat(20.0)
+        // アニメーションによる移動
+        UIView.animate(withDuration: 0.3, animations: self.view.layoutIfNeeded)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -105,7 +134,7 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
     func saveComplete(_ ac: UIAlertAction) -> Void {
         //UItextFieldを空にする
         self.reportReason.text = ""
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func reportCheck() {

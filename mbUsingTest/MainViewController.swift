@@ -100,6 +100,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //ユーザー情報
     var userData = UserDefaults.standard
     
+    // 読み込み回数の制限
+    var firstAppear = true
+    
     var myLocationManager: CLLocationManager!
     // 取得した緯度を保持するインスタンス
     var latitude: Double = Double()
@@ -108,6 +111,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if !firstAppear {
+            return
+        }
         
         //読込完了通知を受信した後の処理
         loadDataObserver = NotificationCenter.default.addObserver(
@@ -163,7 +170,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // 位置情報の更新を開始.
-        if mbs.memos.count == 0 {
+        if firstAppear {
             myLocationManager.startUpdatingLocation()
         }
 
@@ -244,7 +251,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillDisappear(_ animated: Bool) {
         //通知待受を終了
-        NotificationCenter.default.removeObserver(self.loadDataObserver)
+        NotificationCenter.default.removeObserver(self.loadDataObserver!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -266,7 +273,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
-        print(cell?.menuImage.constraints.description)
 
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         
@@ -425,7 +431,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 } else {
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
                     self.reloadCount += 1
-                    if self.reloadCount % 3 == 0 {
+                    if self.reloadCount % 3 == 0 || self.reloadCount < 3{
                         self.memoTableView.reloadData()
                     }
                 }
@@ -456,13 +462,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
                                 self.reloadCount += 1
-                                if self.reloadCount % 3 == 0 {
+                                if self.reloadCount % 3 == 0 || self.reloadCount < 3{
                                     self.memoTableView.reloadData()
                                 }
                             }
                         })
                     } else {
-                        print(error?.localizedDescription)
+//                        print(error?.localizedDescription)
                     }
                 })
             }
@@ -485,6 +491,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
         
+        if !firstAppear {
+            return
+        }
+        
+        mbs.geoSearch(latitude , longitude)
+
+        
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
@@ -506,8 +519,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             })
         } // unwrap user
-        
-        mbs.geoSearch(latitude , longitude)
+
     }
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.
@@ -660,15 +672,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
         if (UIApplication.shared.canOpenURL(messageURL as URL)) {
-            UIApplication.shared.openURL( messageURL as URL)
+            UIApplication.shared.open( messageURL as URL,options: [String:Int](),completionHandler: nil)
         }
         
     }
     
     func shareInstagram(_ ac:UIAlertAction) -> Void {
-        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         
-        let temporaryDirectory = URL(string: NSTemporaryDirectory())
+        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
         try? imageData?.write( to: url!, options: .atomic)
         

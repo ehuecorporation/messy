@@ -62,6 +62,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     //ユーザー情報
     var userData = UserDefaults.standard
     
+    //APIの呼び出しを制御
+    var firstAppear = true
+    
     var myLocationManager: CLLocationManager!
     // 取得した緯度を保持するインスタンス
     var latitude: Double = Double()
@@ -112,7 +115,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             } // using end
         ) // loadDataObserver end
         
-        if mbs.shopMenu.count == 0 {
+        if firstAppear {
             //通常の検索
             mbs.getShopMenu(targetShopData.shopNumber)
         } else {
@@ -145,7 +148,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         // 位置情報の更新を開始.
-        if mbs.memos.count == 0 {
+        if firstAppear {
             myLocationManager.startUpdatingLocation()
         }
         
@@ -216,7 +219,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillDisappear(_ animated: Bool) {
         //通知待受を終了
-        NotificationCenter.default.removeObserver(self.loadDataObserver)
+        NotificationCenter.default.removeObserver(self.loadDataObserver!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -326,6 +329,22 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         return self.sectionCount
     }
     
+    // セルの高さを設定
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let targetMemoData: memo = mbs.shopMenu[(indexPath as NSIndexPath).row]
+        let imageHeight = targetMemoData.menuImage?.size.height
+        let imageWidth = targetMemoData.menuImage?.size.width
+        if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
+            let aspect = Double(imageHeight!)/Double(imageWidth!)
+            let height = Double(self.view.frame.size.width)*aspect
+            return CGFloat(height) + 115
+        } else {
+            let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
+            let height = Double(self.view.frame.size.width)*aspect
+            return CGFloat(height) + 95
+        }
+    }
+    
     //セルの画像を取得
     func getCellImage(_ index: Int){
         
@@ -344,7 +363,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 } else {
                     self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
                     self.reloadCount += 1
-                    if self.reloadCount % 2 == 0 {
+                    if self.reloadCount % 3 == 0 || self.reloadCount < 3 {
                         self.menuList.reloadData()
                     }
                 }
@@ -357,8 +376,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if index < mbs.shopMenu.count {
             let postUserID = mbs.shopMenu[index].postUser
-            if let number = postUserArray.index(of: postUserID) {
-            } else {
+            if postUserArray.index(of: postUserID) == nil {
                 let postUser: NCMBUser = NCMBUser()
                 postUser.objectId = postUserID
                 postUserArray.append(postUserID)
@@ -372,13 +390,13 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
                                 self.reloadCount += 1
-                                if self.reloadCount % 2 == 0 {
+                                if self.reloadCount % 3 == 0 || self.reloadCount < 3 {
                                     self.menuList.reloadData()
                                 }
                             }
                         })
                     } else {
-                        print(error?.localizedDescription)
+//                        print("error?.localizedDescription")
                     }
                 })
             }
@@ -434,6 +452,13 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             )
             errorAlert.addAction(
                 UIAlertAction(
+                    title: "違反報告",
+                    style: UIAlertActionStyle.destructive,
+                    handler: self.goReport
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
                     title: "キャンセル",
                     style: UIAlertActionStyle.cancel,
                     handler: nil
@@ -472,13 +497,12 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         let encodeMessage: String! = message.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let messageURL: NSURL! = NSURL( string: "line://msg/text/" + encodeMessage )
         if (UIApplication.shared.canOpenURL(messageURL as URL)) {
-            UIApplication.shared.openURL( messageURL as URL)
+            UIApplication.shared.open( messageURL as URL,options: [String:Int](),completionHandler: nil)
         }
     }
     func shareInstagram(_ ac:UIAlertAction) -> Void {
-        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         
-        let temporaryDirectory = URL(string: NSTemporaryDirectory())
+        let imageData = UIImageJPEGRepresentation(self.targetMemo.menuImage!, 1.0)
         let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("YourImageFileName.igo")
         try? imageData?.write( to: url!, options: .atomic)
         
@@ -490,6 +514,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             animated: true
         )
     }
+    // 違反報告
+    func goReport(_ ac:UIAlertAction) -> Void {
+        performSegue(withIdentifier: "goReport", sender: nil)
+    }
+
     
     // エラーメッセージを出す関数を定義
     func presentError (_ title: String, _ message: String) {
@@ -525,6 +554,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
         
+        // 2回目以降の表示であれば省略
+        if !firstAppear {
+            return
+        }
+        
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
@@ -542,7 +576,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                         print("failure save data. \(saveError)")
                     }
                 } else {
-                    print(error?.localizedDescription)
+//                    print(error?.localizedDescription)
                 }
             })
         } // unwrap user
