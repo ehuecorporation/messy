@@ -1545,7 +1545,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oex-w0-nsS">
-                                <rect key="frame" x="0.0" y="-40" width="375" height="707"/>
+                                <rect key="frame" x="0.0" y="4" width="375" height="663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="2.5" minY="0.0" maxX="2.5" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="2.5" id="mzp-K2-GQm">
@@ -1556,7 +1556,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mymenuItem" id="gOF-ns-v9M">
-                                        <rect key="frame" x="78.5" y="0.0" width="218" height="223"/>
+                                        <rect key="frame" x="79" y="0.0" width="218" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="223"/>
@@ -1630,14 +1630,14 @@
         <image name="up" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u3I-8D-p8B"/>
-        <segue reference="e4a-4Z-NFi"/>
-        <segue reference="ulA-g6-vGo"/>
-        <segue reference="CKM-V6-8l9"/>
-        <segue reference="43F-yT-ryS"/>
         <segue reference="Udy-kv-6Tb"/>
-        <segue reference="IWr-99-Qp8"/>
+        <segue reference="u3I-8D-p8B"/>
+        <segue reference="iaH-Ro-qJe"/>
+        <segue reference="uE1-04-o1p"/>
+        <segue reference="ulA-g6-vGo"/>
+        <segue reference="43F-yT-ryS"/>
         <segue reference="gc2-Eu-4Gy"/>
+        <segue reference="IWr-99-Qp8"/>
         <segue reference="vNz-yZ-lot"/>
     </inferredMetricsTieBreakers>
 </document>

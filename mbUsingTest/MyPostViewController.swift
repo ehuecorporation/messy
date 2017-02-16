@@ -294,7 +294,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
-            cell!.menuImage.image = image
+            cell!.menuImageSetter(image)
         } else {
             getCellImage((indexPath as NSIndexPath).row)
         }

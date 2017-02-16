@@ -230,8 +230,13 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         // 経路探索.
         myDirections.calculate { (response, error) in
             
-            // NSErrorを受け取ったか、ルートがない場合.
-            if error != nil || response!.routes.isEmpty {
+            if error != nil {
+                self.presentError("エラー", "再度読み込んでください")
+                return
+            }
+            
+            // ルートがない場合.
+            if response!.routes.isEmpty {
                 //エラーアラートを表示してOKで戻る
                 self.presentError("エラー", "経路が取得できませんでした")
                 return
