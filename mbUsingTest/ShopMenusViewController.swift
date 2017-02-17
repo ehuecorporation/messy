@@ -265,7 +265,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.updateDate.text = targetMemoData.updateDate
-        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
+        cell!.menuImageSetter(#imageLiteral(resourceName: "loading"))
         cell!.userImage.image = #imageLiteral(resourceName: "defaultIcon")
         
         if latitude != 0 {

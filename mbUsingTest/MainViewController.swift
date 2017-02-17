@@ -297,7 +297,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.updateDate.text = targetMemoData.updateDate
         cell!.userImage.image = #imageLiteral(resourceName: "defaultIcon")
-        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
+        cell!.menuImageSetter(#imageLiteral(resourceName: "loading"))
         
         if latitude != 0 {
             // 距離の計算

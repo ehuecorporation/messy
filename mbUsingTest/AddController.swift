@@ -701,8 +701,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         //画像をセットして戻る
         self.dismiss(animated: true, completion: nil)
         
-        let width = image.size.width / 2
-        let height = image.size.height / 2
+        let width = image.size.width / 1.7
+        let height = image.size.height / 1.7
         let resizedImage =  resizeImage(image: image, width: Int(width), height: Int(height))
         
         self.displayImage.image = resizedImage
