@@ -16,7 +16,8 @@ class MemoCell: UITableViewCell {
 
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")
-    
+    let heart_on = UIImage(named: "like_on")
+    let heart_off = UIImage(named: "like_off")
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
@@ -121,7 +122,7 @@ class MemoCell: UITableViewCell {
         if Like.inLikes("\(fileName.text!)") {
             
             Like.remove("\(fileName.text!)")
-            likeButton.setImage(star_off, for: .normal)
+            likeButton.setImage(heart_off, for: .normal)
             
             var likeNum = Int(likeCounter.text!)!
             likeNum -= 1
@@ -154,7 +155,7 @@ class MemoCell: UITableViewCell {
         } else {
             
             Like.add("\(fileName.text!)")
-            likeButton.setImage(star_on, for: .normal)
+            likeButton.setImage(heart_on, for: .normal)
             
             var likeNum = Int(likeCounter.text!)!
             likeNum += 1

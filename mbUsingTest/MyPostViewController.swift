@@ -255,7 +255,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
         cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
         cell!.likeCounter.text = "\(targetMemoData.likeCounter)"
-        cell!.menuImageSetter(#imageLiteral(resourceName: "loading"))
+        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         
         if latitude != 0 {
             // 距離の計算
@@ -294,7 +294,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
-            cell!.menuImageSetter(image)
+            cell!.menuImage.image = image
         } else {
             getCellImage((indexPath as NSIndexPath).row)
         }

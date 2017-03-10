@@ -158,13 +158,13 @@
                             <constraint firstAttribute="width" constant="15" id="eho-Jg-cmY"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p9-bJ-ZM2">
-                        <rect key="frame" x="54" y="385" width="45" height="45"/>
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p9-bJ-ZM2">
+                        <rect key="frame" x="65" y="396" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="gKy-QO-lel"/>
                             <constraint firstAttribute="width" constant="45" id="wrj-lV-A6h"/>
                         </constraints>
-                        <state key="normal" title="❤️"/>
+                        <state key="normal" image="like_off"/>
                         <connections>
                             <action selector="likeButton:" destination="s1g-JC-pyc" eventType="touchUpInside" id="m1L-A9-Ep2"/>
                         </connections>
@@ -267,6 +267,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="like_off" width="24" height="24"/>
         <image name="myMenu_on" width="24" height="24"/>
         <image name="shopPin" width="50" height="50"/>
     </resources>

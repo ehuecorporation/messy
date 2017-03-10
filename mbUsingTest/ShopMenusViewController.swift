@@ -265,7 +265,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.menuName.text = targetMemoData.menuName
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.updateDate.text = targetMemoData.updateDate
-        cell!.menuImageSetter(#imageLiteral(resourceName: "loading"))
+        cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         cell!.userImage.image = #imageLiteral(resourceName: "defaultIcon")
         
         if latitude != 0 {
@@ -299,7 +299,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
-            cell!.menuImageSetter(image)
+            cell!.menuImage.image = image
         } else {
             getCellImage((indexPath as NSIndexPath).row)
         }
