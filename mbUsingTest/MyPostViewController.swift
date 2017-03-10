@@ -18,7 +18,36 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var postTable: UITableView!
     
     @IBAction func goAdd(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goAdd", sender: nil)
+        self.editFlag = false
+        let errorAlert = UIAlertController(
+            title: "投稿画面へ移動",
+            message: "近隣の店舗を取得できます",
+            preferredStyle: UIAlertControllerStyle.actionSheet
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "投稿画面へ",
+                style: UIAlertActionStyle.default,
+                handler: self.goAddView
+            )
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "現在地から取得",
+                style: UIAlertActionStyle.default,
+                handler: self.goShopListView
+            )
+        )
+        errorAlert.addAction(
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertActionStyle.cancel,
+                handler: nil
+            )
+        )
+        
+        self.present(errorAlert, animated: true, completion: nil)
+
     }
     
     //NCMBAPIの利用
@@ -456,6 +485,14 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    // 選択されたアクションに応じて移動先を決定
+    func goAddView(_ ac: UIAlertAction) -> Void {
+        performSegue(withIdentifier: "goAdd", sender: nil)
+    }
+    func goShopListView(_ ac: UIAlertAction) -> Void {
+        performSegue(withIdentifier: "goShopList", sender: nil)
+    }
+
     
     // アクションシートに応じた処理
     func shareTwitter(_ ac: UIAlertAction) -> Void {
