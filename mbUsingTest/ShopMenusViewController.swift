@@ -174,6 +174,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         //セルの高さを設定
         self.menuList.rowHeight = self.view.frame.size.width + 120
         
+        // 空セルを非表示
+        self.menuList.tableFooterView = UIView(frame: .zero)
+        
         // UILongPressGestureRecognizer宣言
         let longPressRecognizer = UILongPressGestureRecognizer()
         longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))

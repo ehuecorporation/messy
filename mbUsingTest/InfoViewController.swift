@@ -14,6 +14,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var openHours: UILabel!
+    @IBOutlet weak var restDay: UILabel!
     
     var targetMemo: memo = memo()
     
@@ -32,6 +33,9 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         performSegue(withIdentifier: "goMenuList", sender: nil)
     }
     
+    @IBAction func editInformation(_ sender: UIButton) {
+        performSegue(withIdentifier: "editInformation", sender: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -103,7 +107,9 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                 self.targetShopData = targetShop
 
                 self.shopName.text = targetShop.shopName
-                self.openHours.text = targetShop.openHours
+                self.openHours.text = "[月～土]\n11:30～15:00\n17:00～22:30\n[日･祝]\n11:30～22:00"
+//                self.openHours.text = targetShop.openHours
+                self.restDay.text = targetShop.restDay
                 
                 
                 self.makeShopPin(targetShop)

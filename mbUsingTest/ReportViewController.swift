@@ -9,9 +9,13 @@
 import UIKit
 import NCMB
 
-class ReportViewController: UIViewController, UITextFieldDelegate {
+class ReportViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var reportReason: UITextField!
+
+    @IBOutlet weak var reportButton1: UIButton!
+    @IBOutlet weak var reportButton2: UIButton!
+    @IBOutlet weak var reportButton3: UIButton!
+    @IBOutlet weak var reportReason: PlaceHolderTextView!
     
     @IBAction func hydeKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -37,51 +41,15 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func report4(_ sender: UIButton) {
         reportNum = 3;
-        reportReason.becomeFirstResponder()
+        OperationQueue.main.addOperation({
+            self.reportReason.becomeFirstResponder()
+        });
     }
     
     @IBOutlet weak var underSpaceHeight: NSLayoutConstraint!
     
     @IBAction func sendReport(_ sender: UIBarButtonItem) {
-        
-        let targetNum  = reportNum
-        let targetContent = reportContent
-        
-        let obj: NCMBObject = NCMBObject(className: "report")
-        
-        if (targetNum == nil || targetContent == "") {
-            presentError("エラー", "入力内容にエラーがあります")
-        } else {
-            var saveError: NSError? = nil
-            obj.setObject(reportNum, forKey: "reportCategory")
-            obj.setObject(reportContent, forKey: "reportReason")
-            obj.setObject(userData.object(forKey: "userID"), forKey: "reportUser")
-            obj.setObject(targetMemo.shopName, forKey: "targetShop")
-            obj.setObject(targetMemo.menuName, forKey: "targetMenu")
-            obj.setObject(targetMemo.postUser, forKey: "targetUser")
-            obj.save(&saveError)
-            
-            if saveError == nil {
-                print("success save data.")
-            } else {
-                print("failure save data.\(saveError)")
-            }
-            
-            let errorAlert = UIAlertController(
-                title: "送信完了",
-                message: nil,
-                preferredStyle: UIAlertControllerStyle.alert
-            )
-            errorAlert.addAction(
-                UIAlertAction(
-                    title: "OK",
-                    style: UIAlertActionStyle.default,
-                    handler: self.saveComplete
-                )
-            )
-            self.present(errorAlert, animated: true, completion: nil)
-        } // if else end
-        
+        reportCheck()
     }
     
     var reportNum:Int? = nil
@@ -106,13 +74,17 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         reportReason.delegate = self
-        
+        reportReason.placeHolder = "内容を記入してください(その他の場合)"
 
     }
     
     func keyboardWillBeShown(_ notification: Notification) {
         self.view.setNeedsUpdateConstraints()
         underSpaceHeight.constant = CGFloat(210.0)
+        //誤タップ防止のため一時的に無効化
+        reportButton1.isEnabled = false
+        reportButton2.isEnabled = false
+        reportButton3.isEnabled = false
         // アニメーションによる移動
         UIView.animate(withDuration: 0.3, animations: self.view.layoutIfNeeded)
     }
@@ -120,6 +92,11 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
     func keyboardWillBeHidden(_ notification : Notification) {
         self.view.setNeedsUpdateConstraints()
         underSpaceHeight.constant = CGFloat(20.0)
+        reportContent = reportReason.text
+        //最有効化
+        reportButton1.isEnabled = true
+        reportButton2.isEnabled = true
+        reportButton3.isEnabled = true
         // アニメーションによる移動
         UIView.animate(withDuration: 0.3, animations: self.view.layoutIfNeeded)
     }
@@ -160,17 +137,45 @@ class ReportViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checked(_ ac: UIAlertAction) -> Void {
-        self.sendReport(UIBarButtonItem.init())
-    }
-
-    // キーボードの確定を押した後の処理
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        let targetNum  = reportNum
+        let targetContent = reportContent
         
-        reportContent = reportReason.text!
-        textField.resignFirstResponder()
-        reportCheck()
-        return true
+        let obj: NCMBObject = NCMBObject(className: "report")
+        
+        if (targetNum == nil || targetContent == "") {
+            presentError("エラー", "入力内容にエラーがあります")
+        } else {
+            var saveError: NSError? = nil
+            obj.setObject(reportNum, forKey: "reportCategory")
+            obj.setObject(reportContent, forKey: "reportReason")
+            obj.setObject(userData.object(forKey: "userID"), forKey: "reportUser")
+            obj.setObject(targetMemo.shopName, forKey: "targetShop")
+            obj.setObject(targetMemo.menuName, forKey: "targetMenu")
+            obj.setObject(targetMemo.postUser, forKey: "targetUser")
+            obj.save(&saveError)
+            
+            if saveError == nil {
+                print("success save data.")
+            } else {
+                print("failure save data.\(saveError)")
+            }
+            
+            let errorAlert = UIAlertController(
+                title: "送信完了",
+                message: nil,
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.default,
+                    handler: self.saveComplete
+                )
+            )
+            self.present(errorAlert, animated: true, completion: nil)
+        } // if else end
     }
+    
 
     // エラーメッセージを出す関数を定義
     func presentError (_ title: String, _ message: String) {

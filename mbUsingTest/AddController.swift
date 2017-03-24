@@ -69,6 +69,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     @IBOutlet weak var lunchButton: UIButton!
     @IBOutlet weak var dinerButton: UIButton!
     
+    @IBOutlet weak var displayImageAspect: NSLayoutConstraint!
+    
     @IBAction func selctMorning(_ sender: UIButton) {
         
         // キーボードを閉じる
@@ -423,9 +425,10 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         super.viewDidLoad()
         
         //UITextFieldのプレースホルダー
-        self.shopName.placeholder = "Eggs'n Things 原宿店"
-        self.menuName.placeholder = "パンケーキ"
-        self.menuPrice.placeholder = "1080"
+        self.shopName.text = "Eggs'n Things 原宿店"
+        self.menuName.text = "パンケーキ\nバンケーキ"
+        self.menuPrice.text = "1080"
+        self.displayImage.image = #imageLiteral(resourceName: "camera_icon")
         
         // 店舗リストから到達した場合
         if selectFlag {
@@ -699,12 +702,15 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         }
         
         //画像をセットして戻る
-        self.dismiss(animated: true, completion: nil)
-        
+        picker.dismiss(animated: true, completion: nil)
+        print(image.size.width)
+        print(image.size.height)
+        print(self.displayImage.frame.size.width)
+        print(self.displayImage.frame.size.height)
+        let aspect = Double(image.size.width) / Double(image.size.height)
         let width = image.size.width / 1.7
         let height = image.size.height / 1.7
         let resizedImage =  resizeImage(image: image, width: Int(width), height: Int(height))
-        
         self.displayImage.image = resizedImage
     }
     

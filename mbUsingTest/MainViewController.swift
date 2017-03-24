@@ -330,7 +330,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {
-            cell!.menuImage.image = targetMemoData.menuImage
+            cell!.menuImage.image = image
         } else {
             getCellImage((indexPath as NSIndexPath).row)
         }
@@ -394,6 +394,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // セルの高さを設定
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         let imageHeight = targetMemoData.menuImage?.size.height
         let imageWidth = targetMemoData.menuImage?.size.width
@@ -401,6 +402,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let aspect = Double(imageHeight!)/Double(imageWidth!)
             let height = Double(self.view.frame.size.width)*aspect
             return CGFloat(height) + 115
+            
         } else {
             let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
             let height = Double(self.view.frame.size.width)*aspect
