@@ -97,7 +97,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.set(true, forKey: "useCount")
                     self.userData.synchronize()
                     // ユーザーデータの確認
-                    print("\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))\(self.userData.object(forKey: "userIconFileName"))\(self.userData.object(forKey:"userSex"))")
+                    print("\(String(describing: self.userData.object(forKey: "userName")))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))\(self.userData.object(forKey: "userIconFileName"))\(String(describing: self.userData.object(forKey:"userSex")))")
                     
                     // 該当端末で初めての使用なら更新画面へ
                     if !self.userData.bool(forKey: "useCount"){
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 self.userData.register(defaults: ["useCount": Bool()])
                 
                 self.userData.synchronize()
-                print("確認\(self.userData.object(forKey: "userName"))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
+                print("確認\(String(describing: self.userData.object(forKey: "userName")))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
                     self.performSegue(withIdentifier: "pushUpdate", sender: nil)
                 }
             })

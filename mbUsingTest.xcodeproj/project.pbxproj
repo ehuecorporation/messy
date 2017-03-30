@@ -37,6 +37,7 @@
 		2F79FA4A1E3EBAC800174BB1 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79FA491E3EBAC800174BB1 /* Like.swift */; };
 		2F79FA4D1E40A2EC00174BB1 /* ShopListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79FA4B1E40A2EC00174BB1 /* ShopListCell.swift */; };
 		2F79FA4E1E40A2EC00174BB1 /* ShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F79FA4C1E40A2EC00174BB1 /* ShopListCell.xib */; };
+		2F9973141E8D24C100A50DB6 /* ShopEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9973131E8D24C100A50DB6 /* ShopEditViewController.swift */; };
 		2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
 		2F99EDC11DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
 		2F99EDC21DA28F5C001C830E /* NCMBSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */; };
@@ -109,6 +110,7 @@
 		2F79FA491E3EBAC800174BB1 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		2F79FA4B1E40A2EC00174BB1 /* ShopListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListCell.swift; sourceTree = "<group>"; };
 		2F79FA4C1E40A2EC00174BB1 /* ShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopListCell.xib; sourceTree = "<group>"; };
+		2F9973131E8D24C100A50DB6 /* ShopEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopEditViewController.swift; sourceTree = "<group>"; };
 		2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCMBSearch.swift; sourceTree = "<group>"; };
 		2FA17CAE1D9917BD00CF30E1 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		2FACC0101E10F1A3000E5D68 /* CustomMKPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKPointAnnotation.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		2FE7875D1DFE6438008428CC /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				2F9973131E8D24C100A50DB6 /* ShopEditViewController.swift */,
 				59CE38071DCC781700FC35E0 /* ShopMenusViewController.swift */,
 				595A5A961DB2112D007DDBFA /* InfoViewController.swift */,
 				2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */,
@@ -621,6 +624,7 @@
 				2F99EDC01DA28F5C001C830E /* NCMBSearch.swift in Sources */,
 				2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */,
 				2F644B651D851A22009CF261 /* MainViewController.swift in Sources */,
+				2F9973141E8D24C100A50DB6 /* ShopEditViewController.swift in Sources */,
 				2FE7875F1DFE649A008428CC /* ShopListTableViewController.swift in Sources */,
 				59CE38081DCC781700FC35E0 /* ShopMenusViewController.swift in Sources */,
 				2F5831BC1DBDF43300BAAA15 /* Favorite.swift in Sources */,

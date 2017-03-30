@@ -11,6 +11,7 @@ import  NCMB
 
 public struct shop {
     
+    public var objectID: String = ""
     public var shopName: String = ""
     public var shopNumber: Int = 0
     public var shopLat: Double = 0
@@ -101,7 +102,7 @@ public class NCMBSearch {
             (imageData, error) -> Void in
             
             if error != nil {
-                print("写真の取得失敗: \(error)")
+                print("写真の取得失敗: \(String(describing: error))")
             } else {
                 self.memos[targetNum].menuImage = UIImage(data: imageData!)
             }
@@ -129,6 +130,7 @@ public class NCMBSearch {
             if error == nil {
                 if let response = objects {
                     let targetMemoData: AnyObject = response[0] as AnyObject
+                    shopData.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
                     shopData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
                     shopData.shopNumber = (targetMemoData.object(forKey: "numbaer") as? Int)!
                     shopData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!

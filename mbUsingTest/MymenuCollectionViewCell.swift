@@ -138,7 +138,7 @@ class MymenuCollectionViewCell: UIViewController ,UICollectionViewDataSource, UI
                 (imageData, error) -> Void in
                 
                 if error != nil {
-                    print("写真の取得失敗: \(error)")
+                    print("写真の取得失敗: \(String(describing: error))")
                 } else {
                     imageView.image = UIImage(data: imageData!)
                     self.mbs.favList[(indexPath as NSIndexPath).row].menuImage = UIImage(data: imageData!)

@@ -362,7 +362,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 (imageData, error) -> Void in
                 
                 if error != nil {
-                    print("写真の取得失敗: \(error)")
+                    print("写真の取得失敗: \(String(describing: error))")
                 } else {
                     self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
                     self.reloadCount += 1
@@ -418,7 +418,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             
         } else if recognizer.state == UIGestureRecognizerState.began  {
             // 長押しされた場合の処理
-            print("長押しされたcellのindexPath:\(indexPath?.row)")
+            print("長押しされたcellのindexPath:\(String(describing: indexPath?.row))")
             
             let errorAlert = UIAlertController(
                 title: nil,
@@ -576,7 +576,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     if saveError == nil {
                         print("success save data.")
                     } else {
-                        print("failure save data. \(saveError)")
+                        print("failure save data. \(String(describing: saveError))")
                     }
                 } else {
 //                    print(error?.localizedDescription)

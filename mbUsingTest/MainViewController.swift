@@ -137,7 +137,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                 } else {
                     
-                    self.memoTableView.reloadData()
+                    print(self.reloadCount)
+                    if self.reloadCount == 0 {
+                        self.reloadCount += 1
+                        self.memoTableView.reloadData()
+                    }
                     
                 }// notification error end
                 
@@ -383,7 +387,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if saveError == nil {
                 print("success save data.")
             } else {
-                print("failure save data. \(saveError)")
+                print("failure save data. \(String(describing: saveError))")
             }
             
         })
@@ -394,7 +398,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // セルの高さを設定
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as? MemoCell
         let targetMemoData: memo = mbs.memos[(indexPath as NSIndexPath).row]
         let imageHeight = targetMemoData.menuImage?.size.height
         let imageWidth = targetMemoData.menuImage?.size.width
@@ -423,13 +426,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if mbs.memos[index].menuImage != nil {
                 return
             }
+            apiCounter += 1
+            print("API通信回数\(apiCounter)")
             let filename: String = mbs.memos[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             fileData.getDataInBackground {
                 (imageData, error) -> Void in
                 
                 if error != nil {
-                    print("写真の取得失敗: \(error)")
+                    print("写真の取得失敗: \(String(describing: error))")
                 } else {
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
                     self.reloadCount += 1
@@ -438,8 +443,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             }
-            apiCounter += 1
-            print("API通信回数\(apiCounter)")
         }
         
     } // getCellImage end
@@ -514,7 +517,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if saveError == nil {
                         print("success save data.")
                     } else {
-                        print("failure save data. \(saveError)")
+                        print("failure save data. \(String(describing: saveError))")
                     }
                 } else {
                     print(error!.localizedDescription)
@@ -580,7 +583,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         } else if recognizer.state == UIGestureRecognizerState.began  {
             // 長押しされた場合の処理
-            print("長押しされたcellのindexPath:\(indexPath?.row)")
+            print("長押しされたcellのindexPath:\(String(describing: indexPath?.row))")
             
             let errorAlert = UIAlertController(
                 title: nil,

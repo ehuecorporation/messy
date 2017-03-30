@@ -104,7 +104,7 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
                 (error) -> Void in
                 if let updateerror = error {
                     // 更新失敗時の処理
-                    print("エラー内容\(error)")
+                    print("エラー内容\(String(describing: error))")
                     self.loading_flag = false
                     self.presentError("更新エラー", "\(updateerror.localizedDescription)")
 

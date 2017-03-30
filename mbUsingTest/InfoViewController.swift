@@ -15,6 +15,8 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var openHours: UILabel!
     @IBOutlet weak var restDay: UILabel!
+    @IBOutlet weak var openIcon: UIImageView!
+    @IBOutlet weak var closeIcon: UIImageView!
     
     var targetMemo: memo = memo()
     
@@ -107,9 +109,10 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                 self.targetShopData = targetShop
 
                 self.shopName.text = targetShop.shopName
-                self.openHours.text = "[月～土]\n11:30～15:00\n17:00～22:30\n[日･祝]\n11:30～22:00"
-//                self.openHours.text = targetShop.openHours
+                self.openHours.text = targetShop.openHours
+                self.openIcon.isHidden = false
                 self.restDay.text = targetShop.restDay
+                self.closeIcon.isHidden = false
                 
                 
                 self.makeShopPin(targetShop)

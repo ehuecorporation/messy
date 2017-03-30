@@ -157,7 +157,7 @@ class ReportViewController: UIViewController, UITextViewDelegate {
             if saveError == nil {
                 print("success save data.")
             } else {
-                print("failure save data.\(saveError)")
+                print("failure save data.\(String(describing: saveError))")
             }
             
             let errorAlert = UIAlertController(

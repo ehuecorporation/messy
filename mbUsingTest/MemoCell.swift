@@ -78,7 +78,7 @@ class MemoCell: UITableViewCell {
                 if saveError == nil {
                     print("success save data.")
                 } else {
-                    print("failure save data. \(saveError)")
+                    print("failure save data. \(String(describing: saveError))")
                 }
             })
         } else {
@@ -108,7 +108,7 @@ class MemoCell: UITableViewCell {
                 if saveError == nil {
                     print("success save data.")
                 } else {
-                    print("failure save data. \(saveError)")
+                    print("failure save data. \(String(describing: saveError))")
                 }
             })
         }
@@ -148,7 +148,7 @@ class MemoCell: UITableViewCell {
                 if saveError == nil {
                     print("success save data.")
                 } else {
-                    print("failure save data. \(saveError)")
+                    print("failure save data. \(String(describing: saveError))")
                 }
             })
             
@@ -181,7 +181,7 @@ class MemoCell: UITableViewCell {
                 if saveError == nil {
                     print("success save data.")
                 } else {
-                    print("failure save data. \(saveError)")
+                    print("failure save data. \(String(describing: saveError))")
                 }
             })
         }
