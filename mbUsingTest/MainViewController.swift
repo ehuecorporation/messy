@@ -495,13 +495,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
-        
-        if !firstAppear {
-            return
-        }
-        
+                
         mbs.geoSearch(latitude , longitude)
 
+        if reloadCount != 0 {
+            return
+        }
         
         // 位置情報の保存
         let user = NCMBUser.current()
@@ -708,7 +707,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //詳細画面へ行く前に詳細データを渡す
         if segue.identifier == "pushDetail" {
-            let InfoController = segue.destination as! InfoViewController
+            let InfoController = segue.destination as! ShopInfoViewController
             InfoController.targetMemo = self.targetMemo
         }
         

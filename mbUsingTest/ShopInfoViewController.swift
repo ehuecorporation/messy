@@ -1,5 +1,5 @@
 //
-//  InfoViewController.swift
+//  ShopInfoViewController.swift
 //  mbUsingTest
 //
 //  Created by 松本匡平 on 2016/10/15.
@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+class ShopInfoViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     @IBOutlet weak var shopName: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -365,8 +365,12 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             let ShopMenuController = segue.destination as! ShopMenusViewController
             ShopMenuController.targetShopData = self.targetShopData
             
-            //編集の際は編集対象のobjectIdと編集フラグ・編集対象のデータを設定する
+        }
+        
+        if segue.identifier == "editInformation" {
             
+            let ShopEditController = segue.destination as! ShopEditViewController
+            ShopEditController.targetShop = self.targetShopData
         }
 
     }

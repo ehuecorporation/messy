@@ -620,7 +620,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //詳細画面へ行く前に詳細データを渡す
         if segue.identifier == "pushDetail" {
-            let InfoController = segue.destination as! InfoViewController
+            let InfoController = segue.destination as! ShopInfoViewController
             InfoController.targetMemo = self.targetMemo
         }
         

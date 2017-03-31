@@ -28,16 +28,17 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     @IBOutlet weak var manButton: UIButton!
     @IBOutlet weak var womanButton: UIButton!
     @IBOutlet weak var toolbar: UIToolbar!
+    
     @IBAction func setMan(_ sender: UIButton) {
         if let sex = user_sex {
-            if sex == 1 {
+            if sex == 0 {
                 user_sex = nil
                 manButton.backgroundColor = UIColor.white
                 manButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
-        user_sex = 1
+        user_sex = 0
         manButton.backgroundColor = UIColor.init(red: 102/255.0, green: 119/255.0, blue: 238/255.0, alpha: 0.75)
         manButton.setTitleColor(UIColor.white, for: .normal)
         womanButton.backgroundColor = UIColor.white
@@ -47,14 +48,14 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
     
     @IBAction func setWoman(_ sender: UIButton) {
         if let sex = user_sex {
-            if sex == 2 {
+            if sex == 1 {
                 user_sex = nil
                 womanButton.backgroundColor = UIColor.white
                 womanButton.setTitleColor(UIColor.black, for: .normal)
                 return
             }
         }
-        user_sex = 2
+        user_sex = 1
         manButton.backgroundColor = UIColor.white
         manButton.setTitleColor(UIColor.black, for: .normal)
         womanButton.backgroundColor = UIColor.init(red: 220/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
@@ -88,12 +89,17 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
             
             // ユーザー情報を設定
             user?.setObject(targetNewName, forKey: "userName")
+            self.userData.set(targetNewName, forKey: "userName")
             user?.setObject(targetNewMailAdress, forKey: "mailAddress")
+            self.userData.set(targetNewMailAdress, forKey: "userMail")
             if targetSex != nil {
                 user?.setObject(targetSex, forKey: "userSex")
+                self.userData.set(targetSex, forKey: "userSex")
             }
+            
             user?.acl.setPublicReadAccess(true)
             user?.acl.setWriteAccess(true, for: user)
+            
             // アイコン画像の設定
             let imageData: Data = UIImagePNGRepresentation(targetUserImage!)!
             let targetFile = NCMBFile.file(with: imageData) as! NCMBFile
