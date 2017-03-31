@@ -172,6 +172,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //お気に入りを読み込み
         Favorite.load()
+        Like.load()
         
         //テーブルビューのデリゲート
         self.postTable.delegate = self
@@ -319,6 +320,12 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell!.favoriteButton.setImage(star_on, for: .normal)
         } else {
             cell!.favoriteButton.setImage(star_off, for: .normal)
+        }
+        //Likeに入っていればハートをon
+        if Like.inLikes(targetMemoData.filename) {
+            cell!.likeButton.setImage(#imageLiteral(resourceName: "like_on"), for: .normal)
+        } else {
+            cell!.likeButton.setImage(#imageLiteral(resourceName: "like_off"), for: .normal)
         }
         
         // メニュー画像の取得

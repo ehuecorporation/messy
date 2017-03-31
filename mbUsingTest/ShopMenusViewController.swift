@@ -154,6 +154,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //お気に入りを読み込み
         Favorite.load()
+        Like.load()
         
         navigationTitle.title = "提供メニュー"
         
@@ -299,6 +300,13 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         } else {
             cell!.favoriteButton.setImage(star_off, for: .normal)
         }
+        //Likeに入っていればハートをon
+        if Like.inLikes(targetMemoData.filename) {
+            cell!.likeButton.setImage(#imageLiteral(resourceName: "like_on"), for: .normal)
+        } else {
+            cell!.likeButton.setImage(#imageLiteral(resourceName: "like_off"), for: .normal)
+        }
+
         
         // メニュー画像の取得
         if let image = targetMemoData.menuImage {

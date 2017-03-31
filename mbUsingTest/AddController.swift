@@ -349,31 +349,30 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
                 
                 if saveError == nil {
                     print("success save data.")
+                    let errorAlert = UIAlertController(
+                        title: "投稿完了",
+                        message: "投稿が反映されるまでお待ちください",
+                        preferredStyle: UIAlertControllerStyle.alert
+                    )
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.default,
+                            handler: self.saveComplete                    )
+                    )
+                    
+                    errorAlert.addAction(
+                        UIAlertAction(
+                            title: "投稿をSNSにシェア",
+                            style: UIAlertActionStyle.default,
+                            handler: self.socialShare                   )
+                    )
+                    
+                    self.present(errorAlert, animated: true, completion: nil)
                 } else {
                     print("failure save data.\(String(describing: saveError))")
+                    presentError("エラー", "もう一度お試しください")
                 }
-                
-                let errorAlert = UIAlertController(
-                    title: "投稿完了",
-                    message: "投稿が反映されるまでお待ちください",
-                    preferredStyle: UIAlertControllerStyle.alert
-                )
-                errorAlert.addAction(
-                    UIAlertAction(
-                        title: "OK",
-                        style: UIAlertActionStyle.default,
-                        handler: self.saveComplete                    )
-                )
-                
-                errorAlert.addAction(
-                    UIAlertAction(
-                        title: "投稿をSNSにシェア",
-                        style: UIAlertActionStyle.default,
-                        handler: self.socialShare                   )
-                )
-
-                self.present(errorAlert, animated: true, completion: nil)
-                
             } // normal add end
         }
     } // addmemo end

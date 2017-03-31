@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="442"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1g-JC-pyc" id="dAk-g4-jQR">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="441"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="441.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-T2-4Bj">
@@ -204,6 +204,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="hcM-GH-ZS2" firstAttribute="centerY" secondItem="DDc-TB-DKG" secondAttribute="centerY" id="0oI-Cr-8mT"/>
                     <constraint firstAttribute="trailing" secondItem="u56-fE-K8K" secondAttribute="trailing" constant="8" id="1An-Ad-O6T"/>
@@ -269,7 +270,7 @@
     </objects>
     <resources>
         <image name="like_off" width="24" height="24"/>
-        <image name="myMenu_on" width="30" height="30"/>
+        <image name="myMenu_on" width="33" height="32"/>
         <image name="shopPin" width="50" height="50"/>
     </resources>
 </document>

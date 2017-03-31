@@ -98,7 +98,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                     self.userData.synchronize()
                     
                     // ユーザーデータの確認
-                    print("\(String(describing: self.userData.object(forKey: "userName")))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "useCount"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))\(self.userData.object(forKey: "userIconFileName"))\(String(describing: self.userData.object(forKey:"userSex")))")
+                    print("\(String(describing: self.userData.object(forKey: "userName")))\(String(describing: self.userData.object(forKey: "userPass")))\(String(describing: self.userData.object(forKey: "useCount")))\(String(describing: self.userData.object(forKey: "userMail")))\(String(describing: self.userData.object(forKey: "userID")))\(String(describing: self.userData.object(forKey: "userIconFileName")))\(String(describing: self.userData.object(forKey:"userSex")))")
                     
                     // 該当端末で初めての使用なら更新画面へ
                     if !self.userData.bool(forKey: "useCount"){
@@ -163,7 +163,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
                 self.userData.register(defaults: ["useCount": Bool()])
                 
                 self.userData.synchronize()
-                print("確認\(String(describing: self.userData.object(forKey: "userName")))\(self.userData.object(forKey: "userPass"))\(self.userData.object(forKey: "userMail"))\(self.userData.object(forKey: "userID"))")
+                print("確認\(String(describing: self.userData.object(forKey: "userName")))\(String(describing: self.userData.object(forKey: "userPass")))\(String(describing: self.userData.object(forKey: "userMail")))\(String(describing: self.userData.object(forKey: "userID")))")
                     self.performSegue(withIdentifier: "pushUpdate", sender: nil)
                 }
             })
@@ -173,7 +173,6 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self,selector: #selector(LoginViewController.keyboardWillBeShown(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
