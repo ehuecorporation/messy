@@ -6,7 +6,6 @@ target 'mbUsingTest' do
   use_frameworks!
   pod 'NCMB', :git => 'https://github.com/ehuecorporation/ncmb_ios.git'
   pod ‘SWRevealViewController’
-  pod 'Google-Mobile-Ads-SDK', '~> 7.0'
 
   # Pods for mbUsingTest
 
