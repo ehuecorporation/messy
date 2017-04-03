@@ -11,16 +11,13 @@
 		2F11458C1DEBF25A003F65A1 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F11458B1DEBF25A003F65A1 /* MyPostViewController.swift */; };
 		2F2AF1AA1DB0F15D00464B5E /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2AF1A81DB0F15D00464B5E /* MemoCell.swift */; };
 		2F2AF1AB1DB0F15D00464B5E /* MemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2AF1A91DB0F15D00464B5E /* MemoCell.xib */; };
-		2F3431671D9D4425001E6C68 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431631D9D4425001E6C68 /* Fabric.framework */; };
 		2F3431681D9D4425001E6C68 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431631D9D4425001E6C68 /* Fabric.framework */; };
 		2F3431691D9D4425001E6C68 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431631D9D4425001E6C68 /* Fabric.framework */; };
-		2F34316A1D9D4425001E6C68 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431641D9D4425001E6C68 /* TwitterKit.framework */; };
 		2F34316B1D9D4425001E6C68 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431641D9D4425001E6C68 /* TwitterKit.framework */; };
 		2F34316C1D9D4425001E6C68 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431641D9D4425001E6C68 /* TwitterKit.framework */; };
 		2F34316D1D9D4425001E6C68 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F3431651D9D4425001E6C68 /* TwitterKitResources.bundle */; };
 		2F34316E1D9D4425001E6C68 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F3431651D9D4425001E6C68 /* TwitterKitResources.bundle */; };
 		2F34316F1D9D4425001E6C68 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F3431651D9D4425001E6C68 /* TwitterKitResources.bundle */; };
-		2F3431701D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431711D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3431721D9D4425001E6C68 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3431661D9D4425001E6C68 /* TwitterCore.framework */; };
 		2F3C9CAC1E45AE2E00392F11 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C9CAB1E45AE2E00392F11 /* ReportViewController.swift */; };
@@ -137,9 +134,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				595A5A991DB214BB007DDBFA /* MapKit.framework in Frameworks */,
-				2F3431701D9D4425001E6C68 /* TwitterCore.framework in Frameworks */,
-				2F3431671D9D4425001E6C68 /* Fabric.framework in Frameworks */,
-				2F34316A1D9D4425001E6C68 /* TwitterKit.framework in Frameworks */,
 				CB8D9AC70A37BAF1192B6821 /* Pods_mbUsingTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
