@@ -42,6 +42,7 @@
 		2FA17CB01D9917BD00CF30E1 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA17CAE1D9917BD00CF30E1 /* AddController.swift */; };
 		2FA17CB11D9917BD00CF30E1 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA17CAE1D9917BD00CF30E1 /* AddController.swift */; };
 		2FACC0111E10F1A3000E5D68 /* CustomMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACC0101E10F1A3000E5D68 /* CustomMKPointAnnotation.swift */; };
+		2FB579461E93730500D73744 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2FB579451E93730500D73744 /* Settings.bundle */; };
 		2FD42A0C1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */; };
 		2FD42A0D1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */; };
 		2FD42A0E1D9DFC3500DA00D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */; };
@@ -111,6 +112,7 @@
 		2F99EDBF1DA28F5C001C830E /* NCMBSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCMBSearch.swift; sourceTree = "<group>"; };
 		2FA17CAE1D9917BD00CF30E1 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		2FACC0101E10F1A3000E5D68 /* CustomMKPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKPointAnnotation.swift; sourceTree = "<group>"; };
+		2FB579451E93730500D73744 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListTableViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				2F644B6B1D851A22009CF261 /* LaunchScreen.storyboard */,
 				2F644B6E1D851A22009CF261 /* Info.plist */,
 				2FACC0101E10F1A3000E5D68 /* CustomMKPointAnnotation.swift */,
+				2FB579451E93730500D73744 /* Settings.bundle */,
 			);
 			path = mbUsingTest;
 			sourceTree = "<group>";
@@ -383,7 +386,7 @@
 				TargetAttributes = {
 					2F644B5E1D851A22009CF261 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2Q2LSKG99P;
+						DevelopmentTeam = EW4N3X2N4X;
 						LastSwiftMigration = 0800;
 					};
 					2F644B721D851A22009CF261 = {
@@ -429,6 +432,7 @@
 				2F644B681D851A22009CF261 /* Main.storyboard in Resources */,
 				2F2AF1AB1DB0F15D00464B5E /* MemoCell.xib in Resources */,
 				2F34316D1D9D4425001E6C68 /* TwitterKitResources.bundle in Resources */,
+				2FB579461E93730500D73744 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +481,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 59f7a4abe047f9d6a777aebf9dae36469fa09d78 ccf7d9cc2a7a247bcdc2d501ee1de26b570584d7519eb3d8c56e537ab312b497";
+			shellScript = "APP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"";
 		};
 		5CC4B91CB05993063601F3C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -791,7 +795,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2Q2LSKG99P;
+				DEVELOPMENT_TEAM = EW4N3X2N4X;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -802,7 +806,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.ehue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kyojin/Documents/mbUsingTest/mbUsingTest/mbUsingTestTests-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -819,7 +824,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2Q2LSKG99P;
+				DEVELOPMENT_TEAM = EW4N3X2N4X;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -830,7 +835,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.ehue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kyojin/Documents/mbUsingTest/mbUsingTest/mbUsingTestTests-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
