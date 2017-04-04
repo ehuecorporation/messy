@@ -26,17 +26,14 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     //コメント編集フラグ
     var editFlag: Bool = false
     
-    //更新フラグ
-    var refreshFlag: Bool = false
-    
     //各ポストユーザーの格納
     var postUserArray = [String]()
     
     //各アイコンの格納
     var iconArray = [UIImage]()
-
-    //テーブル再描画回数を制限
-    var reloadCount = 0
+    
+    // API管理フラグ
+    var apiFlag: [Bool] = []
     
     //テーブルビューの要素数
     let sectionCount: Int = 1
@@ -61,10 +58,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //ユーザー情報
     var userData = UserDefaults.standard
-    
-    //APIの呼び出しを制御
-    var firstAppear = true
-    
+        
     var myLocationManager: CLLocationManager!
     // 取得した緯度を保持するインスタンス
     var latitude: Double = Double()
@@ -109,19 +103,17 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     } // userInfo ned
                     
                 } else {
+                    self.apiFlag.removeAll()
+                    for _ in 0..<(self.mbs.shopMenu.count) {
+                        self.apiFlag.append(false)
+                    }
                     self.menuList.reloadData()
                 }// notification error end
                 
             } // using end
         ) // loadDataObserver end
         
-        if firstAppear {
-            //通常の検索
-            mbs.getShopMenu(targetShopData.shopNumber)
-        } else {
-            self.menuList.reloadData()
-        }
-        
+        mbs.getShopMenu(targetShopData.shopNumber)
     }
     
     override func viewDidLoad() {
@@ -148,9 +140,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         // 位置情報の更新を開始.
-        if firstAppear {
-            myLocationManager.startUpdatingLocation()
-        }
+        myLocationManager.startUpdatingLocation()
         
         //お気に入りを読み込み
         Favorite.load()
@@ -216,7 +206,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
         ) // uisng block end
-        // 通常のリフレッシュ
         mbs.getShopMenu(targetShopData.shopNumber)
     } // onRefresh end
     
@@ -326,8 +315,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
 
         
         //3セル先まで画像を事前に取得
-        getCellImage((indexPath as NSIndexPath).row + 2)
-        getCellIcon((indexPath as NSIndexPath).row + 2)
+        getCellImage((indexPath as NSIndexPath).row + 4)
 
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
@@ -360,9 +348,13 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     func getCellImage(_ index: Int){
         
         if index < mbs.shopMenu.count {
+            if apiFlag[index] {
+                return
+            }
             if mbs.shopMenu[index].menuImage != nil {
                 return
             }
+            apiFlag[index] = true
             let filename: String = mbs.shopMenu[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             
@@ -373,10 +365,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                     print("写真の取得失敗: \(String(describing: error))")
                 } else {
                     self.mbs.shopMenu[index].menuImage = UIImage(data: imageData!)
-                    self.reloadCount += 1
-                    if self.reloadCount % 3 == 0 || self.reloadCount < 3 {
                         self.menuList.reloadData()
-                    }
                 }
             }
         }
@@ -400,14 +389,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                         fileData.getDataInBackground({(imageData, error) in
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
-                                self.reloadCount += 1
-                                if self.reloadCount % 3 == 0 || self.reloadCount < 3 {
                                     self.menuList.reloadData()
-                                }
                             }
                         })
                     } else {
-//                        print("error?.localizedDescription")
+                        // print("error?.localizedDescription")
                     }
                 })
             }
@@ -564,12 +550,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
-        
-        // 2回目以降の表示であれば省略
-        if !firstAppear {
-            return
-        }
-        
+
+        /*
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
@@ -587,10 +569,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                         print("failure save data. \(String(describing: saveError))")
                     }
                 } else {
-//                    print(error?.localizedDescription)
+                // print(error?.localizedDescription)
                 }
             })
         } // unwrap user
+        */
     }
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.

@@ -62,12 +62,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // APIカウント
     var apiCounter = 0
+    // API管理フラグ
+    var apiFlag: [Bool] = []
     
     //コメント編集フラグ
     var editFlag: Bool = false
-    
-    //更新フラグ
-    var refreshFlag: Bool = false
     
     //テーブルビューの要素数
     let sectionCount: Int = 1
@@ -87,9 +86,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //各アイコンの格納
     var iconArray = [UIImage]()
     
-    //画像取得時のリロード回数を制限
-    var reloadCount = 0
-    
     // 画像
     let star_on = UIImage(named: "myMenu_on")
     let star_off = UIImage(named: "myMenu_off")
@@ -100,9 +96,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //ユーザー情報
     var userData = UserDefaults.standard
     
-    // 読み込み回数の制限
-    var firstAppear = true
-    
     var myLocationManager: CLLocationManager!
     // 取得した緯度を保持するインスタンス
     var latitude: Double = Double()
@@ -111,11 +104,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if !firstAppear {
-            return
-        }
-        
+                
         //読込完了通知を受信した後の処理
         loadDataObserver = NotificationCenter.default.addObserver(
             forName: Notification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
@@ -136,12 +125,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     } // userInfo ned
                     
                 } else {
-                    
-                    print(self.reloadCount)
-                    if self.reloadCount == 0 {
-                        self.reloadCount += 1
-                        self.memoTableView.reloadData()
+                    self.apiFlag.removeAll()
+                    for _ in 0..<(self.mbs.postMenu.count+4){
+                        self.apiFlag.append(false)
                     }
+                    self.memoTableView.reloadData()
                     
                 }// notification error end
                 
@@ -174,9 +162,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // 位置情報の更新を開始.
-        if reloadCount == 0 {
-            myLocationManager.startUpdatingLocation()
-        }
+        myLocationManager.startUpdatingLocation()
 
         //お気に入り等を読み込み
         Favorite.load()
@@ -228,9 +214,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Pull to Refresh
     func onRefresh(_ refreshControl: UIRefreshControl){
-        
-        reloadCount = 0
-        
         // UIRefreshControlを読込状態にする
         refreshControl.beginRefreshing()
         // 終了通知を受信したらUIRefreshControlを停止する
@@ -355,15 +338,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             getCellIcon((indexPath as NSIndexPath).row)
         }
+        
         //3個先まで画像を事前に取得
-        getCellImage((indexPath as NSIndexPath).row + 2)
-        getCellIcon((indexPath as NSIndexPath).row + 2)
+        getCellImage((indexPath as NSIndexPath).row + 4)
 
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
         cell!.accessoryType = UITableViewCellAccessoryType.none
         
-        print(targetMemoData)
+//        print(targetMemoData)
         
         return cell!
     }
@@ -431,11 +414,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getCellImage(_ index: Int){
         
         if index < mbs.memos.count {
+            if apiFlag[index] {
+                return
+            }
             if mbs.memos[index].menuImage != nil {
                 return
             }
-            apiCounter += 1
-            print("API通信回数\(apiCounter)")
+            self.apiCounter += 1
+            print("API通信回数\(self.apiCounter)")
+            apiFlag[index] = true
             let filename: String = mbs.memos[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             fileData.getDataInBackground {
@@ -443,12 +430,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 if error != nil {
                     print("写真の取得失敗: \(String(describing: error))")
+                    return
                 } else {
                     self.mbs.memos[index].menuImage = UIImage(data: imageData!)
-                    self.reloadCount += 1
-                    if self.reloadCount % 3 == 0 || self.reloadCount < 3{
-                        self.memoTableView.reloadData()
-                    }
+                    self.memoTableView.reloadData()
                 }
             }
         }
@@ -474,14 +459,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         fileData.getDataInBackground({(imageData, error) in
                             if error == nil {
                                 self.iconArray.append(UIImage(data: imageData!)!)
-                                self.reloadCount += 1
-                                if self.reloadCount % 3 == 0 || self.reloadCount < 3{
-                                    self.memoTableView.reloadData()
-                                }
+                                self.memoTableView.reloadData()
                             }
                         })
                     } else {
-//                        print(error?.localizedDescription)
+                    //   print(error?.localizedDescription)
                     }
                 })
             }
@@ -506,10 +488,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
         mbs.geoSearch(latitude , longitude)
 
-        if reloadCount != 0 {
-            return
-        }
-        
+        /*
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
@@ -531,7 +510,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             })
         } // unwrap user
-
+    */
     }
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.

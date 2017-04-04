@@ -2020,13 +2020,13 @@
         <image name="list" width="24" height="24"/>
         <image name="loading_sq" width="232" height="190"/>
         <image name="logo" width="125" height="49"/>
-        <image name="menuList" width="60" height="60"/>
+        <image name="menuList" width="30" height="30"/>
         <image name="open" width="128" height="128"/>
-        <image name="pen" width="60" height="60"/>
+        <image name="pen" width="30" height="30"/>
         <image name="reload" width="24" height="24"/>
         <image name="shopName" width="128" height="128"/>
         <image name="shopPin" width="50" height="50"/>
-        <image name="up" width="54" height="53"/>
+        <image name="up" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uE1-04-o1p"/>

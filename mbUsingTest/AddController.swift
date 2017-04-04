@@ -704,8 +704,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         print(image.size.height)
         print(self.displayImage.frame.size.width)
         print(self.displayImage.frame.size.height)
-        let width = image.size.width / 1.7
-        let height = image.size.height / 1.7
+        let width = image.size.width/1.4
+        let height = image.size.height/1.4
         let resizedImage =  resizeImage(image: image, width: Int(width), height: Int(height))
         self.displayImage.image = resizedImage
     }

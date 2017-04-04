@@ -59,7 +59,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // APIカウント
     var apiCounter = 0
-    var firstAppear = true
+    // API管理用
+    var apiFlag: [Bool] = []
     
     //コメント編集フラグ
     var editFlag: Bool = false
@@ -69,9 +70,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //テーブルビューの要素数
     let sectionCount: Int = 1
-    
-    // テーブル再描画回数を制限
-    var reloadCount = 0
     
     //対象MeMoのobjectID
     var targetMemoObjectId: String!
@@ -124,6 +122,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     } // userInfo ned
                     
                 } else {
+                    self.apiFlag.removeAll()
+                    for _ in 0..<(self.mbs.postMenu.count+4){
+                        self.apiFlag.append(false)
+                    }
                     self.postTable.reloadData()
                 }// notification error end
                 
@@ -156,10 +158,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // 位置情報の更新を開始.
-        if firstAppear {
-            myLocationManager.startUpdatingLocation()
-            firstAppear = false
-        }
+        myLocationManager.startUpdatingLocation()
         
         // 投稿一覧の取得
         if mbs.postMenu.count == 0 {
@@ -231,14 +230,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 NotificationCenter.default.removeObserver(self.refreshObserver!)
                 // UIRefreshControlを停止する
                 refreshControl.endRefreshing()
-                
-                
-        }
+                }
         ) // uisng block end
         
-        // 通常のリフレッシュ
+        // リフレッシュ
         mbs.getUserPost(userData.object(forKey: "userID") as! String)
-        refreshFlag = false
         
     } // onRefresh end
     
@@ -381,9 +377,17 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getCellImage(_ index: Int){
         
         if index < mbs.postMenu.count {
+            // すでに画像が呼び出されている場合は何もしない
+            if apiFlag[index] {
+                return
+            }
+            // すでに画像がある場合は何もしない
             if mbs.postMenu[index].menuImage != nil {
                 return
             }
+            apiCounter += 1
+            print("API通信回数\(apiCounter)")
+            apiFlag[index] = true
             let filename: String = mbs.postMenu[index].filename
             let fileData = NCMBFile.file(withName: filename, data: nil) as! NCMBFile
             
@@ -394,14 +398,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     print("写真の取得失敗: \(String(describing: error))")
                 } else {
                     self.mbs.postMenu[index].menuImage = UIImage(data: imageData!)
-                    self.reloadCount += 1
-                    if self.reloadCount % 2 == 0 {
-                        self.postTable.reloadData()
-                    }
+                    self.postTable.reloadData()
                 }
             }
-            apiCounter += 1
-            print("API通信回数\(apiCounter)")
         }
         
     } // getCellImage end
@@ -566,10 +565,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
         
-        if !firstAppear {
-            return
-        }
-        
+        /*
         // 位置情報の保存
         let user = NCMBUser.current()
         if user != nil {
@@ -587,11 +583,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         print("failure save data. \(String(describing: saveError))")
                     }
                 } else {
-//                    print(error?.localizedDescription)
+                    print(error?.localizedDescription)
                 }
             })
         } // unwrap user
-
+        */
     }
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.
