@@ -189,6 +189,7 @@ class MemoCell: UITableViewCell {
         print("端末データの確認\((userData.object(forKey: "likes") as? [String])!)")
     }
     
+    
     func menuImageSetter(_ image: UIImage?) {
         
         menuImage.image = image
