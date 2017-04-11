@@ -13,7 +13,7 @@ import NCMB
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var userData = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,6 +28,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 44/255, green: 150/255, blue: 26/255, alpha: 0.5)
         //ナビゲーションのタイトル文字列の色を変更
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        var flag = true
+        
+        if userData.object(forKey: "userName") != nil && userData.object(forKey: "userPass") != nil{
+            var targetName = String()
+            var targetPass = String()
+            if let name = userData.object(forKey: "userName") {
+                targetName = (name as? String)!
+            }
+            
+            if let pass = userData.object(forKey: "userPass") {
+                targetPass = (pass as? String)!
+            }
+
+            login(targetName, targetPass)
+        }
+        
+        let storyboard:UIStoryboard =  UIStoryboard(name: "Main",bundle:nil)
+        var viewController:UIViewController
+        
+        //表示するビューコントローラーを指定
+        viewController = storyboard.instantiateViewController(withIdentifier: "MainView") as UIViewController
+        
+        window?.rootViewController = viewController
         
         return true
     }
@@ -54,6 +78,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
     }
-
+    
+    func login(_ targetName: String, _ targetPass: String){
+        NCMBUser.logInWithUsername(inBackground: targetName, password: targetPass, block: {
+            (user, error) in
+            
+            if error != nil {
+                
+            } else {
+                
+                if !self.userData.bool(forKey: "userName"){
+                    //                        print(user!.userName)
+                    //                        print(self.userData.object(forKey: "userName"))
+                    if user!.userName != self.userData.object(forKey: "userName") as? String{
+                        // 端末に入っているmessyのデータを削除
+                        let appDomain = Bundle.main.bundleIdentifier
+                        UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+                    }
+                }
+                
+                //端末情報の更新
+                self.userData.set(user!.userName, forKey: "userName")
+                self.userData.set(targetPass, forKey: "userPass")
+                self.userData.set(user!.mailAddress, forKey: "userMail")
+                self.userData.set(user!.object(forKey: "userIcon"), forKey: "userIconFileName")
+                let favList: [String] = user?.object(forKey: "favList") as! [String]
+                let likeList: [String] = user?.object(forKey: "likeList") as! [String]
+                self.userData.set( favList, forKey: "favorites")
+                self.userData.set( likeList, forKey: "likes")
+                self.userData.set( user!.object(forKey: "userSex"), forKey: "userSex")
+                
+                if !self.userData.bool(forKey: "userIcon") {
+                    let mbs = NCMBSearch()
+                    mbs.loadIcon()
+                }
+                
+                if let userID = user!.objectId {
+                    self.userData.register(defaults: ["userID": String()])
+                    self.userData.set(userID, forKey: "userID")
+                }
+                self.userData.register(defaults: ["useCount": Bool()])
+                self.userData.set(true, forKey: "useCount")
+                self.userData.synchronize()
+                
+            }
+            
+        }) //loginWithUsername end
+    }
 }
 

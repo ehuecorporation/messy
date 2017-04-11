@@ -265,21 +265,21 @@ class UpdateViewController: UIViewController,UITextFieldDelegate, UINavigationCo
         
         if let name = userData.object(forKey: "userName") {
             userNewName.text = name as? String
+        } else {
+            userNewName.placeholder = "Kendrick"
         }
         
         if let mail = userData.object(forKey: "userMail") {
             mailAdress.text = mail as? String
+        }else {
+            mailAdress.placeholder = "Kendrick@gmail.com"
         }
         
         if let icon = userData.object(forKey: "userIcon") {
             let image: UIImage = UIImage(data: (icon as! NSData) as Data)!
             userImage.image = image
         }
-        
-        if !userData.bool(forKey: "useCount") {
-            menuButton.isEnabled = false
-        }
-        
+                
         if let tmp = userData.object(forKey: "userSex") {
             let sex = tmp as! Int
             if sex == 0 {

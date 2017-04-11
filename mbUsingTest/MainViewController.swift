@@ -355,26 +355,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //セグエの実行時に値を渡す
-        var targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
+        let targetMemo: memo = mbs.memos[(indexPath as NSIndexPath).row]
         self.targetMemo = targetMemo
-        
-        var lookNum = targetMemo.lookCounter
-        lookNum += 1
-        targetMemo.lookCounter = lookNum
         
         // 値の更新
         var saveError: NSError? = nil
         let obj: NCMBObject = NCMBObject(className: "MemoClass")
         obj.objectId = targetMemo.objectID
         obj.fetchInBackground({(error) in
-            
             if (error == nil) {
-                
-                obj.setObject(lookNum, forKey: "lookCounter")
+                obj.incrementKey("lookCounter", byAmount: 1 as NSNumber)
                 obj.save(&saveError)
                 
             }
-            
             if saveError == nil {
                 print("success save data.")
             } else {
@@ -382,8 +375,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         })
-        
-        self.editFlag = true
         performSegue(withIdentifier: "pushDetail", sender: targetMemo)
     }
     

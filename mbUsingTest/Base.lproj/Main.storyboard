@@ -26,13 +26,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eC-vb-jfq">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGp-x8-bo3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アカウント名:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGp-x8-bo3">
                                         <rect key="frame" x="10" y="10" width="110" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="L0b-bW-GlK"/>
                                             <constraint firstAttribute="width" constant="110" id="eqE-nf-PQr"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -42,7 +42,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Fsi-wN-RW6"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -53,7 +53,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwb-25-y33">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アドレス:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwb-25-y33">
                                         <rect key="frame" x="10" y="60" width="110" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="JUn-7M-sCw"/>
@@ -69,7 +69,7 @@
                                             <constraint firstAttribute="height" constant="40" id="omS-92-Rj7"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -270,7 +270,7 @@
         <!--messy-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -322,7 +322,7 @@
         <!--Login View Controller-->
         <scene sceneID="U2y-1v-2kf">
             <objects>
-                <viewController id="hgm-yw-r7P" customClass="LoginViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="hgm-yw-r7P" customClass="LoginViewController" customModule="mbUsingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jFg-JD-6gQ"/>
                         <viewControllerLayoutGuide type="bottom" id="1ju-Wz-8mo"/>
@@ -1223,7 +1223,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="tMG-2H-lKM">
             <objects>
-                <viewController id="aRR-le-zPB" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" id="aRR-le-zPB" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ld3-ut-08U"/>
                         <viewControllerLayoutGuide type="bottom" id="kX8-Kv-qlM"/>
@@ -2029,14 +2029,14 @@
         <image name="up" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uE1-04-o1p"/>
-        <segue reference="iaH-Ro-qJe"/>
-        <segue reference="u3I-8D-p8B"/>
-        <segue reference="IWr-99-Qp8"/>
-        <segue reference="43F-yT-ryS"/>
-        <segue reference="FnF-jG-x1N"/>
-        <segue reference="vss-Eb-Cnl"/>
-        <segue reference="wsX-VE-FgT"/>
+        <segue reference="e4a-4Z-NFi"/>
         <segue reference="ulA-g6-vGo"/>
+        <segue reference="uE1-04-o1p"/>
+        <segue reference="zhy-U0-6Nh"/>
+        <segue reference="e5v-Lu-OAG"/>
+        <segue reference="4GV-q7-1qo"/>
+        <segue reference="Udy-kv-6Tb"/>
+        <segue reference="gc2-Eu-4Gy"/>
+        <segue reference="IWr-99-Qp8"/>
     </inferredMetricsTieBreakers>
 </document>

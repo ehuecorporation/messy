@@ -191,7 +191,6 @@ class ReportViewController: UIViewController, UITextViewDelegate {
             handler: nil
         ))
         self.present(errorAlert, animated: true, completion: nil)
-    
     }
 
 }

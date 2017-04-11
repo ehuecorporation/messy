@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     
     var loginFlag = false
     var mbs: NCMBSearch = NCMBSearch()
+    var firstAppear = true
     
     //NotificcationのObserver
     var keyBoardOnObserver: NSObjectProtocol?

@@ -47,145 +47,96 @@ class MemoCell: UITableViewCell {
     
     @IBAction func favoriteButton(_ sender: UIButton) {
         
+        checkUserLogin()
+        
         Favorite.load()
+        var byAmount = 0
         
         if Favorite.inFavorites("\(fileName.text!)") {
             
             Favorite.remove("\(fileName.text!)")
             favoriteButton.setImage(star_off, for: .normal)
+            byAmount = -1
             
-            var favoriteNum = Int(favoriteCounter.text!)!
-            favoriteNum -= 1
-            
-            // cloud上のfavListの更新
-            let tmpFav = Favorite.favorites
-            user?.setObject(tmpFav, forKey: "favList")
-            user?.saveInBackground({(error) in
-                if error == nil {
-                    print("cloud上に保存")
-                }
-            })
-            
-            // 値の更新
-            var saveError: NSError? = nil
-            let obj: NCMBObject = NCMBObject(className: "MemoClass")
-            obj.objectId = objectID.text!
-            obj.fetchInBackground({(error) in
-                if (error == nil) {
-                    obj.setObject(favoriteNum, forKey: "favoriteCounter")
-                    obj.save(&saveError)
-                }
-                if saveError == nil {
-                    print("success save data.")
-                } else {
-                    print("failure save data. \(String(describing: saveError))")
-                }
-            })
         } else {
             
             Favorite.add("\(fileName.text!)")
             favoriteButton.setImage(star_on, for: .normal)
+            byAmount = 1
             
-            var favoriteNum = Int(favoriteCounter.text!)!
-            favoriteNum += 1
-            
-            // cloud上のfavListの更新
-            let tmpFav = Favorite.favorites
-            user?.setObject(tmpFav, forKey: "favList")
-            user?.saveInBackground({(error) in
-                if error == nil {
-                    print("cloud上に保存")
-                }
-            })
-            var saveError: NSError? = nil
-            let obj: NCMBObject = NCMBObject(className: "MemoClass")
-            obj.objectId = objectID.text!
-            obj.fetchInBackground({(error) in
-                if (error == nil) {
-                    obj.setObject(favoriteNum, forKey: "favoriteCounter")
-                    obj.save(&saveError)
-                }
-                if saveError == nil {
-                    print("success save data.")
-                } else {
-                    print("failure save data. \(String(describing: saveError))")
-                }
-            })
         }
         
+        // cloud上のfavListの更新
+        let tmpFav = Favorite.favorites
+        user?.setObject(tmpFav, forKey: "favList")
+        user?.saveInBackground({(error) in
+            if error == nil {
+                print("cloud上に保存")
+            }
+        })
+        
+        // 値の更新
+        var saveError: NSError? = nil
+        let obj: NCMBObject = NCMBObject(className: "MemoClass")
+        obj.objectId = objectID.text!
+        obj.fetchInBackground({(error) in
+            if (error == nil) {
+                obj.incrementKey("favoriteCounter", byAmount: byAmount as NSNumber)
+                obj.save(&saveError)
+            }
+            if saveError == nil {
+                print("success save data.")
+            } else {
+                print("failure save data. \(String(describing: saveError))")
+            }
+        })
+
         print("端末データの確認\((userData.object(forKey: "likes") as? [String])!)")
     }
     
     @IBAction func likeButton(_ sender: UIButton) {
+        
         Like.load()
+        var byAmount = 0
         
         if Like.inLikes("\(fileName.text!)") {
             
             Like.remove("\(fileName.text!)")
             likeButton.setImage(heart_off, for: .normal)
-            
-            var likeNum = Int(likeCounter.text!)!
-            likeNum -= 1
-            
-            // cloud上のfavListの更新
-            let tmpLike = Like.likes
-            user?.setObject(tmpLike, forKey: "likeList")
-            user?.saveInBackground({(error) in
-                if error == nil {
-                    print("cloud上に保存")
-                }
-            })
-            
-            // 値の更新
-            var saveError: NSError? = nil
-            let obj: NCMBObject = NCMBObject(className: "MemoClass")
-            obj.objectId = objectID.text!
-            obj.fetchInBackground({(error) in
-                if (error == nil) {
-                    obj.setObject(likeNum, forKey: "likeCounter")
-                    obj.save(&saveError)
-                }
-                if saveError == nil {
-                    print("success save data.")
-                } else {
-                    print("failure save data. \(String(describing: saveError))")
-                }
-            })
+            byAmount = -1
             
         } else {
             
             Like.add("\(fileName.text!)")
             likeButton.setImage(heart_on, for: .normal)
+            byAmount = 1
             
-            var likeNum = Int(likeCounter.text!)!
-            likeNum += 1
-            
-            // cloud上のfavListの更新
-            let tmpLike = Like.likes
-            user?.setObject(tmpLike, forKey: "likeList")
-            user?.saveInBackground({(error) in
-                if error == nil {
-                    print("cloud上に保存")
-                }
-            })
-            
-            // 値の更新
-            var saveError: NSError? = nil
-            let obj: NCMBObject = NCMBObject(className: "MemoClass")
-            obj.objectId = objectID.text!
-            obj.fetchInBackground({(error) in
-                if (error == nil) {
-                    obj.setObject(likeNum, forKey: "likeCounter")
-                    obj.save(&saveError)
-                }
-                if saveError == nil {
-                    print("success save data.")
-                } else {
-                    print("failure save data. \(String(describing: saveError))")
-                }
-            })
         }
         
+        // cloud上のfavListの更新
+        let tmpLike = Like.likes
+        user?.setObject(tmpLike, forKey: "likeList")
+        user?.saveInBackground({(error) in
+            if error == nil {
+                print("cloud上に保存")
+            }
+        })
+        
+        // 値の更新
+        var saveError: NSError? = nil
+        let obj: NCMBObject = NCMBObject(className: "MemoClass")
+        obj.objectId = objectID.text!
+        obj.fetchInBackground({(error) in
+            if (error == nil) {
+                obj.incrementKey("likeCounter", byAmount: byAmount as NSNumber)
+                obj.save(&saveError)
+            }
+            if saveError == nil {
+                print("success save data.")
+            } else {
+                print("failure save data. \(String(describing: saveError))")
+            }
+        })
         print("端末データの確認\((userData.object(forKey: "likes") as? [String])!)")
     }
     
@@ -205,8 +156,15 @@ class MemoCell: UITableViewCell {
         NSLayoutConstraint.activate([constraint])
     }
 
+    func checkUserLogin(){
+        if userData.object(forKey: "userMail") == nil {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as UIViewController
+            
+            window?.rootViewController = nextView
+        }
+    }
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
