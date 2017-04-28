@@ -74,6 +74,9 @@ public class NCMBSearch {
     // 全何件か
     public var total = 0
     
+    // userData
+    var userData = UserDefaults.standard
+    
     //読込開始のNotification
     open let NCMBLoadStartNotification = "NCMBLoadStartNotification"
     //読込完了のNotification
@@ -117,9 +120,9 @@ public class NCMBSearch {
         self.shopData = shop()
         
         //API実行
-        let query: NCMBQuery = NCMBQuery(className: "test")
+        let query: NCMBQuery = NCMBQuery(className: "restaurantList")
         // 与えられた店番号のデータを取ってくる
-        query.whereKey("numbaer", equalTo: shopNumber)
+        query.whereKey("number", equalTo: shopNumber)
         
         //店舗検索を通知
         NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBShopLoadStartNotification), object: nil)
@@ -132,7 +135,7 @@ public class NCMBSearch {
                     let targetMemoData: AnyObject = response[0] as AnyObject
                     shopData.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
                     shopData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
-                    shopData.shopNumber = (targetMemoData.object(forKey: "numbaer") as? Int)!
+                    shopData.shopNumber = (targetMemoData.object(forKey: "number") as? Int)!
                     shopData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!
                     shopData.restDay = (targetMemoData.object(forKey: "restDay") as? String)!
                     shopData.shopGeo = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
@@ -354,6 +357,13 @@ public class NCMBSearch {
     
     func getUserPost(_ userID: String) {
         
+        print(userData.object(forKey: "userMail"))
+        if userData.object(forKey: "userMail") == nil {
+            var message = "Unknown error."
+            NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+            return
+        }
+        
         let query: NCMBQuery = NCMBQuery(className: "MemoClass")
         query.order(byDescending: "createDate")
         query.whereKey("postUser", equalTo: userID)
@@ -413,7 +423,6 @@ public class NCMBSearch {
                     message = description
                 }
                 NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
-                print(message)
                 return
             } // errors end
             
@@ -497,7 +506,7 @@ public class NCMBSearch {
         var tmpArray = [shop]()
         
         //API実行
-        let query: NCMBQuery = NCMBQuery(className: "test")
+        let query: NCMBQuery = NCMBQuery(className: "restaurantList")
         let geoPoint: NCMBGeoPoint = NCMBGeoPoint()
         geoPoint.latitude = latitude
         geoPoint.longitude = longtitude
@@ -516,7 +525,7 @@ public class NCMBSearch {
                         let targetMemoData: AnyObject = response[i] as AnyObject
                         var tmpData = shop()
                         tmpData.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
-                        tmpData.shopNumber = (targetMemoData.object(forKey: "numbaer") as? Int)!
+                        tmpData.shopNumber = (targetMemoData.object(forKey: "number") as? Int)!
                         tmpData.openHours = (targetMemoData.object(forKey: "openHours") as? String)!
                         tmpData.restDay = (targetMemoData.object(forKey: "restDay") as? String)!
                         tmpData.shopGeo = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!

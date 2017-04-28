@@ -126,7 +126,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                 } else {
                     self.apiFlag.removeAll()
-                    for _ in 0..<(self.mbs.postMenu.count+4){
+                    for _ in 0..<(self.mbs.memos.count){
                         self.apiFlag.append(false)
                     }
                     self.memoTableView.reloadData()
@@ -140,6 +140,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ログインしているかどうか？
+        checkUserLogin()
         
         // LocationManagerの生成.
         myLocationManager = CLLocationManager()
@@ -340,7 +343,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         //3個先まで画像を事前に取得
-        getCellImage((indexPath as NSIndexPath).row + 4)
+        getCellImage((indexPath as NSIndexPath).row + 2)
 
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.none
@@ -678,6 +681,41 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func goReport(_ ac:UIAlertAction) -> Void {
         performSegue(withIdentifier: "goReport", sender: nil)
     }
+    
+    // Loginしているかの判定
+    func checkUserLogin(){
+        if userData.object(forKey: "userMail") == nil {
+            let errorAlert = UIAlertController(
+                title: "ログインしてください",
+                message: "様々な機能が解放されます",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "ログイン",
+                    style: UIAlertActionStyle.default,
+                    handler: goSignIn
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            self.present(errorAlert, animated: true, completion: nil)
+
+        }
+    }
+    
+    // 登録画面へ移動
+    func goSignIn(_ ac:UIAlertAction) -> Void {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        self.present(nextView, animated: true, completion: nil)
+    }
+
     
     
    //segueを呼び出したときに呼ばれるメソッド

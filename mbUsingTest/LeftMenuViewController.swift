@@ -13,10 +13,6 @@ class LeftMenuViewController: UIViewController {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var accountName: UILabel!
     
-    @IBAction func goFavorite(_ sender: UIButton) {
-        
-    }
-    
     var userData = UserDefaults.standard
     
     override func viewDidLoad() {

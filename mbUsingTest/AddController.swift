@@ -153,6 +153,10 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
     
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         
+        if userData.object(forKey: "userMail") == nil {
+            presentError("ログインされていません", "投稿にはログインが必要です")
+        }
+        
         if sendingFlag {
            return
         }
@@ -420,6 +424,8 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkUserLogin()
         
         //UITextFieldのプレースホルダー
         self.shopName.placeholder = "Eggs'n Things 原宿店"
@@ -704,10 +710,43 @@ class AddController: UIViewController, UITextFieldDelegate, UIImagePickerControl
         print(image.size.height)
         print(self.displayImage.frame.size.width)
         print(self.displayImage.frame.size.height)
-        let width = image.size.width/1.4
-        let height = image.size.height/1.4
+        let width = image.size.width/1.3
+        let height = image.size.height/1.3
         let resizedImage =  resizeImage(image: image, width: Int(width), height: Int(height))
         self.displayImage.image = resizedImage
     }
     
+    // 会員登録の有無を確認
+    func checkUserLogin(){
+        if userData.object(forKey: "userMail") == nil {
+            let errorAlert = UIAlertController(
+                title: "ログインしてください",
+                message: "様々な機能が解放されます",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "ログイン",
+                    style: UIAlertActionStyle.default,
+                    handler: goSignIn
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            self.present(errorAlert, animated: true, completion: nil)
+        }
+    }
+    
+    // 登録画面へ移動
+    func goSignIn(_ ac:UIAlertAction) -> Void {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        self.present(nextView, animated: true, completion: nil)
+    }
+
 }

@@ -41,6 +41,7 @@
 		2FE5CD3D1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
 		2FE5CD3E1DA1FB93002613BA /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */; };
 		2FE7875F1DFE649A008428CC /* ShopListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */; };
+		2FF155DB1EA0AD6100A007D9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF155DA1EA0AD6100A007D9 /* SignInViewController.swift */; };
 		2FFFAB251E83E7400096DDEF /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFFAB241E83E7400096DDEF /* PlaceHolderTextView.swift */; };
 		32374AF0DA3F2EB90E5BC07E /* Pods_mbUsingTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A2534F1CA638765B41FFD53 /* Pods_mbUsingTestTests.framework */; };
 		595A5A971DB2112D007DDBFA /* ShopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A5A961DB2112D007DDBFA /* ShopInfoViewController.swift */; };
@@ -103,6 +104,7 @@
 		2FD42A0B1D9DFC3500DA00D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		2FE5CD3B1DA1FB93002613BA /* UpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		2FE7875E1DFE649A008428CC /* ShopListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListTableViewController.swift; sourceTree = "<group>"; };
+		2FF155DA1EA0AD6100A007D9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		2FFFAB241E83E7400096DDEF /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		595A5A961DB2112D007DDBFA /* ShopInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopInfoViewController.swift; sourceTree = "<group>"; };
 		595A5A981DB214BB007DDBFA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -259,6 +261,7 @@
 				2FA17CAE1D9917BD00CF30E1 /* AddController.swift */,
 				2F3C9CAB1E45AE2E00392F11 /* ReportViewController.swift */,
 				2FFFAB241E83E7400096DDEF /* PlaceHolderTextView.swift */,
+				2FF155DA1EA0AD6100A007D9 /* SignInViewController.swift */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF155DB1EA0AD6100A007D9 /* SignInViewController.swift in Sources */,
 				2FACC0111E10F1A3000E5D68 /* CustomMKPointAnnotation.swift in Sources */,
 				2F11458C1DEBF25A003F65A1 /* MyPostViewController.swift in Sources */,
 				2F3C9CAC1E45AE2E00392F11 /* ReportViewController.swift in Sources */,

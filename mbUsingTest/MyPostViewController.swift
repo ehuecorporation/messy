@@ -137,6 +137,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkUserLogin()
+        
         // LocationManagerの生成.
         myLocationManager = CLLocationManager()
         // Delegateの設定.
@@ -217,24 +219,28 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Pull to Refresh
     func onRefresh(_ refreshControl: UIRefreshControl){
-        // UIRefreshControlを読込状態にする
-        refreshControl.beginRefreshing()
-        // 終了通知を受信したらUIRefreshControlを停止する
-        refreshObserver = NotificationCenter.default.addObserver(
-            forName: NSNotification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
-            object: nil,
-            queue: nil,
-            using: {
-                notification in
-                // 通知の待受を終了
-                NotificationCenter.default.removeObserver(self.refreshObserver!)
-                // UIRefreshControlを停止する
-                refreshControl.endRefreshing()
+        if let userID = userData.object(forKey: "userID"){
+            // UIRefreshControlを読込状態にする
+            refreshControl.beginRefreshing()
+            // 終了通知を受信したらUIRefreshControlを停止する
+            refreshObserver = NotificationCenter.default.addObserver(
+                forName: NSNotification.Name(rawValue: mbs.NCMBLoadCompleteNotification),
+                object: nil,
+                queue: nil,
+                using: {
+                    notification in
+                    // 通知の待受を終了
+                    NotificationCenter.default.removeObserver(self.refreshObserver!)
+                    // UIRefreshControlを停止する
+                    refreshControl.endRefreshing()
                 }
-        ) // uisng block end
-        
-        // リフレッシュ
-        mbs.getUserPost(userData.object(forKey: "userID") as! String)
+            ) // uisng block end
+            // リフレッシュ
+            mbs.getUserPost(userID as! String)
+        } else {
+            refreshControl.endRefreshing()
+            return
+        }
         
     } // onRefresh end
     
@@ -564,30 +570,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         latitude = myLocation.latitude as Double
         longitude = myLocation.longitude as Double
-        
-        /*
-        // 位置情報の保存
-        let user = NCMBUser.current()
-        if user != nil {
-            let lastLocations = NCMBGeoPoint(latitude: latitude,longitude: longitude)
-            var saveError: NSError? = nil
-            user?.objectId = userData.object(forKey: "userID") as! String!
-            user?.fetchInBackground({(error) in
-                if (error == nil) {
-                    print("保存")
-                    user?.setObject(lastLocations, forKey: "lastLocations")
-                    user?.save(&saveError)
-                    if saveError == nil {
-                        print("success save data.")
-                    } else {
-                        print("failure save data. \(String(describing: saveError))")
-                    }
-                } else {
-                    print(error?.localizedDescription)
-                }
-            })
-        } // unwrap user
-        */
     }
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.
@@ -633,7 +615,40 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
             AddController.editFlag = self.editFlag
             AddController.targetData = targetMemo
         }
-        
+    }
+    
+    // Loginしているかの判定
+    func checkUserLogin(){
+        if userData.object(forKey: "userMail") == nil {
+            let errorAlert = UIAlertController(
+                title: "ログインしてください",
+                message: "様々な機能が解放されます",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "ログイン",
+                    style: UIAlertActionStyle.default,
+                    handler: goSignIn
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            self.present(errorAlert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    // 登録画面へ移動
+    func goSignIn(_ ac:UIAlertAction) -> Void {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        self.present(nextView, animated: true, completion: nil)
     }
     
 }

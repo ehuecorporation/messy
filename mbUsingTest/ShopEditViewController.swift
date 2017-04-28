@@ -27,6 +27,11 @@ class ShopEditViewController: UIViewController, CLLocationManagerDelegate, UITex
     }
     
     @IBAction func upload(_ sender: UIBarButtonItem) {
+        
+        if userData.object(forKey: "userMail") == nil {
+            presentError("ログインされていません", "編集にはログインが必要です")
+        }
+        
         let newName = self.shopName.text
         let newHours = self.openHours.text
         let newRestDay = self.restDay.text
@@ -131,6 +136,9 @@ class ShopEditViewController: UIViewController, CLLocationManagerDelegate, UITex
         change_flag = 0
     }
     
+    // ユーザーデータ
+    var userData = UserDefaults.standard
+    
     // 対象店舗データ
     var targetShop: shop = shop()
     // 現在地の変更をするかどうか
@@ -157,6 +165,8 @@ class ShopEditViewController: UIViewController, CLLocationManagerDelegate, UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkUserLogin()
         
         shopName.text = targetShop.shopName
         openHours.text = targetShop.openHours
@@ -291,6 +301,40 @@ class ShopEditViewController: UIViewController, CLLocationManagerDelegate, UITex
             )
         )
         self.present(errorAlert, animated: true, completion: nil)
+    }
+    
+    // Loginしているかの判定
+    func checkUserLogin(){
+        if userData.object(forKey: "userMail") == nil {
+            let errorAlert = UIAlertController(
+                title: "ログインしてください",
+                message: "様々な機能が解放されます",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "ログイン",
+                    style: UIAlertActionStyle.default,
+                    handler: goSignIn
+                )
+            )
+            errorAlert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertActionStyle.default,
+                    handler: nil
+                )
+            )
+            self.present(errorAlert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    // 登録画面へ移動
+    func goSignIn(_ ac:UIAlertAction) -> Void {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        self.present(nextView, animated: true, completion: nil)
     }
 
 }

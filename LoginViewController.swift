@@ -118,57 +118,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate, UIT
     }
     
     @IBAction func signInButton(_ sender: UIButton) {
-        
-        let targetName = self.userName.text!
-        let targetPass = self.userPass.text!
-
-        
-        //すでに実行しているならなにもしない
-        if loginFlag {
-            return
-        }
-        
-        let newUser = NCMBUser()
-        newUser.userName = targetName
-        newUser.password = targetPass
-        newUser.setObject([], forKey: "favList")
-        newUser.setObject([], forKey: "likeList")
-        
-        //デフォルト設定
-        newUser.mailAddress = "default@gmail.com"
-        newUser.setObject("", forKey: "userIcon")
-        newUser.setObject(0, forKey: "userSex")
-        newUser.signUpInBackground({(error) in
-            
-            if error != nil {
-
-                self.loginFlag =  false
-                self.presentError("登録エラー", "\(error!.localizedDescription)")
-            
-            } else {
-                print("新規登録成功")
-                
-                // 端末に入っているmessyのデータを削除
-                let appDomain = Bundle.main.bundleIdentifier
-                UserDefaults.standard.removePersistentDomain(forName: appDomain!)
-                
-                    
-                // ユーザー情報を端末へ保存
-                self.userData.register(defaults: [ "userName": String()])
-                self.userData.set(targetName, forKey: "userName")
-                self.userData.register(defaults: ["userPass": String()])
-                self.userData.set(targetPass, forKey: "userPass")
-                
-                self.userData.register(defaults: [ "userMeil": String()])
-                self.userData.register(defaults: [ "userID": String()])
-                self.userData.register(defaults: ["useCount": Bool()])
-                
-                self.userData.synchronize()
-                print("確認\(String(describing: self.userData.object(forKey: "userName")))\(String(describing: self.userData.object(forKey: "userPass")))\(String(describing: self.userData.object(forKey: "userMail")))\(String(describing: self.userData.object(forKey: "userID")))")
-                    self.performSegue(withIdentifier: "pushUpdate", sender: nil)
-                }
-            })
-
+        performSegue(withIdentifier: "goSignIn", sender: nil)
     } // singInButton end
     
     override func viewWillAppear(_ animated: Bool) {

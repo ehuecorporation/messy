@@ -47,7 +47,10 @@ class MemoCell: UITableViewCell {
     
     @IBAction func favoriteButton(_ sender: UIButton) {
         
-        checkUserLogin()
+//        checkUserLogin()
+        if userData.object(forKey: "userMail") == nil {
+            return
+        }
         
         Favorite.load()
         var byAmount = 0
@@ -95,6 +98,11 @@ class MemoCell: UITableViewCell {
     }
     
     @IBAction func likeButton(_ sender: UIButton) {
+        
+//        checkUserLogin()
+        if userData.object(forKey: "userMail") == nil {
+            return
+        }
         
         Like.load()
         var byAmount = 0
@@ -159,7 +167,7 @@ class MemoCell: UITableViewCell {
     func checkUserLogin(){
         if userData.object(forKey: "userMail") == nil {
             let storyboard: UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
-            let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as UIViewController
+            let nextView = storyboard.instantiateViewController(withIdentifier: "SignInView") as UIViewController
             
             window?.rootViewController = nextView
         }
