@@ -162,7 +162,7 @@
     [self setCondition:array forKey:key operand:@"$nin"];
 }
 
-- (void)whereKey:(NSString *)key containedInArray:(NSArray *)array{
+- (void)whereKey:(NSString *)key containedInArrayTo:(NSArray *)array{
     [self setCondition:array forKey:key operand:@"$inArray"];
 }
 

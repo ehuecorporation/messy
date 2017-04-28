@@ -254,15 +254,64 @@ public class NCMBSearch {
         //仮保管場所
         var tmpFavList = [memo]()
         
-        // 何回forを回すか
-        let myMenuItem = myMenuList.count
-        
-        var counter = 0
-        
         NotificationCenter.default.post(name: Notification.Name(rawValue: NCMBLoadStartNotification), object: nil)
 
-/*      実装不可能
-        query.whereKey("filename", containedIn: myMenuList)
+/*      containdArrayToの修正により用済み
+         // 何回forを回すか
+         let myMenuItem = myMenuList.count
+         var counter = 0
+         for i in 0 ..< myMenuItem {
+         
+         query.whereKey("filename", equalTo: myMenuList[i])
+         
+         query.findObjectsInBackground({
+         (objects, error) in
+         
+         if error == nil {
+         if let response = objects {
+         if response.count > 0 {
+         let targetMemoData: AnyObject = response[0] as AnyObject
+         var tmp = memo()
+         
+         tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
+         tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
+         tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
+         tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
+         tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
+         tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
+         tmp.lookCounter = (targetMemoData.object(forKey: "lookCounter") as? Int)!
+         tmp.favoriteCounter = (targetMemoData.object(forKey: "favoriteCounter") as? Int)!
+         tmp.likeCounter = (targetMemoData.object(forKey: "likeCounter") as? Int)!
+         tmp.geoPoint = (targetMemoData.object(forKey: "geoPoint") as? NCMBGeoPoint)!
+         tmp.menuHours = (targetMemoData.object(forKey: "menuHours") as? Int)!
+         tmp.postUser = (targetMemoData.object(forKey: "postUser") as? String)!
+         let updateDate = (targetMemoData.object(forKey: "updateDate") as? String)!
+         tmp.updateDate = updateDate.substring(to: updateDate.index(updateDate.startIndex, offsetBy: 10))
+         
+         tmpFavList.append(tmp)
+         counter += 1
+         if counter == myMenuItem {
+         if tmpFavList.count != self.favList.count {
+         self.favList = tmpFavList
+         }
+         //API終了通知
+         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
+         }
+         }
+         } // optional binding end
+         } else {
+         var message = "Unknown error."
+         if let description = error?.localizedDescription {
+         message = description
+         }
+         NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+         return
+         }// errorcheck end
+         }) // findObjects end
+         
+         } // for end
+*/
+        query.whereKey("filename", containedInArrayTo: myMenuList)
         
         query.findObjectsInBackground({
             (objects, error) in
@@ -272,47 +321,6 @@ public class NCMBSearch {
                     if response.count > 0 {
                         for i in 0 ..< response.count {
                             let targetMemoData: AnyObject = response[i] as AnyObject
-                            var tmp = memo()
-                            
-                            tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
-                            tmp.menuName = (targetMemoData.object(forKey: "menuName") as? String)!
-                            tmp.menuMoney = (targetMemoData.object(forKey: "menuPrice") as? String)!
-                            tmp.objectID = (targetMemoData.object(forKey: "objectId") as? String)!
-                            tmp.filename = (targetMemoData.object(forKey: "filename") as? String)!
-                            tmp.shopNumber = (targetMemoData.object(forKey: "shopNumber") as? Int)!
-
-                            tmpFavList.append(tmp)
-                        }
-                        if tmpFavList.count != self.favList.count {
-                            self.favList = tmpFavList
-                        }
-                        
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
-                    }
-                } // optional binding end
-            } else {
-                var message = "Unknown error."
-                if let description = error?.localizedDescription {
-                    message = description
-                }
-                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
-                return
-            }// errorcheck end
-        }) // findObjects end
-        
-*/
-
-        for i in 0 ..< myMenuItem {
-            
-            query.whereKey("filename", equalTo: myMenuList[i])
-            
-            query.findObjectsInBackground({
-                (objects, error) in
-                
-                if error == nil {
-                    if let response = objects {
-                        if response.count > 0 {
-                            let targetMemoData: AnyObject = response[0] as AnyObject
                             var tmp = memo()
                             
                             tmp.shopName = (targetMemoData.object(forKey: "shopName") as? String)!
@@ -331,27 +339,25 @@ public class NCMBSearch {
                             tmp.updateDate = updateDate.substring(to: updateDate.index(updateDate.startIndex, offsetBy: 10))
                             
                             tmpFavList.append(tmp)
-                            counter += 1
-                            if counter == myMenuItem {
-                                if tmpFavList.count != self.favList.count {
-                                    self.favList = tmpFavList
-                                }
-                                //API終了通知
-                                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
-                            }
                         }
-                    } // optional binding end
-                } else {
-                    var message = "Unknown error."
-                    if let description = error?.localizedDescription {
-                        message = description
+                        
+                        if tmpFavList.count != self.favList.count {
+                            self.favList = tmpFavList
+                        }
+                        
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil)
                     }
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
-                    return
-                }// errorcheck end
-            }) // findObjects end
-            
-        } // for end
+                } // optional binding end
+            } else {
+                var message = "Unknown error."
+                if let description = error?.localizedDescription {
+                    message = description
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: self.NCMBLoadCompleteNotification), object: nil, userInfo: ["error":message])
+                return
+            }// errorcheck end
+        }) // findObjects end
+
         
     } // getFavList end
     

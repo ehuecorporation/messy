@@ -125,7 +125,7 @@
  @param key 検索条件に使用するキー（指定したキーの値が配列）
  @param array 検索条件に使用する配列
  */
-- (void)whereKey:(NSString *)key containedInArray:(NSArray *)array;
+- (void)whereKey:(NSString *)key containedInArrayTo:(NSArray *)array;
 
 /**
  「指定したキーの値が指定した配列の値のいずれとも一致しないものを検索」という検索条件を設定
