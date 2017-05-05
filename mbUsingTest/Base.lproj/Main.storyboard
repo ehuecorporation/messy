@@ -1639,7 +1639,7 @@
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hag-uT-xLd">
                                 <rect key="frame" x="0.0" y="573" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.58823529409999997" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VO1-po-nwz"/>
                                 </constraints>
@@ -2321,7 +2321,7 @@
         <image name="nameLabel" width="600" height="400"/>
         <image name="open" width="128" height="128"/>
         <image name="passLabel" width="600" height="400"/>
-        <image name="pen" width="30" height="30"/>
+        <image name="pen" width="25" height="25"/>
         <image name="reload" width="24" height="24"/>
         <image name="shopName" width="128" height="128"/>
         <image name="shopPin" width="50" height="50"/>
