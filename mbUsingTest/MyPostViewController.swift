@@ -139,28 +139,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         checkUserLogin()
         
-        // LocationManagerの生成.
-        myLocationManager = CLLocationManager()
-        // Delegateの設定.
-        myLocationManager.delegate = self
-        // 距離のフィルタ.
-        myLocationManager.distanceFilter = 100.0
-        // 精度.
-        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        
-        // セキュリティ認証のステータスを取得.
-        let status = CLLocationManager.authorizationStatus()
-        
-        // まだ認証が得られていない場合は、認証ダイアログを表示.
-        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
-            
-            print("not determined")
-            // まだ承認が得られていない場合は、認証ダイアログを表示.
-            myLocationManager.requestWhenInUseAuthorization()
-        }
-        
-        // 位置情報の更新を開始.
-        myLocationManager.startUpdatingLocation()
+        // 位置情報の取得
+        // startGeoSearch()
         
         // 投稿一覧の取得
         if mbs.postMenu.count == 0 {
@@ -175,18 +155,8 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Favorite.load()
         Like.load()
         
-        //テーブルビューのデリゲート
-        self.postTable.delegate = self
-        self.postTable.dataSource = self
-        
-        //Xibのクラスを読み込む
-        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
-        self.postTable.register(nib, forCellReuseIdentifier: "MemoCell")
-        
-        //セルの高さを設定
-        self.postTable.rowHeight = self.view.frame.size.width + 120
-        
-        self.postTable.tableFooterView = UIView(frame: .zero)
+        // テーブルビューの設定
+        setTableView()
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
@@ -553,6 +523,46 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func edit(_ ac:UIAlertAction) -> Void{
         self.editFlag = true
         performSegue(withIdentifier: "goAdd", sender: nil)
+    }
+    
+    func setTableView() {
+        //テーブルビューのデリゲート
+        self.postTable.delegate = self
+        self.postTable.dataSource = self
+        
+        //Xibのクラスを読み込む
+        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
+        self.postTable.register(nib, forCellReuseIdentifier: "MemoCell")
+        
+        //セルの高さを設定
+        self.postTable.rowHeight = self.view.frame.size.width + 120
+        
+        self.postTable.tableFooterView = UIView(frame: .zero)
+    }
+    
+    func startGeoSearch() {
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+        // Delegateの設定.
+        myLocationManager.delegate = self
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+        
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+            
+            print("not determined")
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
     }
     
     // GPSから値を取得した際に呼び出されるメソッド.

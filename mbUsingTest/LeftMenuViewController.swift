@@ -47,6 +47,7 @@ class LeftMenuViewController: UIViewController {
 
 }
 
+// 丸角・枠線等のオプション
 extension UIView {
     @IBInspectable var cornerRadius: CGFloat {
         get {
