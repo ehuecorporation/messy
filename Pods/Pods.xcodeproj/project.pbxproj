@@ -7,141 +7,154 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03059940B0D4F89E106F503E55504C9D /* NCMBRelationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F234F673AE46C8FB8AC8F057C4C1D14 /* NCMBRelationOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		086251E3B1102AA3A837E7847AD34114 /* NSDataBase64Encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 11252AE4D3F3FA92EA02680130EBFCF8 /* NSDataBase64Encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		087744DFFBD014E3C2D958B4D81B9760 /* NCMBError.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D0678D846318C6874B013F1FCC2B521 /* NCMBError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C04B45FF99D2E201DBF21391E0D468B /* NCMBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 95ECB0A3E922BFA602CC0F4A0C5DB184 /* NCMBRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E2F86CBF93722BE014D78A7C7F80BDF /* NCMBTwitterLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C895326F0B8774F228625B7A09A88FEF /* NCMBTwitterLoginView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0E5435D1EAC506DB2FBB3B844D96970E /* NCMBOAMutableURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B64AC70E10C5F53010C5E98A51FAD429 /* NCMBOAMutableURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F3C1EF6B8B055AFA8EFCF51D6EB0DC2 /* NCMBObject+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = D5CAF0190AD3B0C5E3EF696CC0CC61C0 /* NCMBObject+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03059940B0D4F89E106F503E55504C9D /* NCMBRelationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5338AD2644EB93F63FC52900C132C1 /* NCMBRelationOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		086251E3B1102AA3A837E7847AD34114 /* NSDataBase64Encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A384264E766AF6B018F641C646E6044 /* NSDataBase64Encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		087744DFFBD014E3C2D958B4D81B9760 /* NCMBError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2053D070CB857710834A1015D32C13A8 /* NCMBError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C04B45FF99D2E201DBF21391E0D468B /* NCMBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DA50ACC6A8734048F662CD2B6100510E /* NCMBRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C8DF28E351F5ACB4C7C4EC4A55F67E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD99DE3BF214C86B4384EDBC95601 /* SWRevealViewController.m */; };
+		0E2F86CBF93722BE014D78A7C7F80BDF /* NCMBTwitterLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFECDEBBCB6EFF3A9934A8D204CB9262 /* NCMBTwitterLoginView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0E5435D1EAC506DB2FBB3B844D96970E /* NCMBOAMutableURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 08BA75974641840EE8606C8A0DE0A74A /* NCMBOAMutableURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F3C1EF6B8B055AFA8EFCF51D6EB0DC2 /* NCMBObject+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = C665EE97A8D6B03E97B9E669578D50A3 /* NCMBObject+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4DA3D30DE6C5AFEF08C22CFBDAE668 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
-		10CE83D2874ED75E131ABA73FA6A5CC1 /* NCMBOAToken.h in Headers */ = {isa = PBXBuildFile; fileRef = DC3B0EEC1CFA7433A759350CFE83FFD4 /* NCMBOAToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		14CFEF30B15BEDB73BC37B68047A356A /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B7583277C4AC7043076E422C962448C /* sha1.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		1A2204DCF630B8ADCD3AEC7935B0C77B /* NCMBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF10DE1FE471CAECAA2E17D84FA1068 /* NCMBQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		10CE83D2874ED75E131ABA73FA6A5CC1 /* NCMBOAToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F65E7549CC3E059815F5562D1703D5 /* NCMBOAToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14CFEF30B15BEDB73BC37B68047A356A /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC71545AE67E3432E37707F9C08AB0 /* sha1.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1A2204DCF630B8ADCD3AEC7935B0C77B /* NCMBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCA4238C807DDB3765F371FB04B24 /* NCMBQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2011401B713941D1F9229AD376153237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
-		2173E7EB57625DA0BC3DD0B717582957 /* NCMBOAHMAC_SHA1SignatureProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F9428DFB3065684EBED0C8F86718E59 /* NCMBOAHMAC_SHA1SignatureProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2763F5E4A6286DF5567E522FD939D97B /* NCMBAddUniqueOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AD960EB2DF553AB652581CC96C981F /* NCMBAddUniqueOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		2A15BE201952065DD87BC558564D4F86 /* NCMBScriptService.m in Sources */ = {isa = PBXBuildFile; fileRef = 771F88CE77C2C13C6F6269D76855BB3F /* NCMBScriptService.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		2F466B0F0F5FEDCFDA2FF694531F44B5 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 6723F74C0A695217E8DAE07463900FEC /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		308422821DD8BFD475FB29686A09AABD /* NCMBRemoveOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A183C00FDB9A6BB69C4040B0B8A89E57 /* NCMBRemoveOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		377209886CC22BD8FDBC69CFFA5CA37C /* NCMBConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C764AAFE049273CCCDE08C378912592 /* NCMBConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		37FFE9C704407B0C6203B4D4E6F7C22A /* NCMBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = BF284CE02093389F223BC55D8C74B58E /* NCMBPush.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		381742DB254E8B30F739E248AFE750C5 /* NCMBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AB46F05F305BCE976BFF95A5899A1F3 /* NCMBQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38453794A9F67F8DEF52572BAFA9DD57 /* NCMBRichPushView.m in Sources */ = {isa = PBXBuildFile; fileRef = 036D028CF165323DDFF89DD97A567468 /* NCMBRichPushView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		384FA7DED84BF4DE7EF9C98B0BD49E9B /* NCMBACL.m in Sources */ = {isa = PBXBuildFile; fileRef = 014DA01A4A112772786E9B167C8C9CDF /* NCMBACL.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		390457A9F178BCB9F41066099EEBDAE9 /* NCMBError.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1A9F5D7A02B06392CB3F41BFD77554 /* NCMBError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2173E7EB57625DA0BC3DD0B717582957 /* NCMBOAHMAC_SHA1SignatureProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE86A1932A1AFE06AFC152D5CB2A231 /* NCMBOAHMAC_SHA1SignatureProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2763F5E4A6286DF5567E522FD939D97B /* NCMBAddUniqueOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D5BAA4B1FD4F2D4943E50F7CB24FA /* NCMBAddUniqueOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2A15BE201952065DD87BC558564D4F86 /* NCMBScriptService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A3CD3549F05FFFCC09B710B2294B7 /* NCMBScriptService.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2F466B0F0F5FEDCFDA2FF694531F44B5 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 328B97C8FA831ED8A23DF47A260C2D10 /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		308422821DD8BFD475FB29686A09AABD /* NCMBRemoveOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A27576EAA240D3801F51455781E133E6 /* NCMBRemoveOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3159D7CAFD56B809F40CA3330DA10889 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
+		34BC93F507B021B500D82B121C99F90B /* SWRevealViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DE333CDE6A72161B4D06774604DCDF4 /* SWRevealViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		377209886CC22BD8FDBC69CFFA5CA37C /* NCMBConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F409A115F3062BE63D78CBCB6038B90F /* NCMBConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37FFE9C704407B0C6203B4D4E6F7C22A /* NCMBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7A27F58D4ADB8984D5D038F9B384 /* NCMBPush.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		381742DB254E8B30F739E248AFE750C5 /* NCMBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 43EFA96C81B2ACDB167A0E255DE0427B /* NCMBQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38453794A9F67F8DEF52572BAFA9DD57 /* NCMBRichPushView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF922B9099B4BC9A3043A4DEB261FB94 /* NCMBRichPushView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		384FA7DED84BF4DE7EF9C98B0BD49E9B /* NCMBACL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDFE439587FF805E7C4CA3642629F45 /* NCMBACL.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		390457A9F178BCB9F41066099EEBDAE9 /* NCMBError.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B50A1534324994F2D15382A0B920DF /* NCMBError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		39DB98A8D520945AC597DEDFCCD984E5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DEA907D2EE4E538894CAF71BCFBCD5 /* AudioToolbox.framework */; };
-		3B2D864EA39F60D3B288A7FD263B6887 /* NCMBInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = C37F8B51FC0ACB422889C1AD667D3C49 /* NCMBInstallation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3C9AE91BA7063059E64375E87FBCE07B /* NCMBOAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C71E5F384359B32F0ADEB7CA426329F /* NCMBOAConsumer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3CC685C6FCE8B7B04FBE25B98858C8A4 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A7818856991E2D185211DE82D6C45E3 /* hmac.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3FD6B0F333CBF4E794593E4B537F90B5 /* NCMBFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8208ED990448733F0C63C948F58C04A9 /* NCMBFacebookUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		437B30C5F9C555D89D82571C2657D86A /* NSDataBase64Encode.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E77C4087D73493734031FE6C1B5993 /* NSDataBase64Encode.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		438B7D0A46929ACB12AC57B93CD101CB /* NCMBRole.h in Headers */ = {isa = PBXBuildFile; fileRef = 07930CBC8608CF6BC9558775BB7F2B72 /* NCMBRole.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4437D3C95E2BCEFAA89CDCA849BF0CC1 /* NCMBFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2A4EF21F5931CE44B431649E0E0427 /* NCMBFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		457BEAA34F4047C8C6DC3B7104076EAC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA83B3B8BA2A0047E526AC88610FE903 /* SWRevealViewController.m */; };
-		460C66ACD18E1D5D4E64454806CEC841 /* NCMBAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DD5771D99CD6223E59A2FBFC342FA0 /* NCMBAddOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3B2D864EA39F60D3B288A7FD263B6887 /* NCMBInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 025AA7F024B511ED328A90B0ADFCD4A7 /* NCMBInstallation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3C9AE91BA7063059E64375E87FBCE07B /* NCMBOAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFB5313D414619689DC29EB651B832 /* NCMBOAConsumer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3CC685C6FCE8B7B04FBE25B98858C8A4 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = B3B42DF4EEB0A75697A6315693E56951 /* hmac.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3FD6B0F333CBF4E794593E4B537F90B5 /* NCMBFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DBB9036E9D48481CBD168000A30168 /* NCMBFacebookUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		437B30C5F9C555D89D82571C2657D86A /* NSDataBase64Encode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621B063D383FDDFAD6D7626A2BD2C46 /* NSDataBase64Encode.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		438B7D0A46929ACB12AC57B93CD101CB /* NCMBRole.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D9132723DA302405B601F4313D1C88 /* NCMBRole.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4437D3C95E2BCEFAA89CDCA849BF0CC1 /* NCMBFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A53FAC3FB51400F5DF823EA5E82B7A5D /* NCMBFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		460C66ACD18E1D5D4E64454806CEC841 /* NCMBAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6D3BECC78FB111AA02491497E84EB4 /* NCMBAddOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4819F1B5BFD207DCA47EE7BB151210CF /* Pods-mbUsingTestTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 077AD627D5AED2203B53749DE2FD9CAC /* Pods-mbUsingTestTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49A632D66FFD139C30175C85B57CA7F8 /* NCMBAnonymousUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 02131139EF37694427E115CF3D2CC94D /* NCMBAnonymousUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CACB1B5E97B3221DD609E97D591C74B /* NSStringURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6702385117ADE167E8BD17140E8AF134 /* NSStringURLEncoding.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4D4E2C4D88D3E4B7DD31A1639955DBC8 /* NCMBOAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E59F150F6167AE26BCDBBF896DAFA69 /* NCMBOAMutableURLRequest.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4F94063E39F1736B359C61FB9DD99ABB /* NCMBDeleteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 621B012FABA6DA12F3C5D2C9A96B4AAD /* NCMBDeleteOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		55B42F06EAF493A27B1D269F36633C21 /* NCMBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F4105F79F19E8AEEC51AD86DE1A785 /* NCMBAnalytics.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		5682A82A04CA1AF674ABBBC7E2742AE3 /* NCMBOASignatureProviding.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BC027023970971B0818840691AEB3B7 /* NCMBOASignatureProviding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56993D049AB32A552D3AE0F0241D8003 /* NCMBRemoveOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 896BE1C4584187EFD412CBFF351E8470 /* NCMBRemoveOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		56F120CDC0E33D60FF235BAD56492A44 /* NCMBFacebookUtils+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEDF4CA54C812D16BD2CC70DFDD4AFE /* NCMBFacebookUtils+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B723F190705FB59E03EA240CAAD6E8 /* SWRevealViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DE5AFA9361143A79C635A8709DADB653 /* SWRevealViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49A632D66FFD139C30175C85B57CA7F8 /* NCMBAnonymousUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4332549E4987C5731B9478DAEC9FB0A3 /* NCMBAnonymousUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CACB1B5E97B3221DD609E97D591C74B /* NSStringURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A97EEE7D6E75EE3F7807360E0C65E8 /* NSStringURLEncoding.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4D4E2C4D88D3E4B7DD31A1639955DBC8 /* NCMBOAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5CA7340D9635B42EA19447C98417E /* NCMBOAMutableURLRequest.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4F94063E39F1736B359C61FB9DD99ABB /* NCMBDeleteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CFBDABB182E37B36585F00A79AB1 /* NCMBDeleteOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 00EF8A92B7D4FFB06813DF7A2836C39A /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55B42F06EAF493A27B1D269F36633C21 /* NCMBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D720B5C9BE3630CE91192178268DC8 /* NCMBAnalytics.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5682A82A04CA1AF674ABBBC7E2742AE3 /* NCMBOASignatureProviding.h in Headers */ = {isa = PBXBuildFile; fileRef = 16E68A59234DC4F4638F273210D72BDA /* NCMBOASignatureProviding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		56993D049AB32A552D3AE0F0241D8003 /* NCMBRemoveOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E18E5FB79BE77F184557C9086A22960A /* NCMBRemoveOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		56F120CDC0E33D60FF235BAD56492A44 /* NCMBFacebookUtils+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5B1F63ECD11A05FC061DD7F0BB1E9 /* NCMBFacebookUtils+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B28175040472DE477CE854BF985CFA1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9496CE4459CC3ACD36118E77E82BDD24 /* SystemConfiguration.framework */; };
-		5BCB35705E175A8A2314DCA58DA4687B /* NCMBOAConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 18EE12FE1782AA76DA0D4B55B4CE9404 /* NCMBOAConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D4A97E545491B77924A673E791CD376 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
-		5F542EBA5BBB1FC18639B30784A7572E /* NCMBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A37FDAAEDA2E2F56C349865F1C2EF7E /* NCMBReachability.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		613EA51A15F3F75688A0A00E2F59EE49 /* NCMBTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DDA018E780CD3B54379C4A3F36F7927 /* NCMBTwitterUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BCB35705E175A8A2314DCA58DA4687B /* NCMBOAConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF09BF24944B2B59EBA044CAF7B96E2 /* NCMBOAConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F542EBA5BBB1FC18639B30784A7572E /* NCMBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F6CF7CB8413E05695DF1D606778A0B /* NCMBReachability.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		613EA51A15F3F75688A0A00E2F59EE49 /* NCMBTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C7A93E9C101B4AA6D8CB2F4EAEED101 /* NCMBTwitterUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		655A016548B1888C9A091AED184B8B39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3392731C3B6E7C27DE79F0BDB5FBC8F4 /* UIKit.framework */; };
-		65895E9B757EF5926F02545C05B167D4 /* NCMBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 289A5AB14AFB3FF299C595D8C87A53B1 /* NCMBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		66521EE3EB39E2EDDFAC5D7B33D229BE /* NCMBTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3348ABFF85D9B2634CC377C49C960897 /* NCMBTwitterUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		66C42025C689CEBD4B69DD71D2D3A864 /* NCMBRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E181D18B0FDBFAAD5FE4FE7C8758402 /* NCMBRole.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		682AD15D6E48A3491E299B36C5EA9F63 /* NCMBOARequestParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 97570964931B5DBBF90704AB7E04A66F /* NCMBOARequestParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		688265F36B2EBEF84264914FBED6E57E /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = CB46C7392792287276490D34CA90785D /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		69097F828447F1D56EE99A48E612C900 /* NCMBOAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 823F3BE8D3C33923BD136258479FB2E6 /* NCMBOAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		6B93D2B0EDB3AABD8C7E2F6940E075DC /* NCMBUser+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DD0E02EF704D2F1A84E5F3730861691 /* NCMBUser+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7373BD2C0A40A18261688E2414F9D8E4 /* Pods-mbUsingTest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3139B4C26354509389B2010927D33477 /* Pods-mbUsingTest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		746C1923EBE22837B4BF5FB7AA4FA0A8 /* NCMBRichPushView.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DD8B6963F52119C97408E9A0C36723 /* NCMBRichPushView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75E8E1D87355F5991A9F3B803FF67EFA /* NCMBQuery+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5178E718F4167D3DB52848E28D09E3EC /* NCMBQuery+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76D07B9C837698EB7E61F5736FF62642 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = DB35283E32AD482BA35CA7A81BA99B8B /* sha1.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C907C4F41C785ACD112440A7603F758 /* NCMBDeleteOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 99C0927EF0BE0A3B4E4682A794C2487D /* NCMBDeleteOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7DCA85F51DAEB1A4D449B739101AC3F2 /* NCMBGeoPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C47ECAE62DEF7F8C52D4FFED2FACCA /* NCMBGeoPoint.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		7E522ECC28650F0943674F025FAFB027 /* NCMBScript.m in Sources */ = {isa = PBXBuildFile; fileRef = CC56AC1684494A39AB5F36F3246E86FD /* NCMBScript.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		7F113BC5700631F1A209CAA806E98009 /* NCMBACL.h in Headers */ = {isa = PBXBuildFile; fileRef = 690AAB280A9A913276BE67408862FFB9 /* NCMBACL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7F5BA97BD8ACA45FC747BE1E46B34969 /* NCMBOADataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D329DE999071FBA59D67C71D9942732 /* NCMBOADataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7F99BFDB292B6ADF87804A7FEBC4C7EE /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6916AAA09157097A6D81D2658104FC15 /* Base64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FA8425C67AEE3E99B160692AF88808C /* NCMBCloseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC30612C347C8EE1C87F5181E8C1919 /* NCMBCloseImageView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		80D4A2884E71FB832E77F166E8273E58 /* NCMBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF8748558562B813EEB658107121C6 /* NCMBFile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		810E35EF2345D40A897EAB72077863F9 /* NCMBRelationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D3B0B25695080F51F822077988B5D4E /* NCMBRelationOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		813CCFB420F85E84AD59801474AE686F /* NCMBOAServiceTicket.h in Headers */ = {isa = PBXBuildFile; fileRef = AD7572898175D390F6CB0A5E253059AC /* NCMBOAServiceTicket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87AEB1FD4FCF99C137F16106147E78EF /* NCMBIncrementOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D08EA877C3ACE810C9C6ED6C70369D /* NCMBIncrementOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8855B3E5A60710121D0A1BCE0E19D74D /* NCMBAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E187D70DD031BA013367915A0C2323 /* NCMBAddOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A875119223671B90DB56E2B2AF95CE9 /* NCMBScriptService.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E16F66260B789FF12AABD81395EAF6 /* NCMBScriptService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AC4EB3355AD79F8D0F127B217DF8AB2 /* NSStringURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 826B455E2AA8D682D5412C3FC79544BF /* NSStringURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8EAF51B7F5215E14C959DB9C4AC7A69D /* NCMBCloseImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D00274473AE817E5F37295A37B59145 /* NCMBCloseImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8EB394BBBEA97B555AF7901A05EC7477 /* NSURLBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE346245F19DB52C401F76776A5BCEB /* NSURLBase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		65895E9B757EF5926F02545C05B167D4 /* NCMBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49707F12DE806F592B479AF88E67BFF8 /* NCMBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66521EE3EB39E2EDDFAC5D7B33D229BE /* NCMBTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAD1EDE2B816174F30AFE48BE13D7F /* NCMBTwitterUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		66C42025C689CEBD4B69DD71D2D3A864 /* NCMBRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1B37FE3B2BDA81AB9B231240C3CC23 /* NCMBRole.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		682AD15D6E48A3491E299B36C5EA9F63 /* NCMBOARequestParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = E91A9D361C69266A415016D846BC654B /* NCMBOARequestParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		688265F36B2EBEF84264914FBED6E57E /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 900A1A382C0CD575476BE18672410393 /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		69097F828447F1D56EE99A48E612C900 /* NCMBOAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D46AF2D02477B93792CA5AC132D8E2C /* NCMBOAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6B93D2B0EDB3AABD8C7E2F6940E075DC /* NCMBUser+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1824D32B50BC1B5197480C1B963497 /* NCMBUser+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		746C1923EBE22837B4BF5FB7AA4FA0A8 /* NCMBRichPushView.h in Headers */ = {isa = PBXBuildFile; fileRef = 094530CF002AEA8BDB71DD375E43338C /* NCMBRichPushView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75E8E1D87355F5991A9F3B803FF67EFA /* NCMBQuery+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C249AF1FC6BEFE906B2274EA1F881D02 /* NCMBQuery+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76D07B9C837698EB7E61F5736FF62642 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = DE53C1507394326F1394759C496CC49B /* sha1.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C907C4F41C785ACD112440A7603F758 /* NCMBDeleteOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C7094B65B2977940BC6F9EB653BB865 /* NCMBDeleteOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7DCA85F51DAEB1A4D449B739101AC3F2 /* NCMBGeoPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 139D7B94D253EF8A4000D1369D1866B8 /* NCMBGeoPoint.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7E522ECC28650F0943674F025FAFB027 /* NCMBScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 870106EF6C793F983A811D3DC16FEC11 /* NCMBScript.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7F113BC5700631F1A209CAA806E98009 /* NCMBACL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DEB9D6BAEFB29E64389CBA79EFFB128 /* NCMBACL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F5BA97BD8ACA45FC747BE1E46B34969 /* NCMBOADataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A251933480213D93EE6B26BE2BCB1E6 /* NCMBOADataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F99BFDB292B6ADF87804A7FEBC4C7EE /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EC1CF43FC15397B4FB03654E7FC199B /* Base64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FA8425C67AEE3E99B160692AF88808C /* NCMBCloseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C028D0FD05AA14898B14A5B2A5BD7B2E /* NCMBCloseImageView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		80D4A2884E71FB832E77F166E8273E58 /* NCMBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C3E6F18C67E6B004A3A79E6ABAD8D7 /* NCMBFile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		810E35EF2345D40A897EAB72077863F9 /* NCMBRelationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A0120149E841DBBFBE8CA11895CB7869 /* NCMBRelationOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		813CCFB420F85E84AD59801474AE686F /* NCMBOAServiceTicket.h in Headers */ = {isa = PBXBuildFile; fileRef = 59B7C5AAF67418C236F1252D16F80ECE /* NCMBOAServiceTicket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72E9A0B2866FD4BAF8710FC17EA631 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		837D783C96652509D81FD37E2FDAF669 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
+		87AEB1FD4FCF99C137F16106147E78EF /* NCMBIncrementOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4A37E6CBAAAECB835525EEA771680 /* NCMBIncrementOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8855B3E5A60710121D0A1BCE0E19D74D /* NCMBAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 840385AFB267F7A17B346CB53B014D9A /* NCMBAddOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A875119223671B90DB56E2B2AF95CE9 /* NCMBScriptService.h in Headers */ = {isa = PBXBuildFile; fileRef = 385EC13DA40CEE1DBB7BBF321E67F1EC /* NCMBScriptService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AC4EB3355AD79F8D0F127B217DF8AB2 /* NSStringURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1690689DEDC80E4B8BFFE1D07371E04D /* NSStringURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B6F887B357CBB0F32714C9E4F952D61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA321A272B5581494411296E85D018E9 /* CoreGraphics.framework */; };
+		8E540DE937C7E45DBB6BB4A8AD29EBFB /* Pods-mbUsingTest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3139B4C26354509389B2010927D33477 /* Pods-mbUsingTest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EAF51B7F5215E14C959DB9C4AC7A69D /* NCMBCloseImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B93497394799608E9E9E2E74216B8D44 /* NCMBCloseImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EB394BBBEA97B555AF7901A05EC7477 /* NSURLBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95AA5257A02FD4CF2440AEC6A0594D /* NSURLBase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		8ED4C3C5DDB1A81371A55E6D8FDB1E10 /* Pods-mbUsingTestTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73254D1F72F2BE1F7367A2206A59D99C /* Pods-mbUsingTestTests-dummy.m */; };
-		9460E8E3695148EC5D1067DE69EE8968 /* NCMBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 6246DD2E5BED32265F370564D31B51D3 /* NCMBURLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		989DB1C522AA44342BF029C2AADAEDC6 /* NCMBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FAF37F85121ABB46AE74308A5378C5F /* NCMBReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9460E8E3695148EC5D1067DE69EE8968 /* NCMBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D7539D583E3DA66C6CDBDE8D5E5302E5 /* NCMBURLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		989DB1C522AA44342BF029C2AADAEDC6 /* NCMBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A17493851F3E46792DC493B3FB562F59 /* NCMBReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A12A1696C8E7EB79A78ADF745F30C22 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BE475C7BC7A652D22B9845BE9C93B5 /* MobileCoreServices.framework */; };
 		9C80993D1464F839DB0C7D8EC4C90FB2 /* Pods-mbUsingTestUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32E8D9BC1C6C777C54148F7DB50F2C /* Pods-mbUsingTestUITests-dummy.m */; };
 		9D77D7B8D7FB5640C8BBAAF9652BA1FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
-		A1DE2E42378ADD3CDE880CF0A05E8EA7 /* NCMBSetOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 564125C061FD41D2ABCF5460697C4BB8 /* NCMBSetOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A1F9EB8CD03DD5D7F6D919B4B246BF86 /* SubClassHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6557BEE20A1975EC09B7264C5E519C83 /* SubClassHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A636E04C60A96CEFDF5EBA785EA41A24 /* NCMB.h in Headers */ = {isa = PBXBuildFile; fileRef = 835EBDC73FF0AAEEDA0CB90750447B27 /* NCMB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ACE9F89FFA174219B116D2B08F6F60A3 /* NCMBRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F21984E7341EDE20DEEBEFA133815 /* NCMBRelation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		AF990EED75472D93BB664C20D0B47311 /* NCMBGeoPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC8C32AD9B0644AB75951090B233E76 /* NCMBGeoPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFA80F98150C613175D660E64760305B /* NCMBIncrementOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CE8ECA70C7F69EBC9DC76AF90978F38 /* NCMBIncrementOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B06A2D5B4E819950810C837C9E8D4E20 /* NSURLBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47EE2B7CEF7CDC34586AFCAE8C8DED8 /* NSURLBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B0741D22F37A59A2ABCD7A17F07A95FA /* NSMutableURLRequestParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = EE08F7AFD31538B01E1FBCC10D79E03C /* NSMutableURLRequestParameters.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B3E2B2DBBCE01DF9DDEC76806388046A /* NCMBOARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C67900D0CFB422168306AF80A56D3 /* NCMBOARequestParameter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B407860DBA64F18DE7385D8F93996805 /* NCMBAddUniqueOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D690EF662AA98907F1DD9AD7D3EC97C /* NCMBAddUniqueOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4631A87DE64D21C39CEF4D68DC039CB /* NCMBRelation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 1515A27B778EA8B157880D783F2B1917 /* NCMBRelation+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6E1C35D3E09B449058C17677C4EDF36 /* NCMBScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 9512E41D0DE2D4A276E927B64A49E07A /* NCMBScript.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BAB7B80D3B58AE3166D5366E945AA36C /* NCMBAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 0443D7D48C583F0254D1441848A81150 /* NCMBAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB1A59BC08793BABAC00AC0CBB73D8D3 /* NCMBSubclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AACDD2C6AE9D03F1E576B57F356541A /* NCMBSubclassing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDA9358FFD1D07EC5E5AD84C570D1854 /* NCMB.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F07D0439C3868291EE7A05D4D9D876 /* NCMB.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		C016677E53E1EF3FB42453B4CC402817 /* NCMBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EEA29E1C5DA65D6C98E1515F0E1E8E /* NCMBUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		C0203AF93DD9660DDFF0DC65B809A5B2 /* NCMBSetOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32075E3CA2247ADD15F6797E4BD13A /* NCMBSetOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		C1C994FFC79363BD4C599A72EB926488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA321A272B5581494411296E85D018E9 /* CoreGraphics.framework */; };
-		C4E2D1514147F3BC0F2E4B29FCCF8E0B /* NCMBObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA37B5513099B5CCCF571E0DCE73A7D /* NCMBObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C67018371B8EF775D0C711AD60E2B5B3 /* Pods-mbUsingTest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F473309622CC2FE086FDE9D8218E21 /* Pods-mbUsingTest-dummy.m */; };
-		C828929F4C11DF0DFC8CA6BA05C11030 /* NCMBInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = FF84D3C1C870D68E41740E19127687FA /* NCMBInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CCDC580E702363109844434D62EE29C3 /* NCMBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5633E1BE29DC1077B11ACBE8DEBEA0DC /* NCMBObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CD84BD4EACE09F089FE81E01FC258F21 /* SWRevealViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28CB2F6949DED64D049933300A047DE7 /* SWRevealViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1DE2E42378ADD3CDE880CF0A05E8EA7 /* NCMBSetOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C344C48707F3F8EA8738F49DD1970680 /* NCMBSetOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1F9EB8CD03DD5D7F6D919B4B246BF86 /* SubClassHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DFEC23D6BC577B79E1D4951C56C938 /* SubClassHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A636E04C60A96CEFDF5EBA785EA41A24 /* NCMB.h in Headers */ = {isa = PBXBuildFile; fileRef = 83D812462D9B439835D5C876448F8B42 /* NCMB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ACE9F89FFA174219B116D2B08F6F60A3 /* NCMBRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A97A0CF32708D52FEA9184E5C45E5D /* NCMBRelation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AF990EED75472D93BB664C20D0B47311 /* NCMBGeoPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 81F346D511BC88818FE39F8BBF2FC4CD /* NCMBGeoPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFA80F98150C613175D660E64760305B /* NCMBIncrementOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BE490069723D52FEC085F65A56A3633 /* NCMBIncrementOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B06A2D5B4E819950810C837C9E8D4E20 /* NSURLBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 533F4FE54E961C5915057539334B1471 /* NSURLBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0741D22F37A59A2ABCD7A17F07A95FA /* NSMutableURLRequestParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 943F0675D1077E7C5A88438A5B1EC8DE /* NSMutableURLRequestParameters.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B3E2B2DBBCE01DF9DDEC76806388046A /* NCMBOARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 353F1F285A8DA30BB949D36A21A9FE80 /* NCMBOARequestParameter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B407860DBA64F18DE7385D8F93996805 /* NCMBAddUniqueOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F3683EA0592E2C6CE22F613A0E0F43C5 /* NCMBAddUniqueOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4631A87DE64D21C39CEF4D68DC039CB /* NCMBRelation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8732F7D8A6219C667F0E5ECE25E29A1E /* NCMBRelation+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6E1C35D3E09B449058C17677C4EDF36 /* NCMBScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 5945BC2094A75C654576382763FEC282 /* NCMBScript.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9EAC2E8D9DCEBA7FA6D124F68100BEF /* SWRevealViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE7EFD4B975F1D2F08F011B88A3DD45 /* SWRevealViewController-dummy.m */; };
+		BA1380DDDD948B1735764BAC8C431970 /* Pods-mbUsingTest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F473309622CC2FE086FDE9D8218E21 /* Pods-mbUsingTest-dummy.m */; };
+		BAB7B80D3B58AE3166D5366E945AA36C /* NCMBAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 71E9404DFDFFB3D6DA3D718BBE49D169 /* NCMBAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB1A59BC08793BABAC00AC0CBB73D8D3 /* NCMBSubclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = 12BD0B3486734CFD33F48CE8CC9B54C8 /* NCMBSubclassing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDA9358FFD1D07EC5E5AD84C570D1854 /* NCMB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0B3330CE6C0221AA672A4E58C026A /* NCMB.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BE3AB8A325B14CB4E73710145CB6716F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
+		C016677E53E1EF3FB42453B4CC402817 /* NCMBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 72ADC6546F33A47D6305334F44FFABE3 /* NCMBUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C0203AF93DD9660DDFF0DC65B809A5B2 /* NCMBSetOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 821DC434F67C0BB74C4BD4E89F9EBC67 /* NCMBSetOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C4E2D1514147F3BC0F2E4B29FCCF8E0B /* NCMBObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0DE46328EA895A782A6DE0C43D0011 /* NCMBObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C828929F4C11DF0DFC8CA6BA05C11030 /* NCMBInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = AEB1A3CFFC1CCB1AB5674A28A7329F38 /* NCMBInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCDC580E702363109844434D62EE29C3 /* NCMBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8ACCE236E0E1A7AC77E60504E7E970 /* NCMBObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CFBC4F6EFBC8FDF257561CEC207CF28D /* Pods-mbUsingTestUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 481BF4BDCC6B87CB62B4B68AD319767F /* Pods-mbUsingTestUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D17060F9DE8BE776848D5B7CD2340A87 /* NCMBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F294F43E1263C8B388907712D94202 /* NCMBRequest.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D52DCC97461B72420FE286E65B93EE02 /* NCMB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0945CCCA95AD28E1906BAEFD0931BDC2 /* NCMB-dummy.m */; };
-		D70C1383CCA8D82FC8963518A0FA90C3 /* NCMBTwitterLoginView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6CDB4452A636198E187E4E15228E89 /* NCMBTwitterLoginView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9DFF63E938B18C1E03C6186B787ED17 /* NSMutableURLRequestParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD893407E430A39F137360DC3BB8F7 /* NSMutableURLRequestParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD03B086D5703EF84CB0727F99BE638C /* NCMB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF9CDC2DC8093BEDCB9D2E0720B1EBF /* NCMB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DED57287E0A4C2F84F4E02EA08A7634D /* NCMBAnonymousUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD74A7E7025C044675876E4587193E /* NCMBAnonymousUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E12D0340CE959D7FC4CFAA7146F82490 /* SubClassHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 058302D988C8C02404B49D5FD2D4D2EA /* SubClassHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E52DF4FDED78033AF3C1FEFB08D697E5 /* NCMBOADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 328079F469AC08650EB3E8C454E05DA2 /* NCMBOADataFetcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EA54338A3359765E8271E311FC1FB849 /* NCMBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA71F75F962EF2841B804D5D65CE602 /* NCMBURLConnection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EA9309AC057115ADDBAEC0587FF7FF6C /* SWRevealViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBA35BB21D289A1B9E9B10FC5135364 /* SWRevealViewController-dummy.m */; };
-		F0F8389AC45505C01F1FBACD9CA9E5C7 /* NCMBFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E93B48B01B33EC86C4FC7648F8C5B3 /* NCMBFacebookUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F61269054F61E4193499F56F865AEF1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */; };
-		F9CBA73B54B3887AB6F1B66CCFF1CB26 /* NCMB_Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC71B6CE90C0CCDF2766832B7A8BA52 /* NCMB_Twitter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		FA1607A48066F68B7A15804EF315D930 /* NCMBOAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D25E2CA3023DBD4185F4324D5CDFBA /* NCMBOAServiceTicket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		FCF6062CBCF4B6A0D011AD949B339C44 /* NCMBPush.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D1FC00E9C5B79DFCA8FEB08A6FAF6E /* NCMBPush.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE06FA4FB8044ADF1105513AC4F16339 /* NCMBRelation.h in Headers */ = {isa = PBXBuildFile; fileRef = 61ABA3FAB8CBDFF63088F0FFC0E96FEC /* NCMBRelation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF7A6E2DD6F729AAACFBE623596716DF /* NCMBObject+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4404E634671740EE1ABF9167D59BD012 /* NCMBObject+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFEC5C9301687F5024E5FAE775A1A73D /* NCMBOAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E58647AC94CD9A494CC960299BB6A4 /* NCMBOAToken.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D17060F9DE8BE776848D5B7CD2340A87 /* NCMBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA25C57A19F57A5A07FA540AA6C785C3 /* NCMBRequest.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D52DCC97461B72420FE286E65B93EE02 /* NCMB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F0C71622C0F7F1D62BF46B307CBD7F /* NCMB-dummy.m */; };
+		D70C1383CCA8D82FC8963518A0FA90C3 /* NCMBTwitterLoginView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2658FF461B5F109A9B83C4EAA7C0BBC9 /* NCMBTwitterLoginView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9DFF63E938B18C1E03C6186B787ED17 /* NSMutableURLRequestParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AF10343A7E3F63AE0A7EDD9BA63E142 /* NSMutableURLRequestParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 59F00966747A6AB130BB8E9A0A2EB746 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD03B086D5703EF84CB0727F99BE638C /* NCMB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13EC25D41D1CC3D47B5C9368FF526EE0 /* NCMB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DED57287E0A4C2F84F4E02EA08A7634D /* NCMBAnonymousUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE90165E6D894A798A1095F54D31252 /* NCMBAnonymousUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E12D0340CE959D7FC4CFAA7146F82490 /* SubClassHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E773DB1BB44D068AE088B9AB454BC3F /* SubClassHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E52DF4FDED78033AF3C1FEFB08D697E5 /* NCMBOADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AC389575DFB93550A56522087E9AF0 /* NCMBOADataFetcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		EA54338A3359765E8271E311FC1FB849 /* NCMBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E95412F14828D95E21146E9120784 /* NCMBURLConnection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F0F8389AC45505C01F1FBACD9CA9E5C7 /* NCMBFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F4A13610B2821ABFAC14B2FE6A15334 /* NCMBFacebookUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC5CF8D142FECDFA6EA5700B4750BF /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F9CBA73B54B3887AB6F1B66CCFF1CB26 /* NCMB_Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4222E2FC9D593C580797F4152FF2CE1 /* NCMB_Twitter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FA1607A48066F68B7A15804EF315D930 /* NCMBOAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D756360AD384E653E9F451CD3A86BC /* NCMBOAServiceTicket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDAE023F675818C89083BA78744D /* GoogleToolboxForMac-dummy.m */; };
+		FCF6062CBCF4B6A0D011AD949B339C44 /* NCMBPush.h in Headers */ = {isa = PBXBuildFile; fileRef = 20577BE205E88AB2B51BAEE6FA179C3A /* NCMBPush.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD08B84C80B88AD7303E38762710AB99 /* SWRevealViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A226C98643F0345F196178046183C211 /* SWRevealViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE06FA4FB8044ADF1105513AC4F16339 /* NCMBRelation.h in Headers */ = {isa = PBXBuildFile; fileRef = 979812A4C01144EA77CACBB015E6517F /* NCMBRelation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF7A6E2DD6F729AAACFBE623596716DF /* NCMBObject+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 21C9D7A60306BAE1E5D7FAFFA0E2824E /* NCMBObject+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFEC5C9301687F5024E5FAE775A1A73D /* NCMBOAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CFB0EBD9070D2684D1960F53BE163D /* NCMBOAToken.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3592DDEAC9F174F9501C56BCE17EA53A /* PBXContainerItemProxy */ = {
+		794C02D0011E4162B5D78FE5E28EDFCE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 82D3BBB92C9DC5591937B415E6802A32;
+			remoteGlobalIDString = ACC1AB2CDD9DA4D074CCC89937E72F4E;
 			remoteInfo = SWRevealViewController;
 		};
-		9FD05A169268F9075872E88BCA8BDDB0 /* PBXContainerItemProxy */ = {
+		A68BBC4F5E2D2A84721BD81EFA42E749 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00103D6C821BE85971C563025527BA5D;
+			remoteInfo = GoogleToolboxForMac;
+		};
+		D041989C4B59DF95B2DCED73D13F47F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -151,164 +164,179 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C47ECAE62DEF7F8C52D4FFED2FACCA /* NCMBGeoPoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBGeoPoint.m; path = NCMB/NCMBGeoPoint.m; sourceTree = "<group>"; };
-		014DA01A4A112772786E9B167C8C9CDF /* NCMBACL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBACL.m; path = NCMB/NCMBACL.m; sourceTree = "<group>"; };
-		02131139EF37694427E115CF3D2CC94D /* NCMBAnonymousUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAnonymousUtils.h; path = NCMB/NCMBAnonymousUtils.h; sourceTree = "<group>"; };
-		036D028CF165323DDFF89DD97A567468 /* NCMBRichPushView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRichPushView.m; path = NCMB/NCMBRichPush/NCMBRichPushView.m; sourceTree = "<group>"; };
-		0443D7D48C583F0254D1441848A81150 /* NCMBAnalytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAnalytics.h; path = NCMB/NCMBAnalytics.h; sourceTree = "<group>"; };
-		058302D988C8C02404B49D5FD2D4D2EA /* SubClassHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SubClassHandler.h; path = NCMB/SubClassHandler/SubClassHandler.h; sourceTree = "<group>"; };
+		00076A54A15F53CEC62D7EC04FF5BA96 /* SWRevealViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController-prefix.pch"; sourceTree = "<group>"; };
+		00D9132723DA302405B601F4313D1C88 /* NCMBRole.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRole.h; path = NCMB/NCMBRole.h; sourceTree = "<group>"; };
+		00EF8A92B7D4FFB06813DF7A2836C39A /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		00F814358C580BC923B832792D55C8AE /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		0257CC16A795CFECF3CC20A18711F1DC /* NCMB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NCMB.xcconfig; sourceTree = "<group>"; };
+		025AA7F024B511ED328A90B0ADFCD4A7 /* NCMBInstallation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBInstallation.m; path = NCMB/NCMBInstallation.m; sourceTree = "<group>"; };
+		02CFB0EBD9070D2684D1960F53BE163D /* NCMBOAToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAToken.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAToken.m; sourceTree = "<group>"; };
 		077AD627D5AED2203B53749DE2FD9CAC /* Pods-mbUsingTestTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-mbUsingTestTests-umbrella.h"; sourceTree = "<group>"; };
-		07930CBC8608CF6BC9558775BB7F2B72 /* NCMBRole.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRole.h; path = NCMB/NCMBRole.h; sourceTree = "<group>"; };
-		07D1FC00E9C5B79DFCA8FEB08A6FAF6E /* NCMBPush.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBPush.h; path = NCMB/NCMBPush.h; sourceTree = "<group>"; };
-		0945CCCA95AD28E1906BAEFD0931BDC2 /* NCMB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NCMB-dummy.m"; sourceTree = "<group>"; };
-		09D25E2CA3023DBD4185F4324D5CDFBA /* NCMBOAServiceTicket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAServiceTicket.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAServiceTicket.m; sourceTree = "<group>"; };
+		08BA75974641840EE8606C8A0DE0A74A /* NCMBOAMutableURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAMutableURLRequest.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAMutableURLRequest.h; sourceTree = "<group>"; };
+		094530CF002AEA8BDB71DD375E43338C /* NCMBRichPushView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRichPushView.h; path = NCMB/NCMBRichPush/NCMBRichPushView.h; sourceTree = "<group>"; };
+		0A1B37FE3B2BDA81AB9B231240C3CC23 /* NCMBRole.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRole.m; path = NCMB/NCMBRole.m; sourceTree = "<group>"; };
+		0AF09BF24944B2B59EBA044CAF7B96E2 /* NCMBOAConsumer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAConsumer.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAConsumer.h; sourceTree = "<group>"; };
+		0B1824D32B50BC1B5197480C1B963497 /* NCMBUser+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBUser+Private.h"; path = "NCMB/PrivateHeaders/NCMBUser+Private.h"; sourceTree = "<group>"; };
+		0BBCD99DE3BF214C86B4384EDBC95601 /* SWRevealViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
+		0BE90165E6D894A798A1095F54D31252 /* NCMBAnonymousUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAnonymousUtils.m; path = NCMB/NCMBAnonymousUtils.m; sourceTree = "<group>"; };
 		0CC63F96D54FB4AEE43EF60ACF10B0CA /* Pods-mbUsingTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mbUsingTestTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0D4F21984E7341EDE20DEEBEFA133815 /* NCMBRelation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRelation.m; path = NCMB/NCMBRelation.m; sourceTree = "<group>"; };
+		0D46AF2D02477B93792CA5AC132D8E2C /* NCMBOAHMAC_SHA1SignatureProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAHMAC_SHA1SignatureProvider.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAHMAC_SHA1SignatureProvider.m; sourceTree = "<group>"; };
 		0E27E0D1ADB3BF9B670E77AF83621F5F /* Pods-mbUsingTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mbUsingTest.debug.xcconfig"; sourceTree = "<group>"; };
-		11252AE4D3F3FA92EA02680130EBFCF8 /* NSDataBase64Encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSDataBase64Encode.h; path = NCMB/NSDataBase64Encode/NSDataBase64Encode.h; sourceTree = "<group>"; };
-		11CA9E5092E67E8F7717163389AB9FF7 /* SWRevealViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController-prefix.pch"; sourceTree = "<group>"; };
-		1515A27B778EA8B157880D783F2B1917 /* NCMBRelation+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBRelation+Private.h"; path = "NCMB/PrivateHeaders/NCMBRelation+Private.h"; sourceTree = "<group>"; };
-		18EE12FE1782AA76DA0D4B55B4CE9404 /* NCMBOAConsumer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAConsumer.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAConsumer.h; sourceTree = "<group>"; };
-		1C71E5F384359B32F0ADEB7CA426329F /* NCMBOAConsumer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAConsumer.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAConsumer.m; sourceTree = "<group>"; };
-		1DDA018E780CD3B54379C4A3F36F7927 /* NCMBTwitterUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBTwitterUtils.h; path = NCMB/NCMBTwitterUtils.h; sourceTree = "<group>"; };
+		12BD0B3486734CFD33F48CE8CC9B54C8 /* NCMBSubclassing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBSubclassing.h; path = NCMB/NCMBSubclassing.h; sourceTree = "<group>"; };
+		139D7B94D253EF8A4000D1369D1866B8 /* NCMBGeoPoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBGeoPoint.m; path = NCMB/NCMBGeoPoint.m; sourceTree = "<group>"; };
+		13EC25D41D1CC3D47B5C9368FF526EE0 /* NCMB-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NCMB-umbrella.h"; sourceTree = "<group>"; };
+		1690689DEDC80E4B8BFFE1D07371E04D /* NSStringURLEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSStringURLEncoding.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSStringURLEncoding.h; sourceTree = "<group>"; };
+		16E68A59234DC4F4638F273210D72BDA /* NCMBOASignatureProviding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOASignatureProviding.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOASignatureProviding.h; sourceTree = "<group>"; };
+		1BE6EDB0EF78B067CB9C485F50591FFF /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C7094B65B2977940BC6F9EB653BB865 /* NCMBDeleteOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBDeleteOperation.h; path = NCMB/Operations/NCMBDeleteOperation.h; sourceTree = "<group>"; };
+		1DDFE439587FF805E7C4CA3642629F45 /* NCMBACL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBACL.m; path = NCMB/NCMBACL.m; sourceTree = "<group>"; };
+		2053D070CB857710834A1015D32C13A8 /* NCMBError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBError.h; path = NCMB/NCMBError.h; sourceTree = "<group>"; };
+		20577BE205E88AB2B51BAEE6FA179C3A /* NCMBPush.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBPush.h; path = NCMB/NCMBPush.h; sourceTree = "<group>"; };
+		21C9D7A60306BAE1E5D7FAFFA0E2824E /* NCMBObject+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBObject+Private.h"; path = "NCMB/PrivateHeaders/NCMBObject+Private.h"; sourceTree = "<group>"; };
 		22BE475C7BC7A652D22B9845BE9C93B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		24DD893407E430A39F137360DC3BB8F7 /* NSMutableURLRequestParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSMutableURLRequestParameters.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSMutableURLRequestParameters.h; sourceTree = "<group>"; };
-		289A5AB14AFB3FF299C595D8C87A53B1 /* NCMBUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBUser.h; path = NCMB/NCMBUser.h; sourceTree = "<group>"; };
-		28CB2F6949DED64D049933300A047DE7 /* SWRevealViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController-umbrella.h"; sourceTree = "<group>"; };
-		2F6CDB4452A636198E187E4E15228E89 /* NCMBTwitterLoginView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBTwitterLoginView.h; path = NCMB/NCMBTwitter/NCMBTwitterLoginView.h; sourceTree = "<group>"; };
-		2FEDF4CA54C812D16BD2CC70DFDD4AFE /* NCMBFacebookUtils+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBFacebookUtils+Private.h"; path = "NCMB/PrivateHeaders/NCMBFacebookUtils+Private.h"; sourceTree = "<group>"; };
+		22FCCDAE023F675818C89083BA78744D /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
+		25C3E6F18C67E6B004A3A79E6ABAD8D7 /* NCMBFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBFile.m; path = NCMB/NCMBFile.m; sourceTree = "<group>"; };
+		2658FF461B5F109A9B83C4EAA7C0BBC9 /* NCMBTwitterLoginView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBTwitterLoginView.h; path = NCMB/NCMBTwitter/NCMBTwitterLoginView.h; sourceTree = "<group>"; };
+		288909250CF2F1237621EFB1521620FF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AF10343A7E3F63AE0A7EDD9BA63E142 /* NSMutableURLRequestParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSMutableURLRequestParameters.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSMutableURLRequestParameters.h; sourceTree = "<group>"; };
+		2DEB9D6BAEFB29E64389CBA79EFFB128 /* NCMBACL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBACL.h; path = NCMB/NCMBACL.h; sourceTree = "<group>"; };
+		2E773DB1BB44D068AE088B9AB454BC3F /* SubClassHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SubClassHandler.h; path = NCMB/SubClassHandler/SubClassHandler.h; sourceTree = "<group>"; };
+		30F65E7549CC3E059815F5562D1703D5 /* NCMBOAToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAToken.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAToken.h; sourceTree = "<group>"; };
 		3139B4C26354509389B2010927D33477 /* Pods-mbUsingTest-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-mbUsingTest-umbrella.h"; sourceTree = "<group>"; };
-		328079F469AC08650EB3E8C454E05DA2 /* NCMBOADataFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOADataFetcher.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOADataFetcher.m; sourceTree = "<group>"; };
-		32F4105F79F19E8AEEC51AD86DE1A785 /* NCMBAnalytics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAnalytics.m; path = NCMB/NCMBAnalytics.m; sourceTree = "<group>"; };
-		3348ABFF85D9B2634CC377C49C960897 /* NCMBTwitterUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBTwitterUtils.m; path = NCMB/NCMBTwitterUtils.m; sourceTree = "<group>"; };
+		328B97C8FA831ED8A23DF47A260C2D10 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/hmac.h; sourceTree = "<group>"; };
 		3392731C3B6E7C27DE79F0BDB5FBC8F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		353F1F285A8DA30BB949D36A21A9FE80 /* NCMBOARequestParameter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOARequestParameter.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOARequestParameter.m; sourceTree = "<group>"; };
 		35E86D635B8118E6313003530A08E0A3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36DC79C5460753078D5A61D62DD565A3 /* Pods-mbUsingTestTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mbUsingTestTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		3A7818856991E2D185211DE82D6C45E3 /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hmac.c; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/hmac.c; sourceTree = "<group>"; };
-		3AA37B5513099B5CCCF571E0DCE73A7D /* NCMBObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBObject.h; path = NCMB/NCMBObject.h; sourceTree = "<group>"; };
-		3AACDD2C6AE9D03F1E576B57F356541A /* NCMBSubclassing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBSubclassing.h; path = NCMB/NCMBSubclassing.h; sourceTree = "<group>"; };
-		3AC8C32AD9B0644AB75951090B233E76 /* NCMBGeoPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBGeoPoint.h; path = NCMB/NCMBGeoPoint.h; sourceTree = "<group>"; };
-		3CE8ECA70C7F69EBC9DC76AF90978F38 /* NCMBIncrementOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBIncrementOperation.h; path = NCMB/Operations/NCMBIncrementOperation.h; sourceTree = "<group>"; };
-		3F9428DFB3065684EBED0C8F86718E59 /* NCMBOAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAHMAC_SHA1SignatureProvider.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		385EC13DA40CEE1DBB7BBF321E67F1EC /* NCMBScriptService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBScriptService.h; path = NCMB/NCMBScriptService/NCMBScriptService.h; sourceTree = "<group>"; };
+		3AABCA4238C807DDB3765F371FB04B24 /* NCMBQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBQuery.m; path = NCMB/NCMBQuery.m; sourceTree = "<group>"; };
+		3AAC71545AE67E3432E37707F9C08AB0 /* sha1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha1.c; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/sha1.c; sourceTree = "<group>"; };
+		3C72E9A0B2866FD4BAF8710FC17EA631 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		4110E8C6426735F5825DFF72F47D2396 /* Pods-mbUsingTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mbUsingTestTests.release.xcconfig"; sourceTree = "<group>"; };
-		41F294F43E1263C8B388907712D94202 /* NCMBRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRequest.m; path = NCMB/NCBMRequest/NCMBRequest.m; sourceTree = "<group>"; };
-		4371A93196A7EF2CEFDFE78FA23BA516 /* SWRevealViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SWRevealViewController.xcconfig; sourceTree = "<group>"; };
-		4404E634671740EE1ABF9167D59BD012 /* NCMBObject+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBObject+Private.h"; path = "NCMB/PrivateHeaders/NCMBObject+Private.h"; sourceTree = "<group>"; };
-		45D08EA877C3ACE810C9C6ED6C70369D /* NCMBIncrementOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBIncrementOperation.m; path = NCMB/Operations/NCMBIncrementOperation.m; sourceTree = "<group>"; };
+		4332549E4987C5731B9478DAEC9FB0A3 /* NCMBAnonymousUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAnonymousUtils.h; path = NCMB/NCMBAnonymousUtils.h; sourceTree = "<group>"; };
+		43EFA96C81B2ACDB167A0E255DE0427B /* NCMBQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBQuery.h; path = NCMB/NCMBQuery.h; sourceTree = "<group>"; };
 		481BF4BDCC6B87CB62B4B68AD319767F /* Pods-mbUsingTestUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-mbUsingTestUITests-umbrella.h"; sourceTree = "<group>"; };
-		486208A2BA7363A23D91CF10B9165F70 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4AB46F05F305BCE976BFF95A5899A1F3 /* NCMBQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBQuery.h; path = NCMB/NCMBQuery.h; sourceTree = "<group>"; };
-		4AC4E2E74825841A57C1D98C8FEA40B5 /* NCMB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NCMB-prefix.pch"; sourceTree = "<group>"; };
-		4B7583277C4AC7043076E422C962448C /* sha1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha1.c; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/sha1.c; sourceTree = "<group>"; };
-		4C764AAFE049273CCCDE08C378912592 /* NCMBConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBConstants.h; path = NCMB/NCMBConstants.h; sourceTree = "<group>"; };
-		4DBA35BB21D289A1B9E9B10FC5135364 /* SWRevealViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController-dummy.m"; sourceTree = "<group>"; };
-		4E181D18B0FDBFAAD5FE4FE7C8758402 /* NCMBRole.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRole.m; path = NCMB/NCMBRole.m; sourceTree = "<group>"; };
+		49707F12DE806F592B479AF88E67BFF8 /* NCMBUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBUser.h; path = NCMB/NCMBUser.h; sourceTree = "<group>"; };
+		4A95AA5257A02FD4CF2440AEC6A0594D /* NSURLBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSURLBase.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSURLBase.m; sourceTree = "<group>"; };
+		4CFFB5313D414619689DC29EB651B832 /* NCMBOAConsumer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAConsumer.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAConsumer.m; sourceTree = "<group>"; };
+		4D6F0969F7416A4C19FF61577923CB2C /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
+		4DE333CDE6A72161B4D06774604DCDF4 /* SWRevealViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController-umbrella.h"; sourceTree = "<group>"; };
 		4F94A60DFDAC212B7DE51BC3667361CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5178E718F4167D3DB52848E28D09E3EC /* NCMBQuery+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBQuery+Private.h"; path = "NCMB/PrivateHeaders/NCMBQuery+Private.h"; sourceTree = "<group>"; };
 		524D4E046B2B56AD4C8623BC34D335E2 /* Pods-mbUsingTest-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mbUsingTest-resources.sh"; sourceTree = "<group>"; };
-		553C079229BCF64309969029CB3AC19D /* Pods_mbUsingTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mbUsingTestUITests.framework; path = "Pods-mbUsingTestUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5633E1BE29DC1077B11ACBE8DEBEA0DC /* NCMBObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBObject.m; path = NCMB/NCMBObject.m; sourceTree = "<group>"; };
-		564125C061FD41D2ABCF5460697C4BB8 /* NCMBSetOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBSetOperation.h; path = NCMB/Operations/NCMBSetOperation.h; sourceTree = "<group>"; };
-		5B2A4EF21F5931CE44B431649E0E0427 /* NCMBFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBFile.h; path = NCMB/NCMBFile.h; sourceTree = "<group>"; };
+		52FD4ED22CD8BDA493E97B36283448B5 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
+		533F4FE54E961C5915057539334B1471 /* NSURLBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSURLBase.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSURLBase.h; sourceTree = "<group>"; };
+		5621B063D383FDDFAD6D7626A2BD2C46 /* NSDataBase64Encode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSDataBase64Encode.m; path = NCMB/NSDataBase64Encode/NSDataBase64Encode.m; sourceTree = "<group>"; };
+		5945BC2094A75C654576382763FEC282 /* NCMBScript.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBScript.h; path = NCMB/NCMBScript.h; sourceTree = "<group>"; };
+		59B7C5AAF67418C236F1252D16F80ECE /* NCMBOAServiceTicket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAServiceTicket.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAServiceTicket.h; sourceTree = "<group>"; };
+		59F00966747A6AB130BB8E9A0A2EB746 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
 		5B5ADDADA91DA2D2B26922EFE6A13DFE /* Pods-mbUsingTestUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mbUsingTestUITests-resources.sh"; sourceTree = "<group>"; };
-		5D690EF662AA98907F1DD9AD7D3EC97C /* NCMBAddUniqueOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAddUniqueOperation.h; path = NCMB/Operations/NCMBAddUniqueOperation.h; sourceTree = "<group>"; };
+		5C7A93E9C101B4AA6D8CB2F4EAEED101 /* NCMBTwitterUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBTwitterUtils.h; path = NCMB/NCMBTwitterUtils.h; sourceTree = "<group>"; };
 		5DC90AA356FBCA038AEEAAFD6928D966 /* Pods-mbUsingTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mbUsingTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		61ABA3FAB8CBDFF63088F0FFC0E96FEC /* NCMBRelation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRelation.h; path = NCMB/NCMBRelation.h; sourceTree = "<group>"; };
-		621B012FABA6DA12F3C5D2C9A96B4AAD /* NCMBDeleteOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBDeleteOperation.m; path = NCMB/Operations/NCMBDeleteOperation.m; sourceTree = "<group>"; };
-		6246DD2E5BED32265F370564D31B51D3 /* NCMBURLConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBURLConnection.h; path = NCMB/NCMBURLConnection/NCMBURLConnection.h; sourceTree = "<group>"; };
 		627B0F0174BEFDEB7AAB7B474DE10FF5 /* Pods-mbUsingTestTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mbUsingTestTests-resources.sh"; sourceTree = "<group>"; };
-		6557BEE20A1975EC09B7264C5E519C83 /* SubClassHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SubClassHandler.m; path = NCMB/SubClassHandler/SubClassHandler.m; sourceTree = "<group>"; };
-		66E16F66260B789FF12AABD81395EAF6 /* NCMBScriptService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBScriptService.h; path = NCMB/NCMBScriptService/NCMBScriptService.h; sourceTree = "<group>"; };
-		6702385117ADE167E8BD17140E8AF134 /* NSStringURLEncoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSStringURLEncoding.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSStringURLEncoding.m; sourceTree = "<group>"; };
-		6723F74C0A695217E8DAE07463900FEC /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/hmac.h; sourceTree = "<group>"; };
+		65D720B5C9BE3630CE91192178268DC8 /* NCMBAnalytics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAnalytics.m; path = NCMB/NCMBAnalytics.m; sourceTree = "<group>"; };
+		66A3188C24F19009A93BF0151EFB68EB /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		66AC389575DFB93550A56522087E9AF0 /* NCMBOADataFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOADataFetcher.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOADataFetcher.m; sourceTree = "<group>"; };
 		68C34F9CF0374258A5D8ED7B5CE1A046 /* Pods-mbUsingTest-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-mbUsingTest-acknowledgements.markdown"; sourceTree = "<group>"; };
-		690AAB280A9A913276BE67408862FFB9 /* NCMBACL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBACL.h; path = NCMB/NCMBACL.h; sourceTree = "<group>"; };
-		6916AAA09157097A6D81D2658104FC15 /* Base64Transcoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Base64Transcoder.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/Base64Transcoder.h; sourceTree = "<group>"; };
-		6BC027023970971B0818840691AEB3B7 /* NCMBOASignatureProviding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOASignatureProviding.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOASignatureProviding.h; sourceTree = "<group>"; };
-		6D3B0B25695080F51F822077988B5D4E /* NCMBRelationOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRelationOperation.h; path = NCMB/Operations/NCMBRelationOperation.h; sourceTree = "<group>"; };
+		68D756360AD384E653E9F451CD3A86BC /* NCMBOAServiceTicket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAServiceTicket.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAServiceTicket.m; sourceTree = "<group>"; };
+		68F0C71622C0F7F1D62BF46B307CBD7F /* NCMB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NCMB-dummy.m"; sourceTree = "<group>"; };
+		6B2A3CD3549F05FFFCC09B710B2294B7 /* NCMBScriptService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBScriptService.m; path = NCMB/NCMBScriptService/NCMBScriptService.m; sourceTree = "<group>"; };
 		6E32E8D9BC1C6C777C54148F7DB50F2C /* Pods-mbUsingTestUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-mbUsingTestUITests-dummy.m"; sourceTree = "<group>"; };
+		6F4A13610B2821ABFAC14B2FE6A15334 /* NCMBFacebookUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBFacebookUtils.h; path = NCMB/NCMBFacebookUtils.h; sourceTree = "<group>"; };
+		71E9404DFDFFB3D6DA3D718BBE49D169 /* NCMBAnalytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAnalytics.h; path = NCMB/NCMBAnalytics.h; sourceTree = "<group>"; };
+		72ADC6546F33A47D6305334F44FFABE3 /* NCMBUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBUser.m; path = NCMB/NCMBUser.m; sourceTree = "<group>"; };
+		72F6CF7CB8413E05695DF1D606778A0B /* NCMBReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBReachability.m; path = NCMB/NCMBReachability/NCMBReachability.m; sourceTree = "<group>"; };
 		73254D1F72F2BE1F7367A2206A59D99C /* Pods-mbUsingTestTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-mbUsingTestTests-dummy.m"; sourceTree = "<group>"; };
-		73DE6943350F1178ADC63904905784DA /* SWRevealViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SWRevealViewController.modulemap; sourceTree = "<group>"; };
-		75E769449C76072B0AEF664FE871388A /* Pods_mbUsingTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mbUsingTest.framework; path = "Pods-mbUsingTest.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74F987DAAFFD5292422528D4BEB16D28 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
+		7552387F2950D85EAFF5B98F6CA7D6DB /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		762308252D46002E7FFC21BDB3A99162 /* Pods-mbUsingTest-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mbUsingTest-acknowledgements.plist"; sourceTree = "<group>"; };
-		771F88CE77C2C13C6F6269D76855BB3F /* NCMBScriptService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBScriptService.m; path = NCMB/NCMBScriptService/NCMBScriptService.m; sourceTree = "<group>"; };
-		79DD8B6963F52119C97408E9A0C36723 /* NCMBRichPushView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRichPushView.h; path = NCMB/NCMBRichPush/NCMBRichPushView.h; sourceTree = "<group>"; };
-		7DC6211A98D0E0A54E5C9351839D6A46 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B40482553ABED04A877188B5805E1EA /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		7BE490069723D52FEC085F65A56A3633 /* NCMBIncrementOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBIncrementOperation.h; path = NCMB/Operations/NCMBIncrementOperation.h; sourceTree = "<group>"; };
 		7E038EB7BC52654D8D34A40386C3C99F /* Pods-mbUsingTestTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-mbUsingTestTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7FAF37F85121ABB46AE74308A5378C5F /* NCMBReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBReachability.h; path = NCMB/NCMBReachability/NCMBReachability.h; sourceTree = "<group>"; };
-		8208ED990448733F0C63C948F58C04A9 /* NCMBFacebookUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBFacebookUtils.m; path = NCMB/NCMBFacebookUtils.m; sourceTree = "<group>"; };
-		823F3BE8D3C33923BD136258479FB2E6 /* NCMBOAHMAC_SHA1SignatureProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAHMAC_SHA1SignatureProvider.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAHMAC_SHA1SignatureProvider.m; sourceTree = "<group>"; };
-		826B455E2AA8D682D5412C3FC79544BF /* NSStringURLEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSStringURLEncoding.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSStringURLEncoding.h; sourceTree = "<group>"; };
-		835EBDC73FF0AAEEDA0CB90750447B27 /* NCMB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMB.h; path = NCMB/NCMB.h; sourceTree = "<group>"; };
-		86AD960EB2DF553AB652581CC96C981F /* NCMBAddUniqueOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAddUniqueOperation.m; path = NCMB/Operations/NCMBAddUniqueOperation.m; sourceTree = "<group>"; };
-		87A06C3ACBAE35ED4454C8CCF4CDDD0D /* NCMB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NCMB.framework; path = NCMB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		896BE1C4584187EFD412CBFF351E8470 /* NCMBRemoveOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRemoveOperation.m; path = NCMB/Operations/NCMBRemoveOperation.m; sourceTree = "<group>"; };
+		81F346D511BC88818FE39F8BBF2FC4CD /* NCMBGeoPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBGeoPoint.h; path = NCMB/NCMBGeoPoint.h; sourceTree = "<group>"; };
+		821DC434F67C0BB74C4BD4E89F9EBC67 /* NCMBSetOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBSetOperation.m; path = NCMB/Operations/NCMBSetOperation.m; sourceTree = "<group>"; };
+		83D812462D9B439835D5C876448F8B42 /* NCMB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMB.h; path = NCMB/NCMB.h; sourceTree = "<group>"; };
+		840385AFB267F7A17B346CB53B014D9A /* NCMBAddOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAddOperation.h; path = NCMB/Operations/NCMBAddOperation.h; sourceTree = "<group>"; };
+		870106EF6C793F983A811D3DC16FEC11 /* NCMBScript.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBScript.m; path = NCMB/NCMBScript.m; sourceTree = "<group>"; };
+		8732F7D8A6219C667F0E5ECE25E29A1E /* NCMBRelation+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBRelation+Private.h"; path = "NCMB/PrivateHeaders/NCMBRelation+Private.h"; sourceTree = "<group>"; };
+		87C5B1F63ECD11A05FC061DD7F0BB1E9 /* NCMBFacebookUtils+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBFacebookUtils+Private.h"; path = "NCMB/PrivateHeaders/NCMBFacebookUtils+Private.h"; sourceTree = "<group>"; };
+		88621F40939D60234714B3A82270FDCA /* SWRevealViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SWRevealViewController.framework; path = SWRevealViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		896DA57FC84A5F4D457284FF9417458F /* Pods-mbUsingTestUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-mbUsingTestUITests.modulemap"; sourceTree = "<group>"; };
-		8BAD74A7E7025C044675876E4587193E /* NCMBAnonymousUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAnonymousUtils.m; path = NCMB/NCMBAnonymousUtils.m; sourceTree = "<group>"; };
+		89AD7A27F58D4ADB8984D5D038F9B384 /* NCMBPush.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBPush.m; path = NCMB/NCMBPush.m; sourceTree = "<group>"; };
+		8CC0B3330CE6C0221AA672A4E58C026A /* NCMB.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMB.m; path = NCMB/NCMB.m; sourceTree = "<group>"; };
 		8CC341DB08566FC893FBDE1FAB089AE1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8D0678D846318C6874B013F1FCC2B521 /* NCMBError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBError.h; path = NCMB/NCMBError.h; sourceTree = "<group>"; };
-		8DD0E02EF704D2F1A84E5F3730861691 /* NCMBUser+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBUser+Private.h"; path = "NCMB/PrivateHeaders/NCMBUser+Private.h"; sourceTree = "<group>"; };
-		8E59F150F6167AE26BCDBBF896DAFA69 /* NCMBOAMutableURLRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAMutableURLRequest.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAMutableURLRequest.m; sourceTree = "<group>"; };
+		900A1A382C0CD575476BE18672410393 /* Base64Transcoder.c */ = {isa = PBXFileReference; includeInIndex = 1; name = Base64Transcoder.c; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/Base64Transcoder.c; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		943F0675D1077E7C5A88438A5B1EC8DE /* NSMutableURLRequestParameters.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSMutableURLRequestParameters.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSMutableURLRequestParameters.m; sourceTree = "<group>"; };
 		9496CE4459CC3ACD36118E77E82BDD24 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		94E187D70DD031BA013367915A0C2323 /* NCMBAddOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAddOperation.h; path = NCMB/Operations/NCMBAddOperation.h; sourceTree = "<group>"; };
-		94E93B48B01B33EC86C4FC7648F8C5B3 /* NCMBFacebookUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBFacebookUtils.h; path = NCMB/NCMBFacebookUtils.h; sourceTree = "<group>"; };
-		9512E41D0DE2D4A276E927B64A49E07A /* NCMBScript.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBScript.h; path = NCMB/NCMBScript.h; sourceTree = "<group>"; };
-		95ECB0A3E922BFA602CC0F4A0C5DB184 /* NCMBRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRequest.h; path = NCMB/NCBMRequest/NCMBRequest.h; sourceTree = "<group>"; };
-		95F07D0439C3868291EE7A05D4D9D876 /* NCMB.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMB.m; path = NCMB/NCMB.m; sourceTree = "<group>"; };
-		97570964931B5DBBF90704AB7E04A66F /* NCMBOARequestParameter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOARequestParameter.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOARequestParameter.h; sourceTree = "<group>"; };
-		99C0927EF0BE0A3B4E4682A794C2487D /* NCMBDeleteOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBDeleteOperation.h; path = NCMB/Operations/NCMBDeleteOperation.h; sourceTree = "<group>"; };
-		9A37FDAAEDA2E2F56C349865F1C2EF7E /* NCMBReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBReachability.m; path = NCMB/NCMBReachability/NCMBReachability.m; sourceTree = "<group>"; };
-		9AE3260B1DCB74A7A618BCBB5D6C1D1C /* SWRevealViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SWRevealViewController.framework; path = SWRevealViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CC71B6CE90C0CCDF2766832B7A8BA52 /* NCMB_Twitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMB_Twitter.m; path = NCMB/NCMBTwitter/NCMB_Twitter.m; sourceTree = "<group>"; };
-		9D00274473AE817E5F37295A37B59145 /* NCMBCloseImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBCloseImageView.h; path = NCMB/NCMBRichPush/NCMBCloseImageView.h; sourceTree = "<group>"; };
-		9D329DE999071FBA59D67C71D9942732 /* NCMBOADataFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOADataFetcher.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOADataFetcher.h; sourceTree = "<group>"; };
-		9F234F673AE46C8FB8AC8F057C4C1D14 /* NCMBRelationOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRelationOperation.m; path = NCMB/Operations/NCMBRelationOperation.m; sourceTree = "<group>"; };
-		A183C00FDB9A6BB69C4040B0B8A89E57 /* NCMBRemoveOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRemoveOperation.h; path = NCMB/Operations/NCMBRemoveOperation.h; sourceTree = "<group>"; };
+		979812A4C01144EA77CACBB015E6517F /* NCMBRelation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRelation.h; path = NCMB/NCMBRelation.h; sourceTree = "<group>"; };
+		98B7DA667622C6F2B3D824090760C8C8 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		98DBB9036E9D48481CBD168000A30168 /* NCMBFacebookUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBFacebookUtils.m; path = NCMB/NCMBFacebookUtils.m; sourceTree = "<group>"; };
+		9A251933480213D93EE6B26BE2BCB1E6 /* NCMBOADataFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOADataFetcher.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOADataFetcher.h; sourceTree = "<group>"; };
+		9A384264E766AF6B018F641C646E6044 /* NSDataBase64Encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSDataBase64Encode.h; path = NCMB/NSDataBase64Encode/NSDataBase64Encode.h; sourceTree = "<group>"; };
+		9EC1CF43FC15397B4FB03654E7FC199B /* Base64Transcoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Base64Transcoder.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/Base64Transcoder.h; sourceTree = "<group>"; };
+		9FD4A37E6CBAAAECB835525EEA771680 /* NCMBIncrementOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBIncrementOperation.m; path = NCMB/Operations/NCMBIncrementOperation.m; sourceTree = "<group>"; };
+		A0120149E841DBBFBE8CA11895CB7869 /* NCMBRelationOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRelationOperation.h; path = NCMB/Operations/NCMBRelationOperation.h; sourceTree = "<group>"; };
+		A17493851F3E46792DC493B3FB562F59 /* NCMBReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBReachability.h; path = NCMB/NCMBReachability/NCMBReachability.h; sourceTree = "<group>"; };
+		A226C98643F0345F196178046183C211 /* SWRevealViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
+		A27576EAA240D3801F51455781E133E6 /* NCMBRemoveOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRemoveOperation.h; path = NCMB/Operations/NCMBRemoveOperation.h; sourceTree = "<group>"; };
+		A2A97A0CF32708D52FEA9184E5C45E5D /* NCMBRelation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRelation.m; path = NCMB/NCMBRelation.m; sourceTree = "<group>"; };
+		A3A97EEE7D6E75EE3F7807360E0C65E8 /* NSStringURLEncoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSStringURLEncoding.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSStringURLEncoding.m; sourceTree = "<group>"; };
+		A53FAC3FB51400F5DF823EA5E82B7A5D /* NCMBFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBFile.h; path = NCMB/NCMBFile.h; sourceTree = "<group>"; };
+		A795CFB19293EE28FAAC912F8C2155C2 /* Pods_mbUsingTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mbUsingTestUITests.framework; path = "Pods-mbUsingTestUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8E66778FD547DDCF178F437C92700A6 /* NCMB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NCMB-prefix.pch"; sourceTree = "<group>"; };
+		AB2CF2E8FCA8672CAE261E5166F4C3AB /* Pods_mbUsingTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mbUsingTestTests.framework; path = "Pods-mbUsingTestTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2441FE1BB4A1AD389A1F55DAFA91C8 /* Pods-mbUsingTest-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mbUsingTest-frameworks.sh"; sourceTree = "<group>"; };
-		AD7572898175D390F6CB0A5E253059AC /* NCMBOAServiceTicket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAServiceTicket.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAServiceTicket.h; sourceTree = "<group>"; };
+		AE6D3BECC78FB111AA02491497E84EB4 /* NCMBAddOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAddOperation.m; path = NCMB/Operations/NCMBAddOperation.m; sourceTree = "<group>"; };
+		AEB1A3CFFC1CCB1AB5674A28A7329F38 /* NCMBInstallation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBInstallation.h; path = NCMB/NCMBInstallation.h; sourceTree = "<group>"; };
 		AEE11AE98B02C1B159D9EE0B9DDBC8D9 /* Pods-mbUsingTestUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mbUsingTestUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B4DD5771D99CD6223E59A2FBFC342FA0 /* NCMBAddOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAddOperation.m; path = NCMB/Operations/NCMBAddOperation.m; sourceTree = "<group>"; };
-		B64AC70E10C5F53010C5E98A51FAD429 /* NCMBOAMutableURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAMutableURLRequest.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAMutableURLRequest.h; sourceTree = "<group>"; };
-		B7E77C4087D73493734031FE6C1B5993 /* NSDataBase64Encode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSDataBase64Encode.m; path = NCMB/NSDataBase64Encode/NSDataBase64Encode.m; sourceTree = "<group>"; };
+		AF922B9099B4BC9A3043A4DEB261FB94 /* NCMBRichPushView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRichPushView.m; path = NCMB/NCMBRichPush/NCMBRichPushView.m; sourceTree = "<group>"; };
+		B3B42DF4EEB0A75697A6315693E56951 /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hmac.c; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/hmac.c; sourceTree = "<group>"; };
+		B4222E2FC9D593C580797F4152FF2CE1 /* NCMB_Twitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMB_Twitter.m; path = NCMB/NCMBTwitter/NCMB_Twitter.m; sourceTree = "<group>"; };
+		B8D7B8EFE005293F749D12C2ABC8744C /* NCMB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = NCMB.modulemap; sourceTree = "<group>"; };
 		B8F473309622CC2FE086FDE9D8218E21 /* Pods-mbUsingTest-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-mbUsingTest-dummy.m"; sourceTree = "<group>"; };
+		B93497394799608E9E9E2E74216B8D44 /* NCMBCloseImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBCloseImageView.h; path = NCMB/NCMBRichPush/NCMBCloseImageView.h; sourceTree = "<group>"; };
 		BA321A272B5581494411296E85D018E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		BAE346245F19DB52C401F76776A5BCEB /* NSURLBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSURLBase.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSURLBase.m; sourceTree = "<group>"; };
-		BBF9CDC2DC8093BEDCB9D2E0720B1EBF /* NCMB-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NCMB-umbrella.h"; sourceTree = "<group>"; };
-		BF284CE02093389F223BC55D8C74B58E /* NCMBPush.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBPush.m; path = NCMB/NCMBPush.m; sourceTree = "<group>"; };
-		C32C67900D0CFB422168306AF80A56D3 /* NCMBOARequestParameter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOARequestParameter.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOARequestParameter.m; sourceTree = "<group>"; };
-		C37F8B51FC0ACB422889C1AD667D3C49 /* NCMBInstallation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBInstallation.m; path = NCMB/NCMBInstallation.m; sourceTree = "<group>"; };
-		C6BA2B11E3E8E12E590245BF7F873E31 /* Pods_mbUsingTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mbUsingTestTests.framework; path = "Pods-mbUsingTestTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C895326F0B8774F228625B7A09A88FEF /* NCMBTwitterLoginView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBTwitterLoginView.m; path = NCMB/NCMBTwitter/NCMBTwitterLoginView.m; sourceTree = "<group>"; };
+		BB5338AD2644EB93F63FC52900C132C1 /* NCMBRelationOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRelationOperation.m; path = NCMB/Operations/NCMBRelationOperation.m; sourceTree = "<group>"; };
+		BC7A21A5F8701401E44BBA8BB09ED888 /* SWRevealViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SWRevealViewController.xcconfig; sourceTree = "<group>"; };
+		BD0DE46328EA895A782A6DE0C43D0011 /* NCMBObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBObject.h; path = NCMB/NCMBObject.h; sourceTree = "<group>"; };
+		BF8ACCE236E0E1A7AC77E60504E7E970 /* NCMBObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBObject.m; path = NCMB/NCMBObject.m; sourceTree = "<group>"; };
+		BFE86A1932A1AFE06AFC152D5CB2A231 /* NCMBOAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAHMAC_SHA1SignatureProvider.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		C028D0FD05AA14898B14A5B2A5BD7B2E /* NCMBCloseImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBCloseImageView.m; path = NCMB/NCMBRichPush/NCMBCloseImageView.m; sourceTree = "<group>"; };
+		C1AD2992F03B5119A71EF9D3FB6B318C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C249AF1FC6BEFE906B2274EA1F881D02 /* NCMBQuery+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBQuery+Private.h"; path = "NCMB/PrivateHeaders/NCMBQuery+Private.h"; sourceTree = "<group>"; };
+		C344C48707F3F8EA8738F49DD1970680 /* NCMBSetOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBSetOperation.h; path = NCMB/Operations/NCMBSetOperation.h; sourceTree = "<group>"; };
+		C665EE97A8D6B03E97B9E669578D50A3 /* NCMBObject+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBObject+Subclass.h"; path = "NCMB/NCMBObject+Subclass.h"; sourceTree = "<group>"; };
 		C9FE85076E1B53A8B46D5105DBF40415 /* Pods-mbUsingTestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mbUsingTestUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CA83B3B8BA2A0047E526AC88610FE903 /* SWRevealViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
-		CB46C7392792287276490D34CA90785D /* Base64Transcoder.c */ = {isa = PBXFileReference; includeInIndex = 1; name = Base64Transcoder.c; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/Base64Transcoder.c; sourceTree = "<group>"; };
-		CC56AC1684494A39AB5F36F3246E86FD /* NCMBScript.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBScript.m; path = NCMB/NCMBScript.m; sourceTree = "<group>"; };
-		CDF10DE1FE471CAECAA2E17D84FA1068 /* NCMBQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBQuery.m; path = NCMB/NCMBQuery.m; sourceTree = "<group>"; };
-		D3E58647AC94CD9A494CC960299BB6A4 /* NCMBOAToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAToken.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAToken.m; sourceTree = "<group>"; };
-		D47EE2B7CEF7CDC34586AFCAE8C8DED8 /* NSURLBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSURLBase.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSURLBase.h; sourceTree = "<group>"; };
-		D5CAF0190AD3B0C5E3EF696CC0CC61C0 /* NCMBObject+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCMBObject+Subclass.h"; path = "NCMB/NCMBObject+Subclass.h"; sourceTree = "<group>"; };
+		D2D5CA7340D9635B42EA19447C98417E /* NCMBOAMutableURLRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBOAMutableURLRequest.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAMutableURLRequest.m; sourceTree = "<group>"; };
+		D32E95412F14828D95E21146E9120784 /* NCMBURLConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBURLConnection.m; path = NCMB/NCMBURLConnection/NCMBURLConnection.m; sourceTree = "<group>"; };
+		D3DFEC23D6BC577B79E1D4951C56C938 /* SubClassHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SubClassHandler.m; path = NCMB/SubClassHandler/SubClassHandler.m; sourceTree = "<group>"; };
 		D624672422FF5064DBE842E2587550FD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7539D583E3DA66C6CDBDE8D5E5302E5 /* NCMBURLConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBURLConnection.h; path = NCMB/NCMBURLConnection/NCMBURLConnection.h; sourceTree = "<group>"; };
 		D7749286FB878391E178AED68D4AFCFB /* Pods-mbUsingTest.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-mbUsingTest.modulemap"; sourceTree = "<group>"; };
 		D7DEA907D2EE4E538894CAF71BCFBCD5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		DB35283E32AD482BA35CA7A81BA99B8B /* sha1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/sha1.h; sourceTree = "<group>"; };
-		DC3B0EEC1CFA7433A759350CFE83FFD4 /* NCMBOAToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOAToken.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOAToken.h; sourceTree = "<group>"; };
+		DA25C57A19F57A5A07FA540AA6C785C3 /* NCMBRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRequest.m; path = NCMB/NCBMRequest/NCMBRequest.m; sourceTree = "<group>"; };
+		DA50ACC6A8734048F662CD2B6100510E /* NCMBRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBRequest.h; path = NCMB/NCBMRequest/NCMBRequest.h; sourceTree = "<group>"; };
+		DAA5CFBDABB182E37B36585F00A79AB1 /* NCMBDeleteOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBDeleteOperation.m; path = NCMB/Operations/NCMBDeleteOperation.m; sourceTree = "<group>"; };
 		DCE2BCF1FA52BFC7879847C745582C95 /* Pods-mbUsingTestTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mbUsingTestTests-frameworks.sh"; sourceTree = "<group>"; };
 		DDC662272D73435E4A206A57A5C6A7DC /* Pods-mbUsingTestTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-mbUsingTestTests.modulemap"; sourceTree = "<group>"; };
-		DE1A9F5D7A02B06392CB3F41BFD77554 /* NCMBError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBError.m; path = NCMB/NCMBError.m; sourceTree = "<group>"; };
-		DE5AFA9361143A79C635A8709DADB653 /* SWRevealViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
-		DF32075E3CA2247ADD15F6797E4BD13A /* NCMBSetOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBSetOperation.m; path = NCMB/Operations/NCMBSetOperation.m; sourceTree = "<group>"; };
-		E8EEA29E1C5DA65D6C98E1515F0E1E8E /* NCMBUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBUser.m; path = NCMB/NCMBUser.m; sourceTree = "<group>"; };
+		DE53C1507394326F1394759C496CC49B /* sha1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/Crypto/sha1.h; sourceTree = "<group>"; };
+		DEE7EFD4B975F1D2F08F011B88A3DD45 /* SWRevealViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController-dummy.m"; sourceTree = "<group>"; };
+		DFECDEBBCB6EFF3A9934A8D204CB9262 /* NCMBTwitterLoginView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBTwitterLoginView.m; path = NCMB/NCMBTwitter/NCMBTwitterLoginView.m; sourceTree = "<group>"; };
+		E0B50A1534324994F2D15382A0B920DF /* NCMBError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBError.m; path = NCMB/NCMBError.m; sourceTree = "<group>"; };
+		E18E5FB79BE77F184557C9086A22960A /* NCMBRemoveOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBRemoveOperation.m; path = NCMB/Operations/NCMBRemoveOperation.m; sourceTree = "<group>"; };
+		E40E05E0E33B471A723F817B4B97D7D1 /* NCMB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NCMB.framework; path = NCMB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5FB181118EE9062BCAE0B68F49310F7 /* Pods_mbUsingTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mbUsingTest.framework; path = "Pods-mbUsingTest.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91A9D361C69266A415016D846BC654B /* NCMBOARequestParameter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBOARequestParameter.h; path = NCMB/NCMBTwitter/NCMBOAConsumer/NCMBOARequestParameter.h; sourceTree = "<group>"; };
 		EAD75986504E2DA193063C8423CBB108 /* Pods-mbUsingTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mbUsingTest.release.xcconfig"; sourceTree = "<group>"; };
-		EDE22CEDD218C3E16F310422CD842445 /* NCMB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = NCMB.modulemap; sourceTree = "<group>"; };
-		EE08F7AFD31538B01E1FBCC10D79E03C /* NSMutableURLRequestParameters.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSMutableURLRequestParameters.m; path = NCMB/NCMBTwitter/NCMBOAConsumer/Categories/NSMutableURLRequestParameters.m; sourceTree = "<group>"; };
-		EFC30612C347C8EE1C87F5181E8C1919 /* NCMBCloseImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBCloseImageView.m; path = NCMB/NCMBRichPush/NCMBCloseImageView.m; sourceTree = "<group>"; };
-		EFCF8748558562B813EEB658107121C6 /* NCMBFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBFile.m; path = NCMB/NCMBFile.m; sourceTree = "<group>"; };
-		F2B1925B6BD29E344B243217BB896BDE /* NCMB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NCMB.xcconfig; sourceTree = "<group>"; };
+		EC9D5BAA4B1FD4F2D4943E50F7CB24FA /* NCMBAddUniqueOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBAddUniqueOperation.m; path = NCMB/Operations/NCMBAddUniqueOperation.m; sourceTree = "<group>"; };
+		F0F1631A5BE4672262397E7E95947EA3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3683EA0592E2C6CE22F613A0E0F43C5 /* NCMBAddUniqueOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBAddUniqueOperation.h; path = NCMB/Operations/NCMBAddUniqueOperation.h; sourceTree = "<group>"; };
+		F409A115F3062BE63D78CBCB6038B90F /* NCMBConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBConstants.h; path = NCMB/NCMBConstants.h; sourceTree = "<group>"; };
+		F5801F0ACF5938137202C70C4CD07473 /* SWRevealViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SWRevealViewController.modulemap; sourceTree = "<group>"; };
+		F9FC5CF8D142FECDFA6EA5700B4750BF /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
 		FC5C6C37FDD870B957ECD648C5A23EC2 /* Pods-mbUsingTestUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-mbUsingTestUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		FEA71F75F962EF2841B804D5D65CE602 /* NCMBURLConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBURLConnection.m; path = NCMB/NCMBURLConnection/NCMBURLConnection.m; sourceTree = "<group>"; };
 		FEF6C1E2DAC1817C5D1DF7A2E1F20563 /* Pods-mbUsingTestUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mbUsingTestUITests-frameworks.sh"; sourceTree = "<group>"; };
-		FF84D3C1C870D68E41740E19127687FA /* NCMBInstallation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCMBInstallation.h; path = NCMB/NCMBInstallation.h; sourceTree = "<group>"; };
+		FEFAD1EDE2B816174F30AFE48BE13D7F /* NCMBTwitterUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCMBTwitterUtils.m; path = NCMB/NCMBTwitterUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,20 +352,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		992B513E88B6FBDC539726ED5273AB65 /* Frameworks */ = {
+		152DD97AE7A381F425C53DF13FA453DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C994FFC79363BD4C599A72EB926488 /* CoreGraphics.framework in Frameworks */,
-				F61269054F61E4193499F56F865AEF1F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0D2E21B6F91935BF2B7B8C31665AE79 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D4A97E545491B77924A673E791CD376 /* Foundation.framework in Frameworks */,
+				8B6F887B357CBB0F32714C9E4F952D61 /* CoreGraphics.framework in Frameworks */,
+				BE3AB8A325B14CB4E73710145CB6716F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +369,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8CC82126B98CF5153829DA5EEA07E24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837D783C96652509D81FD37E2FDAF669 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2E40885C409B9BCB28A17FA44E76BDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,9 +385,152 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F9BC43EEAF05BCB201B3D28C244AA7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3159D7CAFD56B809F40CA3330DA10889 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09BCFB3D1F73DA2C36B6405080BFBEC1 /* NCMB */ = {
+			isa = PBXGroup;
+			children = (
+				900A1A382C0CD575476BE18672410393 /* Base64Transcoder.c */,
+				9EC1CF43FC15397B4FB03654E7FC199B /* Base64Transcoder.h */,
+				B3B42DF4EEB0A75697A6315693E56951 /* hmac.c */,
+				328B97C8FA831ED8A23DF47A260C2D10 /* hmac.h */,
+				83D812462D9B439835D5C876448F8B42 /* NCMB.h */,
+				8CC0B3330CE6C0221AA672A4E58C026A /* NCMB.m */,
+				B4222E2FC9D593C580797F4152FF2CE1 /* NCMB_Twitter.m */,
+				2DEB9D6BAEFB29E64389CBA79EFFB128 /* NCMBACL.h */,
+				1DDFE439587FF805E7C4CA3642629F45 /* NCMBACL.m */,
+				840385AFB267F7A17B346CB53B014D9A /* NCMBAddOperation.h */,
+				AE6D3BECC78FB111AA02491497E84EB4 /* NCMBAddOperation.m */,
+				F3683EA0592E2C6CE22F613A0E0F43C5 /* NCMBAddUniqueOperation.h */,
+				EC9D5BAA4B1FD4F2D4943E50F7CB24FA /* NCMBAddUniqueOperation.m */,
+				71E9404DFDFFB3D6DA3D718BBE49D169 /* NCMBAnalytics.h */,
+				65D720B5C9BE3630CE91192178268DC8 /* NCMBAnalytics.m */,
+				4332549E4987C5731B9478DAEC9FB0A3 /* NCMBAnonymousUtils.h */,
+				0BE90165E6D894A798A1095F54D31252 /* NCMBAnonymousUtils.m */,
+				B93497394799608E9E9E2E74216B8D44 /* NCMBCloseImageView.h */,
+				C028D0FD05AA14898B14A5B2A5BD7B2E /* NCMBCloseImageView.m */,
+				F409A115F3062BE63D78CBCB6038B90F /* NCMBConstants.h */,
+				1C7094B65B2977940BC6F9EB653BB865 /* NCMBDeleteOperation.h */,
+				DAA5CFBDABB182E37B36585F00A79AB1 /* NCMBDeleteOperation.m */,
+				2053D070CB857710834A1015D32C13A8 /* NCMBError.h */,
+				E0B50A1534324994F2D15382A0B920DF /* NCMBError.m */,
+				6F4A13610B2821ABFAC14B2FE6A15334 /* NCMBFacebookUtils.h */,
+				98DBB9036E9D48481CBD168000A30168 /* NCMBFacebookUtils.m */,
+				87C5B1F63ECD11A05FC061DD7F0BB1E9 /* NCMBFacebookUtils+Private.h */,
+				A53FAC3FB51400F5DF823EA5E82B7A5D /* NCMBFile.h */,
+				25C3E6F18C67E6B004A3A79E6ABAD8D7 /* NCMBFile.m */,
+				81F346D511BC88818FE39F8BBF2FC4CD /* NCMBGeoPoint.h */,
+				139D7B94D253EF8A4000D1369D1866B8 /* NCMBGeoPoint.m */,
+				7BE490069723D52FEC085F65A56A3633 /* NCMBIncrementOperation.h */,
+				9FD4A37E6CBAAAECB835525EEA771680 /* NCMBIncrementOperation.m */,
+				AEB1A3CFFC1CCB1AB5674A28A7329F38 /* NCMBInstallation.h */,
+				025AA7F024B511ED328A90B0ADFCD4A7 /* NCMBInstallation.m */,
+				0AF09BF24944B2B59EBA044CAF7B96E2 /* NCMBOAConsumer.h */,
+				4CFFB5313D414619689DC29EB651B832 /* NCMBOAConsumer.m */,
+				9A251933480213D93EE6B26BE2BCB1E6 /* NCMBOADataFetcher.h */,
+				66AC389575DFB93550A56522087E9AF0 /* NCMBOADataFetcher.m */,
+				BFE86A1932A1AFE06AFC152D5CB2A231 /* NCMBOAHMAC_SHA1SignatureProvider.h */,
+				0D46AF2D02477B93792CA5AC132D8E2C /* NCMBOAHMAC_SHA1SignatureProvider.m */,
+				08BA75974641840EE8606C8A0DE0A74A /* NCMBOAMutableURLRequest.h */,
+				D2D5CA7340D9635B42EA19447C98417E /* NCMBOAMutableURLRequest.m */,
+				E91A9D361C69266A415016D846BC654B /* NCMBOARequestParameter.h */,
+				353F1F285A8DA30BB949D36A21A9FE80 /* NCMBOARequestParameter.m */,
+				59B7C5AAF67418C236F1252D16F80ECE /* NCMBOAServiceTicket.h */,
+				68D756360AD384E653E9F451CD3A86BC /* NCMBOAServiceTicket.m */,
+				16E68A59234DC4F4638F273210D72BDA /* NCMBOASignatureProviding.h */,
+				30F65E7549CC3E059815F5562D1703D5 /* NCMBOAToken.h */,
+				02CFB0EBD9070D2684D1960F53BE163D /* NCMBOAToken.m */,
+				BD0DE46328EA895A782A6DE0C43D0011 /* NCMBObject.h */,
+				BF8ACCE236E0E1A7AC77E60504E7E970 /* NCMBObject.m */,
+				21C9D7A60306BAE1E5D7FAFFA0E2824E /* NCMBObject+Private.h */,
+				C665EE97A8D6B03E97B9E669578D50A3 /* NCMBObject+Subclass.h */,
+				20577BE205E88AB2B51BAEE6FA179C3A /* NCMBPush.h */,
+				89AD7A27F58D4ADB8984D5D038F9B384 /* NCMBPush.m */,
+				43EFA96C81B2ACDB167A0E255DE0427B /* NCMBQuery.h */,
+				3AABCA4238C807DDB3765F371FB04B24 /* NCMBQuery.m */,
+				C249AF1FC6BEFE906B2274EA1F881D02 /* NCMBQuery+Private.h */,
+				A17493851F3E46792DC493B3FB562F59 /* NCMBReachability.h */,
+				72F6CF7CB8413E05695DF1D606778A0B /* NCMBReachability.m */,
+				979812A4C01144EA77CACBB015E6517F /* NCMBRelation.h */,
+				A2A97A0CF32708D52FEA9184E5C45E5D /* NCMBRelation.m */,
+				8732F7D8A6219C667F0E5ECE25E29A1E /* NCMBRelation+Private.h */,
+				A0120149E841DBBFBE8CA11895CB7869 /* NCMBRelationOperation.h */,
+				BB5338AD2644EB93F63FC52900C132C1 /* NCMBRelationOperation.m */,
+				A27576EAA240D3801F51455781E133E6 /* NCMBRemoveOperation.h */,
+				E18E5FB79BE77F184557C9086A22960A /* NCMBRemoveOperation.m */,
+				DA50ACC6A8734048F662CD2B6100510E /* NCMBRequest.h */,
+				DA25C57A19F57A5A07FA540AA6C785C3 /* NCMBRequest.m */,
+				094530CF002AEA8BDB71DD375E43338C /* NCMBRichPushView.h */,
+				AF922B9099B4BC9A3043A4DEB261FB94 /* NCMBRichPushView.m */,
+				00D9132723DA302405B601F4313D1C88 /* NCMBRole.h */,
+				0A1B37FE3B2BDA81AB9B231240C3CC23 /* NCMBRole.m */,
+				5945BC2094A75C654576382763FEC282 /* NCMBScript.h */,
+				870106EF6C793F983A811D3DC16FEC11 /* NCMBScript.m */,
+				385EC13DA40CEE1DBB7BBF321E67F1EC /* NCMBScriptService.h */,
+				6B2A3CD3549F05FFFCC09B710B2294B7 /* NCMBScriptService.m */,
+				C344C48707F3F8EA8738F49DD1970680 /* NCMBSetOperation.h */,
+				821DC434F67C0BB74C4BD4E89F9EBC67 /* NCMBSetOperation.m */,
+				12BD0B3486734CFD33F48CE8CC9B54C8 /* NCMBSubclassing.h */,
+				2658FF461B5F109A9B83C4EAA7C0BBC9 /* NCMBTwitterLoginView.h */,
+				DFECDEBBCB6EFF3A9934A8D204CB9262 /* NCMBTwitterLoginView.m */,
+				5C7A93E9C101B4AA6D8CB2F4EAEED101 /* NCMBTwitterUtils.h */,
+				FEFAD1EDE2B816174F30AFE48BE13D7F /* NCMBTwitterUtils.m */,
+				D7539D583E3DA66C6CDBDE8D5E5302E5 /* NCMBURLConnection.h */,
+				D32E95412F14828D95E21146E9120784 /* NCMBURLConnection.m */,
+				49707F12DE806F592B479AF88E67BFF8 /* NCMBUser.h */,
+				72ADC6546F33A47D6305334F44FFABE3 /* NCMBUser.m */,
+				0B1824D32B50BC1B5197480C1B963497 /* NCMBUser+Private.h */,
+				9A384264E766AF6B018F641C646E6044 /* NSDataBase64Encode.h */,
+				5621B063D383FDDFAD6D7626A2BD2C46 /* NSDataBase64Encode.m */,
+				2AF10343A7E3F63AE0A7EDD9BA63E142 /* NSMutableURLRequestParameters.h */,
+				943F0675D1077E7C5A88438A5B1EC8DE /* NSMutableURLRequestParameters.m */,
+				1690689DEDC80E4B8BFFE1D07371E04D /* NSStringURLEncoding.h */,
+				A3A97EEE7D6E75EE3F7807360E0C65E8 /* NSStringURLEncoding.m */,
+				533F4FE54E961C5915057539334B1471 /* NSURLBase.h */,
+				4A95AA5257A02FD4CF2440AEC6A0594D /* NSURLBase.m */,
+				3AAC71545AE67E3432E37707F9C08AB0 /* sha1.c */,
+				DE53C1507394326F1394759C496CC49B /* sha1.h */,
+				2E773DB1BB44D068AE088B9AB454BC3F /* SubClassHandler.h */,
+				D3DFEC23D6BC577B79E1D4951C56C938 /* SubClassHandler.m */,
+				D2C11CADC24575A47E3A717B52DAAC62 /* Support Files */,
+			);
+			name = NCMB;
+			path = NCMB;
+			sourceTree = "<group>";
+		};
+		0BDD6FBAF731D2219AD2795A83BBCA40 /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				13254CD0AAEEBF76A322BA6B8D8E11A5 /* Frameworks */,
+			);
+			name = FirebaseCore;
+			path = FirebaseCore;
+			sourceTree = "<group>";
+		};
+		0D27F8A80F77FBB14E9F00F8296F186B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5B0BD2A7F96D8149ADBFF341D1AA2BC /* Firebase */,
+				904A9593204D44C19338409CB7954660 /* FirebaseAnalytics */,
+				0BDD6FBAF731D2219AD2795A83BBCA40 /* FirebaseCore */,
+				BADE8C7C2A137166E29FFA8A738B3ECB /* FirebaseInstanceID */,
+				DDE760FF30A3B9E5676A2727F404EFE9 /* Google-Mobile-Ads-SDK */,
+				67F3F2F9B4BCF1EA442427271BA40BDE /* GoogleToolboxForMac */,
+				09BCFB3D1F73DA2C36B6405080BFBEC1 /* NCMB */,
+				AD96EFDE647E8CDE3C83994C9608197C /* SWRevealViewController */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,127 +539,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		45F45989FF8C4E8733EBAE36A7C0BD3C /* Products */ = {
+		13254CD0AAEEBF76A322BA6B8D8E11A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				87A06C3ACBAE35ED4454C8CCF4CDDD0D /* NCMB.framework */,
-				75E769449C76072B0AEF664FE871388A /* Pods_mbUsingTest.framework */,
-				C6BA2B11E3E8E12E590245BF7F873E31 /* Pods_mbUsingTestTests.framework */,
-				553C079229BCF64309969029CB3AC19D /* Pods_mbUsingTestUITests.framework */,
-				9AE3260B1DCB74A7A618BCBB5D6C1D1C /* SWRevealViewController.framework */,
+				66A3188C24F19009A93BF0151EFB68EB /* FirebaseCore.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		50FA5CC2E91569737DA3FDEBFDBDD62D /* NCMB */ = {
+		5104FA358E23C5CF832A2C8778C45C7C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CB46C7392792287276490D34CA90785D /* Base64Transcoder.c */,
-				6916AAA09157097A6D81D2658104FC15 /* Base64Transcoder.h */,
-				3A7818856991E2D185211DE82D6C45E3 /* hmac.c */,
-				6723F74C0A695217E8DAE07463900FEC /* hmac.h */,
-				835EBDC73FF0AAEEDA0CB90750447B27 /* NCMB.h */,
-				95F07D0439C3868291EE7A05D4D9D876 /* NCMB.m */,
-				9CC71B6CE90C0CCDF2766832B7A8BA52 /* NCMB_Twitter.m */,
-				690AAB280A9A913276BE67408862FFB9 /* NCMBACL.h */,
-				014DA01A4A112772786E9B167C8C9CDF /* NCMBACL.m */,
-				94E187D70DD031BA013367915A0C2323 /* NCMBAddOperation.h */,
-				B4DD5771D99CD6223E59A2FBFC342FA0 /* NCMBAddOperation.m */,
-				5D690EF662AA98907F1DD9AD7D3EC97C /* NCMBAddUniqueOperation.h */,
-				86AD960EB2DF553AB652581CC96C981F /* NCMBAddUniqueOperation.m */,
-				0443D7D48C583F0254D1441848A81150 /* NCMBAnalytics.h */,
-				32F4105F79F19E8AEEC51AD86DE1A785 /* NCMBAnalytics.m */,
-				02131139EF37694427E115CF3D2CC94D /* NCMBAnonymousUtils.h */,
-				8BAD74A7E7025C044675876E4587193E /* NCMBAnonymousUtils.m */,
-				9D00274473AE817E5F37295A37B59145 /* NCMBCloseImageView.h */,
-				EFC30612C347C8EE1C87F5181E8C1919 /* NCMBCloseImageView.m */,
-				4C764AAFE049273CCCDE08C378912592 /* NCMBConstants.h */,
-				99C0927EF0BE0A3B4E4682A794C2487D /* NCMBDeleteOperation.h */,
-				621B012FABA6DA12F3C5D2C9A96B4AAD /* NCMBDeleteOperation.m */,
-				8D0678D846318C6874B013F1FCC2B521 /* NCMBError.h */,
-				DE1A9F5D7A02B06392CB3F41BFD77554 /* NCMBError.m */,
-				94E93B48B01B33EC86C4FC7648F8C5B3 /* NCMBFacebookUtils.h */,
-				8208ED990448733F0C63C948F58C04A9 /* NCMBFacebookUtils.m */,
-				2FEDF4CA54C812D16BD2CC70DFDD4AFE /* NCMBFacebookUtils+Private.h */,
-				5B2A4EF21F5931CE44B431649E0E0427 /* NCMBFile.h */,
-				EFCF8748558562B813EEB658107121C6 /* NCMBFile.m */,
-				3AC8C32AD9B0644AB75951090B233E76 /* NCMBGeoPoint.h */,
-				00C47ECAE62DEF7F8C52D4FFED2FACCA /* NCMBGeoPoint.m */,
-				3CE8ECA70C7F69EBC9DC76AF90978F38 /* NCMBIncrementOperation.h */,
-				45D08EA877C3ACE810C9C6ED6C70369D /* NCMBIncrementOperation.m */,
-				FF84D3C1C870D68E41740E19127687FA /* NCMBInstallation.h */,
-				C37F8B51FC0ACB422889C1AD667D3C49 /* NCMBInstallation.m */,
-				18EE12FE1782AA76DA0D4B55B4CE9404 /* NCMBOAConsumer.h */,
-				1C71E5F384359B32F0ADEB7CA426329F /* NCMBOAConsumer.m */,
-				9D329DE999071FBA59D67C71D9942732 /* NCMBOADataFetcher.h */,
-				328079F469AC08650EB3E8C454E05DA2 /* NCMBOADataFetcher.m */,
-				3F9428DFB3065684EBED0C8F86718E59 /* NCMBOAHMAC_SHA1SignatureProvider.h */,
-				823F3BE8D3C33923BD136258479FB2E6 /* NCMBOAHMAC_SHA1SignatureProvider.m */,
-				B64AC70E10C5F53010C5E98A51FAD429 /* NCMBOAMutableURLRequest.h */,
-				8E59F150F6167AE26BCDBBF896DAFA69 /* NCMBOAMutableURLRequest.m */,
-				97570964931B5DBBF90704AB7E04A66F /* NCMBOARequestParameter.h */,
-				C32C67900D0CFB422168306AF80A56D3 /* NCMBOARequestParameter.m */,
-				AD7572898175D390F6CB0A5E253059AC /* NCMBOAServiceTicket.h */,
-				09D25E2CA3023DBD4185F4324D5CDFBA /* NCMBOAServiceTicket.m */,
-				6BC027023970971B0818840691AEB3B7 /* NCMBOASignatureProviding.h */,
-				DC3B0EEC1CFA7433A759350CFE83FFD4 /* NCMBOAToken.h */,
-				D3E58647AC94CD9A494CC960299BB6A4 /* NCMBOAToken.m */,
-				3AA37B5513099B5CCCF571E0DCE73A7D /* NCMBObject.h */,
-				5633E1BE29DC1077B11ACBE8DEBEA0DC /* NCMBObject.m */,
-				4404E634671740EE1ABF9167D59BD012 /* NCMBObject+Private.h */,
-				D5CAF0190AD3B0C5E3EF696CC0CC61C0 /* NCMBObject+Subclass.h */,
-				07D1FC00E9C5B79DFCA8FEB08A6FAF6E /* NCMBPush.h */,
-				BF284CE02093389F223BC55D8C74B58E /* NCMBPush.m */,
-				4AB46F05F305BCE976BFF95A5899A1F3 /* NCMBQuery.h */,
-				CDF10DE1FE471CAECAA2E17D84FA1068 /* NCMBQuery.m */,
-				5178E718F4167D3DB52848E28D09E3EC /* NCMBQuery+Private.h */,
-				7FAF37F85121ABB46AE74308A5378C5F /* NCMBReachability.h */,
-				9A37FDAAEDA2E2F56C349865F1C2EF7E /* NCMBReachability.m */,
-				61ABA3FAB8CBDFF63088F0FFC0E96FEC /* NCMBRelation.h */,
-				0D4F21984E7341EDE20DEEBEFA133815 /* NCMBRelation.m */,
-				1515A27B778EA8B157880D783F2B1917 /* NCMBRelation+Private.h */,
-				6D3B0B25695080F51F822077988B5D4E /* NCMBRelationOperation.h */,
-				9F234F673AE46C8FB8AC8F057C4C1D14 /* NCMBRelationOperation.m */,
-				A183C00FDB9A6BB69C4040B0B8A89E57 /* NCMBRemoveOperation.h */,
-				896BE1C4584187EFD412CBFF351E8470 /* NCMBRemoveOperation.m */,
-				95ECB0A3E922BFA602CC0F4A0C5DB184 /* NCMBRequest.h */,
-				41F294F43E1263C8B388907712D94202 /* NCMBRequest.m */,
-				79DD8B6963F52119C97408E9A0C36723 /* NCMBRichPushView.h */,
-				036D028CF165323DDFF89DD97A567468 /* NCMBRichPushView.m */,
-				07930CBC8608CF6BC9558775BB7F2B72 /* NCMBRole.h */,
-				4E181D18B0FDBFAAD5FE4FE7C8758402 /* NCMBRole.m */,
-				9512E41D0DE2D4A276E927B64A49E07A /* NCMBScript.h */,
-				CC56AC1684494A39AB5F36F3246E86FD /* NCMBScript.m */,
-				66E16F66260B789FF12AABD81395EAF6 /* NCMBScriptService.h */,
-				771F88CE77C2C13C6F6269D76855BB3F /* NCMBScriptService.m */,
-				564125C061FD41D2ABCF5460697C4BB8 /* NCMBSetOperation.h */,
-				DF32075E3CA2247ADD15F6797E4BD13A /* NCMBSetOperation.m */,
-				3AACDD2C6AE9D03F1E576B57F356541A /* NCMBSubclassing.h */,
-				2F6CDB4452A636198E187E4E15228E89 /* NCMBTwitterLoginView.h */,
-				C895326F0B8774F228625B7A09A88FEF /* NCMBTwitterLoginView.m */,
-				1DDA018E780CD3B54379C4A3F36F7927 /* NCMBTwitterUtils.h */,
-				3348ABFF85D9B2634CC377C49C960897 /* NCMBTwitterUtils.m */,
-				6246DD2E5BED32265F370564D31B51D3 /* NCMBURLConnection.h */,
-				FEA71F75F962EF2841B804D5D65CE602 /* NCMBURLConnection.m */,
-				289A5AB14AFB3FF299C595D8C87A53B1 /* NCMBUser.h */,
-				E8EEA29E1C5DA65D6C98E1515F0E1E8E /* NCMBUser.m */,
-				8DD0E02EF704D2F1A84E5F3730861691 /* NCMBUser+Private.h */,
-				11252AE4D3F3FA92EA02680130EBFCF8 /* NSDataBase64Encode.h */,
-				B7E77C4087D73493734031FE6C1B5993 /* NSDataBase64Encode.m */,
-				24DD893407E430A39F137360DC3BB8F7 /* NSMutableURLRequestParameters.h */,
-				EE08F7AFD31538B01E1FBCC10D79E03C /* NSMutableURLRequestParameters.m */,
-				826B455E2AA8D682D5412C3FC79544BF /* NSStringURLEncoding.h */,
-				6702385117ADE167E8BD17140E8AF134 /* NSStringURLEncoding.m */,
-				D47EE2B7CEF7CDC34586AFCAE8C8DED8 /* NSURLBase.h */,
-				BAE346245F19DB52C401F76776A5BCEB /* NSURLBase.m */,
-				4B7583277C4AC7043076E422C962448C /* sha1.c */,
-				DB35283E32AD482BA35CA7A81BA99B8B /* sha1.h */,
-				058302D988C8C02404B49D5FD2D4D2EA /* SubClassHandler.h */,
-				6557BEE20A1975EC09B7264C5E519C83 /* SubClassHandler.m */,
-				C80E859DBC30A52653BD02B4F27FE81E /* Support Files */,
+				74F987DAAFFD5292422528D4BEB16D28 /* Firebase.h */,
 			);
-			name = NCMB;
-			path = NCMB;
+			name = Core;
 			sourceTree = "<group>";
 		};
 		5197B89E41C148E0DA92B34A0451CEE1 /* Pods-mbUsingTestTests */ = {
@@ -532,13 +596,24 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6EC4E27A05BA696BA0067B1F93E0B52E /* Pods */ = {
+		67AD4DAC85A3814B9AF23B6E2FF8B51B /* NSData+zlib */ = {
 			isa = PBXGroup;
 			children = (
-				50FA5CC2E91569737DA3FDEBFDBDD62D /* NCMB */,
-				819175B81DB24B2AC5BDAFFF3D753DBC /* SWRevealViewController */,
+				59F00966747A6AB130BB8E9A0A2EB746 /* GTMNSData+zlib.h */,
+				F9FC5CF8D142FECDFA6EA5700B4750BF /* GTMNSData+zlib.m */,
 			);
-			name = Pods;
+			name = "NSData+zlib";
+			sourceTree = "<group>";
+		};
+		67F3F2F9B4BCF1EA442427271BA40BDE /* GoogleToolboxForMac */ = {
+			isa = PBXGroup;
+			children = (
+				B3BD567A503D34E9A5EDAF7ED8654541 /* Defines */,
+				67AD4DAC85A3814B9AF23B6E2FF8B51B /* NSData+zlib */,
+				FEF50ED3855B29E74D575CDF6FC7EF1E /* Support Files */,
+			);
+			name = GoogleToolboxForMac;
+			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -546,35 +621,78 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
-				6EC4E27A05BA696BA0067B1F93E0B52E /* Pods */,
-				45F45989FF8C4E8733EBAE36A7C0BD3C /* Products */,
+				0D27F8A80F77FBB14E9F00F8296F186B /* Pods */,
+				DB39E1CF306305774F496444FD165FB5 /* Products */,
 				61E5DB7AB2C37BA9D6CFEFE3F8917014 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		819175B81DB24B2AC5BDAFFF3D753DBC /* SWRevealViewController */ = {
+		904A9593204D44C19338409CB7954660 /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				DE5AFA9361143A79C635A8709DADB653 /* SWRevealViewController.h */,
-				CA83B3B8BA2A0047E526AC88610FE903 /* SWRevealViewController.m */,
-				AB831BBD95AB8FF08FA771741BA5C394 /* Support Files */,
+				CB4D221F551F315E5EF2FB1B713E6AB4 /* Frameworks */,
+			);
+			name = FirebaseAnalytics;
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		A4CB260845A396D6FE42E4049599D791 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				288909250CF2F1237621EFB1521620FF /* Info.plist */,
+				F5801F0ACF5938137202C70C4CD07473 /* SWRevealViewController.modulemap */,
+				BC7A21A5F8701401E44BBA8BB09ED888 /* SWRevealViewController.xcconfig */,
+				DEE7EFD4B975F1D2F08F011B88A3DD45 /* SWRevealViewController-dummy.m */,
+				00076A54A15F53CEC62D7EC04FF5BA96 /* SWRevealViewController-prefix.pch */,
+				4DE333CDE6A72161B4D06774604DCDF4 /* SWRevealViewController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SWRevealViewController";
+			sourceTree = "<group>";
+		};
+		A5B0BD2A7F96D8149ADBFF341D1AA2BC /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				5104FA358E23C5CF832A2C8778C45C7C /* Core */,
+			);
+			name = Firebase;
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		AD96EFDE647E8CDE3C83994C9608197C /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A226C98643F0345F196178046183C211 /* SWRevealViewController.h */,
+				0BBCD99DE3BF214C86B4384EDBC95601 /* SWRevealViewController.m */,
+				A4CB260845A396D6FE42E4049599D791 /* Support Files */,
 			);
 			name = SWRevealViewController;
 			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
-		AB831BBD95AB8FF08FA771741BA5C394 /* Support Files */ = {
+		B3BD567A503D34E9A5EDAF7ED8654541 /* Defines */ = {
 			isa = PBXGroup;
 			children = (
-				7DC6211A98D0E0A54E5C9351839D6A46 /* Info.plist */,
-				73DE6943350F1178ADC63904905784DA /* SWRevealViewController.modulemap */,
-				4371A93196A7EF2CEFDFE78FA23BA516 /* SWRevealViewController.xcconfig */,
-				4DBA35BB21D289A1B9E9B10FC5135364 /* SWRevealViewController-dummy.m */,
-				11CA9E5092E67E8F7717163389AB9FF7 /* SWRevealViewController-prefix.pch */,
-				28CB2F6949DED64D049933300A047DE7 /* SWRevealViewController-umbrella.h */,
+				00EF8A92B7D4FFB06813DF7A2836C39A /* GTMDefines.h */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SWRevealViewController";
+			name = Defines;
+			sourceTree = "<group>";
+		};
+		B9DA7D300086FE69F2CD3D9CE4F91DCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00F814358C580BC923B832792D55C8AE /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BADE8C7C2A137166E29FFA8A738B3ECB /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				D87729AF3A020D27BDE5009417BD3231 /* Frameworks */,
+			);
+			name = FirebaseInstanceID;
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
 		C63DF4F8E0CADCDC61F69F3BD44A2615 /* Pods-mbUsingTest */ = {
@@ -595,18 +713,12 @@
 			path = "Target Support Files/Pods-mbUsingTest";
 			sourceTree = "<group>";
 		};
-		C80E859DBC30A52653BD02B4F27FE81E /* Support Files */ = {
+		CB4D221F551F315E5EF2FB1B713E6AB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				486208A2BA7363A23D91CF10B9165F70 /* Info.plist */,
-				EDE22CEDD218C3E16F310422CD842445 /* NCMB.modulemap */,
-				F2B1925B6BD29E344B243217BB896BDE /* NCMB.xcconfig */,
-				0945CCCA95AD28E1906BAEFD0931BDC2 /* NCMB-dummy.m */,
-				4AC4E2E74825841A57C1D98C8FEA40B5 /* NCMB-prefix.pch */,
-				BBF9CDC2DC8093BEDCB9D2E0720B1EBF /* NCMB-umbrella.h */,
+				7552387F2950D85EAFF5B98F6CA7D6DB /* FirebaseAnalytics.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/NCMB";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CB9E70BA79FAB9B81749599F1A033CB8 /* Pods-mbUsingTestUITests */ = {
@@ -627,31 +739,81 @@
 			path = "Target Support Files/Pods-mbUsingTestUITests";
 			sourceTree = "<group>";
 		};
+		D2C11CADC24575A47E3A717B52DAAC62 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C1AD2992F03B5119A71EF9D3FB6B318C /* Info.plist */,
+				B8D7B8EFE005293F749D12C2ABC8744C /* NCMB.modulemap */,
+				0257CC16A795CFECF3CC20A18711F1DC /* NCMB.xcconfig */,
+				68F0C71622C0F7F1D62BF46B307CBD7F /* NCMB-dummy.m */,
+				A8E66778FD547DDCF178F437C92700A6 /* NCMB-prefix.pch */,
+				13EC25D41D1CC3D47B5C9368FF526EE0 /* NCMB-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NCMB";
+			sourceTree = "<group>";
+		};
+		D87729AF3A020D27BDE5009417BD3231 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B40482553ABED04A877188B5805E1EA /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB39E1CF306305774F496444FD165FB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BE6EDB0EF78B067CB9C485F50591FFF /* GoogleToolboxForMac.framework */,
+				E40E05E0E33B471A723F817B4B97D7D1 /* NCMB.framework */,
+				E5FB181118EE9062BCAE0B68F49310F7 /* Pods_mbUsingTest.framework */,
+				AB2CF2E8FCA8672CAE261E5166F4C3AB /* Pods_mbUsingTestTests.framework */,
+				A795CFB19293EE28FAAC912F8C2155C2 /* Pods_mbUsingTestUITests.framework */,
+				88621F40939D60234714B3A82270FDCA /* SWRevealViewController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDE760FF30A3B9E5676A2727F404EFE9 /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				B9DA7D300086FE69F2CD3D9CE4F91DCC /* Frameworks */,
+			);
+			name = "Google-Mobile-Ads-SDK";
+			path = "Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		FEF50ED3855B29E74D575CDF6FC7EF1E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				98B7DA667622C6F2B3D824090760C8C8 /* GoogleToolboxForMac.modulemap */,
+				4D6F0969F7416A4C19FF61577923CB2C /* GoogleToolboxForMac.xcconfig */,
+				22FCCDAE023F675818C89083BA78744D /* GoogleToolboxForMac-dummy.m */,
+				52FD4ED22CD8BDA493E97B36283448B5 /* GoogleToolboxForMac-prefix.pch */,
+				3C72E9A0B2866FD4BAF8710FC17EA631 /* GoogleToolboxForMac-umbrella.h */,
+				F0F1631A5BE4672262397E7E95947EA3 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleToolboxForMac";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		25EE80CBF485CAE7C7489DC35BEC2EC3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34BC93F507B021B500D82B121C99F90B /* SWRevealViewController-umbrella.h in Headers */,
+				FD08B84C80B88AD7303E38762710AB99 /* SWRevealViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65E942C36314E4AF62F3B25DE1D52954 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4819F1B5BFD207DCA47EE7BB151210CF /* Pods-mbUsingTestTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65FFCD760D7DA06C8CA9161A8F6806B4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD84BD4EACE09F089FE81E01FC258F21 /* SWRevealViewController-umbrella.h in Headers */,
-				58B723F190705FB59E03EA240CAAD6E8 /* SWRevealViewController.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		99D8865708ECE65827D079498D9244F3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7373BD2C0A40A18261688E2414F9D8E4 /* Pods-mbUsingTest-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,9 +888,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6B2745AD493D2BF23B965FCE85A7A44 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E540DE937C7E45DBB6BB4A8AD29EBFB /* Pods-mbUsingTest-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDA600FDC48ED17BA03DA2D85D4EDA97 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */,
+				541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */,
+				DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C43D9CA5106C6CCEF973B7EDF833947B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */;
+			buildPhases = (
+				63D7DA997053F6B5D01DE8CB5817CB51 /* Sources */,
+				F9BC43EEAF05BCB201B3D28C244AA7E1 /* Frameworks */,
+				FDA600FDC48ED17BA03DA2D85D4EDA97 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoogleToolboxForMac;
+			productName = GoogleToolboxForMac;
+			productReference = 1BE6EDB0EF78B067CB9C485F50591FFF /* GoogleToolboxForMac.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		4AE81019396B253FCB783C2CEE27124A /* NCMB */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6CF8F8706806114CAC05D6C0B9D74C6A /* Build configuration list for PBXNativeTarget "NCMB" */;
@@ -743,7 +940,27 @@
 			);
 			name = NCMB;
 			productName = NCMB;
-			productReference = 87A06C3ACBAE35ED4454C8CCF4CDDD0D /* NCMB.framework */;
+			productReference = E40E05E0E33B471A723F817B4B97D7D1 /* NCMB.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6AEB707245F8875D7225A229BB99FEE8 /* Pods-mbUsingTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7371B48AA6572FD633331D0897C77C8 /* Build configuration list for PBXNativeTarget "Pods-mbUsingTest" */;
+			buildPhases = (
+				9AA62F439FD2BC41AB474C4E469C0C24 /* Sources */,
+				D8CC82126B98CF5153829DA5EEA07E24 /* Frameworks */,
+				E6B2745AD493D2BF23B965FCE85A7A44 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CC7548CD26EE75913DF1A238D66032C /* PBXTargetDependency */,
+				A476B459EB13588A9FB0CCE60743E232 /* PBXTargetDependency */,
+				0B6AFCE362B73B68C7782B9EB75C70D1 /* PBXTargetDependency */,
+			);
+			name = "Pods-mbUsingTest";
+			productName = "Pods-mbUsingTest";
+			productReference = E5FB181118EE9062BCAE0B68F49310F7 /* Pods_mbUsingTest.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		81B0CC2817912D021FBF1B62D5C2C9FE /* Pods-mbUsingTestUITests */ = {
@@ -760,16 +977,16 @@
 			);
 			name = "Pods-mbUsingTestUITests";
 			productName = "Pods-mbUsingTestUITests";
-			productReference = 553C079229BCF64309969029CB3AC19D /* Pods_mbUsingTestUITests.framework */;
+			productReference = A795CFB19293EE28FAAC912F8C2155C2 /* Pods_mbUsingTestUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		82D3BBB92C9DC5591937B415E6802A32 /* SWRevealViewController */ = {
+		ACC1AB2CDD9DA4D074CCC89937E72F4E /* SWRevealViewController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B89A2CC1F0234C63A6A0EDDD82ED540A /* Build configuration list for PBXNativeTarget "SWRevealViewController" */;
+			buildConfigurationList = 13BAA4A02FE6F3BDBCD344742123B062 /* Build configuration list for PBXNativeTarget "SWRevealViewController" */;
 			buildPhases = (
-				E0624380E286B9B61F8FA1300B111B43 /* Sources */,
-				992B513E88B6FBDC539726ED5273AB65 /* Frameworks */,
-				65FFCD760D7DA06C8CA9161A8F6806B4 /* Headers */,
+				7FF064CFF6EEB6AA6CA24945B17A86EC /* Sources */,
+				152DD97AE7A381F425C53DF13FA453DD /* Frameworks */,
+				25EE80CBF485CAE7C7489DC35BEC2EC3 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -777,7 +994,7 @@
 			);
 			name = SWRevealViewController;
 			productName = SWRevealViewController;
-			productReference = 9AE3260B1DCB74A7A618BCBB5D6C1D1C /* SWRevealViewController.framework */;
+			productReference = 88621F40939D60234714B3A82270FDCA /* SWRevealViewController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BD4C68AAC5E2E55F213707801547D967 /* Pods-mbUsingTestTests */ = {
@@ -794,26 +1011,7 @@
 			);
 			name = "Pods-mbUsingTestTests";
 			productName = "Pods-mbUsingTestTests";
-			productReference = C6BA2B11E3E8E12E590245BF7F873E31 /* Pods_mbUsingTestTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C827E0B46F32B976B0B6A60FEF88140B /* Pods-mbUsingTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F789F8A163DCA19D95020D982EB870E2 /* Build configuration list for PBXNativeTarget "Pods-mbUsingTest" */;
-			buildPhases = (
-				C12152B57B0DA10C7CDDD765B9EA2605 /* Sources */,
-				B0D2E21B6F91935BF2B7B8C31665AE79 /* Frameworks */,
-				99D8865708ECE65827D079498D9244F3 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7080FB5BFC73CADC729D3CC4472EE653 /* PBXTargetDependency */,
-				735DE7B59E9D163AFBAB020DB445FC10 /* PBXTargetDependency */,
-			);
-			name = "Pods-mbUsingTest";
-			productName = "Pods-mbUsingTest";
-			productReference = 75E769449C76072B0AEF664FE871388A /* Pods_mbUsingTest.framework */;
+			productReference = AB2CF2E8FCA8672CAE261E5166F4C3AB /* Pods_mbUsingTestTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -833,15 +1031,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 45F45989FF8C4E8733EBAE36A7C0BD3C /* Products */;
+			productRefGroup = DB39E1CF306305774F496444FD165FB5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */,
 				4AE81019396B253FCB783C2CEE27124A /* NCMB */,
-				C827E0B46F32B976B0B6A60FEF88140B /* Pods-mbUsingTest */,
+				6AEB707245F8875D7225A229BB99FEE8 /* Pods-mbUsingTest */,
 				BD4C68AAC5E2E55F213707801547D967 /* Pods-mbUsingTestTests */,
 				81B0CC2817912D021FBF1B62D5C2C9FE /* Pods-mbUsingTestUITests */,
-				82D3BBB92C9DC5591937B415E6802A32 /* SWRevealViewController */,
+				ACC1AB2CDD9DA4D074CCC89937E72F4E /* SWRevealViewController */,
 			);
 		};
 /* End PBXProject section */
@@ -902,6 +1101,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63D7DA997053F6B5D01DE8CB5817CB51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */,
+				F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF064CFF6EEB6AA6CA24945B17A86EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9EAC2E8D9DCEBA7FA6D124F68100BEF /* SWRevealViewController-dummy.m in Sources */,
+				0C8DF28E351F5ACB4C7C4EC4A55F67E7 /* SWRevealViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AA62F439FD2BC41AB474C4E469C0C24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA1380DDDD948B1735764BAC8C431970 /* Pods-mbUsingTest-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A98B54914D583AE6EA7FA9E56E54D588 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -918,37 +1143,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C12152B57B0DA10C7CDDD765B9EA2605 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C67018371B8EF775D0C711AD60E2B5B3 /* Pods-mbUsingTest-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E0624380E286B9B61F8FA1300B111B43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA9309AC057115ADDBAEC0587FF7FF6C /* SWRevealViewController-dummy.m in Sources */,
-				457BEAA34F4047C8C6DC3B7104076EAC /* SWRevealViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7080FB5BFC73CADC729D3CC4472EE653 /* PBXTargetDependency */ = {
+		0B6AFCE362B73B68C7782B9EB75C70D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SWRevealViewController;
+			target = ACC1AB2CDD9DA4D074CCC89937E72F4E /* SWRevealViewController */;
+			targetProxy = 794C02D0011E4162B5D78FE5E28EDFCE /* PBXContainerItemProxy */;
+		};
+		1CC7548CD26EE75913DF1A238D66032C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleToolboxForMac;
+			target = 00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */;
+			targetProxy = A68BBC4F5E2D2A84721BD81EFA42E749 /* PBXContainerItemProxy */;
+		};
+		A476B459EB13588A9FB0CCE60743E232 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NCMB;
 			target = 4AE81019396B253FCB783C2CEE27124A /* NCMB */;
-			targetProxy = 9FD05A169268F9075872E88BCA8BDDB0 /* PBXContainerItemProxy */;
-		};
-		735DE7B59E9D163AFBAB020DB445FC10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SWRevealViewController;
-			target = 82D3BBB92C9DC5591937B415E6802A32 /* SWRevealViewController */;
-			targetProxy = 3592DDEAC9F174F9501C56BCE17EA53A /* PBXContainerItemProxy */;
+			targetProxy = D041989C4B59DF95B2DCED73D13F47F6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -997,76 +1211,9 @@
 			};
 			name = Debug;
 		};
-		15E8C2633ED963599CDFDCE8C385DC63 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4371A93196A7EF2CEFDFE78FA23BA516 /* SWRevealViewController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SWRevealViewController/SWRevealViewController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SWRevealViewController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SWRevealViewController/SWRevealViewController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SWRevealViewController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2008BB3A04D674017BF947C79F6D59A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E27E0D1ADB3BF9B670E77AF83621F5F /* Pods-mbUsingTest.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-mbUsingTest/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-mbUsingTest/Pods-mbUsingTest.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_mbUsingTest;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5B00D53379DADFB8D58B0F0FAD1879F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2B1925B6BD29E344B243217BB896BDE /* NCMB.xcconfig */;
+			baseConfigurationReference = 0257CC16A795CFECF3CC20A18711F1DC /* NCMB.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1133,7 +1280,7 @@
 		};
 		9745C635A4FA1651E1384E302E021192 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2B1925B6BD29E344B243217BB896BDE /* NCMB.xcconfig */;
+			baseConfigurationReference = 0257CC16A795CFECF3CC20A18711F1DC /* NCMB.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1163,7 +1310,71 @@
 			};
 			name = Release;
 		};
-		C21CBE53F45E2FFB29EE89BB8E0094B4 /* Release */ = {
+		B94E69A40CE3F0B725EA12958E78AB85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC7A21A5F8701401E44BBA8BB09ED888 /* SWRevealViewController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SWRevealViewController/SWRevealViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SWRevealViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SWRevealViewController/SWRevealViewController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SWRevealViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D2895245B8EBF66B52BA59D98BA40453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC7A21A5F8701401E44BBA8BB09ED888 /* SWRevealViewController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SWRevealViewController/SWRevealViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SWRevealViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SWRevealViewController/SWRevealViewController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SWRevealViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D2F68741BE9A0EB499CE454C0BFA2464 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAD75986504E2DA193063C8423CBB108 /* Pods-mbUsingTest.release.xcconfig */;
 			buildSettings = {
@@ -1198,6 +1409,38 @@
 			};
 			name = Release;
 		};
+		D60CD877A708870E2BE96B83BA32F883 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D6F0969F7416A4C19FF61577923CB2C /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = GoogleToolboxForMac;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		DC54C746397823F76C4846991FF637DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DC90AA356FBCA038AEEAAFD6928D966 /* Pods-mbUsingTestUITests.debug.xcconfig */;
@@ -1225,6 +1468,41 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_mbUsingTestUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E306992B9076F16C36F87A3F2C25E7D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E27E0D1ADB3BF9B670E77AF83621F5F /* Pods-mbUsingTest.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-mbUsingTest/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-mbUsingTest/Pods-mbUsingTest.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_mbUsingTest;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1308,38 +1586,6 @@
 			};
 			name = Release;
 		};
-		EA90E8C395F834CA2E747EDD52EFF5BB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4371A93196A7EF2CEFDFE78FA23BA516 /* SWRevealViewController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SWRevealViewController/SWRevealViewController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SWRevealViewController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SWRevealViewController/SWRevealViewController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SWRevealViewController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		EE2F539B513F3ED97E6709E41A187CC8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4110E8C6426735F5825DFF72F47D2396 /* Pods-mbUsingTestTests.release.xcconfig */;
@@ -1375,9 +1621,50 @@
 			};
 			name = Release;
 		};
+		F066921CBDBDB5F45795E50FBC5AC972 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D6F0969F7416A4C19FF61577923CB2C /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = GoogleToolboxForMac;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		13BAA4A02FE6F3BDBCD344742123B062 /* Build configuration list for PBXNativeTarget "SWRevealViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B94E69A40CE3F0B725EA12958E78AB85 /* Debug */,
+				D2895245B8EBF66B52BA59D98BA40453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		266E5427705F5348646C919BE98D1679 /* Build configuration list for PBXNativeTarget "Pods-mbUsingTestTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1405,11 +1692,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B89A2CC1F0234C63A6A0EDDD82ED540A /* Build configuration list for PBXNativeTarget "SWRevealViewController" */ = {
+		C43D9CA5106C6CCEF973B7EDF833947B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15E8C2633ED963599CDFDCE8C385DC63 /* Debug */,
-				EA90E8C395F834CA2E747EDD52EFF5BB /* Release */,
+				D60CD877A708870E2BE96B83BA32F883 /* Debug */,
+				F066921CBDBDB5F45795E50FBC5AC972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1423,11 +1710,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F789F8A163DCA19D95020D982EB870E2 /* Build configuration list for PBXNativeTarget "Pods-mbUsingTest" */ = {
+		C7371B48AA6572FD633331D0897C77C8 /* Build configuration list for PBXNativeTarget "Pods-mbUsingTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2008BB3A04D674017BF947C79F6D59A6 /* Debug */,
-				C21CBE53F45E2FFB29EE89BB8E0094B4 /* Release */,
+				E306992B9076F16C36F87A3F2C25E7D0 /* Debug */,
+				D2F68741BE9A0EB499CE454C0BFA2464 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

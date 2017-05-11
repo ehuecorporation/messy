@@ -11,6 +11,7 @@ import CoreLocation
 import NCMB
 import SWRevealViewController
 import Social
+import GoogleMobileAds
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,UIGestureRecognizerDelegate{
     
@@ -18,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+//    @IBOutlet weak var bannerAd: GADBannerView!
     //新規追加時
     @IBAction func goPost(_ sender: UIBarButtonItem) {
         self.editFlag = false
@@ -141,49 +143,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ログインしているかどうか？
-        checkUserLogin()
+        // 現在地からの検索を開始
+        startGeoSearch()
         
-        // LocationManagerの生成.
-        myLocationManager = CLLocationManager()
-        // Delegateの設定.
-        myLocationManager.delegate = self
-        // 距離のフィルタ.
-        myLocationManager.distanceFilter = 100.0
-        // 精度.
-        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        
-        // セキュリティ認証のステータスを取得.
-        let status = CLLocationManager.authorizationStatus()
-        
-        // まだ認証が得られていない場合は、認証ダイアログを表示.
-        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
-            
-            print("not determined")
-            // まだ承認が得られていない場合は、認証ダイアログを表示.
-            myLocationManager.requestWhenInUseAuthorization()
-        }
-        
-        // 位置情報の更新を開始.
-        myLocationManager.startUpdatingLocation()
-
         //お気に入り等を読み込み
         Favorite.load()
         Like.load()
         
-        //テーブルビューのデリゲート
-        self.memoTableView.delegate = self
-        self.memoTableView.dataSource = self
-        
-        //Xibのクラスを読み込む
-        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
-        self.memoTableView.register(nib, forCellReuseIdentifier: "MemoCell")
-        
-        //セルの高さを設定
-        self.memoTableView.rowHeight = self.view.frame.size.width + 120
-        
-        // 空セルを非表示
-        self.memoTableView.tableFooterView = UIView(frame: .zero)
+        // テーブルビュー関連の設定
+        setTableView()
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
@@ -302,7 +270,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell!.shopGeoLabel.isHidden = true
         }
 
-        
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
             cell!.hoursIcon.image = #imageLiteral(resourceName: "morningIcon")
@@ -463,6 +430,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         } // index out of bounds check
     } // getCellIcon end
+    
+    func startGeoSearch() {
+        // ログインしているかどうか？
+        checkUserLogin()
+        
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+        // Delegateの設定.
+        myLocationManager.delegate = self
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+        
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+            
+            print("not determined")
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+    }
+    
+    func setTableView() {
+        //テーブルビューのデリゲート
+        self.memoTableView.delegate = self
+        self.memoTableView.dataSource = self
+        
+        //Xibのクラスを読み込む
+        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
+        self.memoTableView.register(nib, forCellReuseIdentifier: "MemoCell")
+        
+        //セルの高さを設定
+        self.memoTableView.rowHeight = self.view.frame.size.width + 120
+        // 空セルを非表示
+        self.memoTableView.tableFooterView = UIView(frame: .zero)
+    }
     
     // GPSから値を取得した際に呼び出されるメソッド.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -295,7 +295,7 @@
                                 <action selector="goFavo:" destination="BYZ-38-t0r" id="tWN-3v-hwN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="pen" id="ewy-pz-YJX">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="ewy-pz-YJX">
                             <connections>
                                 <action selector="goPost:" destination="BYZ-38-t0r" id="sHH-HJ-27v"/>
                             </connections>
@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3001" y="1818"/>
+            <point key="canvasLocation" x="-3002.4000000000001" y="1817.5412293853076"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="U2y-1v-2kf">
@@ -2313,15 +2313,16 @@
         <image name="background" width="388" height="690"/>
         <image name="close" width="128" height="128"/>
         <image name="defaultIcon" width="128" height="128"/>
-        <image name="list" width="24" height="24"/>
+        <image name="list" width="25" height="18"/>
         <image name="loading_sq" width="232" height="190"/>
         <image name="loginButton" width="105" height="20"/>
         <image name="logo" width="125" height="49"/>
         <image name="menuList" width="30" height="30"/>
-        <image name="nameLabel" width="600" height="400"/>
+        <image name="nameLabel" width="60" height="40"/>
         <image name="open" width="128" height="128"/>
         <image name="passLabel" width="600" height="400"/>
-        <image name="pen" width="25" height="25"/>
+        <image name="pen" width="24" height="24"/>
+        <image name="plus" width="25" height="24"/>
         <image name="reload" width="24" height="24"/>
         <image name="shopName" width="128" height="128"/>
         <image name="shopPin" width="50" height="50"/>

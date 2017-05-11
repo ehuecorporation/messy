@@ -6,6 +6,8 @@ target 'mbUsingTest' do
   use_frameworks!
   pod 'NCMB', :git => 'https://github.com/ehuecorporation/ncmb_ios.git'
   pod ‘SWRevealViewController’
+  pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
 
   # Pods for mbUsingTest
 

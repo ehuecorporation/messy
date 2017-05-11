@@ -8,6 +8,8 @@
 
 import UIKit
 import NCMB
+import Firebase
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userData = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // FireBaseに接続
+        FIRApp.configure()
+        // googlaAd
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-6182342774000237/6565894501")
         
         // mbのAPIキー
         NCMB.setApplicationKey("644a6ccf8f9fa7c5f792d301adf624a7fe6d7455996b92de01a46037a84723a5", clientKey: "4c5771973e8c4818e5296e2aed38d2325e0fdfaad584b5560200830eaf88add6")
