@@ -16,8 +16,9 @@ import GoogleMobileAds
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,UIGestureRecognizerDelegate{
     
     @IBOutlet weak var memoTableView: UITableView!
-    
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var bannerAd: GADBannerView!
+    
     
 //    @IBOutlet weak var bannerAd: GADBannerView!
     //新規追加時
@@ -162,24 +163,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //左スライドメニューの幅
         self.revealViewController().rearViewRevealWidth = 200
-        
-        // UILongPressGestureRecognizer宣言
-        let longPressRecognizer = UILongPressGestureRecognizer()
-        longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
-        
-        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
-        longPressRecognizer.delegate = self
-        
-        // tableViewにrecognizerを設定
-        memoTableView.addGestureRecognizer(longPressRecognizer)
-        
-        // Pull to Refreshコントロール初期化
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
-        self.memoTableView.addSubview(refreshControl)
-        
+
         // navigationItemのタイトル
         navigationItem.titleView = UIImageView.init(image: #imageLiteral(resourceName: "logoForNavigationBar"))
+        
+        // Admob
+        bannerAd.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerAd.rootViewController = self
+        bannerAd.load(GADRequest())
         
     }
     
@@ -241,14 +232,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
         cell!.favoriteCounter.text = String(targetMemoData.favoriteCounter)
-        cell!.lookCounter.text = String(targetMemoData.lookCounter)
         cell!.likeCounter.text = String(targetMemoData.likeCounter)
         cell!.favoriteCounter.isHidden = true
-        cell!.lookCounter.isHidden = true
         cell!.likeCounter.isHidden = true
-        cell!.lookCounterLabel.isHidden = true
-        cell!.favoriteCounterLabel.isHidden = true
-        cell!.likeCounterLabel.isHidden = true
         
         //表示する要素
         cell!.shopName.text = "#"+targetMemoData.shopName
@@ -272,11 +258,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "morningIcon")
+            cell?.hoursColor.backgroundColor = UIColor.init(red: 72/255.0, green: 198/255.0, blue: 133/255.0, alpha: 1.0)
         } else if targetMemoData.menuHours == 1 {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "lunchIcon")
+            cell!.hoursColor.backgroundColor = UIColor.init(red: 241/255.0, green: 85/255.0, blue: 47/255.0, alpha: 1.0)
         } else {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "dinerIcon")
+            cell!.hoursColor.backgroundColor = UIColor.init(red: 70/255.0, green: 14/255.0, blue: 70/255.0, alpha: 0.95)
         }
         
         //お気に入りに入っていれば星をon
@@ -354,14 +340,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let imageHeight = targetMemoData.menuImage?.size.height
         let imageWidth = targetMemoData.menuImage?.size.width
         if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
-            let aspect = Double(imageHeight!)/Double(imageWidth!)
-            let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 115
+            return self.view.frame.size.width + 110
             
         } else {
             let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
             let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 95
+            return CGFloat(height) + 75
         }
     }
 
@@ -472,6 +456,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.memoTableView.rowHeight = self.view.frame.size.width + 120
         // 空セルを非表示
         self.memoTableView.tableFooterView = UIView(frame: .zero)
+        
+        // UILongPressGestureRecognizer宣言
+        let longPressRecognizer = UILongPressGestureRecognizer()
+        longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        longPressRecognizer.delegate = self
+        
+        // tableViewにrecognizerを設定
+        memoTableView.addGestureRecognizer(longPressRecognizer)
+        
+        // Pull to Refreshコントロール初期化
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
+        self.memoTableView.addSubview(refreshControl)
     }
     
     // GPSから値を取得した際に呼び出されるメソッド.

@@ -9,13 +9,13 @@
 import UIKit
 import NCMB
 import Social
+import GoogleMobileAds
 
 class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIGestureRecognizerDelegate{
 
     @IBOutlet weak var menuList: UITableView!
-    
     @IBOutlet weak var navigationTitle: UINavigationItem!
-    
+    @IBOutlet weak var bannerAd: GADBannerView!
     //NCMBAPIの利用
     public var mbs: NCMBSearch = NCMBSearch()
     
@@ -119,28 +119,8 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // LocationManagerの生成.
-        myLocationManager = CLLocationManager()
-        // Delegateの設定.
-        myLocationManager.delegate = self
-        // 距離のフィルタ.
-        myLocationManager.distanceFilter = 100.0
-        // 精度.
-        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        
-        // セキュリティ認証のステータスを取得.
-        let status = CLLocationManager.authorizationStatus()
-        
-        // まだ認証が得られていない場合は、認証ダイアログを表示.
-        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
-            
-            print("not determined")
-            // まだ承認が得られていない場合は、認証ダイアログを表示.
-            myLocationManager.requestWhenInUseAuthorization()
-        }
-        
-        // 位置情報の更新を開始.
-        myLocationManager.startUpdatingLocation()
+        // 位置情報
+        getGeo()
         
         //お気に入りを読み込み
         Favorite.load()
@@ -148,42 +128,18 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         navigationTitle.title = "提供メニュー"
         
-        //テーブルビューのデリゲート
-        self.menuList.delegate = self
-        self.menuList.dataSource = self
-        
-        //Xibのクラスを読み込む
-        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
-        self.menuList.register(nib, forCellReuseIdentifier: "MemoCell")
+        // テーブルビューの設定
+        setTableView()
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
 
-        
-        //セルの高さを設定
-        self.menuList.rowHeight = self.view.frame.size.width + 120
-        
-        // 空セルを非表示
-        self.menuList.tableFooterView = UIView(frame: .zero)
-        
-        // UILongPressGestureRecognizer宣言
-        let longPressRecognizer = UILongPressGestureRecognizer()
-        longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
-        
-        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
-        longPressRecognizer.delegate = self
-        
-        // tableViewにrecognizerを設定
-        menuList.addGestureRecognizer(longPressRecognizer)
-        
-        
-        // Pull to Refreshコントロール初期化
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
-        self.menuList.addSubview(refreshControl)
-        
+        //Admob
+        bannerAd.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerAd.rootViewController = self
+        bannerAd.load(GADRequest())
         
     }
     
@@ -202,8 +158,6 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
                 NotificationCenter.default.removeObserver(self.refreshObserver!)
                 // UIRefreshControlを停止する
                 refreshControl.endRefreshing()
-                
-                
             }
         ) // uisng block end
         mbs.getShopMenu(targetShopData.shopNumber)
@@ -244,14 +198,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.fileName.text = targetMemoData.filename
         cell!.fileName.isHidden = true
         cell!.favoriteCounter.text = String(targetMemoData.favoriteCounter)
-        cell!.lookCounter.text = String(targetMemoData.lookCounter)
         cell!.likeCounter.text = String(targetMemoData.likeCounter)
         cell!.favoriteCounter.isHidden = true
-        cell!.lookCounter.isHidden = true
         cell!.likeCounter.isHidden = true
-        cell!.lookCounterLabel.isHidden = true
-        cell!.favoriteCounterLabel.isHidden = true
-        cell!.likeCounterLabel.isHidden = true
         
         // 表示する要素
         cell!.shopName.text = "#"+targetMemoData.shopName
@@ -276,11 +225,11 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "morningIcon")
+            cell?.hoursColor.backgroundColor = UIColor.init(red: 72/255.0, green: 198/255.0, blue: 133/255.0, alpha: 0.75)
         } else if targetMemoData.menuHours == 1 {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "lunchIcon")
+            cell!.hoursColor.backgroundColor = UIColor.init(red: 241/255.0, green: 85/255.0, blue: 47/255.0, alpha: 0.75)
         } else {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "dinerIcon")
+            cell!.hoursColor.backgroundColor = UIColor.init(red: 70/255.0, green: 0.0/255.0, blue: 54/255.0, alpha: 0.75)
         }
         
         //お気に入りに入っていれば星をon
@@ -342,6 +291,63 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
             let height = Double(self.view.frame.size.width)*aspect
             return CGFloat(height) + 95
         }
+    }
+    
+    func getGeo() {
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+        // Delegateの設定.
+        myLocationManager.delegate = self
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+        
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+            
+            print("not determined")
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+    }
+    
+    func setTableView() {
+        //テーブルビューのデリゲート
+        self.menuList.delegate = self
+        self.menuList.dataSource = self
+        
+        //Xibのクラスを読み込む
+        let nib: UINib = UINib(nibName: "MemoCell", bundle:  Bundle(for: MemoCell.self))
+        self.menuList.register(nib, forCellReuseIdentifier: "MemoCell")
+
+        //セルの高さを設定
+        self.menuList.rowHeight = self.view.frame.size.width + 120
+        
+        // 空セルを非表示
+        self.menuList.tableFooterView = UIView(frame: .zero)
+        
+        // UILongPressGestureRecognizer宣言
+        let longPressRecognizer = UILongPressGestureRecognizer()
+        longPressRecognizer.addTarget(self, action: #selector(MainViewController.cellLongPressed(recognizer:)))
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        longPressRecognizer.delegate = self
+        
+        // tableViewにrecognizerを設定
+        menuList.addGestureRecognizer(longPressRecognizer)
+        
+        
+        // Pull to Refreshコントロール初期化
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
+        self.menuList.addSubview(refreshControl)
     }
     
     //セルの画像を取得

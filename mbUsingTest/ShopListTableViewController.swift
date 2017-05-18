@@ -93,40 +93,11 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // LocationManagerの生成.
-        myLocationManager = CLLocationManager()
-        // Delegateの設定.
-        myLocationManager.delegate = self
-        // 距離のフィルタ.
-        myLocationManager.distanceFilter = 100.0
-        // 精度.
-        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        // 検索開始
+        startMenuSearch()
         
-        // セキュリティ認証のステータスを取得.
-        let status = CLLocationManager.authorizationStatus()
-        
-        // まだ認証が得られていない場合は、認証ダイアログを表示.
-        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
-            
-            print("not determined")
-            // まだ承認が得られていない場合は、認証ダイアログを表示.
-            myLocationManager.requestWhenInUseAuthorization()
-        }
-        
-        // 位置情報の更新を開始.
-        myLocationManager.startUpdatingLocation()
-        
-        //テーブルビューのデリゲート
-        self.shopListTable.delegate = self
-        self.shopListTable.dataSource = self
-        
-        //Xibのクラスを読み込む
-        let nib: UINib = UINib(nibName: "ShopListCell", bundle:  Bundle(for: ShopListCell.self))
-        self.shopListTable.register(nib, forCellReuseIdentifier: "ShopListCell")
-        
-        //セルの高さを設定
-        self.shopListTable.rowHeight = 50
-        self.shopListTable.tableFooterView = UIView(frame: .zero)
+        // テーブルビューの設定
+        setTableView()
         
         // Pull to Refreshコントロール初期化
         let refreshControl = UIRefreshControl()
@@ -211,6 +182,45 @@ class ShopListTableViewController: UIViewController, UITableViewDelegate, UITabl
     //テーブルのセクションを設定する
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionCount
+    }
+    
+    func startMenuSearch() {
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+        // Delegateの設定.
+        myLocationManager.delegate = self
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+        
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+            
+            print("not determined")
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+    }
+    
+    func setTableView() {
+        //テーブルビューのデリゲート
+        self.shopListTable.delegate = self
+        self.shopListTable.dataSource = self
+        
+        //Xibのクラスを読み込む
+        let nib: UINib = UINib(nibName: "ShopListCell", bundle:  Bundle(for: ShopListCell.self))
+        self.shopListTable.register(nib, forCellReuseIdentifier: "ShopListCell")
+        
+        //セルの高さを設定
+        self.shopListTable.rowHeight = 50
+        self.shopListTable.tableFooterView = UIView(frame: .zero)
     }
     
     //segueを呼び出したときに呼ばれるメソッド

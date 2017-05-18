@@ -10,12 +10,13 @@ import UIKit
 import NCMB
 import SWRevealViewController
 import Social
+import GoogleMobileAds
 
 class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
     @IBOutlet weak var postTable: UITableView!
+    @IBOutlet weak var bannerAd: GADBannerView!
     
     @IBAction func goAdd(_ sender: UIBarButtonItem) {
         self.editFlag = false
@@ -184,6 +185,10 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshControl.addTarget(self, action: #selector(MainViewController.onRefresh(_:)), for: .valueChanged)
         self.postTable.addSubview(refreshControl)
         
+        // Admob
+        bannerAd.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerAd.rootViewController = self
+        bannerAd.load(GADRequest())
         
     }
     
@@ -255,7 +260,6 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.updateDate.text = targetMemoData.updateDate
         cell!.menuCost.text = "¥\(targetMemoData.menuMoney)"
         cell!.favoriteCounter.text = "\(targetMemoData.favoriteCounter)"
-        cell!.lookCounter.text = "\(targetMemoData.lookCounter)"
         cell!.likeCounter.text = "\(targetMemoData.likeCounter)"
         cell!.menuImage.image = #imageLiteral(resourceName: "loading")
         
@@ -274,11 +278,11 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // menuHoursに従って色分け
         if targetMemoData.menuHours == 0 {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "morningIcon")
+            cell?.hoursColor.backgroundColor = UIColor.init(red: 72/255.0, green: 198/255.0, blue: 133/255.0, alpha: 0.75)
         } else if targetMemoData.menuHours == 1 {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "lunchIcon")
+            cell!.hoursColor.backgroundColor = UIColor.init(red: 241/255.0, green: 85/255.0, blue: 47/255.0, alpha: 0.75)
         } else {
-            cell!.hoursIcon.image = #imageLiteral(resourceName: "dinerIcon")
+            cell!.hoursColor.backgroundColor = UIColor.init(red: 70/255.0, green: 0.0/255.0, blue: 54/255.0, alpha: 0.75)
         }
 
         
@@ -323,13 +327,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let imageHeight = targetMemoData.menuImage?.size.height
         let imageWidth = targetMemoData.menuImage?.size.width
         if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
-            let aspect = Double(imageHeight!)/Double(imageWidth!)
-            let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 115
+            return self.view.frame.size.width + 115
         } else {
-            let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
-            let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 95
+            return self.view.frame.size.width + 75
         }
     }
 

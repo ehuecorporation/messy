@@ -277,16 +277,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pAP-QC-dXF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJX-Lv-rZJ" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="V9f-7z-DGS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SJX-Lv-rZJ" secondAttribute="bottom" id="3ir-ey-I0S"/>
+                            <constraint firstAttribute="trailing" secondItem="SJX-Lv-rZJ" secondAttribute="trailing" id="6hE-F6-ymu"/>
                             <constraint firstItem="pAP-QC-dXF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GNH-OM-2LF"/>
                             <constraint firstAttribute="trailing" secondItem="pAP-QC-dXF" secondAttribute="trailing" id="V2c-fO-Foo"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pAP-QC-dXF" secondAttribute="bottom" id="fZb-pf-vR2"/>
+                            <constraint firstItem="SJX-Lv-rZJ" firstAttribute="top" secondItem="pAP-QC-dXF" secondAttribute="bottom" id="WMX-bY-aEf"/>
                             <constraint firstItem="pAP-QC-dXF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s7K-3T-FFd"/>
+                            <constraint firstItem="SJX-Lv-rZJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sS1-Vn-Kxg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="messy" id="QcO-jO-dOY">
@@ -302,6 +312,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerAd" destination="SJX-Lv-rZJ" id="A4M-b1-ngD"/>
                         <outlet property="memoTableView" destination="pAP-QC-dXF" id="Or8-0Z-Ycb"/>
                         <outlet property="menuButton" destination="N55-jR-sXv" id="YdL-w0-CEV"/>
                         <outlet property="navigationItem" destination="QcO-jO-dOY" id="YAT-mh-7Vv"/>
@@ -1551,20 +1562,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o7n-vv-vGG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txR-Wd-ko1" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cYv-Ks-EkF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="txR-Wd-ko1" firstAttribute="leading" secondItem="n5X-Df-x8o" secondAttribute="leading" id="0Cg-Yx-VVf"/>
                             <constraint firstAttribute="trailing" secondItem="o7n-vv-vGG" secondAttribute="trailing" id="IIv-qS-53K"/>
                             <constraint firstItem="o7n-vv-vGG" firstAttribute="leading" secondItem="n5X-Df-x8o" secondAttribute="leading" id="Lle-Qa-WcT"/>
-                            <constraint firstAttribute="bottom" secondItem="o7n-vv-vGG" secondAttribute="bottom" id="Oyb-rQ-2hE"/>
+                            <constraint firstAttribute="trailing" secondItem="txR-Wd-ko1" secondAttribute="trailing" id="bsb-kN-c9O"/>
                             <constraint firstItem="o7n-vv-vGG" firstAttribute="top" secondItem="n5X-Df-x8o" secondAttribute="top" id="fZD-dc-ld8"/>
+                            <constraint firstItem="WiF-q7-TSZ" firstAttribute="top" secondItem="txR-Wd-ko1" secondAttribute="bottom" id="s5b-lV-3CT"/>
+                            <constraint firstItem="txR-Wd-ko1" firstAttribute="top" secondItem="o7n-vv-vGG" secondAttribute="bottom" id="xbO-SY-PEW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="その他のメニュー" id="Htm-Ph-ao3"/>
                     <connections>
+                        <outlet property="bannerAd" destination="txR-Wd-ko1" id="1gc-O0-W7u"/>
                         <outlet property="menuList" destination="o7n-vv-vGG" id="GMH-q9-hUd"/>
                         <outlet property="navigationTitle" destination="Htm-Ph-ao3" id="0Yz-xv-wvB"/>
                         <segue destination="QF5-Iu-PM0" kind="show" identifier="goReport" id="wsX-VE-FgT"/>
@@ -1572,7 +1594,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNX-GH-bAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2079" y="3260"/>
+            <point key="canvasLocation" x="-2079.1999999999998" y="3259.5202398800602"/>
         </scene>
         <!--店舗リスト-->
         <scene sceneID="SXd-Ee-xjv">
@@ -2190,15 +2212,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="irO-7S-wkx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSU-IW-q1E" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yVn-Uz-jjC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pSU-IW-q1E" firstAttribute="top" secondItem="irO-7S-wkx" secondAttribute="bottom" id="2fi-ob-npt"/>
                             <constraint firstItem="irO-7S-wkx" firstAttribute="top" secondItem="qfn-0p-z3c" secondAttribute="top" id="35y-4R-FmL"/>
-                            <constraint firstItem="CGj-K0-y11" firstAttribute="top" secondItem="irO-7S-wkx" secondAttribute="bottom" id="6iK-yv-SMw"/>
+                            <constraint firstItem="pSU-IW-q1E" firstAttribute="leading" secondItem="qfn-0p-z3c" secondAttribute="leading" id="7rK-HZ-vSP"/>
+                            <constraint firstAttribute="trailing" secondItem="pSU-IW-q1E" secondAttribute="trailing" id="UWh-na-Su7"/>
                             <constraint firstItem="irO-7S-wkx" firstAttribute="leading" secondItem="qfn-0p-z3c" secondAttribute="leading" id="fqy-Mx-LVc"/>
+                            <constraint firstAttribute="bottom" secondItem="pSU-IW-q1E" secondAttribute="bottom" id="sst-xd-CPm"/>
                             <constraint firstAttribute="trailing" secondItem="irO-7S-wkx" secondAttribute="trailing" id="vru-h7-TNl"/>
                         </constraints>
                     </view>
@@ -2211,6 +2243,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerAd" destination="pSU-IW-q1E" id="iNE-fi-w3K"/>
                         <outlet property="menuButton" destination="wEm-Z0-vKL" id="xhj-mk-4Zv"/>
                         <outlet property="postTable" destination="irO-7S-wkx" id="ch1-gu-JSe"/>
                         <segue destination="fRS-1y-RXI" kind="show" identifier="goAdd" id="FnF-jG-x1N"/>
@@ -2220,7 +2253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4U-rr-AzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-47" y="954"/>
+            <point key="canvasLocation" x="-47.200000000000003" y="953.97301349325346"/>
         </scene>
         <!--Your Menu-->
         <scene sceneID="i02-Fs-46a">
@@ -2330,14 +2363,14 @@
         <image name="up" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vss-Eb-Cnl"/>
         <segue reference="iaH-Ro-qJe"/>
         <segue reference="Zj5-Do-LeW"/>
         <segue reference="zbS-2T-nYv"/>
         <segue reference="zhy-U0-6Nh"/>
         <segue reference="IWr-99-Qp8"/>
-        <segue reference="gc2-Eu-4Gy"/>
-        <segue reference="4GV-q7-1qo"/>
-        <segue reference="Udy-kv-6Tb"/>
-        <segue reference="e5v-Lu-OAG"/>
+        <segue reference="FnF-jG-x1N"/>
+        <segue reference="43F-yT-ryS"/>
+        <segue reference="wsX-VE-FgT"/>
     </inferredMetricsTieBreakers>
 </document>

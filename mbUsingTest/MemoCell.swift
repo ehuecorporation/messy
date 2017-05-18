@@ -26,24 +26,16 @@ class MemoCell: UITableViewCell {
     @IBOutlet weak var shopGeo: UILabel!
     @IBOutlet weak var shopGeoLabel: UIImageView!
     @IBOutlet weak var updateDate: UILabel!
-    
-    @IBOutlet weak var hoursIcon: UIImageView!
-    // 隠し
-    @IBOutlet weak var objectID: UILabel!
-    @IBOutlet weak var fileName: UILabel!
-    
-    @IBOutlet weak var favoriteCounter: UILabel!
-    @IBOutlet weak var lookCounter: UILabel!
-
+        @IBOutlet weak var favoriteCounter: UILabel!
     @IBOutlet weak var likeCounter: UILabel!
-    @IBOutlet weak var lookCounterLabel: UILabel!
-    @IBOutlet weak var favoriteCounterLabel: UILabel!
-    @IBOutlet weak var likeCounterLabel: UILabel!
-    
-    
     @IBOutlet weak var menuImage: UIImageView!
     @IBOutlet weak var menuName: UILabel!
     @IBOutlet weak var menuCost: UILabel!
+    @IBOutlet weak var hoursColor: UIView!
+    
+    // 隠し
+    @IBOutlet weak var objectID: UILabel!
+    @IBOutlet weak var fileName: UILabel!
     
     @IBAction func favoriteButton(_ sender: UIButton) {
         

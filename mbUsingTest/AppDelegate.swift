@@ -28,13 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NCMBTwitterUtils.initialize(withConsumerKey: "UVGEnYxLfLudJlCEVwcMDHo2C", consumerSecret: "Ot5yjc9N7jTxYLCa52nV8eRYYVvcByXCsqMZMj0Rb7NVYeyyir")
         
         //ナビゲーションアイテムの色を変更
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.black
         //ナビゲーションバーの背景を変更
-        UINavigationBar.appearance().barTintColor = UIColor.init(red: 44/255, green: 150/255, blue: 26/255, alpha: 0.5)
+        UINavigationBar.appearance().barTintColor = UIColor.white
         //ナビゲーションのタイトル文字列の色を変更
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
         
-        var flag = true
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(),for:.default)
         
         if userData.object(forKey: "userName") != nil && userData.object(forKey: "userPass") != nil{
             var targetName = String()
