@@ -186,7 +186,7 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.postTable.addSubview(refreshControl)
         
         // Admob
-        bannerAd.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerAd.adUnitID = "ca-app-pub-6182342774000237/6565894501"
         bannerAd.rootViewController = self
         bannerAd.load(GADRequest())
         
@@ -327,9 +327,9 @@ class MyPostViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let imageHeight = targetMemoData.menuImage?.size.height
         let imageWidth = targetMemoData.menuImage?.size.width
         if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
-            return self.view.frame.size.width + 115
+            return self.view.frame.size.width + 110
         } else {
-            return self.view.frame.size.width + 75
+            return self.view.frame.size.width + 110
         }
     }
 

@@ -30,12 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //ナビゲーションアイテムの色を変更
         UINavigationBar.appearance().tintColor = UIColor.black
         //ナビゲーションバーの背景を変更
-        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 251/255.0, green: 250/255.0, blue: 241/255.0, alpha: 0.0)
         //ナビゲーションのタイトル文字列の色を変更
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
         
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(),for:.default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(),for:.default)
         
         if userData.object(forKey: "userName") != nil && userData.object(forKey: "userPass") != nil{
             var targetName = String()

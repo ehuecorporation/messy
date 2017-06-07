@@ -168,7 +168,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.titleView = UIImageView.init(image: #imageLiteral(resourceName: "logoForNavigationBar"))
         
         // Admob
-        bannerAd.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerAd.adUnitID = "ca-app-pub-6182342774000237/6565894501"
         bannerAd.rootViewController = self
         bannerAd.load(GADRequest())
         
@@ -345,7 +345,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
             let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 75
+            return CGFloat(height) + 110
         }
     }
 

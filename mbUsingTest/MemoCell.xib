@@ -199,7 +199,7 @@
                     <constraint firstItem="hcM-GH-ZS2" firstAttribute="leading" secondItem="Rtf-TN-Eot" secondAttribute="trailing" id="zsr-jx-BhI"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.98441702127456665" green="0.98107784986495972" blue="0.94344550371170044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="favoriteButton" destination="sC9-T2-4Bj" id="rJC-kh-SVc"/>
                 <outlet property="favoriteCounter" destination="b03-nK-wtX" id="HH3-A9-ibx"/>

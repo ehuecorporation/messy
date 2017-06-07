@@ -182,7 +182,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     var userData = UserDefaults.standard
-    var user_sex: Int? = nil
+    var user_sex: Int? = -1
     var loading_flag = false
     
     override func viewDidLoad() {
@@ -196,9 +196,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         userMail.delegate = self
 
         
-        userName.placeholder = "Kendrick"
-        userPass.placeholder  = "Kendrick1123"
-        userMail.placeholder  = "Kendrick@gmail.com"
+        userName.placeholder = "※必須"
+        userPass.placeholder  = "※必須"
+        userMail.placeholder  = "※必須"
         
         //ドロワーメニュー
         if self.revealViewController() != nil {
@@ -218,7 +218,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     // エラーメッセージを出す関数を定義
-    func presentError (_ title: String?, _ message: String?) {
+    func presentError (_ title: String, _ message: String) {
         let errorAlert = UIAlertController(
             title: "\(title)",
             message: "\(message)",

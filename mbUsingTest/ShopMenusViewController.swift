@@ -137,7 +137,7 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         }
 
         //Admob
-        bannerAd.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerAd.adUnitID = "ca-app-pub-6182342774000237/6565894501"
         bannerAd.rootViewController = self
         bannerAd.load(GADRequest())
         
@@ -283,13 +283,9 @@ class ShopMenusViewController: UIViewController, UITableViewDelegate, UITableVie
         let imageHeight = targetMemoData.menuImage?.size.height
         let imageWidth = targetMemoData.menuImage?.size.width
         if targetMemoData.menuImage != nil && imageHeight != nil && imageWidth != nil{
-            let aspect = Double(imageHeight!)/Double(imageWidth!)
-            let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 115
+            return self.view.frame.size.width + 110
         } else {
-            let aspect = Double(#imageLiteral(resourceName: "loading").size.height)/Double(#imageLiteral(resourceName: "loading").size.width)
-            let height = Double(self.view.frame.size.width)*aspect
-            return CGFloat(height) + 95
+            return self.view.frame.size.width + 110
         }
     }
     
